@@ -124,18 +124,77 @@
             <h1 class="display-2 font-weight-thin mb-3">
                 Géré de façon horizontale par ses membres
             </h1>
-            <h4 class="subheading">
-                Pour + de partage de lieux, de resources et de projets pour adresser les inégalités sociales et environnementales
+            <h4 class="subheading font-weight-thin">
+                Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
+                environnementales
             </h4>
+            <!--<h4 class="subheading font-weight-thin">-->
+            <!--Adresser les inégalités sociales et environnementales-->
+            <!--</h4>-->
         </v-layout>
         <!--</v-parallax>-->
-        <v-layout row>
-            <v-flex xs12>
-                <img :src='require("./assets/2015-06-05 16.20.45.jpg")' width="50%">
-            </v-flex>
-        </v-layout>
         <v-content class="pa-4 mt-0">
-
+            <v-layout row wrap>
+                <v-flex xs-4></v-flex>
+                <v-flex xs-4>
+                    <!--<v-layout row>-->
+                    <!--<v-flex xs-1>-->
+                    <!--<v-avatar-->
+                    <!--:tile="tile"-->
+                    <!--:size="120"-->
+                    <!--color="grey lighten-4 mr-2"-->
+                    <!--&gt;-->
+                    <!--<img :src='require("./assets/hug1-petit-carre.png")' alt="avatar">-->
+                    <!--</v-avatar>-->
+                    <!--</v-flex>-->
+                    <!--<v-flex xs-10>-->
+                    <!--<div>-->
+                    <!--<v-subheader>-->
+                    <!--Hug Arsenault-->
+                    <!--</v-subheader>-->
+                    <!--</div>-->
+                    <!--</v-flex>-->
+                    <!--</v-layout>-->
+                    <v-list three-line style="background-color:transparent;">
+                        <v-list-tile avatar v-for="membre in membresDeCercles" class="mb-4">
+                            <v-list-tile-avatar :size="avatarSize">
+                                <img :src='require("./assets/" + membre.avatar)' alt="avatar">
+                            </v-list-tile-avatar>
+                            <v-list-tile-content class="ml-4">
+                                <v-list-tile-title>
+                                    {{membre.nom}}
+                                </v-list-tile-title>
+                                <v-list-tile-sub-title>
+                                    {{membre.cv}}
+                                </v-list-tile-sub-title>
+                                <v-list-tile-title>
+                                    <em class="">Cerles:</em>
+                                    <span v-for="clefDeCercle in membre.cercles">
+                                        {{clefDeCercle}}
+                                    </span>
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
+                    <!--<v-avatar-->
+                    <!--:tile="tile"-->
+                    <!--:size="120"-->
+                    <!--color="grey lighten-4 mr-2"-->
+                    <!--&gt;-->
+                    <!--<img :src='require("./assets/hug1-petit-carre.png")' alt="avatar">-->
+                    <!--</v-avatar>-->
+                    <!--<span class="mr-2">Hug Arsenault</span>-->
+                    <!--<a href="tel:418-392-9867" class="mr-2">-->
+                    <!--418-392-9867-->
+                    <!--</a>-->
+                </v-flex>
+                <v-flex xs-4></v-flex>
+            </v-layout>
+            <v-layout row>
+                <v-flex xs12>
+                    <img :src='require("./assets/2015-06-05 16.20.45.jpg")' width="50%">
+                </v-flex>
+            </v-layout>
             <!--<v-parallax-->
             <!--height="300"-->
             <!--:src='require("./assets/2015-06-05 16.20.45.jpg")'-->
@@ -214,11 +273,36 @@
                     return 25;
                 }
                 return 30;
+            },
+            avatarSize: function () {
+                if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 70;
+                }
+                return 100;
             }
         },
         data() {
             return {
-                //
+                membresDeCercles: [
+                    {
+                        nom: "Hug Arsenault",
+                        cv: "Hôtelier, artiste de murale, cayen",
+                        avatar:"hug1-petit-carre.png",
+                        cercles: ['CA']
+                    },
+                    {
+                        nom: "Gabrielle Margineanu",
+                        cv: "Graphiste, auteure",
+                        avatar:"gaby-petit-carre.jpg",
+                        cercles: ['CA']
+                    }
+                ],
+                cercles: {
+                    CA: {
+                        nom: "CA",
+                        lien: "CA"
+                    }
+                }
             }
         }
     }
