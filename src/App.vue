@@ -121,10 +121,10 @@
                 justify-center
                 id="header-banner"
         >
-            <h1 class="display-2 font-weight-thin mb-3">
+            <h1 class="display-2 font-weight-thin mb-3 white--text">
                 Géré de façon horizontale par ses membres
             </h1>
-            <h4 class="subheading font-weight-thin">
+            <h4 class="subheading font-weight-thin white--text">
                 Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
                 environnementales
             </h4>
@@ -134,9 +134,19 @@
         </v-layout>
         <!--</v-parallax>-->
         <v-content class="pa-4 mt-0">
+            <v-layout row wrap class="mb-5">
+                <v-flex xs12 class="text-xs-center">
+                    <h1 class="display-2 font-weight-thin">
+                        Membres
+                    </h1>
+                    <h4 class="subheading font-weight-thin">
+                        de cercles actifs
+                    </h4>
+                </v-flex>
+            </v-layout>
             <v-layout row wrap>
                 <v-flex xs-4></v-flex>
-                <v-flex xs-4>
+                <v-flex xs-4 class="vh-center">
                     <!--<v-layout row>-->
                     <!--<v-flex xs-1>-->
                     <!--<v-avatar-->
@@ -156,7 +166,7 @@
                     <!--</v-flex>-->
                     <!--</v-layout>-->
                     <v-list three-line style="background-color:transparent;">
-                        <v-list-tile avatar v-for="membre in membresDeCercles" class="mb-4">
+                        <v-list-tile avatar v-for="membre in membresDeCercles" class="mb-5">
                             <v-list-tile-avatar :size="avatarSize">
                                 <img :src='require("./assets/" + membre.avatar)' alt="avatar">
                             </v-list-tile-avatar>
@@ -286,14 +296,20 @@
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
-                        cv: "Hôtelier, artiste de murale, cayen",
+                        cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
                         avatar:"hug1-petit-carre.png",
                         cercles: ['CA']
                     },
                     {
                         nom: "Gabrielle Margineanu",
-                        cv: "Graphiste, auteure",
+                        cv: "Graphiste, Bédéiste amateure",
                         avatar:"gaby-petit-carre.jpg",
+                        cercles: ['CA']
+                    },
+                    {
+                        nom: "Marie-Claire Larocque",
+                        cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
+                        avatar:"msea-petit-carre.jpg",
                         cercles: ['CA']
                     }
                 ],
@@ -363,7 +379,6 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         /*color: #2c3e50;*/
-        color: white;
         margin-top: 0;
     }
 
@@ -373,5 +388,11 @@
     .special-font {
         font-family: 'Shadows Into Light Two', cursive !important;
         color: white;
+    }
+    .vh-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 </style>
