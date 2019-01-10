@@ -69,6 +69,10 @@
         <!--<img :src='require("../assets/2015-06-05 16.20.45.jpg")' width="50%">-->
         <!--</v-flex>-->
         <!--</v-layout>-->
+        <v-parallax
+                height="400"
+                :src="require('../assets/peinture.jpg')"
+        ></v-parallax>
         <v-layout row wrap class="mb-5 mt-5">
             <v-flex xs12 class="text-xs-center">
                 <h1 class="display-2 font-weight-thin">
@@ -83,27 +87,36 @@
                             :src="require('../assets/travailler au LL.jpg')"
                             aspect-ratio="1.78"
                     ></v-img>
-                    <v-card-title primary-title>
-                        <h3 class="headline mb-0">
+                    <v-card-title primary-title class="mb-0">
+                        <h3 class="headline">
                             Collaborium et espace de vie
                         </h3>
                     </v-card-title>
-                    <v-card-text>
-                        asdf
+                    <v-card-text class="text-xs-left mt-0 pt-0 subheading">
+                        <p class="font-weight-medium">
+                            Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme
+                            francisé pour "Coworking space".
+                        </p>
+                        <p>
+                            Accès à un espace de travail avec internet, cuisine pour vous faire à manger, divans pour
+                            relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
+                            apporter vos écouteurs pour créer votre espace perso), table de ping pong et babyfoot pour se changer les
+                            idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
+                        </p>
+                        <p>
+                            Venez l'essayer!
+                        </p>
                     </v-card-text>
                 </v-card>
             </v-flex>
             <v-flex xs12 lg7>
                 <v-card class="ma-4">
                     <v-img
-                            :src="require('../assets/travailler au LL.jpg')"
-                            aspect-ratio="1.78"
+                            :src="require('../assets/loco-linux2.jpg')"
                     ></v-img>
                     <v-card-title primary-title>
                         <div>
-                            <h3 class="headline mb-0">Collaborium et espace de vie</h3>
-                            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...
-                            </div>
+                            <h3 class="headline mb-0">Loco Linux</h3>
                         </div>
                     </v-card-title>
                     <v-card-text>
@@ -203,3 +216,5 @@
         }
     }
 </script>
+<style>
+</style>

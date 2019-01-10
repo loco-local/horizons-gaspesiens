@@ -191,6 +191,9 @@
 
 
 <style>
+    *{
+        font-size:1.03em;
+    }
     #header-banner {
         /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
         /*background-image: linear-gradient(120deg, #667eea 0%, #764ba2 100%);*/
