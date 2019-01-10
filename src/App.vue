@@ -1,13 +1,14 @@
 <template>
-    <v-app>
+    <div id="app">
         <v-toolbar flat style="background-color:white;" fixed>
             <v-toolbar-side-icon v-if="$vuetify.breakpoint.mdAndDown">
                 <v-icon>info</v-icon>
             </v-toolbar-side-icon>
             <img :src='require("./assets/logo-horizontal.png")'
-                 :height="this.toolbarLogoHeight">
+                 :height="this.toolbarLogoHeight" v-if="!host.includes('loco-local')">
+            <img :src='require("./assets/logo-loco-horizontal.png")'
+                 :height="this.toolbarLogoHeight + 20" v-if="host.includes('loco-local')">
             <v-spacer></v-spacer>
-
             <v-icon large class="mr-4" v-if="$vuetify.breakpoint.lgAndUp">phone</v-icon>
             <!--<v-avatar-->
             <!--:tile="tile"-->
@@ -106,202 +107,8 @@
                 <!--rizons Gaspésiens-->
             </v-toolbar-title>
         </v-toolbar>
-
-        <!--<div style="width:100%">-->
-        <!--<img :src='require("./assets/2015-06-05 16.20.45.jpg")' width="50%">-->
-        <!--&lt;!&ndash;<img :src='require("./assets/souper spag.jpg")' width="50%">&ndash;&gt;-->
-        <!--</div>-->
-        <!--<v-parallax-->
-        <!--dark-->
-        <!--src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"-->
-        <!--&gt;-->
-        <v-layout
-                align-center
-                column
-                justify-center
-                id="header-banner"
-        >
-            <h1 class="display-2 font-weight-thin mb-3 white--text">
-                Géré de façon horizontale par ses membres
-            </h1>
-            <h4 class="subheading font-weight-thin white--text">
-                Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
-                environnementales
-            </h4>
-            <!--<h4 class="subheading font-weight-thin">-->
-            <!--Adresser les inégalités sociales et environnementales-->
-            <!--</h4>-->
-        </v-layout>
-        <!--</v-parallax>-->
-        <v-content class="pa-4 mt-0">
-            <v-layout row wrap class="mb-5">
-                <v-flex xs12 class="text-xs-center">
-                    <h1 class="display-2 font-weight-thin">
-                        Membres
-                    </h1>
-                    <h4 class="subheading font-weight-thin">
-                        de cercles actifs
-                    </h4>
-                </v-flex>
-            </v-layout>
-            <v-layout row wrap>
-                <v-flex xs-4></v-flex>
-                <v-flex xs-4 class="vh-center">
-                    <!--<v-layout row>-->
-                    <!--<v-flex xs-1>-->
-                    <!--<v-avatar-->
-                    <!--:tile="tile"-->
-                    <!--:size="120"-->
-                    <!--color="grey lighten-4 mr-2"-->
-                    <!--&gt;-->
-                    <!--<img :src='require("./assets/hug1-petit-carre.png")' alt="avatar">-->
-                    <!--</v-avatar>-->
-                    <!--</v-flex>-->
-                    <!--<v-flex xs-10>-->
-                    <!--<div>-->
-                    <!--<v-subheader>-->
-                    <!--Hug Arsenault-->
-                    <!--</v-subheader>-->
-                    <!--</div>-->
-                    <!--</v-flex>-->
-                    <!--</v-layout>-->
-                    <!--<v-list three-line style="background-color:transparent;">-->
-                    <!--<v-list-tile avatar v-for="membre in membresDeCercles" class="mb-5">-->
-                    <!--<v-list-tile-avatar :size="avatarSize">-->
-                    <!--<img :src='require("./assets/" + membre.avatar)' alt="avatar">-->
-                    <!--</v-list-tile-avatar>-->
-                    <!--<v-list-tile-content class="ml-4">-->
-                    <!--<v-list-tile-title>-->
-                    <!--{{membre.nom}}-->
-                    <!--</v-list-tile-title>-->
-                    <!--<v-list-tile-sub-title>-->
-                    <!--{{membre.cv}}-->
-                    <!--</v-list-tile-sub-title>-->
-                    <!--<v-list-tile-title>-->
-                    <!--<em class="">Cerles:</em>-->
-                    <!--<span v-for="clefDeCercle in membre.cercles">-->
-                    <!--{{clefDeCercle}}-->
-                    <!--</span>-->
-                    <!--</v-list-tile-title>-->
-                    <!--</v-list-tile-content>-->
-                    <!--</v-list-tile>-->
-                    <!--</v-list>-->
-                    <!--<v-avatar-->
-                    <!--:tile="tile"-->
-                    <!--:size="120"-->
-                    <!--color="grey lighten-4 mr-2"-->
-                    <!--&gt;-->
-                    <!--<img :src='require("./assets/hug1-petit-carre.png")' alt="avatar">-->
-                    <!--</v-avatar>-->
-                    <!--<span class="mr-2">Hug Arsenault</span>-->
-                    <!--<a href="tel:418-392-9867" class="mr-2">-->
-                    <!--418-392-9867-->
-                    <!--</a>-->
-                </v-flex>
-                <v-flex xs-4></v-flex>
-            </v-layout>
-            <v-layout row v-for="membre in membresDeCercles" class="mb-5">
-                <v-flex xs0 lg4></v-flex>
-                <v-flex xs12 lg4>
-                    <v-layout row class="vh-center">
-                        <v-flex xs2 :class="{
-                            'mr-4': $vuetify.breakpoint.mdAndDown
-                        }">
-                            <v-avatar :size="avatarSize">
-                                <img :src='require("./assets/" + membre.avatar)' :alt="membre.nom">
-                            </v-avatar>
-                        </v-flex>
-                        <v-flex xs10 class="text-xs-left mt-3 ml-4">
-                            <h3 class="subheading">
-                                {{membre.nom}}
-                            </h3>
-                            <p class="grey-text mb-0">
-                                {{membre.cv}}
-                            </p>
-                            <p>
-                                Comités:
-                                <span v-for="clefDeCercle in membre.cercles">
-                                        {{clefDeCercle}}
-                                    </span>
-                            </p>
-                            <!--<v-card flat style="background-color: transparent;">-->
-                            <!--<v-card-title class="subheading">-->
-                            <!--{{membre.nom}}-->
-                            <!--</v-card-title>-->
-                            <!--<v-card-text>-->
-
-                            <!--</v-card-text>-->
-                            <!--</v-card>-->
-                        </v-flex>
-                    </v-layout>
-                </v-flex>
-                <v-flex xs0></v-flex>
-            </v-layout>
-            <v-layout row>
-                <v-flex xs12>
-                    <img :src='require("./assets/2015-06-05 16.20.45.jpg")' width="50%">
-                </v-flex>
-            </v-layout>
-            <!--<v-parallax-->
-            <!--height="300"-->
-            <!--:src='require("./assets/2015-06-05 16.20.45.jpg")'-->
-            <!--&gt;</v-parallax>-->
-            <!--<v-layout-->
-            <!--align-center-->
-            <!--column-->
-            <!--justify-center-->
-            <!--&gt;-->
-            <!--<h1 class="display-2 font-weight-thin mb-3">-->
-            <!--<img :src='require("./assets/logo-horizontal.png")' height="30">-->
-            <!--</h1>-->
-            <!--<h1 class="display-2 font-weight-thin mb-3">-->
-            <!--<img :src='require("./assets/logo-loco-horizontal.png")' height="30">-->
-            <!--</h1>-->
-            <!--<h4 class="subheading">Géré par ses membres pour partager et faire plus</h4>-->
-            <!--</v-layout>-->
-            <!--<v-layout>-->
-            <!--<v-flex mb-4></v-flex>-->
-            <!--<v-flex mb-4 class="headline" id="panel">-->
-            <!--<h3>Géré par ses membres pour partager et faire plus</h3>-->
-
-            <!--&lt;!&ndash;<p>&ndash;&gt;-->
-            <!--&lt;!&ndash;Le Loco Local et Horizon Gaspésien sont gérés par leurs <a href="#">membres</a>.&ndash;&gt;-->
-            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-            <!--<p>-->
-            <!--Leur <a href="#">mission</a> est de stimuler et soutenir la mise en commun et le partage de-->
-            <!--ressources-->
-            <!--et de lieux.-->
-            <!--</p>-->
-            <!--&lt;!&ndash;<p>&ndash;&gt;-->
-            <!--&lt;!&ndash;Tout cela dans le respect de certaines <a href="">valeurs</a>.&ndash;&gt;-->
-            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-
-            <!--<v-list subheader>-->
-            <!--<v-list-tile avatar>-->
-            <!--<v-list-tile-avatar>-->
-            <!--<img :src="require('./assets/hug1.jpg')">-->
-            <!--</v-list-tile-avatar>-->
-            <!--<v-list-tile-content>-->
-            <!--<v-list-tile-title>-->
-            <!--Hug 418-392-9867-->
-            <!--</v-list-tile-title>-->
-            <!--</v-list-tile-content>-->
-            <!--<v-list-tile-action>-->
-            <!--<v-icon class="mr-2" color="white">phone</v-icon>-->
-            <!--</v-list-tile-action>-->
-            <!--</v-list-tile>-->
-            <!--</v-list>-->
-
-            <!--<p>-->
-            <!--<v-icon class="mr-2" color="white">map</v-icon>-->
-            <!--<a href="#">193A Avenue de Grand-Pré Bonaventure</a>-->
-            <!--</p>-->
-            <!--</v-flex>-->
-            <!--<v-flex mb-4></v-flex>-->
-            <!--</v-layout>-->
-            <!--<HelloWorld/>-->
-        </v-content>
-    </v-app>
+        <router-view/>
+    </div>
 </template>
 
 <script>
@@ -326,6 +133,9 @@
                     return 70;
                 }
                 return 100;
+            },
+            host: function () {
+                return window.location.hostname;
             }
         },
         data() {
@@ -354,6 +164,18 @@
                         cv: "Peintre, Enseignant, Philosophe, Massothérapeuthe",
                         avatar: "bruno-petit-carre.jpg",
                         cercles: ['ESPACE']
+                    },
+                    {
+                        nom: "Roy Poirier",
+                        cv: "Électronicien",
+                        avatar: "roy-petit-carre.jpg",
+                        cercles: ['LINUX']
+                    },
+                    {
+                        nom: "Vincent Blouin",
+                        cv: "Programmeur",
+                        avatar: "chenzo2-petit-carre.jpg",
+                        cercles: ['LINUX']
                     }
                 ],
                 cercles: {
@@ -366,6 +188,7 @@
         }
     }
 </script>
+
 
 <style>
     #header-banner {
