@@ -165,27 +165,27 @@
                     <!--</div>-->
                     <!--</v-flex>-->
                     <!--</v-layout>-->
-                    <v-list three-line style="background-color:transparent;">
-                        <v-list-tile avatar v-for="membre in membresDeCercles" class="mb-5">
-                            <v-list-tile-avatar :size="avatarSize">
-                                <img :src='require("./assets/" + membre.avatar)' alt="avatar">
-                            </v-list-tile-avatar>
-                            <v-list-tile-content class="ml-4">
-                                <v-list-tile-title>
-                                    {{membre.nom}}
-                                </v-list-tile-title>
-                                <v-list-tile-sub-title>
-                                    {{membre.cv}}
-                                </v-list-tile-sub-title>
-                                <v-list-tile-title>
-                                    <em class="">Cerles:</em>
-                                    <span v-for="clefDeCercle in membre.cercles">
-                                        {{clefDeCercle}}
-                                    </span>
-                                </v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </v-list>
+                    <!--<v-list three-line style="background-color:transparent;">-->
+                    <!--<v-list-tile avatar v-for="membre in membresDeCercles" class="mb-5">-->
+                    <!--<v-list-tile-avatar :size="avatarSize">-->
+                    <!--<img :src='require("./assets/" + membre.avatar)' alt="avatar">-->
+                    <!--</v-list-tile-avatar>-->
+                    <!--<v-list-tile-content class="ml-4">-->
+                    <!--<v-list-tile-title>-->
+                    <!--{{membre.nom}}-->
+                    <!--</v-list-tile-title>-->
+                    <!--<v-list-tile-sub-title>-->
+                    <!--{{membre.cv}}-->
+                    <!--</v-list-tile-sub-title>-->
+                    <!--<v-list-tile-title>-->
+                    <!--<em class="">Cerles:</em>-->
+                    <!--<span v-for="clefDeCercle in membre.cercles">-->
+                    <!--{{clefDeCercle}}-->
+                    <!--</span>-->
+                    <!--</v-list-tile-title>-->
+                    <!--</v-list-tile-content>-->
+                    <!--</v-list-tile>-->
+                    <!--</v-list>-->
                     <!--<v-avatar-->
                     <!--:tile="tile"-->
                     <!--:size="120"-->
@@ -199,6 +199,43 @@
                     <!--</a>-->
                 </v-flex>
                 <v-flex xs-4></v-flex>
+            </v-layout>
+            <v-layout row v-for="membre in membresDeCercles" class="mb-5">
+                <v-flex xs0 lg4></v-flex>
+                <v-flex xs12 lg4>
+                    <v-layout row class="vh-center">
+                        <v-flex xs2 :class="{
+                            'mr-4': $vuetify.breakpoint.mdAndDown
+                        }">
+                            <v-avatar :size="avatarSize">
+                                <img :src='require("./assets/" + membre.avatar)' :alt="membre.nom">
+                            </v-avatar>
+                        </v-flex>
+                        <v-flex xs10 class="text-xs-left mt-3 ml-4">
+                            <h3 class="subheading">
+                                {{membre.nom}}
+                            </h3>
+                            <p class="grey-text mb-0">
+                                {{membre.cv}}
+                            </p>
+                            <p>
+                                Comités:
+                                <span v-for="clefDeCercle in membre.cercles">
+                                        {{clefDeCercle}}
+                                    </span>
+                            </p>
+                            <!--<v-card flat style="background-color: transparent;">-->
+                            <!--<v-card-title class="subheading">-->
+                            <!--{{membre.nom}}-->
+                            <!--</v-card-title>-->
+                            <!--<v-card-text>-->
+
+                            <!--</v-card-text>-->
+                            <!--</v-card>-->
+                        </v-flex>
+                    </v-layout>
+                </v-flex>
+                <v-flex xs0></v-flex>
             </v-layout>
             <v-layout row>
                 <v-flex xs12>
@@ -297,20 +334,26 @@
                     {
                         nom: "Hug Arsenault",
                         cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
-                        avatar:"hug1-petit-carre.png",
+                        avatar: "hug1-petit-carre.png",
                         cercles: ['CA']
                     },
                     {
                         nom: "Gabrielle Margineanu",
                         cv: "Graphiste, Bédéiste amateure",
-                        avatar:"gaby-petit-carre.jpg",
+                        avatar: "gaby-petit-carre.jpg",
                         cercles: ['CA']
                     },
                     {
                         nom: "Marie-Claire Larocque",
                         cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
-                        avatar:"msea-petit-carre.jpg",
+                        avatar: "msea-petit-carre.jpg",
                         cercles: ['CA']
+                    },
+                    {
+                        nom: "Bruno Mainville",
+                        cv: "Peintre, Enseignant, Philosophe, Massothérapeuthe",
+                        avatar: "bruno-petit-carre.jpg",
+                        cercles: ['ESPACE']
                     }
                 ],
                 cercles: {
@@ -389,10 +432,15 @@
         font-family: 'Shadows Into Light Two', cursive !important;
         color: white;
     }
-    .vh-center{
+
+    .vh-center {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+    }
+
+    .grey-text {
+        color: rgba(0, 0, 0, 0.54) !important;
     }
 </style>
