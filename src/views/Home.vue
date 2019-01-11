@@ -76,14 +76,14 @@
                 :height="parallaxSize"
                 :src="require('../assets/peinture-rogner.jpg')"
         ></v-parallax>
-        <v-layout row wrap class="mb-5 mt-5">
+        <v-layout row wrap class="mb-1 mt-5">
             <v-flex xs12 class="text-xs-center">
                 <h1 class="display-2 font-weight-thin">
                     Comités actifs
                 </h1>
             </v-flex>
         </v-layout>
-        <Comite title="Collaborium et espace de vie" anchor="espace" image="travailler au LL.jpg">
+        <Cercle title="Collaborium et espace de vie" anchor="espace" image="travailler au LL.jpg">
             <div slot="subtitle">
                 Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme francisé pour
                 "Coworking space".
@@ -100,8 +100,9 @@
                     Venez l'essayer!
                 </p>
             </div>
-        </Comite>
-        <Comite title="Loco Linux" anchor="linux" image="loco-linux2.jpg">
+        </Cercle>
+        <v-divider></v-divider>
+        <Cercle title="Loco Linux" anchor="linux" image="loco-linux2.jpg" >
             <div slot="subtitle">
                 Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont moins de moyens.
             </div>
@@ -113,18 +114,18 @@
                     C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
                 </p>
             </div>
-        </Comite>
+        </Cercle>
     </div>
 </template>
 
 <script>
 
-    import Comite from '@/components/Comite'
+    import Cercle from '@/components/Cercle'
 
     export default {
         name: 'home',
         components: {
-            Comite
+            Cercle
         },
         computed: {
             toolbarLogoHeight: function () {

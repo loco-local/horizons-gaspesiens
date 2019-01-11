@@ -1,22 +1,27 @@
 <template>
     <v-layout row wrap :id="anchor" class="vh-center font-weight-thin">
         <v-flex xs12>
-            <v-card flat class="mt-0 pt-0">
-                <v-layout>
-                    <v-flex xs12 md5>
+            <v-card flat class="mt-5 mb-5">
+                <v-layout :reverse="imageAtRight" row fill-height>
+                    <v-flex xs12 md5 class="right" right>
                         <v-img
                                 :src="require('../assets/' + image)"
-                                class="ml-5"
+                                :class="{
+                                    'ml-5': !imageAtRight,
+                                    'mr-5': imageAtRight
+                                }"
                                 contain
                         ></v-img>
                     </v-flex>
-                    <v-flex xs12 md7>
+                    <v-flex xs12 md7 left>
                         <v-card-title primary-title class="mt-0 pt-0">
                             <div>
-                                <div class="headline text-xs-left">
+                                <div class="headline text-xs-left" :class="{
+
+                                }">
                                     {{title}}
                                 </div>
-                                <div class="subheading mt-2 font-weight-bold">
+                                <div class="subheading mt-2 font-weight-bold text-xs-center">
                                     <slot name="subtitle"></slot>
                                 </div>
                             </div>
@@ -26,16 +31,6 @@
                         </v-card-text>
                     </v-flex>
                 </v-layout>
-                <!--<v-divider light></v-divider>-->
-                <!--<v-card-actions class="pa-3">-->
-                <!--Rate this album-->
-                <!--<v-spacer></v-spacer>-->
-                <!--<v-icon>star_border</v-icon>-->
-                <!--<v-icon>star_border</v-icon>-->
-                <!--<v-icon>star_border</v-icon>-->
-                <!--<v-icon>star_border</v-icon>-->
-                <!--<v-icon>star_border</v-icon>-->
-                <!--</v-card-actions>-->
             </v-card>
             <!--<v-card class="ml-5 mr-5 pl-4 pr-4" flat>-->
             <!--<v-img-->
@@ -71,7 +66,7 @@
 <script>
     export default {
         name: "Comite",
-        props: ['image', 'title', 'anchor']
+        props: ['image', 'title', 'anchor', 'imageAtRight']
     }
 </script>
 
