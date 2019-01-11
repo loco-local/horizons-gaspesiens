@@ -27,18 +27,21 @@
                 </h4>
             </v-flex>
         </v-layout>
-        <v-layout row v-for="membre in membresDeCercles" class="mb-5">
-            <v-flex xs0 lg4></v-flex>
-            <v-flex xs12 lg4>
-                <v-layout row class="vh-center">
-                    <v-flex xs2 :class="{
-                            'mr-4 ml-4': $vuetify.breakpoint.mdAndDown
+        <v-layout row wrap class="mb-5">
+            <!--<v-flex xs0 lg3></v-flex>-->
+            <v-flex xs12 md6 v-for="(membre, index) in membresDeCerclesTries">
+                <v-layout row class="mb-5" :class="{
+                    'ml-5 pl-5': $vuetify.breakpoint.mdAndUp
+                }">
+                    <v-flex xs2 v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"></v-flex>
+                    <v-flex xs2 class="" :class="{
+                            'mr-4 ml-4': $vuetify.breakpoint.smAndDown
                         }">
                         <v-avatar :size="avatarSize">
                             <img :src='require("../assets/" + membre.avatar)' :alt="membre.nom">
                         </v-avatar>
                     </v-flex>
-                    <v-flex xs10 class="text-xs-left mt-3 ml-4">
+                    <v-flex xs10 lg8 class="text-xs-left mt-3 ml-4 mr-4">
                         <h3 class="subheading">
                             {{membre.nom}}
                         </h3>
@@ -62,7 +65,7 @@
                     </v-flex>
                 </v-layout>
             </v-flex>
-            <v-flex xs0 lg4></v-flex>
+            <!--<v-flex xs0 lg2></v-flex>-->
         </v-layout>
         <!--<v-layout row>-->
         <!--<v-flex xs12>-->
@@ -70,8 +73,8 @@
         <!--</v-flex>-->
         <!--</v-layout>-->
         <v-parallax
-                height="400"
-                :src="require('../assets/peinture.jpg')"
+                :height="parallaxSize"
+                :src="require('../assets/peinture-rogner.jpg')"
         ></v-parallax>
         <v-layout row wrap class="mb-5 mt-5">
             <v-flex xs12 class="text-xs-center">
@@ -80,58 +83,49 @@
                 </h1>
             </v-flex>
         </v-layout>
-        <v-layout row wrap id="espace" class="vh-center">
-            <v-flex xs12 lg7>
-                <v-card class="ma-4">
-                    <v-img
-                            :src="require('../assets/travailler au LL.jpg')"
-                            aspect-ratio="1.78"
-                    ></v-img>
-                    <v-card-title primary-title class="mb-0">
-                        <h3 class="headline">
-                            Collaborium et espace de vie
-                        </h3>
-                    </v-card-title>
-                    <v-card-text class="text-xs-left mt-0 pt-0 subheading">
-                        <p class="font-weight-medium">
-                            Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme
-                            francisé pour "Coworking space".
-                        </p>
-                        <p>
-                            Accès à un espace de travail avec internet, cuisine pour vous faire à manger, divans pour
-                            relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
-                            apporter vos écouteurs pour créer votre espace perso), table de ping pong et babyfoot pour se changer les
-                            idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
-                        </p>
-                        <p>
-                            Venez l'essayer!
-                        </p>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-            <v-flex xs12 lg7>
-                <v-card class="ma-4">
-                    <v-img
-                            :src="require('../assets/loco-linux2.jpg')"
-                    ></v-img>
-                    <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">Loco Linux</h3>
-                        </div>
-                    </v-card-title>
-                    <v-card-text>
-                        asdf
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
+        <Comite title="Collaborium et espace de vie" anchor="espace" image="travailler au LL.jpg">
+            <div slot="subtitle">
+                Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme francisé pour
+                "Coworking space".
+            </div>
+            <div slot="content">
+                <p class="">
+                    Accès à un espace de travail avec internet, cuisine pour vous faire à manger, divans pour
+                    relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
+                    apporter vos écouteurs pour créer votre espace perso), table de ping pong et babyfoot pour
+                    se changer les
+                    idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
+                </p>
+                <p>
+                    Venez l'essayer!
+                </p>
+            </div>
+        </Comite>
+        <Comite title="Loco Linux" anchor="linux" image="loco-linux2.jpg">
+            <div slot="subtitle">
+                Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont moins de moyens.
+            </div>
+            <div slot="content">
+                <p class="">
+                    Vous avez un vieil ordinateur qui traine dans votre sous-sol, et vous pensez qu'il est rendu trop vieux: pu à la mode, trop lent, trop "dépassé"?
+                </p>
+                <p>
+                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
+                </p>
+            </div>
+        </Comite>
     </div>
 </template>
 
 <script>
 
+    import Comite from '@/components/Comite'
+
     export default {
         name: 'home',
+        components: {
+            Comite
+        },
         computed: {
             toolbarLogoHeight: function () {
                 if (this.$vuetify.breakpoint.mdAndDown) {
@@ -145,22 +139,35 @@
                 }
                 return 100;
             },
+            parallaxSize: function () {
+                if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 200;
+                }
+                return 350;
+            },
             host: function () {
                 return window.location.hostname;
+            },
+            membresDeCerclesTries: function () {
+                return this.membresDeCercles.sort(function () {
+                    return 0.5 - Math.random()
+                });
             }
         },
         methods: {
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
             }
-        },
+        }
+        ,
         watch: {
             '$route'(to) {
                 if (to.params.comite) {
                     document.getElementById(to.params.comite).scrollIntoView();
                 }
             }
-        },
+        }
+        ,
         data() {
             return {
                 membresDeCercles: [
