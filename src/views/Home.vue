@@ -29,7 +29,7 @@
         </v-layout>
         <v-layout row wrap class="mb-5">
             <!--<v-flex xs0 lg3></v-flex>-->
-            <v-flex xs12 md6 v-for="(membre, index) in membresDeCerclesTries">
+            <v-flex xs12 md6 v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
                 <v-layout row class="mb-5" :class="{
                     'ml-5 pl-5': $vuetify.breakpoint.mdAndUp
                 }">
