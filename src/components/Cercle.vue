@@ -2,26 +2,25 @@
     <v-layout row wrap :id="anchor" class="vh-center font-weight-thin">
         <v-flex xs12>
             <v-card flat class="mt-5 mb-5">
-                <v-layout :reverse="imageAtRight" row fill-height>
-                    <v-flex xs12 md5 class="right" right>
+                <v-layout :reverse="imageAtRight" row wrap fill-height>
+                    <v-flex xs12 md5 class="">
                         <v-img
                                 :src="require('../assets/' + image)"
                                 :class="{
-                                    'ml-5': !imageAtRight,
-                                    'mr-5': imageAtRight
+                                    'ml-5': $vuetify.breakpoint.mdAndUp
                                 }"
                                 contain
                         ></v-img>
                     </v-flex>
                     <v-flex xs12 md7 left>
-                        <v-card-title primary-title class="mt-0 pt-0">
+                        <v-card-title primary-title class="mt-0 pt-0" :class="{
+                            'mt-4' : $vuetify.breakpoint.smAndDown
+                        }">
                             <div>
-                                <div class="headline text-xs-left" :class="{
-
-                                }">
+                                <div class="headline text-xs-left">
                                     {{title}}
                                 </div>
-                                <div class="subheading mt-2 font-weight-bold text-xs-center">
+                                <div class="subheading mt-2 font-weight-bold text-xs-left font-italic">
                                     <slot name="subtitle"></slot>
                                 </div>
                             </div>
@@ -31,6 +30,11 @@
                         </v-card-text>
                     </v-flex>
                 </v-layout>
+                <!--<v-toolbar color="blue" class="white&#45;&#45;text mb-3">-->
+                    <!--<v-btn flat dark to="mailto:groupe.achat.hg@gmail.com">-->
+                        <!--ADHÉRER groupe.achat.hg@gmail.com-->
+                    <!--</v-btn>-->
+                <!--</v-toolbar>-->
             </v-card>
             <!--<v-card class="ml-5 mr-5 pl-4 pr-4" flat>-->
             <!--<v-img-->

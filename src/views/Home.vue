@@ -90,15 +90,42 @@
             </div>
             <div slot="content">
                 <p class="">
-                    Accès à un espace de travail avec internet, cuisine pour vous faire à manger, divans pour
+                    Accès à un espace de travail avec internet <v-icon>wifi</v-icon>, machine à café <v-icon>fa-coffee</v-icon>, cuisine pour vous faire à manger <v-icon>fastfood</v-icon>, divans <v-icon>fa-couch</v-icon> pour
                     relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
-                    apporter vos écouteurs pour créer votre espace perso), table de ping pong et babyfoot pour
+                    apporter vos écouteurs pour créer votre espace perso), table de ping pong <v-icon>fa-table-tennis</v-icon> et babyfoot pour
                     se changer les
                     idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
                 </p>
                 <p>
                     Venez l'essayer!
                 </p>
+            </div>
+        </Cercle>
+        <v-divider></v-divider>
+        <Cercle title="Groupe d'achat" anchor="groupe-achat" image="string-bean-3861864_640.jpg">
+            <div slot="subtitle">
+                Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
+                acheter ensemble pour réduire le coût d'achat et augmenter la diversité et l'accessibilité d'une
+                nourriture saine et responsable.
+            </div>
+            <div slot="content">
+                <p>
+                    Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
+                </p>
+                <v-card class="mt-4">
+                    <v-card-actions>
+                        <v-icon class="mr-2">mail</v-icon>
+                        Demande d'adhésion
+                        <a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">
+                            groupe.achat.hg@gmail.com
+                        </a>
+                        <v-spacer></v-spacer>
+                        <v-icon class="mr-2">picture_as_pdf</v-icon>
+                        <a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
+                            Compte rendu de réunion
+                        </a>
+                    </v-card-actions>
+                </v-card>
             </div>
         </Cercle>
         <v-divider></v-divider>
