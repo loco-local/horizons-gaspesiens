@@ -5,9 +5,9 @@
                 <v-icon>info</v-icon>
             </v-toolbar-side-icon>
             <img :src='require("./assets/logo-horizontal.png")'
-                 :height="this.toolbarLogoHeight" v-if="!host.includes('loco-local')">
+                 :height="this.toolbarLogoHeight" v-if="true">
             <img :src='require("./assets/logo-loco-horizontal.png")'
-                 :height="this.toolbarLogoHeight + 20" v-if="host.includes('loco-local')">
+                 :height="this.toolbarLogoHeight + 20" v-if="false">
             <v-spacer></v-spacer>
             <v-icon large class="mr-4" v-if="$vuetify.breakpoint.lgAndUp">phone</v-icon>
             <!--<v-avatar-->
