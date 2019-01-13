@@ -7,6 +7,7 @@
                 fixed
                 app
                 dense
+                id="app-navigation"
         >
             <v-list avatar>
                 <div v-for="phone in phoneNumbers" :key="phone.nom" :href="'tel:' + phone.telephone">
@@ -23,7 +24,8 @@
                     </v-list-tile>
                     <v-divider class="mb-2 mt-2"></v-divider>
                 </div>
-                <v-list-tile href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
+                <v-list-tile
+                        href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
                     <v-list-tile-action>
                         <v-icon>location_on</v-icon>
                     </v-list-tile-action>
@@ -77,11 +79,13 @@
                 <v-icon @click="drawer = !drawer">menu</v-icon>
             </v-toolbar-side-icon>
             <v-spacer v-if="$vuetify.breakpoint.mdAndDown"></v-spacer>
-            <img :src='require("./assets/logo-horizontal.png")'
-                 class="pull-right"
-                 :height="this.toolbarLogoHeight" v-if="true">
-            <img :src='require("./assets/logo-loco-horizontal.png")'
-                 :height="this.toolbarLogoHeight + 20" v-if="false">
+            <router-link to="/">
+                <img :src='require("./assets/logo-horizontal.png")'
+                     class="pull-right"
+                     :height="this.toolbarLogoHeight" v-if="true">
+                <img :src='require("./assets/logo-loco-horizontal.png")'
+                     :height="this.toolbarLogoHeight + 20" v-if="false">
+            </router-link>
             <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
             <!--<v-avatar-->
             <!--:tile="tile"-->
@@ -349,5 +353,9 @@
 
     .bullet-like .v-breadcrumbs__divider {
         padding: 0 !important;
+    }
+
+    #app-navigation .v-btn--active::before {
+        background-color: transparent !important;
     }
 </style>
