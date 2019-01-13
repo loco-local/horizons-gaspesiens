@@ -92,7 +92,7 @@
             <!--</v-avatar>-->
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat
-                       href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
+                       to="calendrier">
                     <v-icon class="mr-3">calendar_today</v-icon>
                     Calendrier et réservation
                 </v-btn>
@@ -101,7 +101,7 @@
                     <v-icon class="mr-3">location_on</v-icon>
                     193a Avenue Grand-Pré, Bonaventure, QC
                 </v-btn>
-                <v-btn flat @click="phoneModal = true;">
+                <v-btn flat @click="$refs.phoneDialog.show()">
                     <v-icon class="mr-3">phone</v-icon>
                     Téléphones
                 </v-btn>
@@ -166,53 +166,18 @@
             </v-toolbar-title>
         </v-toolbar>
         <router-view/>
-        <v-dialog v-model="phoneModal" v-if="phoneModal" width="600">
-            <v-card>
-                <v-card-title class="pb-2 title">
-                    Téléphones de bénévoles
-                    <v-spacer></v-spacer>
-                    <v-icon @click="phoneModal = false">close</v-icon>
-                </v-card-title>
-                <v-card-title class="grey-text subheading grey-text pt-0 mt-0 text-xs-left">
-                    N'hésitez pas à contacter ces bénévoles pour le code de la porte, une réservation ou tout autre
-                    sujet.
-                </v-card-title>
-                <v-card-text class="pt-0">
-                    <v-list two-line>
-                        <v-list-tile
-                                v-for="phone in phoneNumbers"
-                                :key="phone.nom"
-                                avatar
-                        >
-                            <v-list-tile-avatar>
-                                <img :src="require('./assets/' + phone.avatar)">
-                            </v-list-tile-avatar>
-
-                            <v-list-tile-content>
-                                <v-list-tile-title>
-                                    {{phone.nom}}
-                                </v-list-tile-title>
-                                <v-list-tile-sub-title>
-                                    {{phone.telephone}}
-                                </v-list-tile-sub-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </v-list>
-                </v-card-text>
-            </v-card>
-        </v-dialog>
+        <PhoneDialog ref="phoneDialog"></PhoneDialog>
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld'
-    import ColorText from './components/ColorText'
+    import PhoneDialog from '@/components/PhoneDialog'
+    import PhoneNumbers from '@/PhoneNumbers'
 
     export default {
         name: 'App',
         components: {
-            HelloWorld,
-            ColorText
+            PhoneDialog
         },
         computed: {
             toolbarLogoHeight: function () {
@@ -234,26 +199,7 @@
         data() {
             return {
                 drawer: false,
-                phoneModal: false,
-                phoneName: '',
-                phoneNumber: '',
-                phoneNumbers: [
-                    {
-                        nom: "Hug Arsenault",
-                        avatar: "hug1-petit-carre.png",
-                        telephone: "418-392-9867"
-                    },
-                    {
-                        nom: "Gabrielle Margineanu",
-                        avatar: "gaby-petit-carre.jpg",
-                        telephone: "418-751-3103"
-                    },
-                    {
-                        nom: "Vincent Blouin",
-                        avatar: "chenzo2-petit-carre.jpg",
-                        telephone: "581-233-9481"
-                    }
-                ],
+                phoneNumbers: PhoneNumbers.data,
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
