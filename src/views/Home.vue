@@ -133,18 +133,18 @@
                     Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
                 </p>
                 <!--<v-card class="mt-4">-->
-                    <!--<v-card-actions>-->
-                        <!--<v-icon class="mr-2">mail</v-icon>-->
-                        <!--Demande d'adhésion à-->
-                        <!--<a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">-->
-                            <!--groupe.achat.hg@gmail.com-->
-                        <!--</a>-->
-                        <!--<v-spacer></v-spacer>-->
-                        <!--<v-icon class="mr-2">picture_as_pdf</v-icon>-->
-                        <!--<a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">-->
-                            <!--Compte rendu de réunion-->
-                        <!--</a>-->
-                    <!--</v-card-actions>-->
+                <!--<v-card-actions>-->
+                <!--<v-icon class="mr-2">mail</v-icon>-->
+                <!--Demande d'adhésion à-->
+                <!--<a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">-->
+                <!--groupe.achat.hg@gmail.com-->
+                <!--</a>-->
+                <!--<v-spacer></v-spacer>-->
+                <!--<v-icon class="mr-2">picture_as_pdf</v-icon>-->
+                <!--<a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">-->
+                <!--Compte rendu de réunion-->
+                <!--</a>-->
+                <!--</v-card-actions>-->
                 <!--</v-card>-->
             </div>
         </Cercle>
@@ -167,6 +167,125 @@
                 </p>
             </div>
         </Cercle>
+        <v-divider></v-divider>
+        <v-layout row wrap class="mb-5 mt-5">
+            <v-flex xs12 class="text-xs-center">
+                <h1 class="display-2 font-weight-thin">
+                    Calendrier et réservation
+                </h1>
+                <h4 class="subheading font-weight-thin">
+                    sdf
+                </h4>
+            </v-flex>
+        </v-layout>
+        <v-layout row wrap>
+            <v-flex xs0 lg2></v-flex>
+            <v-flex xs12 lg8>
+                <v-tabs
+                        v-model="active"
+                        color="cyan"
+                        dark
+                        slider-color="yellow"
+                        class="mr-2"
+                        grow
+                >
+                    <v-tab>
+                        Calendrier
+                    </v-tab>
+                    <v-tab>
+                        Réservation
+                    </v-tab>
+                    <v-tab-item class="mt-3">
+                        <iframe frameborder="0" :height="calendarHeight" scrolling="no"
+                                src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
+                                style=" border-width:0 " width="100%"></iframe>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <v-tabs
+                                v-model="active"
+                                color="cyan"
+                                dark
+                                slider-color="yellow"
+                                class=""
+                                grow
+                        >
+                            <v-tab>
+                                Contributions et coûts
+                            </v-tab>
+                            <v-tab>
+                                Priorité
+                            </v-tab>
+                            <v-tab>
+                                Inscrire mon activité
+                            </v-tab>
+                            <v-tab>
+                                Informations à spécifier
+                            </v-tab>
+                            <v-tab>
+                                Entretien du local
+                            </v-tab>
+                            <v-tab-item class="text-xs-left pl-4 pt-4">
+                                <p>
+                                    Le Loco Local est auto-financé grâce à la contribution de ses utilisateur.trices.
+                                </p>
+                                <p>
+                                    A) Une contribution volontaire est proposée lors des activités initiées par les
+                                    citoyen.ne.s. La
+                                    bonne vieille méthode du « tour de chapeau », basée sur la confiance, nous permet d'amasser
+                                    des
+                                    dons pour le Local.
+                                </p>
+                                <p>
+                                    *Pour les contributions volontaires: une boîte et des enveloppes sont disponibles à l'entrée
+                                    du
+                                    local.
+                                </p>
+                                OU
+                                <p>
+                                    B) Lorsqu'une organisation désire louer le local, nous proposons les tarifs suivants:
+                                </p>
+
+                                Un bloc de 4 heures
+                                (matin, après-midi ou soirée)
+                                Un bloc de 8 heures
+                                (toute la journée)
+                                Grande salle
+                                (40 personnes)
+                                50$ + taxes 75$ + taxes
+                                Cuisine 25$ + taxes 40$ + taxes
+                                Petite salle de réunion
+
+                                (5 personnes)
+
+                                20$ + taxes 30$ + taxes
+                                <p>
+                                    * Pour la location de la salle à la collectivité: merci de nous écrire à
+                                    horizonsgaspesiens@gmail.com pour qu'une facture soit émise au besoin!
+                                </p>
+                            </v-tab-item>
+                            <v-tab-item>
+                                <p>
+                                    1. Contactez-nous pour qu'on active votre accès au calendrier via Google-agenda ou si vous avez besoin de soutien.
+                                </p>
+                                <p>
+                                    Appelez-nous au 581-364-5626
+                                </p>
+                                <p>
+                                    Écrivez-nous à horizonsgaspesiens@gmail.com
+                                </p>
+                                <p>
+                                    2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans le calendrier!
+                                </p>
+                                <p>
+                                    *** N'oubliez pas de cliquer sur l'agenda du Loco Local lorsque vous ajouter une activité au calendier. Par défaut,c'est votre agenda personnelle qui est sélectionné!
+                                </p>
+                            </v-tab-item>
+                        </v-tabs>
+                    </v-tab-item>
+                </v-tabs>
+            </v-flex>
+            <v-flex xs0 lg2></v-flex>
+        </v-layout>
     </div>
 </template>
 
@@ -180,6 +299,12 @@
             Cercle
         },
         computed: {
+            calendarHeight: function () {
+                if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 350;
+                }
+                return 600;
+            },
             toolbarLogoHeight: function () {
                 if (this.$vuetify.breakpoint.mdAndDown) {
                     return 25;
