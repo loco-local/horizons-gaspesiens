@@ -48,12 +48,21 @@
                         <p class="grey-text mb-0">
                             {{membre.cv}}
                         </p>
-                        <p>
-                            Comités:
-                            <router-link v-for="clefDeCercle in membre.cercles" :to="'/comite/' + clefDeCercle">
-                                {{nomDeCercle(clefDeCercle)}}
-                            </router-link>
-                        </p>
+                        <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
+                        Comités:
+                        <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
+                            <template slot="item" slot-scope="props" class="">
+                                <router-link :to="'/cercle/' + props.item">
+                                    {{nomDeCercle(props.item)}}
+                                </router-link>
+                            </template>
+                            <v-icon slot="divider" class="pa-0 ma-0 caption">lens</v-icon>
+                        </v-breadcrumbs>
+
+                        <!--<div class="d-inline" >-->
+
+                        <!--<v-icon v-if="index < membre.cercles.length - 1" small class="mb-1">panorama_fish_eye</v-icon>-->
+                        <!--</div>-->
                         <!--<v-card flat style="background-color: transparent;">-->
                         <!--<v-card-title class="subheading">-->
                         <!--{{membre.nom}}-->
@@ -90,9 +99,19 @@
             </div>
             <div slot="content">
                 <p class="">
-                    Accès à un espace de travail avec internet <v-icon>wifi</v-icon>, machine à café <v-icon>fa-coffee</v-icon>, cuisine pour vous faire à manger <v-icon>fastfood</v-icon>, divans <v-icon>fa-couch</v-icon> pour
+                    Accès à un espace de travail avec internet
+                    <v-icon>wifi</v-icon>
+                    , machine à café
+                    <v-icon>fa-coffee</v-icon>
+                    , cuisine pour vous faire à manger
+                    <v-icon>fastfood</v-icon>
+                    , divans
+                    <v-icon>fa-couch</v-icon>
+                    pour
                     relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
-                    apporter vos écouteurs pour créer votre espace perso), table de ping pong <v-icon>fa-table-tennis</v-icon> et babyfoot pour
+                    apporter vos écouteurs pour créer votre espace perso), table de ping pong
+                    <v-icon>fa-table-tennis</v-icon>
+                    et babyfoot pour
                     se changer les
                     idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
                 </p>
@@ -103,6 +122,7 @@
         </Cercle>
         <v-divider></v-divider>
         <Cercle title="Groupe d'achat" anchor="groupe-achat" image="string-bean-3861864_640.jpg">
+            <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
             <div slot="subtitle">
                 Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
                 acheter ensemble pour réduire le coût d'achat et augmenter la diversité et l'accessibilité d'une
@@ -112,33 +132,38 @@
                 <p>
                     Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
                 </p>
-                <v-card class="mt-4">
-                    <v-card-actions>
-                        <v-icon class="mr-2">mail</v-icon>
-                        Demande d'adhésion
-                        <a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">
-                            groupe.achat.hg@gmail.com
-                        </a>
-                        <v-spacer></v-spacer>
-                        <v-icon class="mr-2">picture_as_pdf</v-icon>
-                        <a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
-                            Compte rendu de réunion
-                        </a>
-                    </v-card-actions>
-                </v-card>
+                <!--<v-card class="mt-4">-->
+                    <!--<v-card-actions>-->
+                        <!--<v-icon class="mr-2">mail</v-icon>-->
+                        <!--Demande d'adhésion à-->
+                        <!--<a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">-->
+                            <!--groupe.achat.hg@gmail.com-->
+                        <!--</a>-->
+                        <!--<v-spacer></v-spacer>-->
+                        <!--<v-icon class="mr-2">picture_as_pdf</v-icon>-->
+                        <!--<a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">-->
+                            <!--Compte rendu de réunion-->
+                        <!--</a>-->
+                    <!--</v-card-actions>-->
+                <!--</v-card>-->
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Loco Linux" anchor="linux" image="loco-linux2.jpg" >
+        <Cercle title="Loco Linux" anchor="linux" image="loco-linux2.jpg">
             <div slot="subtitle">
-                Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont moins de moyens.
+                Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour
+                aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont
+                moins de moyens.
             </div>
             <div slot="content">
                 <p class="">
-                    Vous avez un vieil ordinateur qui traine dans votre sous-sol, et vous pensez qu'il est rendu trop vieux: pu à la mode, trop lent, trop "dépassé"?
+                    Vous avez un vieil ordinateur qui traine dans votre sous-sol, et vous pensez qu'il est rendu trop
+                    vieux: pu à la mode, trop lent, trop "dépassé"?
                 </p>
                 <p>
-                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
+                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows
+                    ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent
+                    votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
                 </p>
             </div>
         </Cercle>
@@ -233,7 +258,7 @@
                         nom: "Vincent Blouin",
                         cv: "Programmeur",
                         avatar: "chenzo2-petit-carre.jpg",
-                        cercles: ['linux']
+                        cercles: ['linux', 'ca']
                     }
                 ],
                 cercles: {
@@ -252,4 +277,5 @@
     }
 </script>
 <style>
+
 </style>
