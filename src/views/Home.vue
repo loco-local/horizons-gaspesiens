@@ -132,20 +132,26 @@
                 <p>
                     Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
                 </p>
-                <!--<v-card class="mt-4">-->
-                <!--<v-card-actions>-->
-                <!--<v-icon class="mr-2">mail</v-icon>-->
-                <!--Demande d'adhésion à-->
-                <!--<a href="mailto:groupe.achat.hg@gmail.com" class="ml-2">-->
-                <!--groupe.achat.hg@gmail.com-->
-                <!--</a>-->
-                <!--<v-spacer></v-spacer>-->
-                <!--<v-icon class="mr-2">picture_as_pdf</v-icon>-->
-                <!--<a href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">-->
-                <!--Compte rendu de réunion-->
-                <!--</a>-->
-                <!--</v-card-actions>-->
-                <!--</v-card>-->
+                <v-card class="mt-4">
+                    <v-list>
+                        <v-list-tile href="mailto:groupe.achat.hg@gmail.com">
+                            <v-list-tile-action>
+                                <v-icon>mail</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Demande d'adhésion à groupe.achat.hg@gmail.com
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
+                            <v-list-tile-action>
+                                <v-icon>picture_as_pdf</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Compte rendu de réunion
+                            </v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-card>
             </div>
         </Cercle>
         <v-divider></v-divider>
@@ -182,7 +188,6 @@
             <v-flex xs0 lg2></v-flex>
             <v-flex xs12 lg8>
                 <v-tabs
-                        v-model="active"
                         color="cyan"
                         dark
                         slider-color="yellow"
@@ -202,7 +207,6 @@
                     </v-tab-item>
                     <v-tab-item>
                         <v-tabs
-                                v-model="active"
                                 color="cyan"
                                 dark
                                 slider-color="yellow"
@@ -231,18 +235,21 @@
                                 <p>
                                     A) Une contribution volontaire est proposée lors des activités initiées par les
                                     citoyen.ne.s. La
-                                    bonne vieille méthode du « tour de chapeau », basée sur la confiance, nous permet d'amasser
+                                    bonne vieille méthode du « tour de chapeau », basée sur la confiance, nous permet
+                                    d'amasser
                                     des
                                     dons pour le Local.
                                 </p>
                                 <p>
-                                    *Pour les contributions volontaires: une boîte et des enveloppes sont disponibles à l'entrée
+                                    *Pour les contributions volontaires: une boîte et des enveloppes sont disponibles à
+                                    l'entrée
                                     du
                                     local.
                                 </p>
                                 OU
                                 <p>
-                                    B) Lorsqu'une organisation désire louer le local, nous proposons les tarifs suivants:
+                                    B) Lorsqu'une organisation désire louer le local, nous proposons les tarifs
+                                    suivants:
                                 </p>
 
                                 Un bloc de 4 heures
@@ -265,7 +272,8 @@
                             </v-tab-item>
                             <v-tab-item>
                                 <p>
-                                    1. Contactez-nous pour qu'on active votre accès au calendrier via Google-agenda ou si vous avez besoin de soutien.
+                                    1. Contactez-nous pour qu'on active votre accès au calendrier via Google-agenda ou
+                                    si vous avez besoin de soutien.
                                 </p>
                                 <p>
                                     Appelez-nous au 581-364-5626
@@ -274,10 +282,13 @@
                                     Écrivez-nous à horizonsgaspesiens@gmail.com
                                 </p>
                                 <p>
-                                    2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans le calendrier!
+                                    2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans le
+                                    calendrier!
                                 </p>
                                 <p>
-                                    *** N'oubliez pas de cliquer sur l'agenda du Loco Local lorsque vous ajouter une activité au calendier. Par défaut,c'est votre agenda personnelle qui est sélectionné!
+                                    *** N'oubliez pas de cliquer sur l'agenda du Loco Local lorsque vous ajouter une
+                                    activité au calendier. Par défaut,c'est votre agenda personnelle qui est
+                                    sélectionné!
                                 </p>
                             </v-tab-item>
                         </v-tabs>
