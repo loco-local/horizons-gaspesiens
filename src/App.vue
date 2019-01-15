@@ -11,7 +11,7 @@
         >
             <v-list avatar>
                 <div v-for="phone in phoneNumbers" :key="phone.nom" :href="'tel:' + phone.telephone">
-                    <v-list-tile>
+                    <v-list-tile :href="'tel:' + phone.telephone">
                         <v-list-tile-action>
                             <v-icon>phone</v-icon>
                         </v-list-tile-action>
@@ -33,45 +33,15 @@
                         193a Avenue Grand-Pré, Bonaventure, QC
                     </v-list-tile-title>
                 </v-list-tile>
-
-                <v-list-group
-                        prepend-icon="account_circle"
-                        value="true"
-                >
-                    <v-list-tile slot="activator">
-                        <v-list-tile-title>Users</v-list-tile-title>
-                    </v-list-tile>
-
-                    <v-list-group
-                            no-action
-                            sub-group
-                            value="true"
-                    >
-                        <v-list-tile slot="activator">
-                            <v-list-tile-title>Admin</v-list-tile-title>
-                        </v-list-tile>
-                    </v-list-group>
-
-                    <v-list-group
-                            sub-group
-                            no-action
-                    >
-                        <v-list-tile slot="activator">
-                            <v-list-tile-title>Actions</v-list-tile-title>
-                        </v-list-tile>
-
-                        <!--<v-list-tile-->
-                        <!--v-for="(crud, i) in cruds"-->
-                        <!--:key="i"-->
-                        <!--@click=""-->
-                        <!--&gt;-->
-                        <!--<v-list-tile-title v-text="crud[0]"></v-list-tile-title>-->
-                        <!--<v-list-tile-action>-->
-                        <!--<v-icon v-text="crud[1]"></v-icon>-->
-                        <!--</v-list-tile-action>-->
-                        <!--</v-list-tile>-->
-                    </v-list-group>
-                </v-list-group>
+                <v-list-tile
+                        to="calendrier">
+                    <v-list-tile-action>
+                        <v-icon>calendar_today</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Calendrier et réservation
+                    </v-list-tile-title>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar flat style="background-color:white;" fixed>
@@ -169,7 +139,7 @@
                 <!--rizons Gaspésiens-->
             </v-toolbar-title>
         </v-toolbar>
-        <router-view/>
+        <router-view class="mb-5"/>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
     </div>
 </template>

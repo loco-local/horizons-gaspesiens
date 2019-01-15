@@ -40,7 +40,7 @@
                         </v-icon>
                         Réservation
                     </v-tab>
-                    <v-tab-item class="mt-3 text-xs-left">
+                    <v-tab-item class="mt-3 text-xs-left pl-4">
                         <p class="">
                             Ce calendrier est notre référence pour réserver le local!
                         </p>
