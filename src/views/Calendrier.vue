@@ -205,7 +205,7 @@
                                     des conflits d'horaire.
                                 </p>
                                 <p>
-                                    Pour la réservation du LoCoLOcal, la règle de « la première arrivée, première servie
+                                    Pour la réservation du Loco Local, la règle de « la première arrivée, première servie
                                     »
                                     est de mise.
                                 </p>

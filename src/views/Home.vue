@@ -265,6 +265,12 @@
                         cv: "Programmeur",
                         avatar: "chenzo2-petit-carre.jpg",
                         cercles: ['linux', 'ca']
+                    },
+                    {
+                        nom: "Fred Guilbault",
+                        cv: "Programmeur, sécurité informatique, marin",
+                        avatar: "fred-guilbault-petit-carre.jpg",
+                        cercles: ['linux']
                     }
                 ],
                 cercles: {
