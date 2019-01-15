@@ -150,7 +150,7 @@
                                                 hide-actions
                                                 :items="priceRows"
                                         >
-                                            <template slot="headers" slot-scope="props">
+                                            <template slot="headers">
                                                 <tr>
                                                     <th></th>
                                                     <th class="subheading">
