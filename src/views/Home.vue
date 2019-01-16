@@ -52,9 +52,12 @@
                         Comités:
                         <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">
-                                <router-link :to="'/cercle/' + props.item">
-                                    {{nomDeCercle(props.item)}}
+                                <router-link :to="'/cercle/' + props.item" v-if="!cercleEstDesactive(props.item)">
+                                    <span @click="allerAuCercle(props.item)">
+                                        {{nomDeCercle(props.item)}}
+                                    </span>
                                 </router-link>
+                                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{nomDeCercle(props.item)}}</span>
                             </template>
                             <v-icon slot="divider" class="pa-0 ma-0 caption">lens</v-icon>
                         </v-breadcrumbs>
@@ -121,7 +124,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Groupe d'achat" anchor="groupe-achat" image="string-bean-3861864_640.jpg">
+        <Cercle title="Groupe d'achat" anchor="groupe" image="string-bean-3861864_640.jpg">
             <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
             <div slot="subtitle">
                 Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
@@ -211,6 +214,10 @@
                     On manque d'argent par contre mais ça, c'est la responsabilité de tous les membres et du
                     <router-link to="/cercle/financement">comité financement !</router-link>
                 </p>
+                <p>
+                    De plus, en date de janvier 2019, nous avons une dette sans intérêts de 7555.89$ sur laquelle nous
+                    payons 100$ / mois.
+                </p>
             </div>
         </Cercle>
     </div>
@@ -293,7 +300,7 @@
     import Cercle from '@/components/Cercle'
     import {GoogleCharts} from 'google-charts';
 
-    let VueScrollTo = require('vue-scrollto');
+    import VueScrollTo from 'vue-scrollto'
 
     export default {
         name: 'home',
@@ -331,6 +338,9 @@
         methods: {
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
+            },
+            cercleEstDesactive: function (clefDeCercle) {
+                return this.cercles[clefDeCercle].desactive;
             },
             balanceCalculate: function () {
                 let balance = [];
@@ -397,34 +407,36 @@
 
                 chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
 
-            }
-        }
-        ,
-        watch: {
-            '$route'(to) {
-                if (to.params.comite) {
-                    VueScrollTo.scrollTo(
-                        document.getElementById(to.params.comite), 500, {
-                            easing: 'linear',
-                            offset: -50
-                        }
-                    )
-                }
+                GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {
+                    if (this.$route.params.comite) {
+                        this.allerAuCercle(this.$route.params.comite)
+                    }
+                }.bind(this));
+
+            },
+            allerAuCercle: function (cercle) {
+                VueScrollTo.scrollTo(
+                    document.getElementById(cercle), 500, {
+                        easing: 'linear',
+                        offset: -50
+                    }
+                )
             }
         },
         data() {
             return {
+                dataLoaded: false,
                 balance: this.balanceCalculate(),
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
                         cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
                         avatar: "hug1-petit-carre.png",
-                        cercles: ['ca']
+                        cercles: ['ca', 'financement']
                     },
                     {
                         nom: "Gabrielle Margineanu",
-                        cv: "Graphiste, Bédéiste amateure",
+                        cv: "Graphiste, Bédéiste, mère, humaniste",
                         avatar: "gaby-petit-carre.jpg",
                         cercles: ['ca', 'comptable']
                     },
@@ -442,35 +454,57 @@
                     },
                     {
                         nom: "Roy Poirier",
-                        cv: "Électronicien",
+                        cv: "Électronicien, lauréat de la meilleure tarte à Maria",
                         avatar: "roy-petit-carre.jpg",
                         cercles: ['linux']
                     },
                     {
                         nom: "Vincent Blouin",
-                        cv: "Programmeur",
+                        cv: "Programmeur, architecte de carte mentale, sportif",
                         avatar: "chenzo2-petit-carre.jpg",
-                        cercles: ['linux', 'ca', 'comptable']
+                        cercles: ['linux', 'ca', 'comptable', 'financement']
                     },
                     {
                         nom: "Fred Guilbault",
                         cv: "Programmeur, sécurité informatique, marin",
                         avatar: "fred-guilbault-petit-carre.jpg",
                         cercles: ['linux']
+                    },
+                    {
+                        nom: "Francine Larocque",
+                        cv: "Enseignante retraitée, nature, démocratie participative, chant",
+                        avatar: "francine-petit-carre.jpg",
+                        cercles: ['groupe']
+                    },
+                    {
+                        nom: "Arielle Paiement",
+                        cv: "Animation de groupe, Communication non violente, charpentière",
+                        avatar: "arielle-petit-carre.jpg",
+                        cercles: ['gouvernance']
                     }
                 ],
                 cercles: {
                     ca: {
-                        nom: "CA"
+                        nom: "CA",
+                        desactive: true
                     },
                     espace: {
                         nom: "Collaborium et espace de vie"
+                    },
+                    groupe: {
+                        nom: "Groupe d'achat"
                     },
                     linux: {
                         nom: "Loco Linux"
                     },
                     comptable: {
                         nom: "Comptabilité"
+                    },
+                    gouvernance: {
+                        nom: "Gouvernance"
+                    },
+                    financement: {
+                        nom: "Financement"
                     }
                 }
             }

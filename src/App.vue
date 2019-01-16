@@ -34,7 +34,7 @@
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
-                        to="calendrier">
+                        to="/calendrier">
                     <v-list-tile-action>
                         <v-icon>calendar_today</v-icon>
                     </v-list-tile-action>
@@ -52,7 +52,7 @@
             <router-link to="/">
                 <img :src='require("./assets/logo-horizontal.png")'
                      class="pull-right"
-                     :height="this.toolbarLogoHeight" v-if="true">
+                     :height="this.toolbarLogoHeight" v-if="true" @click="scrollTop">
                 <img :src='require("./assets/logo-loco-horizontal.png")'
                      :height="this.toolbarLogoHeight + 20" v-if="false">
             </router-link>
@@ -66,7 +66,7 @@
             <!--</v-avatar>-->
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat
-                       to="calendrier">
+                       to="/calendrier">
                     <v-icon class="mr-3">calendar_today</v-icon>
                     Calendrier et réservation
                 </v-btn>
@@ -147,6 +147,7 @@
 <script>
     import PhoneDialog from '@/components/PhoneDialog'
     import PhoneNumbers from '@/PhoneNumbers'
+    import VueScrollTo from 'vue-scrollto'
 
     export default {
         name: 'App',
@@ -173,51 +174,16 @@
         data() {
             return {
                 drawer: false,
-                phoneNumbers: PhoneNumbers.data,
-                membresDeCercles: [
-                    {
-                        nom: "Hug Arsenault",
-                        cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
-                        avatar: "hug1-petit-carre.png",
-                        cercles: ['CA']
-                    },
-                    {
-                        nom: "Gabrielle Margineanu",
-                        cv: "Graphiste, Bédéiste amateure",
-                        avatar: "gaby-petit-carre.jpg",
-                        cercles: ['CA']
-                    },
-                    {
-                        nom: "Marie-Claire Larocque",
-                        cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
-                        avatar: "msea-petit-carre.jpg",
-                        cercles: ['CA']
-                    },
-                    {
-                        nom: "Bruno Mainville",
-                        cv: "Peintre, Enseignant, Philosophe, Massothérapeuthe",
-                        avatar: "bruno-petit-carre.jpg",
-                        cercles: ['ESPACE']
-                    },
-                    {
-                        nom: "Roy Poirier",
-                        cv: "Électronicien",
-                        avatar: "roy-petit-carre.jpg",
-                        cercles: ['LINUX']
-                    },
-                    {
-                        nom: "Vincent Blouin",
-                        cv: "Programmeur",
-                        avatar: "chenzo2-petit-carre.jpg",
-                        cercles: ['LINUX']
+                phoneNumbers: PhoneNumbers.data
+            }
+        },
+        methods: {
+            scrollTop: function(){
+                VueScrollTo.scrollTo(
+                    document.getElementById('app'), 500, {
+                        easing: 'linear'
                     }
-                ],
-                cercles: {
-                    CA: {
-                        nom: "CA",
-                        lien: "CA"
-                    }
-                }
+                )
             }
         }
     }
