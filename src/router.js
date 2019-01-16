@@ -15,7 +15,7 @@ export default new Router({
             component: Home
         },
         {
-            path: '/comite/:comite',
+            path: '/cercle/:comite',
             name: 'home',
             component: Home
         },

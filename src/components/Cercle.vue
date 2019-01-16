@@ -1,5 +1,5 @@
 <template>
-    <v-layout row wrap :id="anchor" class="vh-center font-weight-thin">
+    <v-layout row wrap class="vh-center font-weight-thin" :id="anchor">
         <v-flex xs12>
             <v-card flat class="mt-5 mb-5">
                 <v-layout :reverse="imageAtRight" row wrap fill-height>
@@ -33,9 +33,9 @@
                     </v-flex>
                 </v-layout>
                 <!--<v-toolbar color="blue" class="white&#45;&#45;text mb-3">-->
-                    <!--<v-btn flat dark to="mailto:groupe.achat.hg@gmail.com">-->
-                        <!--ADHÉRER groupe.achat.hg@gmail.com-->
-                    <!--</v-btn>-->
+                <!--<v-btn flat dark to="mailto:groupe.achat.hg@gmail.com">-->
+                <!--ADHÉRER groupe.achat.hg@gmail.com-->
+                <!--</v-btn>-->
                 <!--</v-toolbar>-->
             </v-card>
             <!--<v-card class="ml-5 mr-5 pl-4 pr-4" flat>-->

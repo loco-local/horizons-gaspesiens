@@ -175,25 +175,25 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Comptabilité" anchor="comptable">
-            <div slot="image">
+        <Cercle title="Comptabilité" anchor="comptable" class="pa-0">
+            <div slot="image" class="pa-0">
                 <v-card
-                        class="text-xs-center pr-4"
+                        class="text-xs-center pa-0"
                         dark
                         width="100%"
                 >
-                    <v-card-text id="dessin-comptable" class="pr-5"></v-card-text>
+                    <v-card-text id="dessin-comptable" class="" width="100%"></v-card-text>
                     <v-card-text>
                         <div class="display-1 font-weight-thin">Balance Revenus/Dépenses 2018-2019</div>
                     </v-card-text>
 
                     <v-divider></v-divider>
 
-                    <v-card-actions class="justify-center">
+                    <v-card-actions class="justify-center pa-0">
                         <v-btn block flat
-                               to="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0">
+                               href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0">
                             <!--<v-icon class="mr-2">fa-dropbox</v-icon>-->
-                            Détails complets, télécharger Dropbox
+                            Détails sur fichier Dropbox. Faites télécharger.
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -226,7 +226,8 @@
         967.12,
         1456.65,
         4150.01,
-        1382.45
+        1382.45,
+        1013.02
     ];
 
     const depenses = [
@@ -239,6 +240,30 @@
         4969.86,
         1955.22,
         1337.11
+    ];
+
+    const lemieuxDepenses = [
+        126.8,
+        0,
+        166.8,
+        410.6,
+        0,
+        268.13,
+        0,
+        706.89,
+        236.8
+    ];
+
+    const lemieuxRevenus = [
+        588.74,
+        276.72,
+        465.69,
+        446.07,
+        559.58,
+        172.9,
+        348.75,
+        696.35,
+        376.2
     ];
 
     const dette = [
@@ -268,6 +293,7 @@
     import Cercle from '@/components/Cercle'
     import {GoogleCharts} from 'google-charts';
 
+    let VueScrollTo = require('vue-scrollto');
 
     export default {
         name: 'home',
@@ -309,7 +335,10 @@
             balanceCalculate: function () {
                 let balance = [];
                 for (let i = 0; i < revenus.length; i++) {
-                    balance[i] = Math.floor(revenus[i] - depenses[i]);
+                    let balanceAbsolue = revenus[i] - depenses[i];
+                    let balanceSansLemieux = balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
+                    let balanceAvecProfitsLemieux = balanceSansLemieux + lemieuxRevenus[i] * .4
+                    balance[i] = Math.floor(balanceAvecProfitsLemieux);
                 }
                 return balance;
             },
@@ -358,15 +387,10 @@
                 var options = {
                     chart: {
                         title: '',
-                        subtitle: ''
+                        subtitle: '',
                     },
-                    legend: {position: 'bottom'},
-                    height: 300,
-                    axes: {
-                        x: {
-                            0: {side: 'top'}
-                        }
-                    }
+                    height: 400,
+                    legend: {position: 'none'}
                 };
 
                 var chart = new GoogleCharts.api.charts.Line(document.getElementById('dessin-comptable'));
@@ -379,7 +403,12 @@
         watch: {
             '$route'(to) {
                 if (to.params.comite) {
-                    document.getElementById(to.params.comite).scrollIntoView();
+                    VueScrollTo.scrollTo(
+                        document.getElementById(to.params.comite), 500, {
+                            easing: 'linear',
+                            offset: -50
+                        }
+                    )
                 }
             }
         },
