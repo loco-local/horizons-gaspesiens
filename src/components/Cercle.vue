@@ -9,8 +9,10 @@
                                 :class="{
                                     'ml-5': $vuetify.breakpoint.mdAndUp
                                 }"
+                                v-if="image"
                                 contain
                         ></v-img>
+                        <slot name="image"></slot>
                     </v-flex>
                     <v-flex xs12 md7 left>
                         <v-card-title primary-title class="mt-0 pt-0" :class="{

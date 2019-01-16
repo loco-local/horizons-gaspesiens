@@ -142,7 +142,8 @@
                                 Demande d'adhésion à groupe.achat.hg@gmail.com
                             </v-list-tile-title>
                         </v-list-tile>
-                        <v-list-tile href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
+                        <v-list-tile
+                                href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
                             <v-list-tile-action>
                                 <v-icon>picture_as_pdf</v-icon>
                             </v-list-tile-action>
@@ -173,12 +174,100 @@
                 </p>
             </div>
         </Cercle>
+        <v-divider></v-divider>
+        <Cercle title="Comptabilité" anchor="comptable">
+            <div slot="image">
+                <v-card
+                        class="text-xs-center pr-4"
+                        dark
+                        width="100%"
+                >
+                    <v-card-text id="dessin-comptable" class="pr-5"></v-card-text>
+                    <v-card-text>
+                        <div class="display-1 font-weight-thin">Balance Revenus/Dépenses 2018-2019</div>
+                    </v-card-text>
+
+                    <v-divider></v-divider>
+
+                    <v-card-actions class="justify-center">
+                        <v-btn block flat
+                               to="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0">
+                            <!--<v-icon class="mr-2">fa-dropbox</v-icon>-->
+                            Détails complets, télécharger Dropbox
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </div>
+            <div slot="subtitle">
+                La transparence est vitale à l'autogestion. L'argent est un composant important du pouvoir. Faut donc
+                que ça soit clair !
+            </div>
+            <div slot="content">
+                <p>
+                    Il n'y a pas encore d'expert en comptabilité dans notre comité. Par contre, on s'améliore tout le
+                    temps.
+                </p>
+                <p>
+                    On manque d'argent par contre mais ça, c'est la responsabilité de tous les membres et du
+                    <router-link to="/cercle/financement">comité financement !</router-link>
+                </p>
+            </div>
+        </Cercle>
     </div>
 </template>
 
 <script>
 
+    const revenus = [
+        1524.13,
+        927.81,
+        1067.04,
+        1162.73,
+        967.12,
+        1456.65,
+        4150.01,
+        1382.45
+    ];
+
+    const depenses = [
+        1227.8,
+        1132.26,
+        1310.23,
+        1844.59,
+        1057.76,
+        1411.56,
+        4969.86,
+        1955.22,
+        1337.11
+    ];
+
+    const dette = [
+        8355.89,
+        8255.89,
+        8155.89,
+        8055.89,
+        7955.89,
+        7855.89,
+        7755.89,
+        7655.89,
+        7555.89
+    ];
+
+    const mois = [
+        'avril',
+        'mai',
+        'juin',
+        'juil',
+        'août',
+        'sept',
+        'oct',
+        'nov',
+        'dec'
+    ];
+
     import Cercle from '@/components/Cercle'
+    import {GoogleCharts} from 'google-charts';
+
 
     export default {
         name: 'home',
@@ -216,6 +305,74 @@
         methods: {
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
+            },
+            balanceCalculate: function () {
+                let balance = [];
+                for (let i = 0; i < revenus.length; i++) {
+                    balance[i] = Math.floor(revenus[i] - depenses[i]);
+                }
+                return balance;
+            },
+            dessinComptable() {
+                let monthIndex = -1;
+                // const data = GoogleCharts.api.visualization.arrayToDataTable([
+                //     ['Chart thing', 'Chart amount']
+                // ].concat(this.balance.map(function (amount) {
+                //     monthIndex++;
+                //     return [
+                //         mois[monthIndex],
+                //         amount
+                //     ];
+                // })));
+                // const pie_1_chart = new GoogleCharts.api.visualization.PieChart(document.getElementById('dessin-comptable'));
+                // pie_1_chart.draw(data);
+
+                // let data = new GoogleCharts.api.visualization.DataTable();
+                // data.addColumn('string', 'Mois');
+                // data.addColumn('number', 'Balance');
+                // data.addColumn('number', 'Dette');
+                // let monthIndex = -1;
+                // data.addRows([
+                //     this.balance.map(function (amount) {
+                //         monthIndex++;
+                //         return [
+                //             mois[monthIndex],
+                //             amount,
+                //             dette[monthIndex]
+                //         ];
+                //     })
+                // ]);
+
+
+                let data = new GoogleCharts.api.visualization.arrayToDataTable([
+                    ['Mois', 'Balance']
+                ].concat(
+                    this.balance.map(function (amount) {
+                        monthIndex++;
+                        return [
+                            mois[monthIndex],
+                            amount
+                        ];
+                    })
+                ))
+                var options = {
+                    chart: {
+                        title: '',
+                        subtitle: ''
+                    },
+                    legend: {position: 'bottom'},
+                    height: 300,
+                    axes: {
+                        x: {
+                            0: {side: 'top'}
+                        }
+                    }
+                };
+
+                var chart = new GoogleCharts.api.charts.Line(document.getElementById('dessin-comptable'));
+
+                chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
+
             }
         }
         ,
@@ -225,10 +382,10 @@
                     document.getElementById(to.params.comite).scrollIntoView();
                 }
             }
-        }
-        ,
+        },
         data() {
             return {
+                balance: this.balanceCalculate(),
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
@@ -240,7 +397,7 @@
                         nom: "Gabrielle Margineanu",
                         cv: "Graphiste, Bédéiste amateure",
                         avatar: "gaby-petit-carre.jpg",
-                        cercles: ['ca']
+                        cercles: ['ca', 'comptable']
                     },
                     {
                         nom: "Marie-Claire Larocque",
@@ -264,7 +421,7 @@
                         nom: "Vincent Blouin",
                         cv: "Programmeur",
                         avatar: "chenzo2-petit-carre.jpg",
-                        cercles: ['linux', 'ca']
+                        cercles: ['linux', 'ca', 'comptable']
                     },
                     {
                         nom: "Fred Guilbault",
@@ -282,9 +439,15 @@
                     },
                     linux: {
                         nom: "Loco Linux"
+                    },
+                    comptable: {
+                        nom: "Comptabilité"
                     }
                 }
             }
+        },
+        mounted() {
+            GoogleCharts.load(this.dessinComptable, {'packages': ['line']});
         }
     }
 </script>
