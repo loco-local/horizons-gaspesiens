@@ -42,6 +42,15 @@
                         Calendrier et réservation
                     </v-list-tile-title>
                 </v-list-tile>
+                <v-list-tile
+                        @click="Scroll.allerALaSection('paiement', '/paiement')">
+                    <v-list-tile-action>
+                        <v-icon>attach_money</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Don et paiement
+                    </v-list-tile-title>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar flat style="background-color:white;" fixed>
@@ -52,21 +61,19 @@
             <router-link to="/">
                 <img :src='require("./assets/logo-horizontal.png")'
                      class="pull-right"
-                     :height="this.toolbarLogoHeight" v-if="true" @click="scrollTop">
+                     :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
                 <img :src='require("./assets/logo-loco-horizontal.png")'
                      :height="this.toolbarLogoHeight + 20" v-if="false">
             </router-link>
             <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
-            <!--<v-avatar-->
-            <!--:tile="tile"-->
-            <!--:size="60"-->
-            <!--color="grey lighten-4 mr-2"-->
-            <!--&gt;-->
-            <!--<img :src='require("./assets/hug1.jpg")' alt="avatar">-->
-            <!--</v-avatar>-->
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat
-                       to="/calendrier">
+                       @click="Scroll.allerALaSection('paiement', '/paiement')">
+                    <v-icon class="mr-3">attach_money</v-icon>
+                    <span>Don et paiement</span>
+                </v-btn>
+                <v-btn flat
+                       @click="Scroll.allerALaSection('calendrier', '/calendrier')">
                     <v-icon class="mr-3">calendar_today</v-icon>
                     Calendrier et réservation
                 </v-btn>
@@ -83,63 +90,13 @@
                     <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
                 </v-btn>
             </v-toolbar-items>
-
-
-            <!--<a href="tel:581-233-9481" class="mr-2">-->
-            <!--581-233-9481-->
-            <!--</a>-->
-            <!--<img :src='require("./assets/FB logo.jpg")'-->
-            <!--height="100">-->
-            <!--<v-spacer></v-spacer>-->
-            <!--<v-icon>phone</v-icon>-->
-            <!--Hug-->
-            <!--<a href="tel:418-392-9867">-->
-            <!--418-392-9867-->
-            <!--</a>-->
-            <!--<v-icon>phone</v-icon>-->
-            <!--Hug-->
-            <!--<a href="tel:418-392-9867">-->
-            <!--418-392-9867-->
-            <!--</a>-->
-            <!--<v-icon>phone</v-icon>-->
-            <!--Hug-->
-            <!--<a href="tel:418-392-9867">-->
-            <!--418-392-9867-->
-            <!--</a>-->
-
-            <!--<img :src='require("./assets/logo-loco-horizontal.png")' class="my-3"-->
-            <!--contain-->
-            <!--height="30">-->
             <v-toolbar-title class="headline text-uppercase special-font" style="font-weight:bold;">
-                <!--<ColorText text="Horizons Gaspésiens"/>-->
-                <!--<span class="purple&#45;&#45;text">-->
-                <!--H-->
-                <!--</span>-->
-                <!--<span class="yellow&#45;&#45;text">-->
-                <!--o-->
-                <!--</span>-->
-                <!--<span class="orange&#45;&#45;text">-->
-                <!--r-->
-                <!--</span>-->
-                <!--<span class="light-blue&#45;&#45;text">-->
-                <!--i-->
-                <!--</span>-->
-                <!--<span class="blue&#45;&#45;text">-->
-                <!--z-->
-                <!--</span>-->
-                <!--<span class="red&#45;&#45;text">-->
-                <!--o-->
-                <!--</span>-->
-                <!--<span>-->
-                <!--n-->
-                <!--</span>-->
-                <!--<span>-->
-                <!--s-->
-                <!--</span>-->
-                <!--rizons Gaspésiens-->
             </v-toolbar-title>
         </v-toolbar>
         <router-view class="mb-5"/>
+        <div class="special-font headline mb-5">
+            Merci à tous les bénévoles, clients et organismes partenaires
+        </div>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
     </div>
 </template>
@@ -148,6 +105,7 @@
     import PhoneDialog from '@/components/PhoneDialog'
     import PhoneNumbers from '@/PhoneNumbers'
     import VueScrollTo from 'vue-scrollto'
+    import Scroll from '@/Scroll'
 
     export default {
         name: 'App',
@@ -173,12 +131,13 @@
         },
         data() {
             return {
+                Scroll: Scroll,
                 drawer: false,
                 phoneNumbers: PhoneNumbers.data
             }
         },
         methods: {
-            scrollTop: function(){
+            scrollTop: function () {
                 VueScrollTo.scrollTo(
                     document.getElementById('app'), 500, {
                         easing: 'linear'
@@ -256,8 +215,8 @@
     /*color: white !important;*/
     /*}*/
     .special-font {
-        font-family: 'Shadows Into Light Two', cursive !important;
-        color: white;
+        font-family: 'Pacifico', cursive !important;
+        color: black;
     }
 
     .vh-center {

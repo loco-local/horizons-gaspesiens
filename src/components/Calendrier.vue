@@ -1,5 +1,5 @@
 <template>
-    <div class="calendar pt-5">
+    <div class="calendar" id="calendrier">
         <v-layout row wrap class="mt-5">
             <v-flex xs0 lg3></v-flex>
             <v-flex xs12 lg6 class="text-xs-center">

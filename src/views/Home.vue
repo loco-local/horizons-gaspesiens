@@ -53,7 +53,7 @@
                         <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">
                                 <router-link :to="'/cercle/' + props.item" v-if="!cercleEstDesactive(props.item)">
-                                    <span @click="allerAuCercle(props.item)">
+                                    <span @click="Scroll.allerALaSection(props.item)">
                                         {{nomDeCercle(props.item)}}
                                     </span>
                                 </router-link>
@@ -178,6 +178,39 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+        <Cercle title="Produits Lemieux" anchor="lemieux">
+            <div slot="image">
+                <v-img :src="require('../assets/lemieux.jpg')"
+                       :class="{
+                                    'ml-5': $vuetify.breakpoint.mdAndUp
+                                }"
+                       height="600"
+                       contain>
+
+                </v-img>
+            </div>
+            <div slot="subtitle">
+                En plus de sentir bon, d'utiliser des produits nettoyants qui ne sont pas nocifs pour votre santé et
+                celle de vos enfants, de protéger l'environnement en utilisant des produits biodégradables, choisissez
+                le vrac pour favoriser la réutilisation des contenants!
+            </div>
+            <div slot="content">
+                <p class="">
+                    Achetez les produits Lemieux au Loco Local. Si vous avez des questions, écrivez-nous à
+                    <a href="mailto:horizonsgaspesiens@gmail.com">
+                        horizonsgaspesiens@gmail.com
+                    </a>
+                    ou
+                    <v-btn @click="$refs.phoneDialog.show()">télélphonez nous</v-btn>
+                </p>
+                <p>
+                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows
+                    ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent
+                    votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
+                </p>
+            </div>
+        </Cercle>
+        <v-divider></v-divider>
         <Cercle title="Comptabilité" anchor="comptable" class="pa-0">
             <div slot="image" class="pa-0">
                 <v-card
@@ -220,23 +253,169 @@
                 </p>
             </div>
         </Cercle>
+        <v-divider></v-divider>
         <Cercle title="Financement" anchor="financement" class="pa-0" image="financement.jpg">
             <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
             <div slot="subtitle">
-                La créativité, la débrouille et la persévérence sont au rendez-vous pour ceux qui veulent développer leur sens de l'entreprenariat social.
+                La créativité, la débrouille et la persévérence sont au rendez-vous pour ceux qui veulent développer
+                leur sens de l'entreprenariat social.
             </div>
             <div slot="content">
                 <p>
                     Et continuer à rendre la merveilleuse expérience du Loco Local possible pour plus longtemps encore.
                 </p>
                 <p>
-                    La location de salle, la vente de produits nettoyants, le chocolat, les serviettes sanitaires etc, le groupe d'achat, le reconditionnement d'ordinateur sont tous des moyens actuels de payer le local.
+                    La location de salle, la vente de produits nettoyants, le chocolat, les serviettes sanitaires etc,
+                    le groupe d'achat, le reconditionnement d'ordinateur sont tous des moyens actuels de payer le local.
                 </p>
                 <p>
                     Venez donc y ajouter votre touche personnelle.
                 </p>
             </div>
         </Cercle>
+        <v-divider></v-divider>
+        <Calendrier class="mb-5"></Calendrier>
+        <v-divider></v-divider>
+        <v-layout row wrap class="mb-1 mt-5" id="paiement">
+            <v-flex xs12 class="text-xs-center">
+                <h1 class="display-2 font-weight-thin">
+                    Dons et paiements
+                </h1>
+            </v-flex>
+        </v-layout>
+        <v-layout row wrap class="vh-center font-weight-thin">
+            <v-flex xs12>
+                <v-card flat class="mt-5 mb-5">
+                    <v-layout row wrap fill-height>
+                        <v-flex xs12 md6 class="text-xs-center">
+                            <div class="mb-3 title">
+                                Transferts par AccèsD Desjardins
+                            </div>
+                            <v-stepper non-linear v-model="desjardinsStepper" class="ml-4">
+                                <v-stepper-header>
+                                    <v-stepper-step editable :complete="desjardinsStepper > 2" step="1" color="black">
+                                        Étape 1
+                                    </v-stepper-step>
+
+                                    <v-divider></v-divider>
+
+                                    <v-stepper-step editable :complete="desjardinsStepper > 2" step="2" color="black">
+                                        Étape 2
+                                    </v-stepper-step>
+
+                                    <v-divider></v-divider>
+
+                                    <v-stepper-step editable step="3" color="black">
+                                        Étape 3
+                                    </v-stepper-step>
+                                </v-stepper-header>
+
+                                <v-stepper-items>
+                                    <v-stepper-content step="1">
+                                        <v-card>
+                                            <v-card-text>
+                                                <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
+                                            </v-card-text>
+                                        </v-card>
+                                    </v-stepper-content>
+
+                                    <v-stepper-content step="2">
+                                        <v-card
+                                        >
+                                            <v-card-title class="subheading pb-0">
+                                                <span>
+                                                <span class="font-weight-bold">Transit caisse</span>
+                                                40002
+                                                    </span>
+                                                <v-divider
+                                                        class="mx-3"
+                                                        inset
+                                                        vertical
+                                                ></v-divider>
+                                                <span>
+                                                    <span class="font-weight-bold">
+                                                        No Institution
+                                                    </span>
+                                                        815
+                                                </span>
+                                                <v-divider
+                                                        class="mx-3"
+                                                        inset
+                                                        vertical
+                                                ></v-divider>
+                                                <span>
+                                                    <span class="font-weight-bold">
+                                                        Folio
+                                                    </span>
+                                                        0451286
+                                                </span>
+                                            </v-card-title>
+                                            <v-card-text>
+                                                <v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>
+                                            </v-card-text>
+                                        </v-card>
+                                    </v-stepper-content>
+
+                                    <v-stepper-content step="3">
+                                        <v-card
+                                        >
+                                            <v-card-title>
+                                                Choisisez "Une fois le" pour un transfert ponctuel
+                                            </v-card-title>
+                                            <v-card-text>
+                                                <v-img :src="require('../assets/virement mensuel.png')"></v-img>
+                                            </v-card-text>
+                                        </v-card>
+                                    </v-stepper-content>
+                                </v-stepper-items>
+                            </v-stepper>
+                        </v-flex>
+                        <v-flex xs12 md6 left>
+                            <v-card-text class="text-xs-left">
+                                <p>
+                                    Vous voulez soutenir l'établissement durable de ce projet "pour et par" la
+                                    communauté?
+                                </p>
+                                <ul>
+                                    <li>
+                                        Devenez membre utilisateurs-consommateurs de la Coopérative Horizons Gaspésiens,
+                                        dont le Loco Local est un des projets.
+
+                                    </li>
+                                    <li>
+                                        Devenez membre de soutien du Loco Local en faisant une donation mensuelle
+                                        régulière
+                                    </li>
+                                    <li>
+                                        Ouvrez un compte-client de Produits Lemieux pour 150$
+                                    </li>
+                                </ul>
+                                <p>
+                                    Un grand merci à toutes celles et ceux qui ont donné, en argent, temps, objets,
+                                    idées,
+                                    etc!
+                                </p>
+                                <h3>
+                                    Modes de paiement
+                                </h3>
+                                <p>
+                                    Argent comptant ou chèque: passez au Loco Local pour y déposer votre don dans une
+                                    boîte
+                                    de contribution volontaire à l'entrée, en argent comptant ou par chèque, en
+                                    inscrivant
+                                    que vous êtes passé-e!
+                                </p>
+                                <p>
+                                    Virement entre personnes Desjardins par AccèsD, c'est la manière la plus simple et
+                                    efficace pour nous.
+                                </p>
+                            </v-card-text>
+                        </v-flex>
+                    </v-layout>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <PhoneDialog ref="phoneDialog"></PhoneDialog>
     </div>
 </template>
 
@@ -316,13 +495,18 @@
 
     import Cercle from '@/components/Cercle'
     import {GoogleCharts} from 'google-charts';
+    import Calendrier from '@/components/Calendrier.vue'
 
-    import VueScrollTo from 'vue-scrollto'
+    import PhoneDialog from '@/components/PhoneDialog'
+
+    import Scroll from '@/Scroll'
 
     export default {
         name: 'home',
         components: {
-            Cercle
+            Cercle,
+            PhoneDialog,
+            Calendrier
         },
         computed: {
             toolbarLogoHeight: function () {
@@ -371,35 +555,6 @@
             },
             dessinComptable() {
                 let monthIndex = -1;
-                // const data = GoogleCharts.api.visualization.arrayToDataTable([
-                //     ['Chart thing', 'Chart amount']
-                // ].concat(this.balance.map(function (amount) {
-                //     monthIndex++;
-                //     return [
-                //         mois[monthIndex],
-                //         amount
-                //     ];
-                // })));
-                // const pie_1_chart = new GoogleCharts.api.visualization.PieChart(document.getElementById('dessin-comptable'));
-                // pie_1_chart.draw(data);
-
-                // let data = new GoogleCharts.api.visualization.DataTable();
-                // data.addColumn('string', 'Mois');
-                // data.addColumn('number', 'Balance');
-                // data.addColumn('number', 'Dette');
-                // let monthIndex = -1;
-                // data.addRows([
-                //     this.balance.map(function (amount) {
-                //         monthIndex++;
-                //         return [
-                //             mois[monthIndex],
-                //             amount,
-                //             dette[monthIndex]
-                //         ];
-                //     })
-                // ]);
-
-
                 let data = new GoogleCharts.api.visualization.arrayToDataTable([
                     ['Mois', 'Balance']
                 ].concat(
@@ -410,8 +565,8 @@
                             amount
                         ];
                     })
-                ))
-                var options = {
+                ));
+                let options = {
                     chart: {
                         title: '',
                         subtitle: '',
@@ -420,28 +575,32 @@
                     legend: {position: 'none'}
                 };
 
-                var chart = new GoogleCharts.api.charts.Line(document.getElementById('dessin-comptable'));
+                let chart = new GoogleCharts.api.charts.Line(document.getElementById('dessin-comptable'));
 
                 chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
 
                 GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {
-                    if (this.$route.params.comite) {
-                        this.allerAuCercle(this.$route.params.comite)
-                    }
+                    this.goToRightSection();
                 }.bind(this));
 
             },
-            allerAuCercle: function (cercle) {
-                VueScrollTo.scrollTo(
-                    document.getElementById(cercle), 500, {
-                        easing: 'linear',
-                        offset: -50
-                    }
-                )
+            goToRightSection: function () {
+                let section = "app";
+                if (this.$route.path === "/paiement") {
+                    section = "paiement";
+                }
+                if (this.$route.path === "/calendrier") {
+                    section = "calendrier";
+                } else if (this.$route.params.comite) {
+                    section = this.$route.params.comite;
+                }
+                Scroll.allerALaSection(section)
             }
         },
         data() {
             return {
+                Scroll: Scroll,
+                desjardinsStepper: 1,
                 dataLoaded: false,
                 balance: this.balanceCalculate(),
                 membresDeCercles: [
@@ -461,7 +620,7 @@
                         nom: "Marie-Claire Larocque",
                         cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
                         avatar: "msea-petit-carre.jpg",
-                        cercles: ['ca', 'espace']
+                        cercles: ['ca', 'espace', 'communication']
                     },
                     {
                         nom: "Bruno Mainville",
@@ -471,7 +630,7 @@
                     },
                     {
                         nom: "Roy Poirier",
-                        cv: "Électronicien, lauréat de la meilleure tarte à Maria",
+                        cv: "Électronicien, lauréat de la meilleure tarte de Maria",
                         avatar: "roy-petit-carre.jpg",
                         cercles: ['linux']
                     },
@@ -498,6 +657,12 @@
                         cv: "Animation de groupe, Communication non violente, charpentière",
                         avatar: "arielle-petit-carre.jpg",
                         cercles: ['gouvernance']
+                    },
+                    {
+                        nom: "Martin Zibeau",
+                        cv: "Théâtre et improvisation, Philosophe, Expérimenteur social",
+                        avatar: "martin-zibeau-petit-carre.jpg",
+                        cercles: ['lemieux']
                     }
                 ],
                 cercles: {
@@ -522,6 +687,13 @@
                     },
                     financement: {
                         nom: "Financement"
+                    },
+                    lemieux: {
+                        nom: "Produits Nettoyants Lemieux"
+                    },
+                    communication: {
+                        nom: "Communication",
+                        desactive: true
                     }
                 }
             }

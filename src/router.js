@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Calendrier from './views/Calendrier.vue'
-
 Vue.use(Router)
 
 export default new Router({
@@ -20,9 +18,14 @@ export default new Router({
             component: Home
         },
         {
+            path: '/paiement',
+            name: 'home',
+            component: Home
+        },
+        {
             path: '/calendrier',
-            name: 'calendrier',
-            component: Calendrier
+            name: 'home',
+            component: Home
         }
     ]
 })
