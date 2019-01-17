@@ -277,6 +277,76 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+        <Cercle title="Notre structure de gouvernance: l'Holacracy!" anchor="gouvernance" class="pa-0"
+                image="reunion-debout.jpg">
+            <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
+            <div slot="subtitle">
+                L'Holacracy est une méthode de gestion horizontale qui fonctionne avec des cercles (comités) de travail
+                et nous demandons à chacun des cercles
+                de définir sa raison d'être au sein d'Horizons Gaspésiens, ses rôles et redevabilités.
+            </div>
+            <div slot="content">
+                <v-card class="mb-4">
+                    <v-card-title class="title">
+                        À propos de l'Holacracy
+                    </v-card-title>
+                    <v-list>
+                        <v-list-tile href="https://labdsurlholacracy.com/bande-dessinee-holacracy">
+                            <v-list-tile-action>
+                                <v-icon>fa-book-reader</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Bande dessinée
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
+                                href="https://www.holacracy.org/webinar-recording">
+                            <v-list-tile-action>
+                                <v-icon>movie</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Vidéo
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
+                                href="https://igipartners.com/constitution-holacracy">
+                            <v-list-tile-action>
+                                <v-icon>account_balance</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Principes
+                            </v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-card>
+                <p>
+                    Les cercles et leurs membres sont énumérés sur ce site.
+                </p>
+                <p>
+                    La raison d'être du cercle "Gouvernance" est d'installer la gestion participative dans Horizons
+                    Gaspésiens.
+                </p>
+                <p>
+                    <v-card>
+                        <v-card-title class="title">
+                            Cercles d'Horizons Gapésiens
+                        </v-card-title>
+                        <v-list>
+                            <v-list-tile
+                                    href="https://docs.google.com/document/d/1XQFmsfxNzZA4oryQ1IvUjf0otLuk0TjkVTEEglNEqE8">
+                                <v-list-tile-action>
+                                    <v-icon>fa-file</v-icon>
+                                </v-list-tile-action>
+                                <v-list-tile-title>
+                                    Octobre 2018
+                                </v-list-tile-title>
+                            </v-list-tile>
+                        </v-list>
+                    </v-card>
+                </p>
+            </div>
+        </Cercle>
+        <v-divider></v-divider>
         <Calendrier :class="{
                 'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
                 'mt-5 mb-3': $vuetify.breakpoint.smAndDown
@@ -628,7 +698,7 @@
                         nom: "Hug Arsenault",
                         cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
                         avatar: "hug1-petit-carre.png",
-                        cercles: ['ca', 'financement']
+                        cercles: ['ca', 'financement', 'gouvernance']
                     },
                     {
                         nom: "Gabrielle Margineanu",
