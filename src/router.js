@@ -18,12 +18,22 @@ export default new Router({
             component: Home
         },
         {
+            path: '/cercle',
+            name: 'home',
+            component: Home
+        },
+        {
             path: '/paiement',
             name: 'home',
             component: Home
         },
         {
             path: '/calendrier',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/benevole',
             name: 'home',
             component: Home
         }

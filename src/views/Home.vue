@@ -17,7 +17,7 @@
             <!--Adresser les inégalités sociales et environnementales-->
             <!--</h4>-->
         </v-layout>
-        <v-layout row wrap class="mb-5 mt-5">
+        <v-layout row wrap class="mb-5 mt-5" id="benevole">
             <v-flex xs12 class="text-xs-center">
                 <h1 class="display-2 font-weight-thin">
                     Membres
@@ -91,7 +91,7 @@
                 :height="parallaxSize"
                 :src="require('../assets/peinture-rogner.jpg')"
         ></v-parallax>
-        <v-layout row wrap class="mb-1 mt-5">
+        <v-layout row wrap class="mb-1 mt-5" id="cercle">
             <v-flex xs12 class="text-xs-center">
                 <h1 class="display-2 font-weight-thin">
                     Comités actifs
@@ -607,7 +607,11 @@
                 }
                 if (this.$route.path === "/calendrier") {
                     section = "calendrier";
-                } else if (this.$route.params.comite) {
+                }
+                if (this.$route.path === "/benevole") {
+                    section = "benevole";
+                }
+                if (this.$route.params.comite) {
                     section = this.$route.params.comite;
                 }
                 Scroll.allerALaSection(section)
@@ -676,7 +680,7 @@
                     },
                     {
                         nom: "Martin Zibeau",
-                        cv: "Théâtre et improvisation, Philosophe, Expérimenteur social",
+                        cv: "Comédien, Philosophe, Expérimenteur social",
                         avatar: "martin-zibeau-petit-carre.jpg",
                         cercles: ['lemieux']
                     }

@@ -63,43 +63,75 @@
             </v-list>
         </v-navigation-drawer>
         <v-toolbar flat style="background-color:white;" fixed>
-            <v-toolbar-side-icon v-if="$vuetify.breakpoint.mdAndDown">
+            <v-toolbar-side-icon v-if="$vuetify.breakpoint.smAndDown">
                 <v-icon @click="drawer = !drawer">menu</v-icon>
             </v-toolbar-side-icon>
             <v-spacer v-if="$vuetify.breakpoint.mdAndDown"></v-spacer>
             <router-link to="/">
                 <img :src='require("./assets/logo-horizontal.png")'
                      class="pull-right"
-                     :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
+                       :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
                 <img :src='require("./assets/logo-loco-horizontal.png")'
                      :height="this.toolbarLogoHeight + 20" v-if="false">
             </router-link>
-            <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
+            <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn flat
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
                        @click="Scroll.allerALaSection('paiement', '/paiement')">
-                    <v-icon class="mr-3">attach_money</v-icon>
-                    <span>Don et paiement</span>
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">attach_money</v-icon>
+                    <span v-if="$vuetify.breakpoint.lgAndUp">Don et paiement</span>
+                    <span v-if="$vuetify.breakpoint.mdAndDown">Don/paiement</span>
                 </v-btn>
-                <v-btn flat
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
                        @click="Scroll.allerALaSection('calendrier', '/calendrier')">
-                    <v-icon class="mr-3">calendar_today</v-icon>
-                    Calendrier et réservation
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">calendar_today</v-icon>
+                    Calendrier
                 </v-btn>
-                <v-btn flat
-                       href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
-                    <v-icon class="mr-3">location_on</v-icon>
-                    193a Avenue Grand-Pré, Bonaventure, QC
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('benevole', '/benevole')" v-if="$vuetify.breakpoint.lgAndUp">
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">group</v-icon>
+                    <span>Bénévoles</span>
                 </v-btn>
-                <v-btn flat @click="$refs.phoneDialog.show()">
-                    <v-icon class="mr-3">phone</v-icon>
-                    Téléphones
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')" v-if="$vuetify.breakpoint.lgAndUp">
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">group_work</v-icon>
+                    <span>Comités</span>
                 </v-btn>
-                <v-btn flat href="http://eepurl.com/c7iHkr">
-                    <v-icon class="mr-3">email</v-icon>
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                       href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+                >
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">location_on</v-icon>
+                    Adresse
+                </v-btn>
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="$refs.phoneDialog.show()">
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">phone</v-icon>
+                    <span v-if="$vuetify.breakpoint.lgAndUp">Téléphones</span>
+                    <span v-if="$vuetify.breakpoint.mdAndDown">Tel</span>
+                </v-btn>
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat href="http://eepurl.com/c7iHkr">
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">email</v-icon>
                     Infolettre
                 </v-btn>
-                <v-btn flat href="https://www.facebook.com/locolocal1">
+                <v-btn flat href="https://www.facebook.com/locolocal1" :small="$vuetify.breakpoint.mdAndDown">
                     <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
                 </v-btn>
             </v-toolbar-items>
