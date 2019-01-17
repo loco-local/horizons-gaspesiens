@@ -739,7 +739,7 @@
                     {
                         nom: "Francine Larocque",
                         cv: "Enseignante retraitée, nature, démocratie participative, chant",
-                        avatar: "francine-petit-carre.jpg",
+                        avatar: "francine-petit-carre.png",
                         cercles: ['groupe']
                     },
                     {
