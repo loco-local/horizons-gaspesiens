@@ -1,7 +1,10 @@
 <template>
     <v-layout row wrap class="vh-center font-weight-thin" :id="anchor">
         <v-flex xs12>
-            <v-card flat class="mt-5 mb-5">
+            <v-card flat :class="{
+                'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
+                'mt-5 mb-3': $vuetify.breakpoint.smAndDown
+            }">
                 <v-layout :reverse="imageAtRight" row wrap fill-height>
                     <v-flex xs12 md5 class="">
                         <v-img

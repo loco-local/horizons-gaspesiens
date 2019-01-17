@@ -41,7 +41,10 @@
                             <img :src='require("../assets/" + membre.avatar)' :alt="membre.nom">
                         </v-avatar>
                     </v-flex>
-                    <v-flex xs10 lg8 class="text-xs-left mt-3 ml-4 mr-4">
+                    <v-flex xs10 lg8 class="text-xs-left ml-4 mr-4" :class="{
+                        'mt-3': $vuetify.breakpoint.mdAndUp,
+                        'mt-0': $vuetify.breakpoint.smAndDown
+                    }">
                         <h3 class="subheading">
                             {{membre.nom}}
                         </h3>
@@ -274,7 +277,10 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Calendrier class="mb-5"></Calendrier>
+        <Calendrier :class="{
+                'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
+                'mt-5 mb-3': $vuetify.breakpoint.smAndDown
+            }"></Calendrier>
         <v-divider></v-divider>
         <v-layout row wrap class="mb-1 mt-5" id="paiement">
             <v-flex xs12 class="text-xs-center">
@@ -285,7 +291,10 @@
         </v-layout>
         <v-layout row wrap class="vh-center font-weight-thin">
             <v-flex xs12>
-                <v-card flat class="mt-5 mb-5">
+                <v-card flat :class="{
+                'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
+                'mt-5 mb-3': $vuetify.breakpoint.smAndDown
+            }">
                     <v-layout row wrap fill-height>
                         <v-flex xs12 md6 class="text-xs-center">
                             <div class="mb-3 title">
@@ -317,7 +326,8 @@
                                                 <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
                                             </v-card-text>
                                             <v-card-text v-if="$vuetify.breakpoint.smAndDown">
-                                                Dans votre AccèsD, choisissez "Virez" puis "Virements entre personnes Desjardins"
+                                                Dans votre AccèsD, choisissez "Virez" puis "Virements entre personnes
+                                                Desjardins"
                                             </v-card-text>
                                         </v-card>
                                     </v-stepper-content>
@@ -366,7 +376,8 @@
                                         <v-card
                                         >
                                             <v-card-title>
-                                                Choisisez "Une fois le" pour un transfert ponctuel ou "Mensuelle" pour un don récurrent
+                                                Choisisez "Une fois le" pour un transfert ponctuel ou "Mensuelle" pour
+                                                un don récurrent
                                             </v-card-title>
                                             <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
                                                 <v-img :src="require('../assets/virement mensuel.png')"></v-img>
@@ -585,7 +596,8 @@
 
                 chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
 
-                GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {}.bind(this));
+                GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {
+                }.bind(this));
 
             },
             goToRightSection: function () {

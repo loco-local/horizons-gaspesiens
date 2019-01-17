@@ -106,10 +106,17 @@
             <v-toolbar-title class="headline text-uppercase special-font" style="font-weight:bold;">
             </v-toolbar-title>
         </v-toolbar>
-        <router-view class="mb-5"/>
-        <div class="special-font headline mb-5">
+        <router-view class="mb-2"/>
+        <p class="special-font headline mb-4">
             Merci à tous les bénévoles, clients et organismes partenaires
-        </div>
+        </p>
+        <v-footer class="pa-3" dark>
+            <v-spacer></v-spacer>
+            <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
+                <img height="32" width="32" :src="require('@/assets/GitHub-Mark-Light-32px.png')" class="mt-1">
+            </a>
+            <v-spacer></v-spacer>
+        </v-footer>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
     </div>
 </template>
