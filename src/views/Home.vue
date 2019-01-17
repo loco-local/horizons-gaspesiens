@@ -218,7 +218,7 @@
                         dark
                         width="100%"
                 >
-                    <v-card-text id="dessin-comptable" class="" width="100%"></v-card-text>
+                    <v-card-text id="dessin-comptable" style="min-height:400px;" class="" width="100%"></v-card-text>
                     <v-card-text>
                         <div class="display-1 font-weight-thin">Balance Revenus/Dépenses 2018-2019</div>
                     </v-card-text>
@@ -313,8 +313,11 @@
                                 <v-stepper-items>
                                     <v-stepper-content step="1">
                                         <v-card>
-                                            <v-card-text>
+                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
                                                 <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
+                                            </v-card-text>
+                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                Dans votre AccèsD, choisissez "Virez" puis "Virements entre personnes Desjardins"
                                             </v-card-text>
                                         </v-card>
                                     </v-stepper-content>
@@ -322,6 +325,9 @@
                                     <v-stepper-content step="2">
                                         <v-card
                                         >
+                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                Cliquez sur l'onglet "Ajouter un bénéficiaire"
+                                            </v-card-text>
                                             <v-card-title class="subheading pb-0">
                                                 <span>
                                                 <span class="font-weight-bold">Transit caisse</span>
@@ -350,7 +356,7 @@
                                                         0451286
                                                 </span>
                                             </v-card-title>
-                                            <v-card-text>
+                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
                                                 <v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>
                                             </v-card-text>
                                         </v-card>
@@ -360,9 +366,9 @@
                                         <v-card
                                         >
                                             <v-card-title>
-                                                Choisisez "Une fois le" pour un transfert ponctuel
+                                                Choisisez "Une fois le" pour un transfert ponctuel ou "Mensuelle" pour un don récurrent
                                             </v-card-title>
-                                            <v-card-text>
+                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
                                                 <v-img :src="require('../assets/virement mensuel.png')"></v-img>
                                             </v-card-text>
                                         </v-card>
@@ -579,9 +585,7 @@
 
                 chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
 
-                GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {
-                    this.goToRightSection();
-                }.bind(this));
+                GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {}.bind(this));
 
             },
             goToRightSection: function () {
@@ -700,6 +704,7 @@
         },
         mounted() {
             GoogleCharts.load(this.dessinComptable, {'packages': ['line']});
+            this.goToRightSection();
         }
     }
 </script>

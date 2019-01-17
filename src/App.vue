@@ -34,7 +34,16 @@
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
-                        to="/calendrier">
+                        @click="Scroll.allerALaSection('paiement', '/paiement')">
+                    <v-list-tile-action>
+                        <v-icon>attach_money</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Don et paiement
+                    </v-list-tile-title>
+                </v-list-tile>
+                <v-list-tile
+                        @click="Scroll.allerALaSection('calendrier', '/calendrier')">
                     <v-list-tile-action>
                         <v-icon>calendar_today</v-icon>
                     </v-list-tile-action>
@@ -43,12 +52,12 @@
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
-                        @click="Scroll.allerALaSection('paiement', '/paiement')">
+                        href="http://eepurl.com/c7iHkr">
                     <v-list-tile-action>
-                        <v-icon>attach_money</v-icon>
+                        <v-icon>email</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-title>
-                        Don et paiement
+                        Infolettre
                     </v-list-tile-title>
                 </v-list-tile>
             </v-list>
@@ -85,6 +94,10 @@
                 <v-btn flat @click="$refs.phoneDialog.show()">
                     <v-icon class="mr-3">phone</v-icon>
                     Téléphones
+                </v-btn>
+                <v-btn flat href="http://eepurl.com/c7iHkr">
+                    <v-icon class="mr-3">email</v-icon>
+                    Infolettre
                 </v-btn>
                 <v-btn flat href="https://www.facebook.com/locolocal1">
                     <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
