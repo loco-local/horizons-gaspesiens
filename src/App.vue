@@ -60,6 +60,24 @@
                         Infolettre
                     </v-list-tile-title>
                 </v-list-tile>
+                <v-list-tile
+                        @click="Scroll.allerALaSection('benevole', '/benevole')">
+                    <v-list-tile-action>
+                        <v-icon>group</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Bénévoles
+                    </v-list-tile-title>
+                </v-list-tile>
+                <v-list-tile
+                        @click="Scroll.allerALaSection('cercle', '/cercle')">
+                    <v-list-tile-action>
+                        <v-icon>group_work</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Comités
+                    </v-list-tile-title>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar flat style="background-color:white;" fixed>
