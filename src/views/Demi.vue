@@ -125,7 +125,7 @@
         </v-layout>
         <v-layout row wrap class="mt-4">
             <v-flex xs12 class="text-xs-left">
-                <v-card color="cyan darken-2" class="white--text">
+                <v-card>
                     <v-card-title class="title">
                         Liens Externes
                     </v-card-title>
