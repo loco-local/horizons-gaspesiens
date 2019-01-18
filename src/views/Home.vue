@@ -347,6 +347,20 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+        <div style="width:100%" class="vh-center">
+            <v-list>
+                <v-list-tile
+                        @click="comitesArchives = true">
+                    <v-list-tile-action>
+                        <v-icon>list</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Comités archivés
+                    </v-list-tile-title>
+                </v-list-tile>
+            </v-list>
+        </div>
+        <v-divider></v-divider>
         <Calendrier :class="{
                 'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
                 'mt-5 mb-3': $vuetify.breakpoint.smAndDown
@@ -503,6 +517,31 @@
             </v-flex>
         </v-layout>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
+        <v-dialog v-model="comitesArchives" width="600">
+            <v-card>
+                <v-card-title class="title">
+                    Comités plus ou moins actifs
+                    <v-spacer></v-spacer>
+                    <v-icon @click="comitesArchives = false">close</v-icon>
+                </v-card-title>
+                <v-card-text>
+                    <v-list>
+                        <v-list-tile
+                                to="/le-demi">
+                            <v-list-tile-title>
+                                Le demi
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
+                                to="/sel-de-mer">
+                            <v-list-tile-title>
+                                Sel De Mer
+                            </v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -690,6 +729,7 @@
         },
         data() {
             return {
+                comitesArchives: false,
                 Scroll: Scroll,
                 desjardinsStepper: 1,
                 dataLoaded: false,
