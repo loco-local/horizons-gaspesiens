@@ -115,8 +115,14 @@
             </v-toolbar-side-icon>
             <v-spacer v-if="$vuetify.breakpoint.mdAndDown"></v-spacer>
             <router-link to="/">
+                <!--<transition name="fade">-->
+                    <!--<img :src='require("./assets/" + currentLogo)'-->
+                         <!--:key="currentLogo"-->
+                         <!--style="position: absolute;left:10px;top:15px;"-->
+                         <!--class="pull-right"-->
+                         <!--:height="this.toolbarLogoHeight" @click="Scroll.allerALaSection('app')">-->
+                <!--</transition>-->
                 <img :src='require("./assets/logo-horizontal.png")'
-                     class="pull-right"
                      :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
                 <img :src='require("./assets/logo-loco-horizontal.png")'
                      :height="this.toolbarLogoHeight + 20" v-if="false">
@@ -330,6 +336,7 @@
         },
         data() {
             return {
+                currentLogo: "logo-horizontal.png",
                 documentDialog: false,
                 presseDialog: false,
                 visageDialog: false,
@@ -422,14 +429,10 @@
                 ]
             }
         },
-        methods: {
-            scrollTop: function () {
-                VueScrollTo.scrollTo(
-                    document.getElementById('app'), 500, {
-                        easing: 'linear'
-                    }
-                )
-            }
+        mounted: function(){
+            // setInterval(function() {
+            //     this.currentLogo = this.currentLogo === 'logo-horizontal.png' ? "logo-loco-horizontal.png" : 'logo-horizontal.png';
+            // }.bind(this), 10000);
         }
     }
 </script>
@@ -538,5 +541,12 @@
 
     #app-navigation .v-btn--active::before {
         background-color: transparent !important;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
 </style>
