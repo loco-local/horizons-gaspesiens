@@ -69,15 +69,24 @@
                         Bénévoles
                     </v-list-tile-title>
                 </v-list-tile>
-                <!--<v-list-tile-->
-                <!--@click="Scroll.allerALaSection('cercle', '/cercle')">-->
-                <!--<v-list-tile-action>-->
-                <!--<v-icon>group_work</v-icon>-->
-                <!--</v-list-tile-action>-->
-                <!--<v-list-tile-title>-->
-                <!--Comités-->
-                <!--</v-list-tile-title>-->
-                <!--</v-list-tile>-->
+                <v-list-tile
+                        @click="documentDialog = true">
+                    <v-list-tile-action>
+                        <v-icon>fa-file</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Documents
+                    </v-list-tile-title>
+                </v-list-tile>
+                <v-list-tile
+                        @click="presseDialog = true">
+                    <v-list-tile-action>
+                        <v-icon>fa-newspaper</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Dossier de presse
+                    </v-list-tile-title>
+                </v-list-tile>
                 <v-list-group
                         prepend-icon="group_work"
                         no-action
@@ -90,7 +99,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
 
-                    <v-list-tile v-for="(cercle, clef) in cercles" :key="nom"
+                    <v-list-tile v-for="(cercle, clef) in cercles" :key="clef"
                                  v-if="!cercle.desactive"
                                  @click="Scroll.allerALaSection(clef, '/cercle/' + clef)">
                         <v-list-tile-content>
@@ -191,12 +200,102 @@
         </p>
         <v-footer class="pa-3" dark>
             <v-spacer></v-spacer>
+            <v-btn flat @click="documentDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
+                <v-icon class="mr-3">fa-file</v-icon>
+                Documents
+            </v-btn>
+            <v-btn flat @click="presseDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
+                <v-icon class="mr-3">fa-newspaper</v-icon>
+                Presse
+            </v-btn>
+            <v-btn flat href="http://visagesregionaux.org/">
+                Visages régionaux
+            </v-btn>
+            <v-spacer></v-spacer>
             <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
                 <img height="32" width="32" :src="require('@/assets/GitHub-Mark-Light-32px.png')" class="mt-1">
             </a>
-            <v-spacer></v-spacer>
         </v-footer>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
+        <v-dialog v-model="presseDialog" width="900">
+            <v-card>
+                <v-card-title class="title">
+                    Dossier de presse
+                    <v-spacer></v-spacer>
+                    <v-icon @click="presseDialog=false">close</v-icon>
+                </v-card-title>
+                <v-card-text>
+                    <v-list>
+                        <v-list-tile v-for="presse in dossiersDePresse" :key="presse.lien" :href="presse.lien">
+                            <v-list-tile-title>
+                                <span class="grey-text">
+                                    {{presse.date}}
+                                </span>
+                                {{presse.text}}
+                            </v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+        <v-dialog v-model="documentDialog" width="900">
+            <v-card>
+                <v-card-title class="title">
+                    Documents
+                    <v-spacer></v-spacer>
+                    <v-icon @click="documentDialog=false">close</v-icon>
+                </v-card-title>
+                <v-card-text>
+                    <v-list>
+                        <v-list-tile v-for="document in documents" :key="document.nom" :href="document.lien">
+                            <v-list-tile-action>
+                                <v-icon>fa-file</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                {{document.nom}}
+                            </v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+        <v-dialog v-model="visageDialog" width="900">
+            <v-card>
+                <v-card-title class="title">
+                    Visages régionaux
+                    <v-spacer></v-spacer>
+                    <v-icon @click="visageDialog = false">close</v-icon>
+                </v-card-title>
+                <v-card-text class="text-xs-left">
+                    <a href="http://visagesregionaux.org/">
+                        Visages régionaux
+                    </a>
+                    <p>
+                        Visages régionaux a débuté en 2011, propulsé par un intérêt personnel d’aller vivre en campagne.
+                    </p>
+                    <p>
+                        La bourse Laure Waridel a permis à Marie-Eve Arbour et Simon Côté de sillonner le Québec à la
+                        découverte de cinquante initiatives rurales porteuses de changement.
+                    </p>
+                    <p>
+                        Cinq ans plus tard, Visages régionaux veut documenter les initiatives qui dessinent une ruralité
+                        en émergence. Démontrer qu'il y a une panoplie de projets originaux et mobilisateurs et que
+                        cette multiplication redéfinit la vie rurale. Avec ces données, Visages régionaux entend
+                        analyser et communiquer les tendances en émergence qui agissent de manière structurante sur les
+                        communautés et sur la société québécoise dans son ensemble.
+                    </p>
+                    <p>
+                        C'est avec plaisir et avec l'accord de Marie-Eve que nous vous partageons ici le lien vers le
+                        site web de Visages régionaux afin que vous y entriez votre projet ou un projet qui selon vous
+                        devrait s'y trouver.
+                    </p>
+                    <p>
+                        Merci de contribuer à dresser le portrait des artisans et artisannes du changement en Gaspésie
+                        et partout ailleurs au Québec.
+                    </p>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -231,10 +330,96 @@
         },
         data() {
             return {
+                documentDialog: false,
+                presseDialog: false,
+                visageDialog: false,
                 Scroll: Scroll,
                 drawer: false,
                 phoneNumbers: PhoneNumbers.data,
-                cercles: Cercles
+                cercles: Cercles,
+                documents: [
+                    {
+                        lien: "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
+                        nom: "Règlements généraux de la coopérative"
+                    },
+                    {
+                        lien: "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
+                        nom: "La petite histoire financière du Loco Local en date du 31 janvier 2016"
+                    },
+                    {
+                        lien: "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
+                        nom: "Plan d'action pour la pérennisation du Loco Local"
+                    },
+                    {
+                        lien: "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
+                        nom: "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement."
+                    },
+                    {
+                        lien: "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+                        nom: "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017."
+                    },
+                    {
+                        lien: "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+                        nom: "Bilan final du projet Béati 2017-2018"
+                    }
+                ],
+                dossiersDePresse: [
+                    {
+                        date: "Août 2015",
+                        text: "Mouton Noir",
+                        lien: "http://www.moutonnoir.com/2015/08/loco-local"
+                    },
+                    {
+                        date: "Mai 2015",
+                        text: "Revue Kaléidoscope",
+                        lien: "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/"
+                    },
+                    {
+                        date: "5 juin 2015",
+                        text: "Sécession à Radio Gaspésie",
+                        lien: "http://radiogaspesie.ca/la-gaspesie-libre/"
+                    },
+                    {
+                        date: "4 novembre 2015",
+                        text: "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
+                        lien: "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/"
+                    },
+                    {
+                        date: "9 avril 2016",
+                        text: "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
+                        lien: "http://www.economiesdecommunaute.org/programme/"
+                    },
+                    {
+                        date: "9 avril 2016",
+                        text: " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
+                        lien: "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map"
+                    },
+                    {
+                        date: "14 juin 2016",
+                        text: "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
+                        lien: "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/"
+                    },
+                    {
+                        date: "27 juillet 2016",
+                        text: "Ricochet Les utopistes en action",
+                        lien: "https://ricochet.media/fr/1294/les-utopistes-en-action"
+                    },
+                    {
+                        date: "27 juillet 2016",
+                        text: "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
+                        lien: "https://www.ababord.org/-No-65-ete-2016-"
+                    },
+                    {
+                        date: "22 août 2016",
+                        text: "Un living lab en Gaspésie ?",
+                        lien: "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml"
+                    },
+                    {
+                        date: "Septembre 2016",
+                        text: "Sur la page de Visages régionaux",
+                        lien: "http://visagesregionaux.org/les-initiatives/initiative/economie-sociale-solidaire/cooperative-de-transition-et-de-solidarite-horizons-gaspesiens/"
+                    }
+                ]
             }
         },
         methods: {
