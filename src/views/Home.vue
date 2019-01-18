@@ -585,6 +585,7 @@
     import Calendrier from '@/components/Calendrier.vue'
 
     import PhoneDialog from '@/components/PhoneDialog'
+    import Cercles from '@/Cercles'
 
     import Scroll from '@/Scroll'
 
@@ -755,37 +756,7 @@
                         cercles: ['lemieux']
                     }
                 ],
-                cercles: {
-                    ca: {
-                        nom: "CA",
-                        desactive: true
-                    },
-                    espace: {
-                        nom: "Collaborium et espace de vie"
-                    },
-                    groupe: {
-                        nom: "Groupe d'achat"
-                    },
-                    linux: {
-                        nom: "Loco Linux"
-                    },
-                    comptable: {
-                        nom: "Comptabilité"
-                    },
-                    gouvernance: {
-                        nom: "Gouvernance"
-                    },
-                    financement: {
-                        nom: "Financement"
-                    },
-                    lemieux: {
-                        nom: "Produits Nettoyants Lemieux"
-                    },
-                    communication: {
-                        nom: "Communication",
-                        desactive: true
-                    }
-                }
+                cercles: Cercles
             }
         },
         mounted() {

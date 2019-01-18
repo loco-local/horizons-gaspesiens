@@ -69,15 +69,35 @@
                         Bénévoles
                     </v-list-tile-title>
                 </v-list-tile>
-                <v-list-tile
-                        @click="Scroll.allerALaSection('cercle', '/cercle')">
-                    <v-list-tile-action>
-                        <v-icon>group_work</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-title>
-                        Comités
-                    </v-list-tile-title>
-                </v-list-tile>
+                <!--<v-list-tile-->
+                <!--@click="Scroll.allerALaSection('cercle', '/cercle')">-->
+                <!--<v-list-tile-action>-->
+                <!--<v-icon>group_work</v-icon>-->
+                <!--</v-list-tile-action>-->
+                <!--<v-list-tile-title>-->
+                <!--Comités-->
+                <!--</v-list-tile-title>-->
+                <!--</v-list-tile>-->
+                <v-list-group
+                        prepend-icon="group_work"
+                        no-action
+                        expanded
+                        :value="true"
+                >
+                    <v-list-tile slot="activator">
+                        <v-list-tile-content>
+                            <v-list-tile-title>Comités</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+
+                    <v-list-tile v-for="(cercle, clef) in cercles" :key="nom"
+                                 v-if="!cercle.desactive"
+                                 @click="Scroll.allerALaSection(clef, '/cercle/' + clef)">
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{cercle.nom}}</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list-group>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar flat style="background-color:white;" fixed>
@@ -88,7 +108,7 @@
             <router-link to="/">
                 <img :src='require("./assets/logo-horizontal.png")'
                      class="pull-right"
-                       :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
+                     :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
                 <img :src='require("./assets/logo-loco-horizontal.png")'
                      :height="this.toolbarLogoHeight + 20" v-if="false">
             </router-link>
@@ -99,7 +119,8 @@
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">attach_money</v-icon>
+                    }">attach_money
+                    </v-icon>
                     <span v-if="$vuetify.breakpoint.lgAndUp">Don et paiement</span>
                     <span v-if="$vuetify.breakpoint.mdAndDown">Don/paiement</span>
                 </v-btn>
@@ -108,21 +129,26 @@
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">calendar_today</v-icon>
+                    }">calendar_today
+                    </v-icon>
                     Calendrier
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('benevole', '/benevole')" v-if="$vuetify.breakpoint.lgAndUp">
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                       @click="Scroll.allerALaSection('benevole', '/benevole')" v-if="$vuetify.breakpoint.lgAndUp">
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">group</v-icon>
+                    }">group
+                    </v-icon>
                     <span>Bénévoles</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')" v-if="$vuetify.breakpoint.lgAndUp">
+                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
+                       v-if="$vuetify.breakpoint.lgAndUp">
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">group_work</v-icon>
+                    }">group_work
+                    </v-icon>
                     <span>Comités</span>
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
@@ -131,14 +157,16 @@
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">location_on</v-icon>
+                    }">location_on
+                    </v-icon>
                     Adresse
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="$refs.phoneDialog.show()">
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">phone</v-icon>
+                    }">phone
+                    </v-icon>
                     <span v-if="$vuetify.breakpoint.lgAndUp">Téléphones</span>
                     <span v-if="$vuetify.breakpoint.mdAndDown">Tel</span>
                 </v-btn>
@@ -146,7 +174,8 @@
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
-                    }">email</v-icon>
+                    }">email
+                    </v-icon>
                     Infolettre
                 </v-btn>
                 <v-btn flat href="https://www.facebook.com/locolocal1" :small="$vuetify.breakpoint.mdAndDown">
@@ -176,6 +205,7 @@
     import PhoneNumbers from '@/PhoneNumbers'
     import VueScrollTo from 'vue-scrollto'
     import Scroll from '@/Scroll'
+    import Cercles from '@/Cercles'
 
     export default {
         name: 'App',
@@ -203,7 +233,8 @@
             return {
                 Scroll: Scroll,
                 drawer: false,
-                phoneNumbers: PhoneNumbers.data
+                phoneNumbers: PhoneNumbers.data,
+                cercles: Cercles
             }
         },
         methods: {
