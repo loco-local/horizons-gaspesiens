@@ -1,8 +1,8 @@
 <template>
-    <div class="mt-5">
-        <v-layout row wrap>
-            <v-flex xs12 class="text-xs-left ml-4 mt-5">
-                <h3 class="title">
+    <div class="mt-5 pt-5">
+        <v-layout row wrap class="ml-4 mt-5">
+            <v-flex xs12 class="text-xs-left">
+                <h3 class="title mb-3">
                     SEL de mer, le système d'échange de services en Gaspésie!
                 </h3>
                 <p>

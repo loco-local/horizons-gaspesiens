@@ -538,6 +538,12 @@
                                 Sel De Mer
                             </v-list-tile-title>
                         </v-list-tile>
+                        <v-list-tile
+                                to="/sécession">
+                            <v-list-tile-title>
+                                Sécession
+                            </v-list-tile-title>
+                        </v-list-tile>
                     </v-list>
                 </v-card-text>
             </v-card>

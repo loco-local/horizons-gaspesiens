@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Demi from './views/Demi.vue'
 import SelDeMer from './views/SelDeMer.vue'
+import Sécession from './views/Sécession.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +49,11 @@ export default new Router({
             path: '/sel-de-mer',
             name: 'SelDeMer',
             component: SelDeMer
-        }
+        },
+        {
+            path: '/sécession',
+            name: 'Sécession',
+            component: Sécession
+        },
     ]
 })
