@@ -4,6 +4,9 @@ import Home from './views/Home.vue'
 import Demi from './views/Demi.vue'
 import SelDeMer from './views/SelDeMer.vue'
 import Sécession from './views/Sécession.vue'
+import Bibliotheque from './views/Bibliotheque.vue'
+import CafePhilo from './views/CafePhilo.vue'
+import FabLab from './views/FabLab.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -55,5 +58,20 @@ export default new Router({
             name: 'Sécession',
             component: Sécession
         },
+        {
+            path: '/bibliothèque',
+            name: 'Bibliotheque',
+            component: Bibliotheque
+        },
+        {
+            path: '/café-philo',
+            name: 'CafePhilo',
+            component: CafePhilo
+        },
+        {
+            path: '/fablab',
+            name: 'FabLab',
+            component: FabLab
+        }
     ]
 })

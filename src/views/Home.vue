@@ -544,6 +544,24 @@
                                 Sécession
                             </v-list-tile-title>
                         </v-list-tile>
+                        <v-list-tile
+                                to="/bibliothèque">
+                            <v-list-tile-title>
+                                Bibliothèque collective
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
+                                to="/café-philo">
+                            <v-list-tile-title>
+                                Cafés philo
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
+                                to="/fablab">
+                            <v-list-tile-title>
+                                Fablab
+                            </v-list-tile-title>
+                        </v-list-tile>
                     </v-list>
                 </v-card-text>
             </v-card>
