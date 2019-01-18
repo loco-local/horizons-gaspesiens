@@ -129,66 +129,68 @@
             </router-link>
             <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        @click="Scroll.allerALaSection('paiement', '/paiement')">
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
                     }">attach_money
                     </v-icon>
-                    <span v-if="$vuetify.breakpoint.lgAndUp">Don et paiement</span>
-                    <span v-if="$vuetify.breakpoint.mdAndDown">Don/paiement</span>
+                    <span v-if="$vuetify.breakpoint.xlOnly">
+                        Don et paiement
+                    </span>
+                    <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        @click="Scroll.allerALaSection('calendrier', '/calendrier')">
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">calendar_today
                     </v-icon>
                     Calendrier
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        @click="Scroll.allerALaSection('benevole', '/benevole')" v-if="$vuetify.breakpoint.lgAndUp">
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">group
                     </v-icon>
                     <span>Bénévoles</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
-                       v-if="$vuetify.breakpoint.lgAndUp">
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
+                       >
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">group_work
                     </v-icon>
                     <span>Comités</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
                 >
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">location_on
                     </v-icon>
                     Adresse
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat @click="$refs.phoneDialog.show()">
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="$refs.phoneDialog.show()">
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">phone
                     </v-icon>
-                    <span v-if="$vuetify.breakpoint.lgAndUp">Téléphones</span>
-                    <span v-if="$vuetify.breakpoint.mdAndDown">Tel</span>
+                    <span v-if="$vuetify.breakpoint.xlOnly">Téléphones</span>
+                    <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.mdAndDown" flat href="http://eepurl.com/c7iHkr">
                     <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.lgAndUp,
-                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">email
                     </v-icon>
                     Infolettre
@@ -319,7 +321,7 @@
         },
         computed: {
             toolbarLogoHeight: function () {
-                if (this.$vuetify.breakpoint.mdAndDown) {
+                if (this.$vuetify.breakpoint.lgAndDown) {
                     return 25;
                 }
                 return 30;
