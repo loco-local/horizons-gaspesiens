@@ -225,6 +225,11 @@
                     <v-card-text>
                         <div class="display-1 font-weight-thin">Balance Revenus/Dépenses 2018-2019</div>
                     </v-card-text>
+                    <v-card-title class="pt-1">
+                        <v-spacer></v-spacer>
+                        Balance totale: {{balanceTotale}}$
+                        <v-spacer></v-spacer>
+                    </v-card-title>
 
                     <v-divider></v-divider>
 
@@ -571,11 +576,13 @@
 
 <script>
 
+    const profitRatioOnLemieux = 0.45;
+
     const revenus = [
         1524.13,
         927.81,
         1067.04,
-        1162.73,
+        3662.73,
         967.12,
         1456.65,
         4150.01,
@@ -699,9 +706,11 @@
                 for (let i = 0; i < revenus.length; i++) {
                     let balanceAbsolue = revenus[i] - depenses[i];
                     let balanceSansLemieux = balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
-                    let balanceAvecProfitsLemieux = balanceSansLemieux + lemieuxRevenus[i] * .4
+                    let balanceAvecProfitsLemieux = balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux
+                    this.balanceTotale += balanceAvecProfitsLemieux;
                     balance[i] = Math.floor(balanceAvecProfitsLemieux);
                 }
+                this.balanceTotale = Math.floor(this.balanceTotale);
                 return balance;
             },
             dessinComptable() {
@@ -753,11 +762,12 @@
         },
         data() {
             return {
+                balanceTotale: 0,
                 comitesArchives: false,
                 Scroll: Scroll,
                 desjardinsStepper: 1,
                 dataLoaded: false,
-                balance: this.balanceCalculate(),
+                balance: 0,
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
@@ -824,6 +834,7 @@
             }
         },
         mounted() {
+            this.balance = this.balanceCalculate();
             GoogleCharts.load(this.dessinComptable, {'packages': ['line']});
             this.goToRightSection();
         }
