@@ -206,11 +206,6 @@
                     ou
                     <v-btn @click="$refs.phoneDialog.show()">télélphonez nous</v-btn>
                 </p>
-                <p>
-                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows
-                    ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent
-                    votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
-                </p>
             </div>
         </Cercle>
         <v-divider></v-divider>
@@ -771,7 +766,7 @@
                 membresDeCercles: [
                     {
                         nom: "Hug Arsenault",
-                        cv: "Hôtelier, artiste de murale et de la débrouille, danseur de promiximité, cayen.",
+                        cv: "Hôtelier, artiste de murale et de la débrouille, danseur de proximité, cayen.",
                         avatar: "hug1-petit-carre.png",
                         cercles: ['ca', 'financement', 'gouvernance']
                     },
