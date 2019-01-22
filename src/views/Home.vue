@@ -251,7 +251,7 @@
                     <router-link to="/cercle/financement">comité financement !</router-link>
                 </p>
                 <p>
-                    De plus, en date de janvier 2019, nous avons une dette sans intérêts de 7555.89$ sur laquelle nous
+                    De plus, en date de janvier 2019, nous avons une dette sans intérêts de 11955.89$ sur laquelle nous
                     payons 100$ / mois.
                 </p>
             </div>
@@ -784,7 +784,7 @@
                     },
                     {
                         nom: "Bruno Mainville",
-                        cv: "Peintre, Enseignant, Philosophe, Massothérapeuthe",
+                        cv: "Peintre, Enseignant, Philosophe",
                         avatar: "bruno-petit-carre.jpg",
                         cercles: ['espace']
                     },
@@ -808,7 +808,7 @@
                     },
                     {
                         nom: "Francine Larocque",
-                        cv: "Enseignante retraitée, nature, démocratie participative, chant",
+                        cv: "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
                         avatar: "francine-petit-carre.png",
                         cercles: ['groupe']
                     },
