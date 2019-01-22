@@ -7,6 +7,7 @@ import Sécession from './views/Sécession.vue'
 import Bibliotheque from './views/Bibliotheque.vue'
 import CafePhilo from './views/CafePhilo.vue'
 import FabLab from './views/FabLab.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,27 +21,47 @@ export default new Router({
         },
         {
             path: '/cercle/:comite',
-            name: 'home',
+            name: 'comite',
+            component: Home
+        },
+        {
+            path: '/loco-linux',
+            name: 'loco-linux',
+            component: Home
+        },
+        {
+            path: '/produits-lemieux',
+            name: 'produits-lemieux',
+            component: Home
+        },
+        {
+            path: '/groupe-achat',
+            name: 'groupe-achat',
+            component: Home
+        },
+        {
+            path: '/collaborium',
+            name: 'collaborium',
             component: Home
         },
         {
             path: '/cercle',
-            name: 'home',
+            name: 'cercle',
             component: Home
         },
         {
             path: '/paiement',
-            name: 'home',
+            name: 'paiement',
             component: Home
         },
         {
             path: '/calendrier',
-            name: 'home',
+            name: 'calendrier',
             component: Home
         },
         {
             path: '/benevole',
-            name: 'home',
+            name: 'benevole',
             component: Home
         },
         {

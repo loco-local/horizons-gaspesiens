@@ -55,11 +55,9 @@
                         Comités:
                         <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">
-                                <router-link :to="'/cercle/' + props.item" v-if="!cercleEstDesactive(props.item)">
-                                    <span @click="Scroll.allerALaSection(props.item)">
-                                        {{nomDeCercle(props.item)}}
-                                    </span>
-                                </router-link>
+                                <a href="#" @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)" v-if="!cercleEstDesactive(props.item)" >
+                                    {{nomDeCercle(props.item)}}
+                                </a>
                                 <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{nomDeCercle(props.item)}}</span>
                             </template>
                             <v-icon slot="divider" class="pa-0 ma-0 caption">lens</v-icon>
@@ -98,7 +96,7 @@
                 </h1>
             </v-flex>
         </v-layout>
-        <Cercle title="Collaborium et espace de vie" anchor="espace" image="travailler au LL.jpg">
+        <Cercle title="Collaborium et espace de vie" anchor="collaborium" image="travailler au LL.jpg">
             <div slot="subtitle">
                 Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme francisé pour
                 "Coworking space".
@@ -127,7 +125,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Groupe d'achat" anchor="groupe" image="string-bean-3861864_640.jpg">
+        <Cercle title="Groupe d'achat" anchor="groupe-achat" image="string-bean-3861864_640.jpg">
             <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
             <div slot="subtitle">
                 Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
@@ -162,7 +160,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Loco Linux" anchor="linux" image="loco-linux2.jpg">
+        <Cercle title="Loco Linux" anchor="loco-linux" image="loco-linux2.jpg">
             <div slot="subtitle">
                 Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour
                 aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont
@@ -181,7 +179,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Produits Lemieux" anchor="lemieux">
+        <Cercle title="Produits Lemieux" anchor="produits-lemieux">
             <div slot="image">
                 <v-img :src="require('../assets/lemieux.jpg')"
                        :class="{
@@ -693,6 +691,13 @@
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
             },
+            cercle: function(clefDeCercle){
+                return this.cercles[clefDeCercle];
+            },
+            lienDeCercle: function (clefDeCercle) {
+                let lien = this.cercles[clefDeCercle].lien;
+                return lien ? lien : '/cercle/' + clefDeCercle;
+            },
             cercleEstDesactive: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].desactive;
             },
@@ -751,6 +756,8 @@
                 }
                 if (this.$route.params.comite) {
                     section = this.$route.params.comite;
+                }else if (this.$route.name !== 'home') {
+                    section = this.$route.name;
                 }
                 Scroll.allerALaSection(section)
             }

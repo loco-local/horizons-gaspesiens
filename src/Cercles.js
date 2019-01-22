@@ -7,25 +7,39 @@ export default{
         desactive: true
     },
     espace: {
-        nom: "Collaborium et espace de vie"
+        nom: "Collaborium et espace de vie",
+        containerId: "collaborium",
+        lien: "/collaborium"
     },
     groupe: {
-        nom: "Groupe d'achat"
+        nom: "Groupe d'achat",
+        containerId: "groupe-achat",
+        lien: "/groupe-achat"
     },
     linux: {
-        nom: "Loco Linux"
+        nom: "Loco Linux",
+        containerId: "loco-linux",
+        lien: "/loco-linux"
     },
     comptable: {
-        nom: "Comptabilité"
+        nom: "Comptabilité",
+        containerId: "comptable",
+        lien: "/cercle/comptable"
     },
     gouvernance: {
-        nom: "Gouvernance"
+        nom: "Gouvernance",
+        containerId: "gouvernance",
+        lien: "/cercle/gouvernance"
     },
     financement: {
-        nom: "Financement"
+        nom: "Financement",
+        containerId: "financement",
+        lien: "/cercle/financement"
     },
     lemieux: {
-        nom: "Produits Nettoyants Lemieux"
+        nom: "Produits Nettoyants Lemieux",
+        containerId: "produits-lemieux",
+        lien: "/produits-lemieux"
     },
     communication: {
         nom: "Communication",
