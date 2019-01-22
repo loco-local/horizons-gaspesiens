@@ -41,20 +41,14 @@
 
 <script>
     import PhoneNumbers from '@/PhoneNumbers'
-
+    import Shuffle from '@/Shuffle'
     export default {
         name: "PhoneDialog",
         data() {
             return {
                 phoneModal: false,
-                phoneNumbers: PhoneNumbers.data
-            }
-        },
-        computed: {
-            phoneNumbersRandom() {
-                return this.phoneNumbers.sort(function () {
-                    return 0.5 - Math.random()
-                });
+                phoneNumbers: PhoneNumbers.data,
+                phoneNumbersRandom: Shuffle.array(PhoneNumbers.data)
             }
         },
         methods: {

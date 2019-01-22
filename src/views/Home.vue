@@ -55,7 +55,9 @@
                         Comités:
                         <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">
-                                <a href="#" @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)" v-if="!cercleEstDesactive(props.item)" >
+                                <a href="#"
+                                   @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)"
+                                   v-if="!cercleEstDesactive(props.item)">
                                     {{nomDeCercle(props.item)}}
                                 </a>
                                 <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{nomDeCercle(props.item)}}</span>
@@ -651,6 +653,7 @@
     import Cercles from '@/Cercles'
 
     import Scroll from '@/Scroll'
+    import Shuffle from '@/Shuffle'
 
     export default {
         name: 'home',
@@ -680,18 +683,13 @@
             },
             host: function () {
                 return window.location.hostname;
-            },
-            membresDeCerclesTries: function () {
-                return this.membresDeCercles.sort(function () {
-                    return 0.5 - Math.random()
-                });
             }
         },
         methods: {
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
             },
-            cercle: function(clefDeCercle){
+            cercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle];
             },
             lienDeCercle: function (clefDeCercle) {
@@ -756,13 +754,75 @@
                 }
                 if (this.$route.params.comite) {
                     section = this.$route.params.comite;
-                }else if (this.$route.name !== 'home') {
+                } else if (this.$route.name !== 'home') {
                     section = this.$route.name;
                 }
                 Scroll.allerALaSection(section)
             }
         },
         data() {
+            let membresDeCercles = [
+                {
+                    nom: "Hug Arsenault",
+                    cv: "Hôtelier, artiste de murale et de la débrouille, danseur de proximité, cayen.",
+                    avatar: "hug1-petit-carre.png",
+                    cercles: ['ca', 'financement', 'gouvernance']
+                },
+                {
+                    nom: "Gabrielle Margineanu",
+                    cv: "Graphiste, Bédéiste, mère, humaniste",
+                    avatar: "gaby-petit-carre.jpg",
+                    cercles: ['ca', 'comptable']
+                },
+                {
+                    nom: "Marie-Claire Larocque",
+                    cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
+                    avatar: "msea-petit-carre.jpg",
+                    cercles: ['ca', 'espace', 'communication']
+                },
+                {
+                    nom: "Bruno Mainville",
+                    cv: "Peintre, Enseignant, Philosophe",
+                    avatar: "bruno-petit-carre.jpg",
+                    cercles: ['espace']
+                },
+                {
+                    nom: "Roy Poirier",
+                    cv: "Électronicien, lauréat de la meilleure tarte de Maria",
+                    avatar: "roy-petit-carre.jpg",
+                    cercles: ['linux']
+                },
+                {
+                    nom: "Vincent Blouin",
+                    cv: "Programmeur, architecte de carte mentale, sportif",
+                    avatar: "chenzo2-petit-carre.jpg",
+                    cercles: ['linux', 'ca', 'comptable', 'financement']
+                },
+                {
+                    nom: "Fred Guilbault",
+                    cv: "Programmeur, sécurité informatique, marin",
+                    avatar: "fred-guilbault-petit-carre.jpg",
+                    cercles: ['linux']
+                },
+                {
+                    nom: "Francine Larocque",
+                    cv: "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
+                    avatar: "francine-petit-carre.png",
+                    cercles: ['groupe']
+                },
+                {
+                    nom: "Arielle Paiement",
+                    cv: "Animation de groupe, Communication non violente, charpentière",
+                    avatar: "arielle-petit-carre.jpg",
+                    cercles: ['gouvernance']
+                },
+                {
+                    nom: "Martin Zibeau",
+                    cv: "Comédien, Philosophe, Expérimenteur social",
+                    avatar: "martin-zibeau-petit-carre.jpg",
+                    cercles: ['lemieux']
+                }
+            ];
             return {
                 balanceTotale: 0,
                 comitesArchives: false,
@@ -770,68 +830,8 @@
                 desjardinsStepper: 1,
                 dataLoaded: false,
                 balance: 0,
-                membresDeCercles: [
-                    {
-                        nom: "Hug Arsenault",
-                        cv: "Hôtelier, artiste de murale et de la débrouille, danseur de proximité, cayen.",
-                        avatar: "hug1-petit-carre.png",
-                        cercles: ['ca', 'financement', 'gouvernance']
-                    },
-                    {
-                        nom: "Gabrielle Margineanu",
-                        cv: "Graphiste, Bédéiste, mère, humaniste",
-                        avatar: "gaby-petit-carre.jpg",
-                        cercles: ['ca', 'comptable']
-                    },
-                    {
-                        nom: "Marie-Claire Larocque",
-                        cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
-                        avatar: "msea-petit-carre.jpg",
-                        cercles: ['ca', 'espace', 'communication']
-                    },
-                    {
-                        nom: "Bruno Mainville",
-                        cv: "Peintre, Enseignant, Philosophe",
-                        avatar: "bruno-petit-carre.jpg",
-                        cercles: ['espace']
-                    },
-                    {
-                        nom: "Roy Poirier",
-                        cv: "Électronicien, lauréat de la meilleure tarte de Maria",
-                        avatar: "roy-petit-carre.jpg",
-                        cercles: ['linux']
-                    },
-                    {
-                        nom: "Vincent Blouin",
-                        cv: "Programmeur, architecte de carte mentale, sportif",
-                        avatar: "chenzo2-petit-carre.jpg",
-                        cercles: ['linux', 'ca', 'comptable', 'financement']
-                    },
-                    {
-                        nom: "Fred Guilbault",
-                        cv: "Programmeur, sécurité informatique, marin",
-                        avatar: "fred-guilbault-petit-carre.jpg",
-                        cercles: ['linux']
-                    },
-                    {
-                        nom: "Francine Larocque",
-                        cv: "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
-                        avatar: "francine-petit-carre.png",
-                        cercles: ['groupe']
-                    },
-                    {
-                        nom: "Arielle Paiement",
-                        cv: "Animation de groupe, Communication non violente, charpentière",
-                        avatar: "arielle-petit-carre.jpg",
-                        cercles: ['gouvernance']
-                    },
-                    {
-                        nom: "Martin Zibeau",
-                        cv: "Comédien, Philosophe, Expérimenteur social",
-                        avatar: "martin-zibeau-petit-carre.jpg",
-                        cercles: ['lemieux']
-                    }
-                ],
+                membresDeCerclesTries: Shuffle.array(membresDeCercles),
+                membresDeCercles: membresDeCercles,
                 cercles: Cercles
             }
         },
