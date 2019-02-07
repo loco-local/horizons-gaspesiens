@@ -209,7 +209,7 @@
                         horizonsgaspesiens@gmail.com
                     </a>
                     ou
-                    <v-btn @click="$refs.phoneDialog.show()">télélphonez nous</v-btn>
+                    <v-btn @click="$refs.phoneDialog.show()">téléphonez nous</v-btn>
                 </p>
             </div>
         </Cercle>
