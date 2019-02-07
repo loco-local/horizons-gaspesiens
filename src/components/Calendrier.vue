@@ -29,6 +29,7 @@
                         slider-color="yellow"
                         grow
                         class="pa-0 ma-0"
+                        v-model="calendarTab"
                 >
                     <v-tab>
                         <v-icon class="mr-4">calendar_today</v-icon>
@@ -43,6 +44,9 @@
                     <v-tab-item class="mt-3 text-xs-left pl-4">
                         <p class="">
                             Ce calendrier est notre référence pour réserver le local!
+                            <v-btn @click="calendarTab = 1">
+                                Réserver
+                            </v-btn>
                         </p>
                         <p class="text-xs-left pa-0 ma-0">
                             Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection documentaires,
@@ -205,7 +209,8 @@
                                     des conflits d'horaire.
                                 </p>
                                 <p>
-                                    Pour la réservation du Loco Local, la règle de « la première arrivée, première servie
+                                    Pour la réservation du Loco Local, la règle de « la première arrivée, première
+                                    servie
                                     »
                                     est de mise.
                                 </p>
@@ -331,6 +336,7 @@
         data: function () {
             return {
                 reserveTab: null,
+                calendarTab: 0,
                 priceRows: [
                     {
                         row1: 'Grande salle (40 personnes)',

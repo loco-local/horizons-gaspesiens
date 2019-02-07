@@ -24,7 +24,8 @@ export default{
     comptable: {
         nom: "Comptabilité",
         containerId: "comptable",
-        lien: "/cercle/comptable"
+        lien: "/cercle/comptable",
+        desactive: true
     },
     gouvernance: {
         nom: "Gouvernance",

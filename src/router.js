@@ -17,6 +17,7 @@ export default new Router({
         {
             path: '/',
             name: 'home',
+            alias:'/loco-local',
             component: Home
         },
         {

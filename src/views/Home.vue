@@ -5,14 +5,19 @@
                 column
                 justify-center
                 id="header-banner"
+                class="vh-center text-xs-center"
         >
-            <h1 class="display-2 font-weight-thin mb-3 white--text">
-                Géré de façon horizontale par ses membres
-            </h1>
-            <h4 class="subheading font-weight-thin white--text">
-                Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
-                environnementales
-            </h4>
+            <v-card color="transparent" flat>
+                <v-card-title class="vh-center">
+                    <h1 class="display-3 font-weight-thin mb-3 white--text">
+                        Géré de façon horizontale par ses membres
+                    </h1>
+                    <h4 class="font-weight-thin white--text" style="font-size:19px;">
+                        Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
+                        environnementales
+                    </h4>
+                </v-card-title>
+            </v-card>
             <!--<h4 class="subheading font-weight-thin">-->
             <!--Adresser les inégalités sociales et environnementales-->
             <!--</h4>-->
@@ -140,7 +145,7 @@
                 </p>
                 <v-card class="mt-4">
                     <v-list>
-                        <v-list-tile href="mailto:groupe.achat.hg@gmail.com">
+                        <v-list-tile href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com">
                             <v-list-tile-action>
                                 <v-icon>mail</v-icon>
                             </v-list-tile-action>
@@ -209,7 +214,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Comptabilité" anchor="comptable" class="pa-0">
+        <Cercle title="Comptabilité" anchor="comptable" class="pa-0" v-if="false">
             <div slot="image" class="pa-0">
                 <v-card
                         class="text-xs-center pa-0"
@@ -764,7 +769,7 @@
             let membresDeCercles = [
                 {
                     nom: "Hug Arsenault",
-                    cv: "Hôtelier, artiste de murale et de la débrouille, danseur de proximité, cayen.",
+                    cv: "Cayen, artiste de murale et de la débrouille, danseur alternatif, aubergiste.",
                     avatar: "hug1-petit-carre.png",
                     cercles: ['ca', 'financement', 'gouvernance']
                 },

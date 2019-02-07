@@ -61,12 +61,12 @@
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
-                        @click="Scroll.allerALaSection('benevole', '/benevole')">
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
                     <v-list-tile-action>
                         <v-icon>group</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-title>
-                        Bénévoles
+                        Devenez membre
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
@@ -151,15 +151,15 @@
                     Calendrier
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
-                       @click="Scroll.allerALaSection('benevole', '/benevole')" v-if="$vuetify.breakpoint.lgAndUp">
+                       href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform" v-if="$vuetify.breakpoint.lgAndUp">
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">group
                     </v-icon>
-                    <span>Bénévoles</span>
+                    <span>Devenez membre</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform"
                        >
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
