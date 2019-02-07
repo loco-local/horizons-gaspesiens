@@ -284,7 +284,7 @@
                                         la personne référence et une façon de la contacter
                                     </li>
                                     <li>
-                                        s’il s’agit d’un réservation du local en entier (i.e. qu’aucune autre activité
+                                        s’il s’agit d’une réservation du local en entier (i.e. qu’aucune autre activité
                                         ne peut avoir lieu au même moment)
                                     </li>
                                 </ul>
