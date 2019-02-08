@@ -159,7 +159,7 @@
                     </v-icon>
                     <span>Devenez membre</span>
                 </v-btn>
-                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform"
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
                        >
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
