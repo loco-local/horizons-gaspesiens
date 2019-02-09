@@ -132,7 +132,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Groupe d'achat" anchor="groupe-achat" image="string-bean-3861864_640.jpg">
+        <Cercle title="Groupe d'achat" anchor="groupe-achat" image="groupe-achat.jpg">
             <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
             <div slot="subtitle">
                 Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
@@ -151,6 +151,14 @@
                             </v-list-tile-action>
                             <v-list-tile-title>
                                 Demande d'adhésion à groupe.achat.hg@gmail.com
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile href="https://foodclub.org/bonaventure">
+                            <v-list-tile-action>
+                                <v-icon>fa-clipboard-list</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>
+                                Logiciel de commande
                             </v-list-tile-title>
                         </v-list-tile>
                         <v-list-tile
@@ -389,22 +397,27 @@
                             <div class="mb-3 title">
                                 Transferts par AccèsD Desjardins
                             </div>
+                            <div class="mb-3 body-1">
+                                <span class="font-weight-bold">Transit caisse</span> 40002
+                                <span class="font-weight-bold">No Institution</span> 815
+                                <span class="font-weight-bold">Folio</span> 0451286
+                            </div>
                             <v-stepper non-linear v-model="desjardinsStepper" class="ml-4">
                                 <v-stepper-header>
                                     <v-stepper-step editable :complete="desjardinsStepper > 2" step="1" color="black">
-                                        Étape 1
+                                        Virement
                                     </v-stepper-step>
 
                                     <v-divider></v-divider>
 
                                     <v-stepper-step editable :complete="desjardinsStepper > 2" step="2" color="black">
-                                        Étape 2
+                                        Folio et Transit
                                     </v-stepper-step>
 
                                     <v-divider></v-divider>
 
                                     <v-stepper-step editable step="3" color="black">
-                                        Étape 3
+                                        Fréquence
                                     </v-stepper-step>
                                 </v-stepper-header>
 
