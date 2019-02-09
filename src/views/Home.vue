@@ -291,7 +291,7 @@
         </Cercle>
         <v-divider></v-divider>
         <Cercle title="Notre structure de gouvernance: l'Holacracy!" anchor="gouvernance" class="pa-0"
-                image="reunion-debout.jpg">
+                :image="gouvernanceImages">
             <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
             <div slot="subtitle">
                 L'Holacracy est une méthode de gestion horizontale qui fonctionne avec des cercles (comités) de travail
@@ -850,7 +850,11 @@
                 balance: 0,
                 membresDeCerclesTries: Shuffle.array(membresDeCercles),
                 membresDeCercles: membresDeCercles,
-                cercles: Cercles
+                cercles: Cercles,
+                gouvernanceImages:[
+                    "reunion-debout.jpg",
+                    "gouvernance-2.jpg"
+                ]
             }
         },
         mounted() {

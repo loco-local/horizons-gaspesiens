@@ -7,12 +7,19 @@
             }">
                 <v-layout :reverse="imageAtRight" row wrap fill-height>
                     <v-flex xs12 md5 class="">
+                        <v-carousel v-if="image && isCarousel">
+                            <v-carousel-item
+                                    v-for="(item,i) in image"
+                                    :key="i"
+                                    :src="require('../assets/' + item)"
+                            ></v-carousel-item>
+                        </v-carousel>
                         <v-img
                                 :src="require('../assets/' + image)"
                                 :class="{
                                     'ml-5': $vuetify.breakpoint.mdAndUp
                                 }"
-                                v-if="image"
+                                v-if="image && !isCarousel"
                                 contain
                         ></v-img>
                         <slot name="image"></slot>
@@ -43,7 +50,12 @@
 <script>
     export default {
         name: "Comite",
-        props: ['image', 'title', 'anchor', 'imageAtRight']
+        props: ['image', 'title', 'anchor', 'imageAtRight'],
+        computed: {
+            isCarousel: function () {
+                return this.image.constructor === Array;
+            }
+        }
     }
 </script>
 
