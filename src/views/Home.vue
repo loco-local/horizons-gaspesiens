@@ -13,7 +13,7 @@
                         Géré de façon horizontale par ses membres
                     </h1>
                     <h4 class="font-weight-thin white--text" style="font-size:19px;">
-                        Pour partager des resources et des projets afin de s'adresser aux inégalités sociales et
+                        Pour partager des ressources et des projets afin de s'adresser aux inégalités sociales et
                         environnementales
                     </h4>
                 </v-card-title>
@@ -58,7 +58,8 @@
                         </p>
                         <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
                         Comités:
-                        <v-breadcrumbs :items="membre.cercles" class="d-inline pa-0 subheading bullet-like" small>
+                        <v-breadcrumbs :items="membre.cercles"
+                                       class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">
                                 <a href="#"
                                    @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)"
@@ -704,6 +705,16 @@
             }
         },
         methods: {
+            trierCercles: function (cercles) {
+                return cercles.sort(function (aClef, bClef) {
+                    let aDesactive = this.cercle(aClef).desactive;
+                    let bDesactive = this.cercle(bClef).desactive;
+                    return (aDesactive === bDesactive) ? (
+                            aClef.localeCompare(bClef)
+                        ) :
+                        aDesactive ? 1 : -1;
+                }.bind(this));
+            },
             nomDeCercle: function (clefDeCercle) {
                 return this.cercles[clefDeCercle].nom;
             },
@@ -851,13 +862,16 @@
                 membresDeCerclesTries: Shuffle.array(membresDeCercles),
                 membresDeCercles: membresDeCercles,
                 cercles: Cercles,
-                gouvernanceImages:[
+                gouvernanceImages: [
                     "reunion-debout.jpg",
                     "gouvernance-2.jpg"
                 ]
             }
         },
         mounted() {
+            this.membresDeCercles.forEach(function (membre) {
+                membre.cercles = this.trierCercles(membre.cercles)
+            }.bind(this));
             this.balance = this.balanceCalculate();
             GoogleCharts.load(this.dessinComptable, {'packages': ['line']});
             this.goToRightSection();
