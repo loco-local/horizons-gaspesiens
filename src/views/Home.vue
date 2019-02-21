@@ -795,7 +795,7 @@
                 {
                     nom: "Marie-Claire Larocque",
                     cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
-                    avatar: "msea-petit-carre.jpg",
+                    avatar: "msea-petit-cube.jpg",
                     cercles: ['ca', 'espace', 'communication']
                 },
                 {
