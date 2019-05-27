@@ -152,9 +152,10 @@
                                         <v-data-table
                                                 class="subheading"
                                                 hide-actions
+                                                :headers="priceHeaders"
                                                 :items="priceRows"
                                         >
-                                            <template slot="headers">
+                                            <template slot="headers" slot-scope="props">
                                                 <tr>
                                                     <th></th>
                                                     <th class="subheading">
@@ -337,6 +338,13 @@
             return {
                 reserveTab: null,
                 calendarTab: 0,
+                priceHeaders: [{
+                    text: ''
+                },{
+                    text: ''
+                },{
+                    text: ''
+                }],
                 priceRows: [
                     {
                         row1: 'Grande salle (40 personnes)',
