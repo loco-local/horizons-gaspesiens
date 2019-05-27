@@ -399,7 +399,7 @@
                                 Transferts par AccèsD Desjardins
                             </div>
                             <div class="mb-3 body-1">
-                                <span class="font-weight-bold">Transit caisse</span> 40002
+                                <span class="font-weight-bold">Transit caisse</span> 40001
                                 <span class="font-weight-bold">No Institution</span> 815
                                 <span class="font-weight-bold">Folio</span> 0451286
                             </div>
@@ -444,7 +444,7 @@
                                             <v-card-title class="subheading pb-0">
                                                 <span>
                                                 <span class="font-weight-bold">Transit caisse</span>
-                                                40002
+                                                40001
                                                     </span>
                                                 <v-divider
                                                         class="mx-3"
@@ -469,9 +469,9 @@
                                                         0451286
                                                 </span>
                                             </v-card-title>
-                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                                <v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>
-                                            </v-card-text>
+                                            <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
+                                                <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
+                                            <!--</v-card-text>-->
                                         </v-card>
                                     </v-stepper-content>
 
