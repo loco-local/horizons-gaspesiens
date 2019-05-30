@@ -66,6 +66,16 @@ export default new Router({
             component: Home
         },
         {
+            path: '/page-pourpre',
+            name: 'page-pourpre',
+            component: Home
+        },
+        {
+            path: '/pop-doc',
+            name: 'pop-doc',
+            component: Home
+        },
+        {
             path: '/le-demi',
             name: 'demi',
             component: Demi

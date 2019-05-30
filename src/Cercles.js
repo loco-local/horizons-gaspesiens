@@ -1,7 +1,7 @@
 /**
  * Copyright Vincent Blouin GNU General Public License v3.0
  */
-export default{
+export default {
     ca: {
         nom: "CA",
         desactive: true
@@ -45,5 +45,15 @@ export default{
     communication: {
         nom: "Communication",
         desactive: true
+    },
+    pagePourpre: {
+        nom: "Page Pourpre",
+        containerId: "page-pourpre",
+        lien:"/page-pourpre"
+    },
+    popDoc: {
+        nom: "Pop Doc",
+        containerId: "pop-doc",
+        lien:"/pop-doc"
     }
 }

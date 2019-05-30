@@ -176,6 +176,33 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+        <Cercle title="Page Pourpre" anchor="page-pourpre" :image="pagePourpreImages">
+            <div slot="subtitle">
+                Bibliothèque féministe, trans, queer et inclusive
+            </div>
+            <div slot="content">
+                <p class="">
+                    La bibliothèque la Page Pourpre, c'est un espace de rencontre et un centre de référence permettant
+                    d'emprunter gratuitement des livres sur diverses questions féministes, queer, intersectionelles, ou
+                    autrement connexe, ainsi que des ouvrages de fiction et de poésie touchant à notre thématique. Sera
+                    éventuellement disponible une sélection de livres pour enfants qui vont à l'encontre des stéréotypes
+                    de genre et parlent de transsexualité, d'homoparentalité et d'éducation non-binaire, mais également
+                    des ressources sur l'éducation et la parentalité à l'extérieur de la binarité des genres.
+                </p>
+            </div>
+        </Cercle>
+        <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">
+            <div slot="subtitle"></div>
+            <div slot="content">
+                <p class="">
+                    Les Soirées Pop Doc du Loco Local ont pour objectif d'offrir aux gens de la Baie-des-Chaleurs la
+                    possibilité de s'exposer à des réalités culturelles différentes à travers le documentaire et
+                    d'échanger sur des sujets sociaux et politiques qui traversent difficilement le filtre des médias
+                    conventionnels dans les régions éloignées du Québec, comme la Gaspésie.
+                </p>
+            </div>
+        </Cercle>
+        <v-divider></v-divider>
         <Cercle title="Loco Linux" anchor="loco-linux" image="loco-linux2.jpg">
             <div slot="subtitle">
                 Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour
@@ -197,14 +224,16 @@
         <v-divider></v-divider>
         <Cercle title="Produits Lemieux" anchor="produits-lemieux">
             <div slot="image">
-                <v-img :src="require('../assets/lemieux.jpg')"
-                       :class="{
-                                    'ml-5': $vuetify.breakpoint.mdAndUp
-                                }"
-                       height="600"
-                       contain>
-
-                </v-img>
+                <div id="fb-root"></div>
+                <div class="fb-video" data-href="https://www.facebook.com/locolocal1/videos/2443361492361573/" data-width="500" data-show-text="false">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/locolocal1/videos/2443361492361573/">
+                            <a href="https://www.facebook.com/locolocal1/videos/2443361492361573/">How to Share With Just Friends</a>
+                            <p>How to share with just friends.</p>
+                            Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on Friday, December 5, 2014
+                        </blockquote>
+                    </div>
+                </div>
             </div>
             <div slot="subtitle">
                 En plus de sentir bon, d'utiliser des produits nettoyants qui ne sont pas nocifs pour votre santé et
@@ -271,7 +300,7 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Financement" anchor="financement" class="pa-0" image="financement.jpg">
+        <Cercle title="Financement" anchor="financement" class="pa-0" image="sourie.jpg">
             <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
             <div slot="subtitle">
                 La créativité, la débrouille et la persévérence sont au rendez-vous pour ceux qui veulent développer
@@ -470,7 +499,7 @@
                                                 </span>
                                             </v-card-title>
                                             <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
-                                                <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
+                                            <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
                                             <!--</v-card-text>-->
                                         </v-card>
                                     </v-stepper-content>
@@ -850,6 +879,12 @@
                     cv: "Comédien, Philosophe, Expérimenteur social",
                     avatar: "martin-zibeau-petit-carre.jpg",
                     cercles: ['lemieux']
+                },
+                {
+                    nom: "Solange Lecot",
+                    cv: "Défend l'opprimé, aime les choses bien rangées et les chiens",
+                    avatar: "solange-petit-carre.jpeg",
+                    cercles: ['pagePourpre', 'popDoc']
                 }
             ];
             return {
@@ -865,6 +900,16 @@
                 gouvernanceImages: [
                     "reunion-debout.jpg",
                     "gouvernance-2.jpg"
+                ],
+                pagePourpreImages: [
+                    "page-pourpre.jpg",
+                    "livres-pourpre.jpg"
+                ],
+                popDocImages: [
+                    "popdoc/popdoc.jpg",
+                    "popdoc/inuk-en-colere.jpg",
+                    "popdoc/etats-unis-afrique.jpg",
+                    "popdoc/chez-le-barbier.jpg",
                 ]
             }
         },
