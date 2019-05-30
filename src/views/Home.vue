@@ -882,7 +882,7 @@
                 },
                 {
                     nom: "Solange Lecot",
-                    cv: "Défend l'opprimé, aime les choses bien rangées et les chiens",
+                    cv: "Défend l'oppriméE, aime les choses bien rangées et les chiens",
                     avatar: "solange-petit-carre.jpeg",
                     cercles: ['pagePourpre', 'popDoc']
                 }
