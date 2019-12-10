@@ -192,7 +192,10 @@
                                                         <p>
                                                             Dans tous les cas l'organisme ou la personne porteuse de
                                                             l’activité
-                                                            devra être membre, indiquer sur l’agenda son nom et numéro
+                                                            devra
+                                                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
+                                                                être membre
+                                                            </a>, indiquer sur l’agenda son nom et numéro
                                                             de tel
                                                             ainsi que les <a href="#" @click.prevent="reserveTab = 3">informations
                                                             à spécifier</a>.
