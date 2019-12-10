@@ -566,6 +566,12 @@
                             </v-list-tile-title>
                         </v-list-tile>
                         <v-list-tile
+                                to="/loco-linux">
+                            <v-list-tile-title>
+                                Loco Linux
+                            </v-list-tile-title>
+                        </v-list-tile>
+                        <v-list-tile
                                 to="/sel-de-mer">
                             <v-list-tile-title>
                                 Sel De Mer
