@@ -46,6 +46,10 @@ export default {
         nom: "Communication",
         desactive: true
     },
+    siteWeb: {
+        nom: "Site web",
+        desactive: true
+    },
     pagePourpre: {
         nom: "Page Pourpre",
         containerId: "page-pourpre",

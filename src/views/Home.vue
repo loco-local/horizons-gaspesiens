@@ -839,7 +839,7 @@
                     nom: "Vincent Blouin",
                     cv: "Programmeur, architecte de carte mentale, sportif",
                     avatar: "chenzo2-petit-carre.jpg",
-                    cercles: ['ca', 'comptable', 'financement']
+                    cercles: ['siteWeb']
                 },
                 // {
                 //     nom: "Fred Guilbault",
@@ -869,7 +869,7 @@
                     nom: "Solange Lecot",
                     cv: "Défend l'oppriméE, aime les choses bien rangées et les chiens",
                     avatar: "solange-petit-carre.jpeg",
-                    cercles: ['pagePourpre', 'popDoc']
+                    cercles: ['ca', 'pagePourpre', 'popDoc']
                 }
             ];
             return {
