@@ -7,6 +7,7 @@ import Sécession from './views/Sécession.vue'
 import Bibliotheque from './views/Bibliotheque.vue'
 import CafePhilo from './views/CafePhilo.vue'
 import FabLab from './views/FabLab.vue'
+import LocoLinux from './views/LocoLinux.vue'
 
 Vue.use(Router)
 
@@ -28,7 +29,7 @@ export default new Router({
         {
             path: '/loco-linux',
             name: 'loco-linux',
-            component: Home
+            component: LocoLinux
         },
         {
             path: '/produits-lemieux',
@@ -58,6 +59,11 @@ export default new Router({
         {
             path: '/calendrier',
             name: 'calendrier',
+            component: Home
+        },
+        {
+            path: '/réservation',
+            name: 'réservation',
             component: Home
         },
         {

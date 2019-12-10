@@ -203,34 +203,19 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
-        <Cercle title="Loco Linux" anchor="loco-linux" image="loco-linux2.jpg">
-            <div slot="subtitle">
-                Loco Linux est composé de Geek bénévoles qui remonteront vos ordinateurs pour pas cher (juste assez pour
-                aider à financer Linux et le Loco Local), ou qui les remonteront pour les donner à des familles qui ont
-                moins de moyens.
-            </div>
-            <div slot="content">
-                <p class="">
-                    Vous avez un vieil ordinateur qui traine dans votre sous-sol, et vous pensez qu'il est rendu trop
-                    vieux: pu à la mode, trop lent, trop "dépassé"?
-                </p>
-                <p>
-                    C'est parce que vous ne connaissez pas encore le système d'exploitation Linux. C'est comme Windows
-                    ou Mac, mais LIBRE! La différence, c'est qu'il n'installe pas des mises à jour qui ralentissent
-                    votre ordinateur jusqu'à ce que vous vous disiez que vous en avez besoin d'un nouveau.
-                </p>
-            </div>
-        </Cercle>
         <v-divider></v-divider>
         <Cercle title="Produits Lemieux" anchor="produits-lemieux">
             <div slot="image">
                 <div id="fb-root"></div>
-                <div class="fb-video" data-href="https://www.facebook.com/locolocal1/videos/2443361492361573/" data-width="500" data-show-text="false">
+                <div class="fb-video" data-href="https://www.facebook.com/locolocal1/videos/2443361492361573/"
+                     data-width="500" data-show-text="false">
                     <div class="fb-xfbml-parse-ignore">
                         <blockquote cite="https://www.facebook.com/locolocal1/videos/2443361492361573/">
-                            <a href="https://www.facebook.com/locolocal1/videos/2443361492361573/">How to Share With Just Friends</a>
+                            <a href="https://www.facebook.com/locolocal1/videos/2443361492361573/">How to Share With
+                                Just Friends</a>
                             <p>How to share with just friends.</p>
-                            Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on Friday, December 5, 2014
+                            Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on Friday, December 5,
+                            2014
                         </blockquote>
                     </div>
                 </div>
@@ -801,19 +786,19 @@
             },
             goToRightSection: function () {
                 let section = "app";
-                if (this.$route.path === "/paiement") {
-                    section = "paiement";
-                }
-                if (this.$route.path === "/calendrier") {
-                    section = "calendrier";
-                }
-                if (this.$route.path === "/benevole") {
-                    section = "benevole";
-                }
                 if (this.$route.params.comite) {
                     section = this.$route.params.comite;
                 } else if (this.$route.name !== 'home') {
                     section = this.$route.name;
+                }
+                if (this.$route.path === "/paiement") {
+                    section = "paiement";
+                }
+                if (["/calendrier", "/réservation"].indexOf(this.$route.path) > -1) {
+                    section = "calendrier";
+                }
+                if (this.$route.path === "/benevole") {
+                    section = "benevole";
                 }
                 Scroll.allerALaSection(section)
             }
@@ -844,24 +829,24 @@
                     avatar: "bruno-petit-carre.jpg",
                     cercles: ['espace']
                 },
-                {
-                    nom: "Roy Poirier",
-                    cv: "Électronicien, lauréat de la meilleure tarte de Maria",
-                    avatar: "roy-petit-carre.jpg",
-                    cercles: ['linux']
-                },
+                // {
+                //     nom: "Roy Poirier",
+                //     cv: "Électronicien, lauréat de la meilleure tarte de Maria",
+                //     avatar: "roy-petit-carre.jpg",
+                //     cercles: []
+                // },
                 {
                     nom: "Vincent Blouin",
                     cv: "Programmeur, architecte de carte mentale, sportif",
                     avatar: "chenzo2-petit-carre.jpg",
-                    cercles: ['linux', 'ca', 'comptable', 'financement']
+                    cercles: ['ca', 'comptable', 'financement']
                 },
-                {
-                    nom: "Fred Guilbault",
-                    cv: "Programmeur, sécurité informatique, marin",
-                    avatar: "fred-guilbault-petit-carre.jpg",
-                    cercles: ['linux']
-                },
+                // {
+                //     nom: "Fred Guilbault",
+                //     cv: "Programmeur, sécurité informatique, marin",
+                //     avatar: "fred-guilbault-petit-carre.jpg",
+                //     cercles: []
+                // },
                 {
                     nom: "Francine Larocque",
                     cv: "Enseignante alternative retraitée, jardinière, démocratie participative, chant",

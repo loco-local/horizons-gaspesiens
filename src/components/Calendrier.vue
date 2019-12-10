@@ -31,17 +31,20 @@
                         class="pa-0 ma-0"
                         v-model="calendarTab"
                 >
-                    <v-tab>
+                    <v-tab @click.prevent="$router.push('calendrier')" href="#">
                         <v-icon class="mr-4">calendar_today</v-icon>
                         Calendrier
                     </v-tab>
-                    <v-tab>
+                    <v-tab @click.prevent="$router.push('réservation')" href="#">
                         <v-icon class="mr-4">
                             fa-clipboard
                         </v-icon>
                         Réservation
                     </v-tab>
-                    <v-tab-item class="mt-3 text-xs-left pl-4">
+                    <v-tab-item class="mt-3 text-xs-left" :class="{
+                        'pl-0' : $vuetify.breakpoint.mdAndUp,
+                        'pl-0' : $vuetify.breakpoint.smAndDown
+                    }">
                         <p class="">
                             Ce calendrier est notre référence pour réserver le local!
                             <v-btn @click="calendarTab = 1">
@@ -57,7 +60,7 @@
                                 src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
                                 style=" border-width:0 " width="100%"></iframe>
                     </v-tab-item>
-                    <v-tab-item touchless>
+                    <v-tab-item touchless class='pl-0'>
                         <v-tabs
                                 color="cyan"
                                 dark
@@ -67,7 +70,7 @@
                                 v-model="reserveTab"
                                 touchless
                         >
-                            <v-tab>
+                            <v-tab href="#" @click.prevent>
                                 <v-icon class="mr-2">
                                     attach_money
                                 </v-icon>
@@ -75,7 +78,7 @@
                                     Contributions et coûts
                                 </span>
                             </v-tab>
-                            <v-tab>
+                            <v-tab href="#" @click.prevent>
                                 <v-icon class="mr-2">
                                     priority_high
                                 </v-icon>
@@ -83,7 +86,7 @@
                                     Priorité
                                 </span>
                             </v-tab>
-                            <v-tab>
+                            <v-tab href="#" @click.prevent>
                                 <v-icon class="mr-2">
                                     fa-edit
                                 </v-icon>
@@ -91,7 +94,7 @@
                                     Inscrire mon activité
                                 </span>
                             </v-tab>
-                            <v-tab>
+                            <v-tab href="#" @click.prevent>
                                 <v-icon class="mr-2">
                                     info
                                 </v-icon>
@@ -99,7 +102,7 @@
                                     Informations à spécifier
                                 </span>
                             </v-tab>
-                            <v-tab>
+                            <v-tab href="#" @click.prevent>
                                 <v-icon class="mr-2">
                                     fa-broom
                                 </v-icon>
@@ -107,39 +110,110 @@
                                     Entretien du local
                                 </span>
                             </v-tab>
-                            <v-tab-item class="text-xs-left pl-4 pt-4">
+                            <v-tab-item class="text-xs-left pt-4" :class="{
+                                'pl-4' : $vuetify.breakpoint.mdAndUp,
+                                'pl-2' : $vuetify.breakpoint.smAndDown
+                            }">
                                 <h3 class="title mb-3">
                                     Contributions et coûts
                                 </h3>
                                 <p>
                                     Le Loco Local est auto-financé grâce à la contribution de ses utilisateur.trices.
                                 </p>
-                                <v-card class="ma-4 elevation-8">
+                                <v-card :class="{
+                                    'ma-4 elevation-8' : $vuetify.breakpoint.mdAndUp,
+                                    'ml-0 pa-0' : $vuetify.breakpoint.smAndDown
+                                }" :flat="$vuetify.breakpoint.smAndDown">
                                     <!--<v-card-title class="title font-weight-bold">-->
                                     <!--A-->
                                     <!--</v-card-title>-->
-                                    <v-card-text>
-                                        <p>
-                                            Une contribution volontaire est proposée lors des activités initiées par les
-                                            citoyen.ne.s. La
-                                            bonne vieille méthode du « tour de chapeau », basée sur la confiance, nous
-                                            permet
-                                            d'amasser
-                                            des
-                                            dons pour le Local.
-                                        </p>
-                                        <p>
-                                            *Pour les contributions volontaires: une boîte et des enveloppes sont
-                                            disponibles à
-                                            l'entrée
-                                            du
-                                            local.
-                                        </p>
+                                    <v-card-text :class="{
+                                        'ma-0 pa-0' : $vuetify.breakpoint.smAndDown
+                                    }">
+                                        Nous avons 2 formules d’auto-financement
+                                        <v-list three-line-line>
+                                            <v-list-tile>
+                                                <v-list-tile-action v-if="$vuetify.breakpoint.mdAndUp">
+                                                    <v-icon>fa-hat-cowboy</v-icon>
+                                                </v-list-tile-action>
+                                                <v-list-tile-content>
+                                                    <v-list-tile-title class="font-weight-regular" :class="{
+                                                        'subheading' : $vuetify.breakpoint.smAndDown,
+                                                        'title' : $vuetify.breakpoint.mdAndUp
+                                                    }">
+                                                        <span v-if="$vuetify.breakpoint.mdAndUp">
+                                                            La bonne vielle méthode du «tour de chapeau»
+                                                        </span>
+                                                        <v-icon class="mr-1" v-if="$vuetify.breakpoint.smAndDown" small>
+                                                            fa-hat-cowboy
+                                                        </v-icon>
+                                                        <span v-if="$vuetify.breakpoint.smAndDown">
+                                                            La méthode du «tour de chapeau»
+                                                        </span>
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title class="subheading">
+                                                        Pour les activités citoyennes ouvertes à tous.
+                                                    </v-list-tile-sub-title>
+                                                </v-list-tile-content>
+                                            </v-list-tile>
+                                            <v-list-tile class="mt-2">
+                                                <v-list-tile-action v-if="$vuetify.breakpoint.mdAndUp">
+                                                    <v-icon>
+                                                        event
+                                                    </v-icon>
+                                                </v-list-tile-action>
+                                                <v-list-tile-content>
+                                                    <v-list-tile-title class="font-weight-regular" :class="{
+                                                        'subheading' : $vuetify.breakpoint.smAndDown,
+                                                        'title' : $vuetify.breakpoint.mdAndUp
+                                                    }">
+                                                        <v-icon class="mr-1" v-if="$vuetify.breakpoint.smAndDown" small>
+                                                            event
+                                                        </v-icon>
+                                                        Location par un membre ou un organisme
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title class="subheading">
+                                                        Pour un usage publique ou privé.
+                                                    </v-list-tile-sub-title>
+                                                </v-list-tile-content>
+                                            </v-list-tile>
+                                        </v-list>
+                                        <v-card flat>
+                                            <v-card-text>
+                                                <v-layout row wrap>
+                                                    <v-flex sm12 md2 lg1 class="text-xs-center" :class="{
+                                                        'pb-4': $vuetify.breakpoint.smAndDown
+                                                    }">
+                                                        <v-icon large>
+                                                            warning
+                                                        </v-icon>
+                                                    </v-flex>
+                                                    <v-flex sm12 md10 lg11 class="title font-weight-regular">
+                                                        <p>
+                                                            Dans tous les cas l'organisme ou la personne porteuse de
+                                                            l’activité
+                                                            devra être membre, indiquer sur l’agenda son nom et numéro
+                                                            de tel
+                                                            ainsi que les <a href="#" @click.prevent="reserveTab = 3">informations
+                                                            à spécifier</a>.
+                                                        </p>
+                                                        <p>
+                                                            Elle s’engage aussi à passer le chapeau, sauf en location,
+                                                            et
+                                                            remplir le
+                                                            «coupon d’activité» qui se trouve à côté de la boîte à
+                                                            contribution.
+                                                            L'insérer dans l’enveloppe avec l’argent et déposer le tout
+                                                            dans la
+                                                            boite à
+                                                            contribution.
+                                                        </p>
+                                                    </v-flex>
+                                                </v-layout>
+                                            </v-card-text>
+                                        </v-card>
                                     </v-card-text>
                                 </v-card>
-                                <p class="font-weight-bold text-xs-center">
-                                    OU
-                                </p>
                                 <v-card class="ma-4 elevation-8">
                                     <!--<v-card-title class="title font-weight-bold">-->
                                     <!--B-->
@@ -182,13 +256,15 @@
                                         </v-data-table>
                                     </v-card-text>
                                 </v-card>
-                                <p class="mt-4">
-                                    * Pour la location de la salle à la collectivité: merci de nous écrire à
-                                    <a href="mailto:horizonsgaspesiens@gmail.com">
-                                        horizonsgaspesiens@gmail.com
-                                    </a>
-                                    pour qu'une facture soit émise au besoin!
-                                </p>
+                                <v-card flat>
+                                    <v-card-text class="text-xs-center">
+                                        Facture sur demande
+                                        <a href="mailto:horizonsgaspesiens@gmail.com">
+                                            <v-icon class="ml-2 mr-2">email</v-icon>
+                                            horizonsgaspesiens@gmail.com
+                                        </a>
+                                    </v-card-text>
+                                </v-card>
                                 <v-layout row>
                                     <v-flex xs12 class="text-xs-right">
                                         <v-btn @click="nextTab()">
@@ -321,28 +397,22 @@
 
 <script>
     import PhoneDialog from '@/components/PhoneDialog'
+    import Scroll from '@/Scroll'
 
     export default {
         components: {
             PhoneDialog
         },
-        computed: {
-            calendarHeight: function () {
-                if (this.$vuetify.breakpoint.mdAndDown) {
-                    return 350;
-                }
-                return 600;
-            }
-        },
         data: function () {
             return {
                 reserveTab: null,
                 calendarTab: 0,
+                calendarHeight: 0,
                 priceHeaders: [{
                     text: ''
-                },{
+                }, {
                     text: ''
-                },{
+                }, {
                     text: ''
                 }],
                 priceRows: [
@@ -364,9 +434,34 @@
                 ]
             }
         },
+        mounted: function () {
+            this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 600;
+            this.refreshTabWithPath();
+        },
         methods: {
             nextTab() {
                 this.reserveTab = parseInt(this.reserveTab) + 1;
+                Scroll.allerALaSection('calendrier');
+            },
+            refreshTabWithPath: function () {
+                if (this.$route.name === "calendrier") {
+                    this.calendarTab = 0;
+                    return;
+                }
+                if (this.$route.name === "réservation") {
+                    this.calendarTab = 1;
+                    return;
+                }
+            }
+        },
+        computed: {
+            routeName: function () {
+                return this.$route.name;
+            }
+        },
+        watch: {
+            routeName: function () {
+                this.refreshTabWithPath();
             }
         }
     }

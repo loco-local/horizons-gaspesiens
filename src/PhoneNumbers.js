@@ -12,11 +12,6 @@ export default{
             "nom": "Gabrielle Margineanu",
             "avatar": "gaby-petit-carre.jpg",
             "telephone": "418-751-3103"
-        },
-        {
-            "nom": "Vincent Blouin",
-            "avatar": "chenzo2-petit-carre.jpg",
-            "telephone": "581-233-9481"
         }
     ]
 }

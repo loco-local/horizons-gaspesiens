@@ -48,7 +48,16 @@
                         <v-icon>calendar_today</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-title>
-                        Calendrier et réservation
+                        Calendrier
+                    </v-list-tile-title>
+                </v-list-tile>
+                <v-list-tile
+                        @click="Scroll.allerALaSection('calendrier', '/réservation')">
+                    <v-list-tile-action>
+                        <v-icon>fa-clipboard</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-title>
+                        Réservation
                     </v-list-tile-title>
                 </v-list-tile>
                 <v-list-tile
@@ -151,6 +160,16 @@
                     Calendrier
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
+                       @click="Scroll.allerALaSection('calendrier', '/réservation')">
+                    <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.xlOnly,
+                        'mr-0' : $vuetify.breakpoint.lgAndDown
+                    }">
+                        fa-clipboard
+                    </v-icon>
+                    Réservation
+                </v-btn>
+                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform" v-if="$vuetify.breakpoint.lgAndUp">
                     <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
@@ -158,15 +177,6 @@
                     }">group
                     </v-icon>
                     <span>Devenez membre</span>
-                </v-btn>
-                <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="Scroll.allerALaSection('cercle', '/cercle')"
-                       >
-                    <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.xlOnly,
-                        'mr-0' : $vuetify.breakpoint.lgAndDown
-                    }">group_work
-                    </v-icon>
-                    <span>Comités</span>
                 </v-btn>
                 <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
                        href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
