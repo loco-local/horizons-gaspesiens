@@ -50,7 +50,7 @@
                         'mt-3': $vuetify.breakpoint.mdAndUp,
                         'mt-0': $vuetify.breakpoint.smAndDown
                     }">
-                        <h3 class="subheading">
+                        <h3 class="heading font-weight-regular">
                             {{membre.nom}}
                         </h3>
                         <p class="grey-text mb-0">
