@@ -476,4 +476,8 @@
         top: 20px;
         background-color: white;
     }
+
+    .v-tabs__slider {
+        height: 3px;
+    }
 </style>
