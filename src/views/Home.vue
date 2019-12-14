@@ -57,7 +57,6 @@
                             {{membre.cv}}
                         </p>
                         <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
-                        Comités:
                         <v-breadcrumbs :items="membre.cercles"
                                        class="d-inline pa-0 subheading bullet-like" small>
                             <template slot="item" slot-scope="props" class="">

@@ -16,11 +16,6 @@ export default {
         containerId: "groupe-achat",
         lien: "/groupe-achat"
     },
-    linux: {
-        nom: "Loco Linux",
-        containerId: "loco-linux",
-        lien: "/loco-linux"
-    },
     comptable: {
         nom: "Comptabilité",
         containerId: "comptable",
