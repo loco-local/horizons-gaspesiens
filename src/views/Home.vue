@@ -872,8 +872,14 @@
                 },
                 {
                     nom: "Solange Lecot",
-                    cv: "Défend l'oppriméE, aime les choses bien rangées et les chiens",
+                    cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
                     avatar: "solange-petit-carre.jpeg",
+                    cercles: ['ca', 'pagePourpre', 'popDoc']
+                },
+                {
+                    nom: "Dominique Landry",
+                    cv: "Jardinère engagée, Artiste de scène, Femme à tout faire",
+                    avatar: "dô-petit-carre.jpg",
                     cercles: ['ca', 'pagePourpre', 'popDoc']
                 }
             ];
