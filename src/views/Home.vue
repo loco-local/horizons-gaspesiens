@@ -878,7 +878,7 @@
                 },
                 {
                     nom: "Dominique Landry",
-                    cv: "Jardinère engagée, Artiste de scène, Femme à tout faire",
+                    cv: "Organisatrice d'événements, Artiste de scène, Jardinère engagée",
                     avatar: "dô-petit-carre.jpg",
                     cercles: ['ca', 'pagePourpre', 'popDoc']
                 }
