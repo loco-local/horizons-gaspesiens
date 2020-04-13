@@ -284,6 +284,32 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+<!--        <Cercle title="Ping Pong" anchor="ping-pong" class="pa-0" image="ping-pong.jpg">-->
+<!--            &lt;!&ndash;https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/&ndash;&gt;-->
+<!--            <div slot="subtitle">-->
+<!--                Sport de raquette dans un espace ouvert 24/24, été comme hiver-->
+<!--            </div>-->
+<!--            <div slot="content">-->
+<!--                <p>-->
+<!--                    Consultez le-->
+<!--                    <a href="#" @click.prevent="Scroll.allerALaSection('calendrier')">-->
+<!--                        calendrier de réservation-->
+<!--                    </a>-->
+<!--                    et-->
+<!--                    <v-btn @click="$refs.phoneDialog.show()">-->
+<!--                        téléphonez nous-->
+<!--                    </v-btn>-->
+<!--                    pour savoir comment réserver la première fois.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Prix suggéré de 5$/personne par heure. Pour réserver, il faut-->
+<!--                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">-->
+<!--                        être membre.-->
+<!--                    </a>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </Cercle>-->
+        <v-divider></v-divider>
         <Cercle title="Financement" anchor="financement" class="pa-0" image="sourie.jpg">
             <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
             <div slot="subtitle">
