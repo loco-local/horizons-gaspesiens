@@ -400,108 +400,210 @@
                 </h1>
             </v-flex>
         </v-layout>
-        <v-layout row wrap class="vh-center font-weight-thin">
+        <v-layout row wrap class="font-weight-thin">
             <v-flex xs12>
                 <v-card flat :class="{
                 'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
                 'mt-5 mb-3': $vuetify.breakpoint.smAndDown
             }">
                     <v-layout row wrap fill-height>
-                        <v-flex xs12 md6 class="text-xs-center">
-                            <div class="mb-3 title">
-                                Transferts par AccèsD Desjardins
+                        <v-flex xs12 md6 class="">
+                            <div class="title mb-3">
+                                Comment payer
                             </div>
-                            <div class="mb-3 body-1">
-                                <span class="font-weight-bold">Transit caisse</span> 40001
-                                <span class="font-weight-bold">No Institution</span> 815
-                                <span class="font-weight-bold">Folio</span> 0451286
-                            </div>
-                            <v-stepper non-linear v-model="desjardinsStepper" class="ml-4">
-                                <v-stepper-header>
-                                    <v-stepper-step editable :complete="desjardinsStepper > 2" step="1" color="black">
-                                        Virement
-                                    </v-stepper-step>
+                            <v-layout row wrap class="pb-4">
+                                <v-flex xs0 md2></v-flex>
+                                <v-flex xs12 md8 class="text-xs-left">
+                                    <v-icon class="mr-2">email</v-icon>
+                                    <span class="font-weight-bold">Par courriel</span>
+                                    à horizonsgaspesiens@gmail.com
+                                    <v-btn flat v-clipboard:copy="'horizonsgaspesiens@gmail.com'" small>copier</v-btn>
+                                </v-flex>
+                            </v-layout>
+                            <v-divider class="pb-4"></v-divider>
+                            <v-layout row wrap>
+                                <v-flex xs0 md2 xl2></v-flex>
+                                <v-flex xs12 md4 xl3 class="text-xs-left">
+                                    <span class="font-weight-bold">Par transit desjardins</span>
+                                </v-flex>
+                                <v-flex xs12 md6 xl7 class="text-xs-left" style="margin-top:-7px;">
+                                    <div>
+                                        <span class="font-weight-bold">Transit caisse:</span> 40001
+                                        <v-btn flat v-clipboard:copy="'40001'" small>copier</v-btn>
+                                    </div>
+                                    <div>
+                                        <span class="font-weight-bold">No Institution:</span> 815
+                                        <v-btn flat v-clipboard:copy="'815'" small>copier</v-btn>
+                                    </div>
+                                    <div>
+                                        <span class="font-weight-bold">Folio:</span> 0451286
+                                        <v-btn flat v-clipboard:copy="'0451286'" small>copier</v-btn>
+                                    </div>
+                                </v-flex>
+                            </v-layout>
+                            <v-card>
+                                <v-card-title class="font-weight-bold text-xs-center vh-center">
+                                    Instructions de paiement détaillées
+                                </v-card-title>
+                                <v-card-text>
+                                    <v-tabs
+                                            color="cyan"
+                                            dark
+                                            slider-color="yellow"
+                                            grow
+                                            class="pa-0 ma-0"
+                                            v-model="paiementTab"
+                                    >
+                                        <v-tab @click.prevent="paiementTab=0" href="#">
+                                            <v-icon class="mr-4">email</v-icon>
+                                            Par courriel
+                                        </v-tab>
+                                        <v-tab @click.prevent="paiementTab=1" href="#">
+                                            Par transit Desjardins
+                                        </v-tab>
+                                        <v-tab-item>
+                                            <v-stepper non-linear v-model="paiementCourrielStepper" class="ml-4">
+                                                <v-stepper-header>
+                                                    <v-stepper-step editable :complete="paiementCourrielStepper > 1"
+                                                                    step="1"
+                                                                    color="black">
+                                                        Virement
+                                                    </v-stepper-step>
 
-                                    <v-divider></v-divider>
+                                                    <v-divider></v-divider>
 
-                                    <v-stepper-step editable :complete="desjardinsStepper > 2" step="2" color="black">
-                                        Folio et Transit
-                                    </v-stepper-step>
+                                                    <v-stepper-step editable :complete="paiementCourrielStepper > 2"
+                                                                    step="2"
+                                                                    color="black">
+                                                        Destinataire
+                                                    </v-stepper-step>
+                                                </v-stepper-header>
 
-                                    <v-divider></v-divider>
+                                                <v-stepper-items>
+                                                    <v-stepper-content step="1">
+                                                        <v-card>
+                                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                                                                <v-img :src="require('../assets/virement interact.jpg')"></v-img>
+                                                            </v-card-text>
+                                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                                Dans votre AccèsD, choisissez "Virez" puis "Virements
+                                                                Interact"
+                                                            </v-card-text>
+                                                        </v-card>
+                                                    </v-stepper-content>
 
-                                    <v-stepper-step editable step="3" color="black">
-                                        Fréquence
-                                    </v-stepper-step>
-                                </v-stepper-header>
+                                                    <v-stepper-content step="2">
+                                                        <v-card
+                                                        >
+                                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                                                                <v-img :src="require('../assets/faire virement.png')"></v-img>
+                                                            </v-card-text>
+                                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                                Comme question de sécurité, vous pouvez inscrire:
+                                                                Q:Dans quelle ville est le Loco Local?
+                                                                R:Bonaventure
+                                                            </v-card-text>
+                                                        </v-card>
+                                                    </v-stepper-content>
+                                                </v-stepper-items>
+                                            </v-stepper>
+                                        </v-tab-item>
+                                        <v-tab-item>
+                                            <v-stepper non-linear v-model="desjardinsStepper" class="ml-4">
+                                                <v-stepper-header>
+                                                    <v-stepper-step editable :complete="desjardinsStepper > 1" step="1"
+                                                                    color="black">
+                                                        Virement
+                                                    </v-stepper-step>
 
-                                <v-stepper-items>
-                                    <v-stepper-content step="1">
-                                        <v-card>
-                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                                <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
-                                            </v-card-text>
-                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
-                                                Dans votre AccèsD, choisissez "Virez" puis "Virements entre personnes
-                                                Desjardins"
-                                            </v-card-text>
-                                        </v-card>
-                                    </v-stepper-content>
+                                                    <v-divider></v-divider>
 
-                                    <v-stepper-content step="2">
-                                        <v-card
-                                        >
-                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
-                                                Cliquez sur l'onglet "Ajouter un bénéficiaire"
-                                            </v-card-text>
-                                            <v-card-title class="subheading pb-0">
+                                                    <v-stepper-step editable :complete="desjardinsStepper > 2" step="2"
+                                                                    color="black">
+                                                        Folio et Transit
+                                                    </v-stepper-step>
+
+                                                    <v-divider></v-divider>
+
+                                                    <v-stepper-step editable step="3" color="black">
+                                                        Fréquence
+                                                    </v-stepper-step>
+                                                </v-stepper-header>
+
+                                                <v-stepper-items>
+                                                    <v-stepper-content step="1">
+                                                        <v-card>
+                                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                                                                <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
+                                                            </v-card-text>
+                                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                                Dans votre AccèsD, choisissez "Virez" puis "Virements
+                                                                entre
+                                                                personnes
+                                                                Desjardins"
+                                                            </v-card-text>
+                                                        </v-card>
+                                                    </v-stepper-content>
+
+                                                    <v-stepper-content step="2">
+                                                        <v-card
+                                                        >
+                                                            <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                                                                Cliquez sur l'onglet "Ajouter un bénéficiaire"
+                                                            </v-card-text>
+                                                            <v-card-title class="subheading pb-0">
                                                 <span>
                                                 <span class="font-weight-bold">Transit caisse</span>
                                                 40001
                                                     </span>
-                                                <v-divider
-                                                        class="mx-3"
-                                                        inset
-                                                        vertical
-                                                ></v-divider>
-                                                <span>
+                                                                <v-divider
+                                                                        class="mx-3"
+                                                                        inset
+                                                                        vertical
+                                                                ></v-divider>
+                                                                <span>
                                                     <span class="font-weight-bold">
                                                         No Institution
                                                     </span>
                                                         815
                                                 </span>
-                                                <v-divider
-                                                        class="mx-3"
-                                                        inset
-                                                        vertical
-                                                ></v-divider>
-                                                <span>
+                                                                <v-divider
+                                                                        class="mx-3"
+                                                                        inset
+                                                                        vertical
+                                                                ></v-divider>
+                                                                <span>
                                                     <span class="font-weight-bold">
                                                         Folio
                                                     </span>
                                                         0451286
                                                 </span>
-                                            </v-card-title>
-                                            <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
-                                            <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
-                                            <!--</v-card-text>-->
-                                        </v-card>
-                                    </v-stepper-content>
+                                                            </v-card-title>
+                                                            <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
+                                                            <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
+                                                            <!--</v-card-text>-->
+                                                        </v-card>
+                                                    </v-stepper-content>
 
-                                    <v-stepper-content step="3">
-                                        <v-card
-                                        >
-                                            <v-card-title>
-                                                Choisisez "Une fois le" pour un transfert ponctuel ou "Mensuelle" pour
-                                                un don récurrent
-                                            </v-card-title>
-                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                                <v-img :src="require('../assets/virement mensuel.png')"></v-img>
-                                            </v-card-text>
-                                        </v-card>
-                                    </v-stepper-content>
-                                </v-stepper-items>
-                            </v-stepper>
+                                                    <v-stepper-content step="3">
+                                                        <v-card
+                                                        >
+                                                            <v-card-title>
+                                                                Choisisez "Une fois le" pour un transfert ponctuel ou
+                                                                "Mensuelle" pour
+                                                                un don récurrent
+                                                            </v-card-title>
+                                                            <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                                                                <v-img :src="require('../assets/virement mensuel.png')"></v-img>
+                                                            </v-card-text>
+                                                        </v-card>
+                                                    </v-stepper-content>
+                                                </v-stepper-items>
+                                            </v-stepper>
+                                        </v-tab-item>
+                                    </v-tabs>
+                                </v-card-text>
+                            </v-card>
                         </v-flex>
                         <v-flex xs12 md6 left>
                             <v-card-text class="text-xs-left">
@@ -887,7 +989,9 @@
                 balanceTotale: 0,
                 comitesArchives: false,
                 Scroll: Scroll,
+                paiementTab: 0,
                 desjardinsStepper: 1,
+                paiementCourrielStepper: 1,
                 dataLoaded: false,
                 balance: 0,
                 membresDeCerclesTries: Shuffle.array(membresDeCercles),
