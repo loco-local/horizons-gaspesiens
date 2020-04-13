@@ -411,9 +411,9 @@
                             <div class="title mb-3">
                                 Comment payer
                             </div>
-                            <v-layout row wrap class="pb-4">
+                            <v-layout row wrap class="pb-2">
                                 <v-flex xs0 md2></v-flex>
-                                <v-flex xs12 md8 class="text-xs-left">
+                                <v-flex xs12 md8 class="text-md-left text-xs-center">
                                     <v-icon class="mr-2">email</v-icon>
                                     <span class="font-weight-bold">Par courriel</span>
                                     à horizonsgaspesiens@gmail.com
@@ -423,10 +423,12 @@
                             <v-divider class="pb-4"></v-divider>
                             <v-layout row wrap>
                                 <v-flex xs0 md2 xl2></v-flex>
-                                <v-flex xs12 md4 xl3 class="text-xs-left">
+                                <v-flex xs12 md4 xl3 class="text-md-left text-xs-center" :class="{
+                                    'pb-2':  $vuetify.breakpoint.smAndDown
+                                }">
                                     <span class="font-weight-bold">Par transit desjardins</span>
                                 </v-flex>
-                                <v-flex xs12 md6 xl7 class="text-xs-left" style="margin-top:-7px;">
+                                <v-flex xs12 md6 xl7 class="text-md-left text-xs-center" style="margin-top:-7px;">
                                     <div>
                                         <span class="font-weight-bold">Transit caisse:</span> 40001
                                         <v-btn flat v-clipboard:copy="'40001'" small>copier</v-btn>
@@ -445,7 +447,7 @@
                                 <v-card-title class="font-weight-bold text-xs-center vh-center">
                                     Instructions de paiement détaillées
                                 </v-card-title>
-                                <v-card-text>
+                                <v-card-text class="pt-0">
                                     <v-tabs
                                             color="cyan"
                                             dark
