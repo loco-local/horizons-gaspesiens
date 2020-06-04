@@ -82,6 +82,11 @@ export default new Router({
             component: Home
         },
         {
+            path: '/imaginez-demain',
+            name: 'imaginez-demain',
+            component: Home
+        },
+        {
             path: '/le-demi',
             name: 'demi',
             component: Demi

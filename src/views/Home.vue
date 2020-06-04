@@ -203,6 +203,57 @@
         </Cercle>
         <v-divider></v-divider>
         <v-divider></v-divider>
+        <Cercle title="Imaginez demain" anchor="imaginez-demain" image="imagine-demain.jpg">
+            <div slot="subtitle">
+                C’est une tempête d’idées, une place pour exprimer nos visions les plus idéalistes, réalistes ou
+                fantaisistes
+            </div>
+            <div slot="content">
+                <p class="">
+                    Pour rêver collectivement d'un demain résilient, aligné à nos valeurs.
+                </p>
+                <p>
+                    Un espace aussi de débat d'idées, de liens et d’actions concrètes, d'humour.
+                    <br>
+                    <v-icon class="mr-2" color="orange">wb_sunny</v-icon>
+                    Que du positif S.V.P.
+                </p>
+                <v-list>
+                    <v-list-tile href="https://www.facebook.com/groups/2573860966056660/">
+                        <v-list-tile-action>
+                            <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
+                        </v-list-tile-action>
+                        <v-list-tile-title>
+                            Notre page Facebook
+                        </v-list-tile-title>
+                    </v-list-tile>
+                    <v-list-tile
+                            href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#">
+                        <v-list-tile-action>
+                            <v-icon>fa-file</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>
+                                Notre document Google Doc
+                            </v-list-tile-title>
+                            <v-list-tile-sub-title class="subheading">
+                                Fable de la perdrix et la poule
+                            </v-list-tile-sub-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list>
+                <p>
+                    Aussi
+                    discussions <v-icon class="mr-2">videocam</v-icon> zoom,
+                    rencontres physiques sur une <v-icon class="mr-2">beach_access</v-icon>plage.
+                </p>
+                <p>
+                    On câle la shot sur Facebook et on réinvente le monde
+                </p>
+            </div>
+        </Cercle>
+        <v-divider></v-divider>
+        <v-divider></v-divider>
         <Cercle title="Produits Lemieux" anchor="produits-lemieux">
             <div slot="image">
                 <div id="fb-root"></div>
