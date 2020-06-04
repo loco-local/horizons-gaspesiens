@@ -244,11 +244,11 @@
                 </v-list>
                 <p>
                     Aussi
-                    discussions <v-icon class="mr-2">videocam</v-icon> zoom,
+                    discussions <v-icon class="mr-2">videocam</v-icon> zoom et
                     rencontres physiques sur une <v-icon class="mr-2">beach_access</v-icon>plage.
                 </p>
                 <p>
-                    On câle la shot sur Facebook et on réinvente le monde
+                    On câle la shot sur Facebook et on réinvente le monde !
                 </p>
             </div>
         </Cercle>
