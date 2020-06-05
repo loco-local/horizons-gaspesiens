@@ -54,5 +54,10 @@ export default {
         nom: "Pop Doc",
         containerId: "pop-doc",
         lien:"/pop-doc"
+    },
+    imaginezDemain: {
+        nom: "Imaginez Demain",
+        containerId: "imaginez-demain",
+        lien:"/imaginez-demain"
     }
 }

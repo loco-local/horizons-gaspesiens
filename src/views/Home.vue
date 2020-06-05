@@ -243,9 +243,12 @@
                     </v-list-tile>
                 </v-list>
                 <p>
-                    Aussi
-                    discussions <v-icon class="mr-2">videocam</v-icon> zoom et
-                    rencontres physiques sur une <v-icon class="mr-2">beach_access</v-icon>plage.
+                    À surveiller : discussions
+                    <v-icon class="mr-2">videocam</v-icon>
+                    zoom et
+                    rencontres physiques sur une
+                    <v-icon class="mr-2">beach_access</v-icon>
+                    plage.
                 </p>
                 <p>
                     On câle la shot sur Facebook et on réinvente le monde !
@@ -969,7 +972,7 @@
                     nom: "Hug Arsenault",
                     cv: "Cayen, artiste de murale et de la débrouille, danseur alternatif, aubergiste.",
                     avatar: "hug_petit_carre.jpg",
-                    cercles: ['ca', 'financement', 'gouvernance']
+                    cercles: ['ca', 'financement', 'gouvernance', 'imaginezDemain']
                 },
                 {
                     nom: "Gabrielle Margineanu",
