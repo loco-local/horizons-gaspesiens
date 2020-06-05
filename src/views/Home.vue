@@ -190,18 +190,6 @@
                 </p>
             </div>
         </Cercle>
-        <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">
-            <div slot="subtitle"></div>
-            <div slot="content">
-                <p class="">
-                    Les Soirées Pop Doc du Loco Local ont pour objectif d'offrir aux gens de la Baie-des-Chaleurs la
-                    possibilité de s'exposer à des réalités culturelles différentes à travers le documentaire et
-                    d'échanger sur des sujets sociaux et politiques qui traversent difficilement le filtre des médias
-                    conventionnels dans les régions éloignées du Québec, comme la Gaspésie.
-                </p>
-            </div>
-        </Cercle>
-        <v-divider></v-divider>
         <v-divider></v-divider>
         <Cercle title="Imaginez demain" anchor="imaginez-demain" image="imagine-demain.jpg">
             <div slot="subtitle">
@@ -256,6 +244,17 @@
             </div>
         </Cercle>
         <v-divider></v-divider>
+        <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">
+            <div slot="subtitle"></div>
+            <div slot="content">
+                <p class="">
+                    Les Soirées Pop Doc du Loco Local ont pour objectif d'offrir aux gens de la Baie-des-Chaleurs la
+                    possibilité de s'exposer à des réalités culturelles différentes à travers le documentaire et
+                    d'échanger sur des sujets sociaux et politiques qui traversent difficilement le filtre des médias
+                    conventionnels dans les régions éloignées du Québec, comme la Gaspésie.
+                </p>
+            </div>
+        </Cercle>
         <v-divider></v-divider>
         <Cercle title="Produits Lemieux" anchor="produits-lemieux">
             <div slot="image">
