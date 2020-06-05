@@ -968,7 +968,7 @@
                 {
                     nom: "Hug Arsenault",
                     cv: "Cayen, artiste de murale et de la débrouille, danseur alternatif, aubergiste.",
-                    avatar: "hug1-petit-carre.png",
+                    avatar: "hug_petit_carre.jpg",
                     cercles: ['ca', 'financement', 'gouvernance']
                 },
                 {
