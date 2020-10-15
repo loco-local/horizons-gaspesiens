@@ -18,7 +18,7 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            alias:'/loco-local',
+            alias: '/loco-local',
             component: Home
         },
         {
@@ -119,6 +119,11 @@ export default new Router({
         {
             path: '/aga-2020',
             name: 'AGA2020',
+            component: () => import('@/views/AGA2020.vue')
+        },
+        {
+            path: '/aga',
+            name: 'AGA',
             component: () => import('@/views/AGA2020.vue')
         },
     ]
