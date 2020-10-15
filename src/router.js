@@ -115,6 +115,11 @@ export default new Router({
             path: '/fablab',
             name: 'FabLab',
             component: FabLab
-        }
+        },
+        {
+            path: '/aga-2020',
+            name: 'AGA2020',
+            component: () => import('@/views/AGA2020.vue')
+        },
     ]
 })
