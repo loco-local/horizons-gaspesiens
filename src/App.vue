@@ -186,7 +186,7 @@
           <template v-slot:activator="{ on }">
             <v-btn :small="$vuetify.breakpoint.lgAndDown"
                    v-on="on"
-                   color="#C62828"
+                   color="#ff3301"
                    class="white--text"
             >
               <v-icon :class="{
@@ -490,7 +490,7 @@ export default {
   /*background-image: linear-gradient(120deg, #667eea 0%, #764ba2 100%);*/
   width: 100 wh;
   height: 90vh;
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background: linear-gradient(-45deg, #007dc8, #ff1a1a, #007dc8);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
