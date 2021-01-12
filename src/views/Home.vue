@@ -79,7 +79,7 @@
         </h4>
       </v-flex>
     </v-layout>
-    <v-layout row wrap class="mb-5">
+    <v-layout row wrap class="">
       <!--<v-flex xs0 lg3></v-flex>-->
       <v-flex xs12 md6 v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
         <v-layout row class="mb-5" :class="{
@@ -134,12 +134,14 @@
       </v-flex>
       <!--<v-flex xs0 lg2></v-flex>-->
     </v-layout>
-    <v-layout row wrap class="mb-5 mt-5">
-      <v-flex xs12 class="text-xs-center title font-weight-regular">
-        Merci aussi à tous nos autres membres dont l'implication plus ponctuelle est très précieuse
-        <span style="color:red">
-          ❤
-        </span>
+    <v-layout row wrap class="mb-5">
+      <v-flex xs12 class="title font-weight-regular vh-center">
+        <v-card max-width="450">
+          <v-card-text class="text-xs-center">
+            Merci aussi à tous nos autres membres. Votre implication est très précieuse
+            <span style="color:red">❤</span>
+          </v-card-text>
+        </v-card>
       </v-flex>
     </v-layout>
     <!--<v-layout row>-->
