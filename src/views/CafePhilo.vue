@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5 pt-5">
+    <div style="margin-top:60px;">
         <v-layout row wrap>
             <v-flex xs12 class="text-xs-left pl-4 pt-0 mt-0">
                 <h3 class="title mb-3">

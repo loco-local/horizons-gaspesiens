@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <v-layout row wrap class="mt-4">
+    <div style="margin-top:60px;">
+        <v-layout row wrap>
             <v-flex xs12 md3>
                 <v-img :src="require('@/assets/demi-copie.jpg')"></v-img>
             </v-flex>
