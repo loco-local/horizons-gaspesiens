@@ -68,7 +68,8 @@
       </v-flex>
       <v-flex xs0 sm2 md3 lg4></v-flex>
     </v-layout>
-    <v-layout row wrap class="mb-5 mt-5" id="benevole">
+    <v-divider class="mt-2 mb-4"></v-divider>
+    <v-layout row wrap class="mb-5" id="benevole">
       <v-flex xs12 class="text-xs-center">
         <h1 class="display-2 font-weight-thin">
           Membres
