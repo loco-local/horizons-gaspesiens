@@ -26,9 +26,11 @@
         </h1>
       </v-flex>
     </v-layout>
-    <v-layout row wrap class="mt-4">
+    <v-layout row wrap class="mt-4" :class="{
+      'pl-2 pr-2' : $vuetify.breakpoint.smAndDown
+    }">
       <v-flex xs0 sm2 md3 lg4></v-flex>
-      <v-flex xs12 sm8 md6 lg4 class="text-xs-justify">
+      <v-flex xs12 sm8 md6 lg4 class="text-xs-left text-md-justify">
         <p class="subheading" style="font-size: 1.2em !important;font-weight: 200;line-height: 1.5;">
           Horizons Gaspésiens est une coopérative de solidarité.
           L'organisme chapeaute différentes initiatives
