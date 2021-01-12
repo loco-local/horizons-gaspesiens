@@ -48,7 +48,7 @@
             la vision,
           </a>
           <a href="#" @click.prevent="valeursModal=true">
-            valeurs
+            les valeurs
           </a>
           et
           <a href="#" @click.prevent="missionModal=true">
