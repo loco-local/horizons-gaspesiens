@@ -136,7 +136,7 @@
     </v-layout>
     <v-layout row wrap class="mb-5 mt-5">
       <v-flex xs12 class="text-xs-center title font-weight-regular">
-        Merci aussi à tous nos autres membres dont l'aide plus ponctuelle est très précieuse
+        Merci aussi à tous nos autres membres dont l'implication plus ponctuelle est très précieuse
         <span style="color:red">
           ❤
         </span>
