@@ -7,31 +7,31 @@
                     <v-spacer></v-spacer>
                     <v-icon @click="phoneModal = false">close</v-icon>
                 </v-card-title>
-                <v-card-title class="grey-text subheading grey-text pt-0 mt-0 text-xs-left">
+                <v-card-subtitle class="grey-text subtitle-1 grey-text pt-0 mt-0 text-left">
                     N'hésitez pas à contacter ces bénévoles pour le code de la porte, une réservation ou tout autre
                     sujet.
-                </v-card-title>
+                </v-card-subtitle>
                 <v-card-text class="pt-0">
-                    <v-list two-line>
-                        <v-list-tile
+                    <v-list two-line class="text-left">
+                        <v-list-item
                                 v-for="phone in phoneNumbersRandom"
                                 :key="phone.nom"
                                 avatar
                                 :href="'tel:' + phone.telephone"
                         >
-                            <v-list-tile-avatar>
+                            <v-list-item-avatar>
                                 <img :src="require('@/assets/' + phone.avatar)">
-                            </v-list-tile-avatar>
+                            </v-list-item-avatar>
 
-                            <v-list-tile-content>
-                                <v-list-tile-title>
+                            <v-list-item-content>
+                                <v-list-item-title>
                                     {{phone.nom}}
-                                </v-list-tile-title>
-                                <v-list-tile-sub-title>
+                                </v-list-item-title>
+                                <v-list-item-subtitle>
                                     {{phone.telephone}}
-                                </v-list-tile-sub-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
+                                </v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
                     </v-list>
                 </v-card-text>
             </v-card>

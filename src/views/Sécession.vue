@@ -1,11 +1,11 @@
 <template>
-    <div class="mt-5 pt-5">
+    <div class="mt-12 pt-12">
         <v-layout row wrap>
             <v-flex xs12 md3>
                 <v-img :src="require('@/assets/sécession (1).jpg')"></v-img>
             </v-flex>
-            <v-flex xs12 md9 class="text-xs-left pl-4 pt-0 mt-0">
-                <h3 class="title mb-3">
+            <v-flex xs12 md9 class="text-left pl-6 pt-0 mt-0">
+                <h3 class="title mb-4">
                     Sécession: et si la Gaspésie devenait un pays libre?
                 </h3>
                 <p>

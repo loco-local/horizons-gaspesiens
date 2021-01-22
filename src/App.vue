@@ -1,349 +1,361 @@
 <template>
   <div id="app">
-    <v-navigation-drawer
-        clipped
-        v-model="drawer"
-        enable-resize-watcher
-        fixed
-        app
-        dense
-        id="app-navigation"
-    >
-      <v-list avatar>
-        <div v-for="phone in phoneNumbers" :key="phone.nom" :href="'tel:' + phone.telephone">
-          <v-list-tile :href="'tel:' + phone.telephone">
-            <v-list-tile-action>
-              <v-icon>phone</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-title>
-              {{ phone.nom }}
-            </v-list-tile-title>
-            <v-list-tile-avatar>
-              <img :src="require('./assets/' + phone.avatar)">
-            </v-list-tile-avatar>
-          </v-list-tile>
-          <v-divider class="mb-2 mt-2"></v-divider>
-        </div>
-        <v-list-tile
-            href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
-          <v-list-tile-action>
-            <v-icon>location_on</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            193a Avenue Grand-Pré, Bonaventure, QC
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile
-            @click="Scroll.allerALaSection('paiement', '/paiement')">
-          <v-list-tile-action>
-            <v-icon>attach_money</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            Don et paiement
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile
-            @click="Scroll.allerALaSection('calendrier', '/calendrier')">
-          <v-list-tile-action>
-            <v-icon>calendar_today</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            Calendrier
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile
-            @click="Scroll.allerALaSection('calendrier', '/réservation')">
-          <v-list-tile-action>
-            <v-icon>fa-clipboard</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            Réservation
-          </v-list-tile-title>
-        </v-list-tile>
-        <!--                <v-list-tile-->
-        <!--                        href="http://eepurl.com/c7iHkr">-->
-        <!--                    <v-list-tile-action>-->
-        <!--                        <v-icon>email</v-icon>-->
-        <!--                    </v-list-tile-action>-->
-        <!--                    <v-list-tile-title>-->
-        <!--                        Infolettre-->
-        <!--                    </v-list-tile-title>-->
-        <!--                </v-list-tile>-->
-        <v-list-group
-            prepend-icon="group"
-            no-action
-            expanded
-            :value="true"
-        >
-          <v-list-tile
-              slot="activator">
-            <v-list-tile-title>
-              Devenez membre
-            </v-list-tile-title>
-          </v-list-tile>
-          <v-list>
-            <v-list-tile href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
-              <v-list-tile-title>Première fois</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
-              <v-list-tile-title>Renouvellement</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-list-group>
-        <v-list-tile
-            @click="documentDialog = true">
-          <v-list-tile-action>
-            <v-icon>fa-file</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            Documents
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile
-            @click="presseDialog = true">
-          <v-list-tile-action>
-            <v-icon>fa-newspaper</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            Dossier de presse
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-group
-            prepend-icon="group_work"
-            no-action
-            expanded
-            :value="true"
-        >
-          <v-list-tile slot="activator">
-            <v-list-tile-content>
-              <v-list-tile-title>Comités</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+    <v-app>
+      <v-navigation-drawer
+          clipped
+          v-model="drawer"
+          enable-resize-watcher
+          fixed
+          app
+          dense
+          id="app-navigation"
+      >
+        <v-list avatar>
+          <div v-for="phone in phoneNumbers" :key="phone.nom" :href="'tel:' + phone.telephone">
+            <v-list-item :href="'tel:' + phone.telephone">
+              <v-list-item-action>
+                <v-icon>phone</v-icon>
+              </v-list-item-action>
+              <v-list-item-title>
+                {{ phone.nom }}
+              </v-list-item-title>
+              <v-list-item-avatar>
+                <img :src="require('./assets/' + phone.avatar)">
+              </v-list-item-avatar>
+            </v-list-item>
+            <v-divider class="mb-2 mt-2"></v-divider>
+          </div>
+          <v-list-item
+              href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">
+            <v-list-item-action>
+              <v-icon>location_on</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              193a Avenue Grand-Pré, Bonaventure, QC
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item
+              @click="Scroll.allerALaSection('paiement', '/paiement')">
+            <v-list-item-action>
+              <v-icon>attach_money</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              Don et paiement
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item
+              @click="Scroll.allerALaSection('calendrier', '/calendrier')">
+            <v-list-item-action>
+              <v-icon>calendar_today</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              Calendrier
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item
+              @click="Scroll.allerALaSection('calendrier', '/réservation')">
+            <v-list-item-action>
+              <v-icon>fa-clipboard</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              Réservation
+            </v-list-item-title>
+          </v-list-item>
+          <!--                <v-list-item-->
+          <!--                        href="http://eepurl.com/c7iHkr">-->
+          <!--                    <v-list-item-action>-->
+          <!--                        <v-icon>email</v-icon>-->
+          <!--                    </v-list-item-action>-->
+          <!--                    <v-list-item-title>-->
+          <!--                        Infolettre-->
+          <!--                    </v-list-item-title>-->
+          <!--                </v-list-item>-->
+          <v-list-group
+              prepend-icon="group"
+              no-action
+              expanded
+              :value="true"
+          >
+            <v-list-item
+                slot="activator">
+              <v-list-item-title>
+                Devenez membre
+              </v-list-item-title>
+            </v-list-item>
+            <v-list>
+              <v-list-item
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
+                <v-list-item-title>Première fois</v-list-item-title>
+              </v-list-item>
+              <v-list-item
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
+                <v-list-item-title>Renouvellement</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-list-group>
+          <v-list-item
+              @click="documentDialog = true">
+            <v-list-item-action>
+              <v-icon>fa-file</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              Documents
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item
+              @click="presseDialog = true">
+            <v-list-item-action>
+              <v-icon>fa-newspaper</v-icon>
+            </v-list-item-action>
+            <v-list-item-title>
+              Dossier de presse
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-group
+              prepend-icon="group_work"
+              no-action
+              expanded
+              :value="true"
+          >
+            <v-list-item slot="activator">
+              <v-list-item-content>
+                <v-list-item-title>Comités</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
 
-          <v-list-tile v-for="(cercle, clef) in cercles" :key="clef"
-                       v-if="!cercle.desactive"
-                       @click="Scroll.allerALaSection(clef, '/cercle/' + clef)">
-            <v-list-tile-content>
-              <v-list-tile-title>{{ cercle.nom }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list-group>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar flat style="background-color:white;" fixed>
-      <v-toolbar-side-icon v-if="$vuetify.breakpoint.smAndDown">
-        <v-icon @click="drawer = !drawer">menu</v-icon>
-      </v-toolbar-side-icon>
-      <v-spacer v-if="$vuetify.breakpoint.mdAndDown"></v-spacer>
-      <router-link to="/">
-        <!--<transition name="fade">-->
-        <!--<img :src='require("./assets/" + currentLogo)'-->
-        <!--:key="currentLogo"-->
-        <!--style="position: absolute;left:10px;top:15px;"-->
-        <!--class="pull-right"-->
-        <!--:height="this.toolbarLogoHeight" @click="Scroll.allerALaSection('app')">-->
-        <!--</transition>-->
-        <img :src='require("./assets/logo-horizontal.png")'
-             :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
-        <img :src='require("./assets/logo-loco-horizontal.png")'
-             :height="this.toolbarLogoHeight + 20" v-if="false">
-      </router-link>
-      <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
-               @click="Scroll.allerALaSection('paiement', '/paiement')">
-          <v-icon :class="{
+            <v-list-item v-for="(cercle, clef) in cercles" :key="clef"
+                         v-if="!cercle.desactive"
+                         @click="Scroll.allerALaSection(clef, '/cercle/' + clef)">
+              <v-list-item-content>
+                <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+        </v-list>
+      </v-navigation-drawer>
+      <div id="nav" class="pa-0">
+        <v-app-bar
+            color="white"
+            app
+            :class="{
+                        'no-padding' : $vuetify.breakpoint.smAndDown
+                    }"
+            style="z-index:4;"
+        >
+          <v-app-bar-nav-icon  @click="drawer = !drawer" v-if="$vuetify.breakpoint.smAndDown"></v-app-bar-nav-icon>
+          <router-link to="/" class="mt-3" :class="{
+             'pl-4' : $vuetify.breakpoint.smAndDown
+          }">
+            <!--<transition name="fade">-->
+            <!--<img :src='require("./assets/" + currentLogo)'-->
+            <!--:key="currentLogo"-->
+            <!--style="position: absolute;left:10px;top:15px;"-->
+            <!--class="pull-right"-->
+            <!--:height="this.toolbarLogoHeight" @click="Scroll.allerALaSection('app')">-->
+            <!--</transition>-->
+            <img :src='require("./assets/logo-horizontal.png")'
+                 :height="this.toolbarLogoHeight" v-if="true" @click="Scroll.allerALaSection('app')">
+            <img :src='require("./assets/logo-loco-horizontal.png")'
+                 :height="this.toolbarLogoHeight + 20" v-if="false">
+          </router-link>
+          <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down">
+            <v-btn :small="$vuetify.breakpoint.lgAndDown" text
+                   @click="Scroll.allerALaSection('paiement', '/paiement')">
+              <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.mdAndDown
                     }">attach_money
-          </v-icon>
-          <span v-if="$vuetify.breakpoint.xlOnly">
+              </v-icon>
+              <span v-if="$vuetify.breakpoint.xlOnly">
                         Don et paiement
                     </span>
-          <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
-        </v-btn>
-        <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
-               @click="Scroll.allerALaSection('calendrier', '/calendrier')">
-          <v-icon :class="{
+              <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
+            </v-btn>
+            <v-btn :small="$vuetify.breakpoint.lgAndDown" text
+                   @click="Scroll.allerALaSection('calendrier', '/calendrier')">
+              <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">calendar_today
-          </v-icon>
-          Calendrier
-        </v-btn>
-        <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
-               @click="Scroll.allerALaSection('calendrier', '/réservation')">
-          <v-icon :class="{
+              </v-icon>
+              Calendrier
+            </v-btn>
+            <v-btn :small="$vuetify.breakpoint.lgAndDown" text
+                   @click="Scroll.allerALaSection('calendrier', '/réservation')">
+              <v-icon :class="{
+                        'mr-3' : $vuetify.breakpoint.lgAndUp,
+                        'mr-0' : $vuetify.breakpoint.mdAndDown
+                    }">
+                fa-clipboard
+              </v-icon>
+              Réservation
+            </v-btn>
+            <v-menu offset-y v-if="$vuetify.breakpoint.lgAndUp">
+              <template v-slot:activator="{ on }">
+                <v-btn :small="$vuetify.breakpoint.lgAndDown"
+                       v-on="on"
+                       color="#ff3301"
+                       dark
+                >
+                  <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.lgAndDown
-                    }">
-            fa-clipboard
-          </v-icon>
-          Réservation
-        </v-btn>
-        <v-menu offset-y v-if="$vuetify.breakpoint.lgAndUp">
-          <template v-slot:activator="{ on }">
-            <v-btn :small="$vuetify.breakpoint.lgAndDown"
-                   v-on="on"
-                   color="#ff3301"
-                   class="white--text"
+                    }">group
+                  </v-icon>
+                  <span>Devenez membre</span>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
+                  <v-list-item-title>Première fois</v-list-item-title>
+                </v-list-item>
+                <v-list-item
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
+                  <v-list-item-title>Renouvellement</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+
+            <v-btn :small="$vuetify.breakpoint.lgAndDown" text
+                   href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
             >
               <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.lgAndDown
-                    }">group
-              </v-icon>
-              <span>Devenez membre</span>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-tile href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
-              <v-list-tile-title>Première fois</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
-              <v-list-tile-title>Renouvellement</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-
-        <v-btn :small="$vuetify.breakpoint.lgAndDown" flat
-               href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-        >
-          <v-icon :class="{
-                        'mr-3' : $vuetify.breakpoint.xlOnly,
-                        'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">location_on
-          </v-icon>
-          Adresse
-        </v-btn>
-        <v-btn :small="$vuetify.breakpoint.lgAndDown" flat @click="$refs.phoneDialog.show()">
-          <v-icon :class="{
+              </v-icon>
+              Adresse
+            </v-btn>
+            <v-btn :small="$vuetify.breakpoint.lgAndDown" text @click="$refs.phoneDialog.show()">
+              <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.xlOnly,
                         'mr-0' : $vuetify.breakpoint.lgAndDown
                     }">phone
-          </v-icon>
-          <span v-if="$vuetify.breakpoint.xlOnly">Téléphones</span>
-          <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
+              </v-icon>
+              <span v-if="$vuetify.breakpoint.xlOnly">Téléphones</span>
+              <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
+            </v-btn>
+            <!--                <v-btn :small="$vuetify.breakpoint.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
+            <!--                    <v-icon :class="{-->
+            <!--                        'mr-3' : $vuetify.breakpoint.xlOnly,-->
+            <!--                        'mr-0' : $vuetify.breakpoint.lgAndDown-->
+            <!--                    }">email-->
+            <!--                    </v-icon>-->
+            <!--                    Infolettre-->
+            <!--                </v-btn>-->
+            <v-btn text href="https://www.facebook.com/locolocal1" :small="$vuetify.breakpoint.mdAndDown">
+              <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
+            </v-btn>
+          </v-toolbar-items>
+          <v-toolbar-title class="text-h6 text-uppercase special-font" style="font-weight:bold;">
+          </v-toolbar-title>
+        </v-app-bar>
+      </div>
+      <router-view class="mb-2"/>
+      <p class="special-font headline mb-6" style="font-family: 'Pacifico', cursive !important;">
+        Merci à tous les bénévoles, clients et organismes partenaires
+      </p>
+      <v-footer class="pa-4" dark>
+        <v-spacer></v-spacer>
+        <v-btn text @click="documentDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
+          <v-icon class="mr-4">fa-file</v-icon>
+          Documents
         </v-btn>
-        <!--                <v-btn :small="$vuetify.breakpoint.mdAndDown" flat href="http://eepurl.com/c7iHkr">-->
-        <!--                    <v-icon :class="{-->
-        <!--                        'mr-3' : $vuetify.breakpoint.xlOnly,-->
-        <!--                        'mr-0' : $vuetify.breakpoint.lgAndDown-->
-        <!--                    }">email-->
-        <!--                    </v-icon>-->
-        <!--                    Infolettre-->
-        <!--                </v-btn>-->
-        <v-btn flat href="https://www.facebook.com/locolocal1" :small="$vuetify.breakpoint.mdAndDown">
-          <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
+        <v-btn text @click="presseDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
+          <v-icon class="mr-4">fa-newspaper</v-icon>
+          Presse
         </v-btn>
-      </v-toolbar-items>
-      <v-toolbar-title class="headline text-uppercase special-font" style="font-weight:bold;">
-      </v-toolbar-title>
-    </v-toolbar>
-    <router-view class="mb-2"/>
-    <p class="special-font headline mb-4">
-      Merci à tous les bénévoles, clients et organismes partenaires
-    </p>
-    <v-footer class="pa-3" dark>
-      <v-spacer></v-spacer>
-      <v-btn flat @click="documentDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
-        <v-icon class="mr-3">fa-file</v-icon>
-        Documents
-      </v-btn>
-      <v-btn flat @click="presseDialog = true" v-if="$vuetify.breakpoint.mdAndUp">
-        <v-icon class="mr-3">fa-newspaper</v-icon>
-        Presse
-      </v-btn>
-      <v-btn flat href="http://visagesregionaux.org/">
-        Visages régionaux
-      </v-btn>
-      <v-spacer></v-spacer>
-      <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
-        <img height="32" width="32" :src="require('@/assets/GitHub-Mark-Light-32px.png')" class="mt-1">
-      </a>
-    </v-footer>
-    <PhoneDialog ref="phoneDialog"></PhoneDialog>
-    <v-dialog v-model="presseDialog" width="900">
-      <v-card>
-        <v-card-title class="title">
-          Dossier de presse
-          <v-spacer></v-spacer>
-          <v-icon @click="presseDialog=false">close</v-icon>
-        </v-card-title>
-        <v-card-text>
-          <v-list>
-            <v-list-tile v-for="presse in dossiersDePresse" :key="presse.lien" :href="presse.lien">
-              <v-list-tile-title>
+        <v-btn text href="http://visagesregionaux.org/">
+          Visages régionaux
+        </v-btn>
+        <v-spacer></v-spacer>
+        <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
+          <img height="32" width="32" :src="require('@/assets/GitHub-Mark-Light-32px.png')" class="mt-1">
+        </a>
+      </v-footer>
+      <PhoneDialog ref="phoneDialog"></PhoneDialog>
+      <v-dialog v-model="presseDialog" width="900">
+        <v-card>
+          <v-card-title class="title">
+            Dossier de presse
+            <v-spacer></v-spacer>
+            <v-icon @click="presseDialog=false">close</v-icon>
+          </v-card-title>
+          <v-card-text>
+            <v-list>
+              <v-list-item v-for="presse in dossiersDePresse" :key="presse.lien" :href="presse.lien">
+                <v-list-item-title>
                                 <span class="grey-text">
                                     {{ presse.date }}
                                 </span>
-                {{ presse.text }}
-              </v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="documentDialog" width="900">
-      <v-card>
-        <v-card-title class="title">
-          Documents
-          <v-spacer></v-spacer>
-          <v-icon @click="documentDialog=false">close</v-icon>
-        </v-card-title>
-        <v-card-text>
-          <v-list>
-            <v-list-tile v-for="document in documents" :key="document.nom" :href="document.lien">
-              <v-list-tile-action>
-                <v-icon>fa-file</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
-                {{ document.nom }}
-              </v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="visageDialog" width="900">
-      <v-card>
-        <v-card-title class="title">
-          Visages régionaux
-          <v-spacer></v-spacer>
-          <v-icon @click="visageDialog = false">close</v-icon>
-        </v-card-title>
-        <v-card-text class="text-xs-left">
-          <a href="http://visagesregionaux.org/">
+                  {{ presse.text }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="documentDialog" width="900">
+        <v-card>
+          <v-card-title class="title">
+            Documents
+            <v-spacer></v-spacer>
+            <v-icon @click="documentDialog=false">close</v-icon>
+          </v-card-title>
+          <v-card-text>
+            <v-list>
+              <v-list-item v-for="document in documents" :key="document.nom" :href="document.lien">
+                <v-list-item-action>
+                  <v-icon>fa-file</v-icon>
+                </v-list-item-action>
+                <v-list-item-title>
+                  {{ document.nom }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="visageDialog" width="900">
+        <v-card>
+          <v-card-title class="title">
             Visages régionaux
-          </a>
-          <p>
-            Visages régionaux a débuté en 2011, propulsé par un intérêt personnel d’aller vivre en campagne.
-          </p>
-          <p>
-            La bourse Laure Waridel a permis à Marie-Eve Arbour et Simon Côté de sillonner le Québec à la
-            découverte de cinquante initiatives rurales porteuses de changement.
-          </p>
-          <p>
-            Cinq ans plus tard, Visages régionaux veut documenter les initiatives qui dessinent une ruralité
-            en émergence. Démontrer qu'il y a une panoplie de projets originaux et mobilisateurs et que
-            cette multiplication redéfinit la vie rurale. Avec ces données, Visages régionaux entend
-            analyser et communiquer les tendances en émergence qui agissent de manière structurante sur les
-            communautés et sur la société québécoise dans son ensemble.
-          </p>
-          <p>
-            C'est avec plaisir et avec l'accord de Marie-Eve que nous vous partageons ici le lien vers le
-            site web de Visages régionaux afin que vous y entriez votre projet ou un projet qui selon vous
-            devrait s'y trouver.
-          </p>
-          <p>
-            Merci de contribuer à dresser le portrait des artisans et artisannes du changement en Gaspésie
-            et partout ailleurs au Québec.
-          </p>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
+            <v-spacer></v-spacer>
+            <v-icon @click="visageDialog = false">close</v-icon>
+          </v-card-title>
+          <v-card-text class="text-left">
+            <a href="http://visagesregionaux.org/">
+              Visages régionaux
+            </a>
+            <p>
+              Visages régionaux a débuté en 2011, propulsé par un intérêt personnel d’aller vivre en campagne.
+            </p>
+            <p>
+              La bourse Laure Waridel a permis à Marie-Eve Arbour et Simon Côté de sillonner le Québec à la
+              découverte de cinquante initiatives rurales porteuses de changement.
+            </p>
+            <p>
+              Cinq ans plus tard, Visages régionaux veut documenter les initiatives qui dessinent une ruralité
+              en émergence. Démontrer qu'il y a une panoplie de projets originaux et mobilisateurs et que
+              cette multiplication redéfinit la vie rurale. Avec ces données, Visages régionaux entend
+              analyser et communiquer les tendances en émergence qui agissent de manière structurante sur les
+              communautés et sur la société québécoise dans son ensemble.
+            </p>
+            <p>
+              C'est avec plaisir et avec l'accord de Marie-Eve que nous vous partageons ici le lien vers le
+              site web de Visages régionaux afin que vous y entriez votre projet ou un projet qui selon vous
+              devrait s'y trouver.
+            </p>
+            <p>
+              Merci de contribuer à dresser le portrait des artisans et artisannes du changement en Gaspésie
+              et partout ailleurs au Québec.
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </v-app>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
             <v-flex xs12 md3>
                 <v-img :src="require('@/assets/demi-copie.jpg')"></v-img>
             </v-flex>
-            <v-flex xs12 md9 class="text-xs-left pa-4">
+            <v-flex xs12 md9 class="text-left pa-6">
                 <p>
                     D’après vous, combien vaut un billet de 20 $ déchiré en deux?
                 </p>
@@ -64,18 +64,18 @@
                 </p>
             </v-flex>
         </v-layout>
-        <v-layout row wrap class="mt-4">
+        <v-layout row wrap class="mt-6">
             <v-flex xs12 md5>
                 <a href="https://www.google.com/maps/d/viewer?mid=zV_LntsrmDv4.kHUeFNM6YjWY">
                 <h3>Lien vers la Carte Google des commerces acceptant le demi</h3>
                 <v-img :src="require('@/assets/carte-demi.png')"></v-img>
                 </a>
             </v-flex>
-            <v-flex xs12 md7 class="text-xs-left pa-4">
-                <h3 class="headline text-xs-left">
+            <v-flex xs12 md7 class="text-left pa-6">
+                <h3 class="headline text-left">
                     Quelques info supplémentaires concernant l’aspect légal
                 </h3>
-                <p class="text-xs-left">
+                <p class="text-left">
                     Dans <a
                         href="http://www.lapresse.ca/actualites/insolite/201503/02/01-4848789-dessiner-m-spock-sur-les-billets-de-banque-canadiens-est-permis.php">
                     cet article du journal La Presse du 2 mars 2015</a>, la Banque du Canada a rappelé qu’il était légal
@@ -104,7 +104,7 @@
                     Le demi, est-ce criminel ?
                 </a>
                 </p>
-                <h3 class="headline text-xs-left">
+                <h3 class="headline text-left">
                     Informations sur les monnaies complémentaires en général
                 </h3>
                 <p>
@@ -123,8 +123,8 @@
                 </p>
             </v-flex>
         </v-layout>
-        <v-layout row wrap class="mt-4">
-            <v-flex xs12 class="text-xs-left">
+        <v-layout row wrap class="mt-6">
+            <v-flex xs12 class="text-left">
                 <v-card>
                     <v-card-title class="title">
                         Liens Externes

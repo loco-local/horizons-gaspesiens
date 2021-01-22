@@ -27,6 +27,11 @@ export default new Router({
             component: Home
         },
         {
+            path: '/bouger-ensemble',
+            name: 'bouger-ensemble',
+            component: Home
+        },
+        {
             path: '/loco-linux',
             name: 'loco-linux',
             component: LocoLinux

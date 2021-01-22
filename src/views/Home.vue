@@ -5,33 +5,35 @@
         column
         justify-center
         id="header-banner"
-        class="vh-center text-xs-center"
+        class="vh-center text-center"
     >
       <v-card color="transparent" flat>
-        <v-card-title class="vh-center">
-          <h1 class="display-3 font-weight-thin mb-3 white--text">
+        <v-card-title class="vh-center display-3 font-weight-thin mb-4 white--text" :class="{
+          'display-2' : $vuetify.breakpoint.smAndDown
+        }">
+          <p>
             Géré de façon horizontale par ses membres
-          </h1>
-          <h4 class="font-weight-thin white--text" style="font-size:19px;">
-            Pour partager des ressources et des projets afin de s'adresser aux inégalités sociales et
-            environnementales
-          </h4>
+          </p>
         </v-card-title>
+        <v-card-subtitle class="font-weight-thin white--text" style="font-size:19px;">
+          Pour partager des ressources et des projets afin de s'adresser aux inégalités sociales et
+          environnementales
+        </v-card-subtitle>
       </v-card>
     </v-layout>
-    <v-layout row wrap class="mb-1 mt-5" id="about">
-      <v-flex xs12 class="text-xs-center">
+    <v-layout row wrap class="mb-1 mt-12" id="about">
+      <v-flex xs12 class="text-center">
         <h1 class="display-2 font-weight-thin">
           À propos
         </h1>
       </v-flex>
     </v-layout>
-    <v-layout row wrap class="mt-4" :class="{
-      'pl-2 pr-2' : $vuetify.breakpoint.smAndDown
+    <v-layout row wrap class="mt-6 mb-6" :class="{
+      'pl-5 pr-2' : $vuetify.breakpoint.smAndDown
     }">
       <v-flex xs0 sm2 md3 lg4></v-flex>
-      <v-flex xs12 sm8 md6 lg4 class="text-xs-left text-md-justify">
-        <p class="subheading" style="font-size: 1.2em !important;font-weight: 200;line-height: 1.5;">
+      <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify">
+        <p class="subtitle-1" style="font-size: 1.2em !important;font-weight: 300;line-height: 1.5;">
           Horizons Gaspésiens est une coopérative de solidarité.
           L'organisme chapeaute différentes initiatives
           <a href="#" @click.prevent="Scroll.allerALaSection('cercle')">
@@ -68,32 +70,32 @@
       </v-flex>
       <v-flex xs0 sm2 md3 lg4></v-flex>
     </v-layout>
-    <v-divider class="mt-2 mb-4"></v-divider>
-    <v-layout row wrap class="mb-5" id="benevole">
-      <v-flex xs12 class="text-xs-center">
+    <v-divider class="mt-6 mb-12"></v-divider>
+    <v-layout row wrap class="mb-12" id="benevole">
+      <v-flex xs12 class="text-center">
         <h1 class="display-2 font-weight-thin">
           Membres
         </h1>
-        <h4 class="subheading font-weight-thin">
+        <h4 class="subtitle-1 ">
           de comités actifs
         </h4>
       </v-flex>
     </v-layout>
-    <v-layout row wrap class="">
+    <v-row wrap class="">
       <!--<v-flex xs0 lg3></v-flex>-->
-      <v-flex xs12 md6 v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
-        <v-layout row class="mb-5" :class="{
-                    'ml-5 pl-5': $vuetify.breakpoint.mdAndUp
-                }">
-          <v-flex xs2 v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"></v-flex>
-          <v-flex xs2 class="" :class="{
-                            'mr-4 ml-4': $vuetify.breakpoint.smAndDown
+      <v-col cols="12" class="col-md-6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
+        <v-row class="mb-0" :class="{
+                    'ml-5 pl-12': $vuetify.breakpoint.mdAndUp
+              }">
+          <v-col cols="2" v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"></v-col>
+          <v-col cols="2" :class="{
+                            'mr-10 ml-4': $vuetify.breakpoint.smAndDown
                         }">
             <v-avatar :size="avatarSize">
               <img :src='require("../assets/" + membre.avatar)' :alt="membre.nom">
             </v-avatar>
-          </v-flex>
-          <v-flex xs10 lg8 class="text-xs-left ml-4 mr-4" :class="{
+          </v-col>
+          <v-col cols="8" class="text-left" :class="{
                         'mt-3': $vuetify.breakpoint.mdAndUp,
                         'mt-0': $vuetify.breakpoint.smAndDown
                     }">
@@ -105,7 +107,7 @@
             </p>
             <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
             <v-breadcrumbs :items="membre.cercles"
-                           class="d-inline pa-0 subheading bullet-like" small>
+                           class="d-inline pa-0 subtitle-1 bullet-like" small>
               <template slot="item" slot-scope="props" class="">
                 <a href="#"
                    @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)"
@@ -114,7 +116,6 @@
                 </a>
                 <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{ nomDeCercle(props.item) }}</span>
               </template>
-              <v-icon slot="divider" class="pa-0 ma-0 caption">lens</v-icon>
             </v-breadcrumbs>
 
             <!--<div class="d-inline" >-->
@@ -122,22 +123,22 @@
             <!--<v-icon v-if="index < membre.cercles.length - 1" small class="mb-1">panorama_fish_eye</v-icon>-->
             <!--</div>-->
             <!--<v-card flat style="background-color: transparent;">-->
-            <!--<v-card-title class="subheading">-->
+            <!--<v-card-title class="subtitle-1">-->
             <!--{{membre.nom}}-->
             <!--</v-card-title>-->
             <!--<v-card-text>-->
 
             <!--</v-card-text>-->
             <!--</v-card>-->
-          </v-flex>
-        </v-layout>
-      </v-flex>
+          </v-col>
+        </v-row>
+      </v-col>
       <!--<v-flex xs0 lg2></v-flex>-->
-    </v-layout>
-    <v-layout row wrap class="mb-5">
-      <v-flex xs12 class="title font-weight-regular vh-center">
+    </v-row>
+    <v-layout row wrap class="mb-12">
+      <v-flex xs12 class="vh-center">
         <v-card max-width="450">
-          <v-card-text class="text-xs-center">
+          <v-card-text class="text-center title font-weight-regular black--text">
             Merci aussi à tous nos autres membres. Votre implication est très précieuse
             <span style="color:red">❤</span>
           </v-card-text>
@@ -153,8 +154,8 @@
         :height="parallaxSize"
         :src="require('../assets/peinture-rogner.jpg')"
     ></v-parallax>
-    <v-layout row wrap class="mb-1 mt-5" id="cercle">
-      <v-flex xs12 class="text-xs-center">
+    <v-layout row wrap class="pb-16 mt-12" id="cercle">
+      <v-flex xs12 class="text-center">
         <h1 class="display-2 font-weight-thin">
           Comités actifs
         </h1>
@@ -188,7 +189,7 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Groupe d'achat" anchor="groupe-achat" image="groupe-achat.jpg">
       <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
       <div slot="subtitle">
@@ -200,38 +201,198 @@
         <p>
           Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
         </p>
-        <v-card class="mt-4">
+        <v-card class="mt-6">
           <v-list>
-            <v-list-tile href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com">
-              <v-list-tile-action>
+            <v-list-item href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com">
+              <v-list-item-action>
                 <v-icon>mail</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Demande d'adhésion à groupe.achat.hg@gmail.com
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile href="https://foodclub.org/bonaventure">
-              <v-list-tile-action>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://foodclub.org/bonaventure">
+              <v-list-item-action>
                 <v-icon>fa-clipboard-list</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Logiciel de commande
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
-              <v-list-tile-action>
+              <v-list-item-action>
                 <v-icon>picture_as_pdf</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Compte rendu de réunion
-              </v-list-tile-title>
-            </v-list-tile>
+              </v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-card>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+<!--    <Cercle title="Bibliothèque d'outils" anchor="bibliothèque-outils" image="gardening-tools-1478547_1280.jpg"-->
+<!--            id="bibliothèque-outils">-->
+<!--      <div slot="subtitle">-->
+<!--        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous-->
+<!--        servirez qu'une fois dans votre vie, empruntez-le!-->
+<!--      </div>-->
+<!--      <div slot="content">-->
+<!--        <p>-->
+<!--          1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat, mécanique,-->
+<!--          jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.-->
+
+<!--          2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à la-->
+<!--          population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des rencontres-->
+<!--          intergénérationnelles et interculturelles.-->
+<!--        </p>-->
+
+
+<!--        Des modèles ailleurs : La Remise à Montréal, La Patente à Québec.-->
+
+<!--        Pourquoi une bibliothèque d’outils?-->
+<!--        Pour :-->
+
+<!--        renforcer les liens sociaux;-->
+
+<!--        lutter contre le gaspillage des ressources;-->
+
+<!--        et augmenter la capacité d’agir de la communauté et de ses membres.-->
+
+<!--        BRICOLAGE – VOISINAGE – PARTAGE!-->
+
+<!--        Comment ça marche?-->
+<!--        Les abonnés ont accès à tous les outils de la bibliothèque.-->
+
+<!--        C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.-->
+
+<!--        Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre abonné.-->
+
+<!--        Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont une durée de-->
+<!--        vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.-->
+
+
+<!--        Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se-->
+<!--        familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec d’autre monde!-->
+
+
+<!--        Note : le fonctionnement exact est encore à établir. Détails à venir.-->
+
+<!--        Comment je fais pour m’inscrire!-->
+<!--        Vous devez d’abord être membre de la coop HG.-->
+
+<!--        Puis, payer un abonnement annuel.-->
+
+<!--        Suivez le lien!-->
+
+<!--        Comment puis-je aider?-->
+<!--        Un comité sera mis en place pour assurer le bon fonctionnement du projet.-->
+
+<!--        Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la qualité,-->
+<!--        assurer une offre intéressante, etc.)-->
+
+<!--        Voici les postes à combler :-->
+
+<!--        Cuisine-->
+
+<!--        Production alimentaire-->
+
+<!--        Couture et/ou artisanat-->
+
+<!--        Mécanique vélo-->
+
+<!--        Rénovation (menuiserie, électricité, plomberie)-->
+
+<!--        Électronique-->
+
+<!--        Programmation-->
+
+<!--        Coordination (membership, $, lien avec HG, communications)-->
+
+
+<!--        Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer au projet, contactez-->
+<!--        arielle.paiement@gmail.com-->
+<!--      </div>-->
+<!--    </Cercle>-->
+    <v-divider class="mt-6 mb-12"></v-divider>
+    <Cercle title="Bouger Ensemble" anchor="bouger-ensemble" image="bouger-ensemble-marche.jpg" id="bouger-ensemble">
+      <div slot="subtitle">
+        Ces deux choses, bouger et socialiser, qui manquent cruellement en temps de pandémie
+      </div>
+      <div slot="content">
+        <v-tabs
+            color="cyan"
+            dark
+            slider-color="yellow"
+            grow
+            class="pa-0 ma-0"
+            v-model="bougerEnsembleTab"
+        >
+          <v-tab @click.prevent="$router.push('calendrier')" href="#">
+            <v-icon class="mr-6">calendar_today</v-icon>
+            Calendrier
+          </v-tab>
+          <v-tab @click.prevent="$router.push('réservation')" href="#">
+            <v-icon class="mr-6">
+              fa-clipboard
+            </v-icon>
+            Réservation
+          </v-tab>
+          <v-tab-item class="mt-4 text-left" :class="{
+                        'pl-0' : $vuetify.breakpoint.mdAndUp,
+                        'pl-0' : $vuetify.breakpoint.smAndDown
+                    }">
+          </v-tab-item>
+          <v-tab-item touchless class='pl-0'>
+
+          </v-tab-item>
+        </v-tabs>
+        <!--        <p class="">-->
+        <!--          <a href="#" @click.prevent="">-->
+        <!--            Remplissez ce formulaire-->
+        <!--          </a>-->
+        <!--          pour être au courant des activités à venir des changements qui peuvent survenir.-->
+        <!--        </p>-->
+        <!--        <v-list>-->
+        <!--          <v-subheader class="black&#45;&#45;text title">-->
+        <!--            Activités-->
+        <!--          </v-subheader>-->
+        <!--          <v-list-item>-->
+        <!--            <v-list-item-content>-->
+        <!--              <v-list-item-title>-->
+        <!--                Club de marche-->
+        <!--              </v-list-item-title>-->
+        <!--              <v-list-item-subtitle>-->
+        <!--                coool-->
+        <!--              </v-list-item-subtitle>-->
+        <!--            </v-list-item-content>-->
+        <!--          </v-list-item>-->
+        <!--          <v-list-item>-->
+        <!--            <v-list-item-content>-->
+        <!--              <v-list-item-title>-->
+        <!--                Yoga-->
+        <!--              </v-list-item-title>-->
+        <!--              <v-list-item-subtitle>-->
+        <!--                Avec Simon !-->
+        <!--              </v-list-item-subtitle>-->
+        <!--            </v-list-item-content>-->
+        <!--          </v-list-item>-->
+        <!--          <v-list-item>-->
+        <!--            <v-list-item-content>-->
+        <!--              <v-list-item-title>-->
+        <!--                Expression corporelle-->
+        <!--              </v-list-item-title>-->
+        <!--              <v-list-item-subtitle>-->
+        <!--                Libérez votre créativité-->
+        <!--              </v-list-item-subtitle>-->
+        <!--            </v-list-item-content>-->
+        <!--          </v-list-item>-->
+        <!--        </v-list>-->
+      </div>
+    </Cercle>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Page Pourpre" anchor="page-pourpre" :image="pagePourpreImages">
       <div slot="subtitle">
         Bibliothèque féministe, trans, queer et inclusive
@@ -247,7 +408,7 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Imaginez demain" anchor="imaginez-demain" image="imagine-demain.jpg">
       <div slot="subtitle">
         C’est une tempête d’idées, une place pour exprimer nos visions les plus idéalistes, réalistes ou
@@ -264,28 +425,29 @@
           Que du positif S.V.P.
         </p>
         <v-list>
-          <v-list-tile href="https://www.facebook.com/groups/2573860966056660/">
-            <v-list-tile-action>
-              <img src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
-            </v-list-tile-action>
-            <v-list-tile-title>
+          <v-list-item href="https://www.facebook.com/groups/2573860966056660/">
+            <v-list-item-action>
+              <img
+                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
+            </v-list-item-action>
+            <v-list-item-title>
               Notre page Facebook
-            </v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item
               href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#">
-            <v-list-tile-action>
+            <v-list-item-action>
               <v-icon>fa-file</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
                 Notre document Google Doc
-              </v-list-tile-title>
-              <v-list-tile-sub-title class="subheading">
+              </v-list-item-title>
+              <v-list-item-subtitle class="subtitle-1">
                 Fable de la perdrix et la poule
-              </v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
         <p>
           À surveiller : discussions
@@ -300,19 +462,19 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
-    <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">
-      <div slot="subtitle"></div>
-      <div slot="content">
-        <p class="">
-          Les Soirées Pop Doc du Loco Local ont pour objectif d'offrir aux gens de la Baie-des-Chaleurs la
-          possibilité de s'exposer à des réalités culturelles différentes à travers le documentaire et
-          d'échanger sur des sujets sociaux et politiques qui traversent difficilement le filtre des médias
-          conventionnels dans les régions éloignées du Québec, comme la Gaspésie.
-        </p>
-      </div>
-    </Cercle>
-    <v-divider></v-divider>
+    <!--    <v-divider></v-divider>-->
+    <!--    <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">-->
+    <!--      <div slot="subtitle"></div>-->
+    <!--      <div slot="content">-->
+    <!--        <p class="">-->
+    <!--          Les Soirées Pop Doc du Loco Local ont pour objectif d'offrir aux gens de la Baie-des-Chaleurs la-->
+    <!--          possibilité de s'exposer à des réalités culturelles différentes à travers le documentaire et-->
+    <!--          d'échanger sur des sujets sociaux et politiques qui traversent difficilement le filtre des médias-->
+    <!--          conventionnels dans les régions éloignées du Québec, comme la Gaspésie.-->
+    <!--        </p>-->
+    <!--      </div>-->
+    <!--    </Cercle>-->
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Produits Lemieux" anchor="produits-lemieux">
       <div slot="image">
         <div id="fb-root"></div>
@@ -345,11 +507,11 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Comptabilité" anchor="comptable" class="pa-0" v-if="false">
       <div slot="image" class="pa-0">
         <v-card
-            class="text-xs-center pa-0"
+            class="text-center pa-0"
             dark
             width="100%"
         >
@@ -366,7 +528,7 @@
           <v-divider></v-divider>
 
           <v-card-actions class="justify-center pa-0">
-            <v-btn block flat
+            <v-btn block text
                    href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0">
               <!--<v-icon class="mr-2">fa-dropbox</v-icon>-->
               Détails sur fichier Dropbox. Faites télécharger.
@@ -393,7 +555,7 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Financement" anchor="financement" class="pa-0" image="sourie.jpg">
       <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
       <div slot="subtitle">
@@ -413,7 +575,7 @@
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Notre structure de gouvernance: l'Holacracy!" anchor="gouvernance" class="pa-0"
             :image="gouvernanceImages">
       <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
@@ -423,37 +585,37 @@
         de définir sa raison d'être au sein d'Horizons Gaspésiens, ses rôles et redevabilités.
       </div>
       <div slot="content">
-        <v-card class="mb-4">
+        <v-card class="mb-6">
           <v-card-title class="title">
             À propos de l'Holacracy
           </v-card-title>
           <v-list>
-            <v-list-tile href="https://labdsurlholacracy.com/bande-dessinee-holacracy">
-              <v-list-tile-action>
+            <v-list-item href="https://labdsurlholacracy.com/bande-dessinee-holacracy">
+              <v-list-item-action>
                 <v-icon>fa-book-reader</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Bande dessinée
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 href="https://www.holacracy.org/webinar-recording">
-              <v-list-tile-action>
+              <v-list-item-action>
                 <v-icon>movie</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Vidéo
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 href="https://igipartners.com/constitution-holacracy">
-              <v-list-tile-action>
+              <v-list-item-action>
                 <v-icon>account_balance</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
+              </v-list-item-action>
+              <v-list-item-title class="text-h6 font-weight-regular">
                 Principes
-              </v-list-tile-title>
-            </v-list-tile>
+              </v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-card>
         <p>
@@ -469,42 +631,42 @@
               Cercles d'Horizons Gapésiens
             </v-card-title>
             <v-list>
-              <v-list-tile
+              <v-list-item
                   href="https://docs.google.com/document/d/1XQFmsfxNzZA4oryQ1IvUjf0otLuk0TjkVTEEglNEqE8">
-                <v-list-tile-action>
+                <v-list-item-action>
                   <v-icon>fa-file</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-title>
+                </v-list-item-action>
+                <v-list-item-title class="text-h6 font-weight-regular">
                   Octobre 2018
-                </v-list-tile-title>
-              </v-list-tile>
+                </v-list-item-title>
+              </v-list-item>
             </v-list>
           </v-card>
         </p>
       </div>
     </Cercle>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <div style="width:100%" class="vh-center">
       <v-list>
-        <v-list-tile
+        <v-list-item
             @click="comitesArchives = true">
-          <v-list-tile-action>
+          <v-list-item-action>
             <v-icon>list</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
+          </v-list-item-action>
+          <v-list-item-title>
             Comités archivés
-          </v-list-tile-title>
-        </v-list-tile>
+          </v-list-item-title>
+        </v-list-item>
       </v-list>
     </div>
-    <v-divider></v-divider>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <Calendrier :class="{
-                'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
-                'mt-5 mb-3': $vuetify.breakpoint.smAndDown
+                'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
+                'mt-5 mb-4': $vuetify.breakpoint.smAndDown
             }"></Calendrier>
-    <v-divider></v-divider>
-    <v-layout row wrap class="mb-1 mt-5" id="paiement">
-      <v-flex xs12 class="text-xs-center">
+    <v-divider class="mt-6 mb-12"></v-divider>
+    <v-layout row wrap class="mb-1 mt-12" id="paiement">
+      <v-flex xs12 class="text-center">
         <h1 class="display-2 font-weight-thin">
           Dons et paiements
         </h1>
@@ -513,68 +675,67 @@
     <v-layout row wrap class="font-weight-thin">
       <v-flex xs12>
         <v-card flat :class="{
-                'mt-5 mb-5': $vuetify.breakpoint.mdAndUp,
-                'mt-5 mb-3': $vuetify.breakpoint.smAndDown
+                'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
+                'mt-5 mb-4': $vuetify.breakpoint.smAndDown
             }">
           <v-layout row wrap fill-height>
             <v-flex xs12 md6 class="">
-              <div class="title mb-3">
+              <div class="text-h4  mb-8">
                 Comment payer
               </div>
               <v-layout row wrap class="pb-2">
                 <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-xs-center">
+                <v-flex xs12 md8 class="text-md-left text-center">
                   <v-icon class="mr-2">email</v-icon>
                   <span class="font-weight-bold">Par courriel</span>
                   à horizonsgaspesiens@gmail.com
-                  <v-btn flat v-clipboard:copy="'horizonsgaspesiens@gmail.com'" small>copier</v-btn>
+                  <v-btn text v-clipboard:copy="'horizonsgaspesiens@gmail.com'" small>copier</v-btn>
                 </v-flex>
               </v-layout>
-              <v-divider class="pb-4"></v-divider>
+              <v-divider class="mt-8 mb-8"></v-divider>
               <v-layout row wrap>
                 <v-flex xs0 md2 xl2></v-flex>
-                <v-flex xs12 md4 xl3 class="text-md-left text-xs-center" :class="{
+                <v-flex xs12 md4 xl3 class="text-md-left text-center" :class="{
                                     'pb-2':  $vuetify.breakpoint.smAndDown
                                 }">
                   <span class="font-weight-bold">Par transit desjardins</span>
                 </v-flex>
-                <v-flex xs12 md6 xl7 class="text-md-left text-xs-center" style="margin-top:-7px;">
+                <v-flex xs12 md6 xl7 class="text-md-left text-center pl-6 pb-6" style="margin-top:-7px;">
                   <div>
                     <span class="font-weight-bold">Transit caisse:</span> 40001
-                    <v-btn flat v-clipboard:copy="'40001'" small>copier</v-btn>
+                    <v-btn text v-clipboard:copy="'40001'" small>copier</v-btn>
                   </div>
                   <div>
                     <span class="font-weight-bold">No Institution:</span> 815
-                    <v-btn flat v-clipboard:copy="'815'" small>copier</v-btn>
+                    <v-btn text v-clipboard:copy="'815'" small>copier</v-btn>
                   </div>
                   <div>
                     <span class="font-weight-bold">Folio:</span> 0451286
-                    <v-btn flat v-clipboard:copy="'0451286'" small>copier</v-btn>
+                    <v-btn text v-clipboard:copy="'0451286'" small>copier</v-btn>
                   </div>
                 </v-flex>
               </v-layout>
               <v-card>
-                <v-card-title class="font-weight-bold text-xs-center vh-center">
+                <v-card-title class="font-weight-bold text-center vh-center">
                   Instructions de paiement détaillées
                 </v-card-title>
                 <v-card-text class="pt-0">
                   <v-tabs
-                      color="cyan"
-                      dark
-                      slider-color="yellow"
+                      color="black"
+                      slider-color="#ff3301"
                       grow
                       class="pa-0 ma-0"
                       v-model="paiementTab"
                   >
                     <v-tab @click.prevent="paiementTab=0" href="#">
-                      <v-icon class="mr-4">email</v-icon>
+                      <v-icon class="mr-6">email</v-icon>
                       Par courriel
                     </v-tab>
                     <v-tab @click.prevent="paiementTab=1" href="#">
                       Par transit Desjardins
                     </v-tab>
                     <v-tab-item>
-                      <v-stepper non-linear v-model="paiementCourrielStepper" class="ml-4">
+                      <v-stepper non-linear v-model="paiementCourrielStepper" class="ml-6">
                         <v-stepper-header>
                           <v-stepper-step editable :complete="paiementCourrielStepper > 1"
                                           step="1"
@@ -621,7 +782,7 @@
                       </v-stepper>
                     </v-tab-item>
                     <v-tab-item>
-                      <v-stepper non-linear v-model="desjardinsStepper" class="ml-4">
+                      <v-stepper non-linear v-model="desjardinsStepper" class="ml-6">
                         <v-stepper-header>
                           <v-stepper-step editable :complete="desjardinsStepper > 1" step="1"
                                           color="black">
@@ -663,13 +824,13 @@
                               <v-card-text v-if="$vuetify.breakpoint.smAndDown">
                                 Cliquez sur l'onglet "Ajouter un bénéficiaire"
                               </v-card-text>
-                              <v-card-title class="subheading pb-0">
+                              <v-card-title class="subtitle-1 pb-0">
                                                 <span>
                                                 <span class="font-weight-bold">Transit caisse</span>
                                                 40001
                                                     </span>
                                 <v-divider
-                                    class="mx-3"
+                                    class="mx-4"
                                     inset
                                     vertical
                                 ></v-divider>
@@ -680,7 +841,7 @@
                                                         815
                                                 </span>
                                 <v-divider
-                                    class="mx-3"
+                                    class="mx-4"
                                     inset
                                     vertical
                                 ></v-divider>
@@ -718,7 +879,7 @@
               </v-card>
             </v-flex>
             <v-flex xs12 md6 left>
-              <v-card-text class="text-xs-left">
+              <v-card-text class="text-left text-h6 font-weight-regular">
                 <p>
                   Vous voulez soutenir l'établissement durable de ce projet "pour et par" la
                   communauté?
@@ -770,7 +931,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="visionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-xs-justify" style="line-height: 1.5">
+        <v-card-text class="text-left text-h6 font-weight-regular black--text" style="line-height: 1.5;">
           Une communauté autogérée ayant une empreinte écologique et sociale réduite sur son milieu. L’abondance s’y
           mesure par la multiplicité et la diversité du lien social, par l’épanouissement des individus, ainsi que par
           l’accès égalitaire et juste aux ressources.
@@ -784,7 +945,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="missionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-xs-justify" style="line-height: 1.5">
+        <v-card-text class="text-left text-h6 font-weight-regular black--text" style="line-height: 1.5">
           Stimuler et soutenir la mise en commun et le partage de ressources, de lieux, de connaissances comme forme
           concrète de solidarité pour augmenter l’autonomie et la résilience des individus et des collectivités.
         </v-card-text>
@@ -797,14 +958,14 @@
           <v-spacer></v-spacer>
           <v-icon @click="valeursModal = false">close</v-icon>
         </v-card-title>
-        <v-list>
-          <v-list-tile v-for="valeur in valeurs" :key="valeur">
-            <v-list-tile-content>
-              <v-list-tile-title>
+        <v-list class="text-left">
+          <v-list-item v-for="valeur in valeurs" :key="valeur">
+            <v-list-item-content>
+              <v-list-item-title>
                 {{ valeur }}
-              </v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-card>
     </v-dialog>
@@ -817,48 +978,48 @@
         </v-card-title>
         <v-card-text>
           <v-list>
-            <v-list-tile
+            <v-list-item
                 to="/le-demi">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Le demi
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/loco-linux">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Loco Linux
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/sel-de-mer">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Sel De Mer
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/sécession">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Sécession
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/bibliothèque">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Bibliothèque collective
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/café-philo">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Cafés philo
-              </v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item
                 to="/fablab">
-              <v-list-tile-title>
+              <v-list-item-title>
                 Fablab
-              </v-list-tile-title>
-            </v-list-tile>
+              </v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-card-text>
       </v-card>
@@ -1082,12 +1243,12 @@ export default {
         avatar: "gaby-petit-carre.jpg",
         cercles: ['ca', 'comptable']
       },
-      {
-        nom: "Marie-Claire Larocque",
-        cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
-        avatar: "msea-petit-cube.jpg",
-        cercles: ['ca', 'espace', 'communication']
-      },
+      // {
+      //   nom: "Marie-Claire Larocque",
+      //   cv: "Herboriste, musicienne, graphiste, grimaceuse sympathique.",
+      //   avatar: "msea-petit-cube.jpg",
+      //   cercles: ['ca', 'espace', 'communication']
+      // },
       {
         nom: "Bruno Mainville",
         cv: "Peintre, Enseignant, Philosophe",
@@ -1134,13 +1295,19 @@ export default {
         nom: "Solange Lecot",
         cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
         avatar: "solange-petit-carre.jpeg",
-        cercles: ['ca', 'pagePourpre', 'popDoc']
+        cercles: ['ca', 'pagePourpre']
       },
       {
         nom: "Dominique Landry",
         cv: "Organisatrice d'événements, Artiste de scène, Jardinère engagée",
         avatar: "dô-petit-carre.jpg",
-        cercles: ['ca', 'pagePourpre', 'popDoc']
+        cercles: ['ca', 'pagePourpre', 'bougerEnsemble']
+      },
+      {
+        nom: "Ann Guilbault",
+        cv: "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
+        avatar: "AnnGuilbault-petit-carre.jpg",
+        cercles: ['ca']
       }
     ];
     return {
@@ -1155,6 +1322,7 @@ export default {
       membresDeCerclesTries: Shuffle.array(membresDeCercles),
       membresDeCercles: membresDeCercles,
       cercles: Cercles,
+      bougerEnsembleTab: 0,
       visionModal: false,
       missionModal: false,
       valeursModal: false,

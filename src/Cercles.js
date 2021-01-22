@@ -59,5 +59,10 @@ export default {
         nom: "Imaginez Demain",
         containerId: "imaginez-demain",
         lien:"/imaginez-demain"
+    },
+    bougerEnsemble: {
+        nom: "Bouger Ensemble",
+        containerId: "bouger-ensemble",
+        lien:"/bouger-ensemble"
     }
 }

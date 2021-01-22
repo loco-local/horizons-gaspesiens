@@ -1,12 +1,12 @@
 <template>
     <div class="calendar" id="calendrier">
-        <v-layout row wrap class="mt-5">
+        <v-layout row wrap class="mt-12">
             <v-flex xs0 lg3></v-flex>
-            <v-flex xs12 lg6 class="text-xs-center">
+            <v-flex xs12 lg6 class="text-center">
                 <h1 class="display-2 font-weight-thin">
                     Calendrier et réservation du Loco Local
                 </h1>
-                <h4 class="subheading font-weight-thin">
+                <h4 class="text-h6 font-weight-regular">
                     Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon
                     autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de
                     mobilisation citoyenne
@@ -14,34 +14,34 @@
             </v-flex>
             <v-flex xs0 lg3></v-flex>
         </v-layout>
-        <!--<v-layout row class="mt-5">-->
-        <!--<v-flex xs12 class="text-xs-center">-->
+        <!--<v-layout row class="mt-12">-->
+        <!--<v-flex xs12 class="text-center">-->
         <!--<img :src='require("@/assets/logo-loco-horizontal.png")'-->
         <!--:height="50">-->
         <!--</v-flex>-->
         <!--</v-layout>-->
-        <v-layout row wrap class="mt-5">
+        <v-layout row wrap class="mt-12">
             <v-flex xs0 lg2></v-flex>
             <v-flex xs12 lg8>
                 <v-tabs
-                        color="cyan"
-                        dark
-                        slider-color="yellow"
+                        color="black"
+                        light
+                        slider-color="#ff3301"
                         grow
                         class="pa-0 ma-0"
                         v-model="calendarTab"
                 >
                     <v-tab @click.prevent="$router.push('calendrier')" href="#">
-                        <v-icon class="mr-4">calendar_today</v-icon>
+                        <v-icon class="mr-6">calendar_today</v-icon>
                         Calendrier
                     </v-tab>
                     <v-tab @click.prevent="$router.push('réservation')" href="#">
-                        <v-icon class="mr-4">
+                        <v-icon class="mr-6">
                             fa-clipboard
                         </v-icon>
                         Réservation
                     </v-tab>
-                    <v-tab-item class="mt-3 text-xs-left" :class="{
+                    <v-tab-item class="mt-4 text-left" :class="{
                         'pl-0' : $vuetify.breakpoint.mdAndUp,
                         'pl-0' : $vuetify.breakpoint.smAndDown
                     }">
@@ -51,7 +51,7 @@
                                 Réserver
                             </v-btn>
                         </p>
-                        <p class="text-xs-left pa-0 ma-0">
+                        <p class="text-left pa-0 ma-0">
                             Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection documentaires,
                             discussions et plus encore.
                         </p>
@@ -62,9 +62,8 @@
                     </v-tab-item>
                     <v-tab-item touchless class='pl-0'>
                         <v-tabs
-                                color="cyan"
-                                dark
-                                slider-color="yellow"
+                                color="black"
+                                slider-color="#ff3301"
                                 class=""
                                 grow
                                 v-model="reserveTab"
@@ -110,11 +109,11 @@
                                     Entretien du local
                                 </span>
                             </v-tab>
-                            <v-tab-item class="text-xs-left pt-4" :class="{
+                            <v-tab-item class="text-left pt-6" :class="{
                                 'pl-4' : $vuetify.breakpoint.mdAndUp,
                                 'pl-2' : $vuetify.breakpoint.smAndDown
                             }">
-                                <h3 class="title mb-3">
+                                <h3 class="title mb-4">
                                     Contributions et coûts
                                 </h3>
                                 <p>
@@ -132,13 +131,13 @@
                                     }">
                                         Nous avons 2 formules d’auto-financement
                                         <v-list three-line-line>
-                                            <v-list-tile>
-                                                <v-list-tile-action v-if="$vuetify.breakpoint.mdAndUp">
+                                            <v-list-item>
+                                                <v-list-item-action v-if="$vuetify.breakpoint.mdAndUp">
                                                     <v-icon>fa-hat-cowboy</v-icon>
-                                                </v-list-tile-action>
-                                                <v-list-tile-content>
-                                                    <v-list-tile-title class="font-weight-regular" :class="{
-                                                        'subheading' : $vuetify.breakpoint.smAndDown,
+                                                </v-list-item-action>
+                                                <v-list-item-content>
+                                                    <v-list-item-title class="font-weight-regular" :class="{
+                                                        'subtitle-1' : $vuetify.breakpoint.smAndDown,
                                                         'title' : $vuetify.breakpoint.mdAndUp
                                                     }">
                                                         <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -150,38 +149,38 @@
                                                         <span v-if="$vuetify.breakpoint.smAndDown">
                                                             La méthode du «tour de chapeau»
                                                         </span>
-                                                    </v-list-tile-title>
-                                                    <v-list-tile-sub-title class="subheading">
+                                                    </v-list-item-title>
+                                                    <v-list-item-subtitle class="subtitle-1">
                                                         Pour les activités citoyennes ouvertes à tous.
-                                                    </v-list-tile-sub-title>
-                                                </v-list-tile-content>
-                                            </v-list-tile>
-                                            <v-list-tile class="mt-2">
-                                                <v-list-tile-action v-if="$vuetify.breakpoint.mdAndUp">
+                                                    </v-list-item-subtitle>
+                                                </v-list-item-content>
+                                            </v-list-item>
+                                            <v-list-item class="mt-2">
+                                                <v-list-item-action v-if="$vuetify.breakpoint.mdAndUp">
                                                     <v-icon>
                                                         event
                                                     </v-icon>
-                                                </v-list-tile-action>
-                                                <v-list-tile-content>
-                                                    <v-list-tile-title class="font-weight-regular" :class="{
-                                                        'subheading' : $vuetify.breakpoint.smAndDown,
+                                                </v-list-item-action>
+                                                <v-list-item-content>
+                                                    <v-list-item-title class="font-weight-regular" :class="{
+                                                        'subtitle-1' : $vuetify.breakpoint.smAndDown,
                                                         'title' : $vuetify.breakpoint.mdAndUp
                                                     }">
                                                         <v-icon class="mr-1" v-if="$vuetify.breakpoint.smAndDown" small>
                                                             event
                                                         </v-icon>
                                                         Location par un membre ou un organisme
-                                                    </v-list-tile-title>
-                                                    <v-list-tile-sub-title class="subheading">
+                                                    </v-list-item-title>
+                                                    <v-list-item-subtitle class="subtitle-1">
                                                         Pour un usage publique ou privé.
-                                                    </v-list-tile-sub-title>
-                                                </v-list-tile-content>
-                                            </v-list-tile>
+                                                    </v-list-item-subtitle>
+                                                </v-list-item-content>
+                                            </v-list-item>
                                         </v-list>
                                         <v-card flat>
                                             <v-card-text>
                                                 <v-layout row wrap>
-                                                    <v-flex sm12 md2 lg1 class="text-xs-center" :class="{
+                                                    <v-flex sm12 md2 lg1 class="text-center" :class="{
                                                         'pb-4': $vuetify.breakpoint.smAndDown
                                                     }">
                                                         <v-icon large>
@@ -217,7 +216,7 @@
                                         </v-card>
                                     </v-card-text>
                                 </v-card>
-                                <v-card class="ma-4 elevation-8">
+                                <v-card class="ma-6 elevation-8">
                                     <!--<v-card-title class="title font-weight-bold">-->
                                     <!--B-->
                                     <!--</v-card-title>-->
@@ -227,32 +226,32 @@
                                             suivants:
                                         </p>
                                         <v-data-table
-                                                class="subheading"
+                                                class="subtitle-1"
                                                 hide-actions
                                                 :headers="priceHeaders"
                                                 :items="priceRows"
                                         >
-                                            <template slot="headers" slot-scope="props">
+                                            <template slot="header" slot-scope="props">
                                                 <tr>
                                                     <th></th>
-                                                    <th class="subheading">
+                                                    <th class="subtitle-1">
                                                         Un bloc de 4 heures<br>
                                                         (matin, après-midi ou soirée)
                                                     </th>
-                                                    <th class="subheading">
+                                                    <th class="subtitle-1">
                                                         Un bloc de 8 heures<br>
                                                         (toute la journée)
                                                     </th>
                                                 </tr>
                                             </template>
-                                            <template slot="items" slot-scope="props">
-                                                <td class="subheading">
+                                            <template slot="item" slot-scope="props">
+                                                <td class="subtitle-1">
                                                     {{props.item.row1}}
                                                 </td>
-                                                <td class="subheading">
+                                                <td class="subtitle-1">
                                                     {{props.item.row2}}
                                                 </td>
-                                                <td class="subheading">
+                                                <td class="subtitle-1">
                                                     {{props.item.row3}}
                                                 </td>
                                             </template>
@@ -260,7 +259,7 @@
                                     </v-card-text>
                                 </v-card>
                                 <v-card flat>
-                                    <v-card-text class="text-xs-center">
+                                    <v-card-text class="text-center">
                                         Facture sur demande
                                         <a href="mailto:horizonsgaspesiens@gmail.com">
                                             <v-icon class="ml-2 mr-2">email</v-icon>
@@ -276,8 +275,8 @@
                                     </v-flex>
                                 </v-layout>
                             </v-tab-item>
-                            <v-tab-item class="text-xs-left pl-4 pt-4">
-                                <h3 class="title mb-3">
+                            <v-tab-item class="text-left pl-6 pt-6">
+                                <h3 class="title mb-4">
                                     Priorité
                                 </h3>
                                 <p>
@@ -312,15 +311,15 @@
                                     </v-flex>
                                 </v-layout>
                             </v-tab-item>
-                            <v-tab-item class="text-xs-left pl-4 pt-4">
-                                <h3 class="title mb-3">
+                            <v-tab-item class="text-left pl-6 pt-6">
+                                <h3 class="title mb-4">
                                     Inscrire mon activité
                                 </h3>
                                 <p>
                                     1. Contactez-nous pour qu'on active votre accès au calendrier via Google-agenda ou
                                     si vous avez besoin de soutien.
                                 </p>
-                                <p class="text-xs-center">
+                                <p class="text-center">
                                     <v-btn @click="$refs.phoneDialog.show()">
                                         <v-icon class="mr-2">phone</v-icon>
                                         Appelez-nous
@@ -349,8 +348,8 @@
                                     </v-flex>
                                 </v-layout>
                             </v-tab-item>
-                            <v-tab-item class="text-xs-left pl-4 pt-4">
-                                <h3 class="title mb-3">
+                            <v-tab-item class="text-left pl-6 pt-6">
+                                <h3 class="title mb-4">
                                     Informations à spécifier
                                 </h3>
                                 <ul>
@@ -368,7 +367,7 @@
                                         ne peut avoir lieu au même moment)
                                     </li>
                                 </ul>
-                                <v-layout row class="mt-4">
+                                <v-layout row class="mt-6">
                                     <v-flex xs12 class="text-xs-right">
                                         <v-btn @click="nextTab()">
                                             Prochaine page
@@ -376,8 +375,8 @@
                                     </v-flex>
                                 </v-layout>
                             </v-tab-item>
-                            <v-tab-item class="text-xs-left pl-4 pt-4">
-                                <h3 class="title mb-3">
+                            <v-tab-item class="text-left pl-6 pt-6">
+                                <h3 class="title mb-4">
                                     Entretien du local
                                 </h3>
                                 <p>

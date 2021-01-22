@@ -1,19 +1,19 @@
 <template>
-  <div class="mt-5 pt-5">
+  <div class="mt-12 pt-12">
     <v-layout row wrap class="pt-12">
       <v-flex xs12 md12 class="vh-center pt-12">
         <h1 class="pt-12 pb-12 headline font-weight-bold">AGA 2020</h1>
         <div class="mt-2 pt-2"></div>
 <!--        <v-list>-->
-<!--          <v-list-tile-->
+<!--          <v-list-item-->
 <!--              href="Avis-de-convocation2020.pdf">-->
-<!--            <v-list-tile-action>-->
+<!--            <v-list-item-action>-->
 <!--              <v-icon>picture_as_pdf</v-icon>-->
-<!--            </v-list-tile-action>-->
-<!--            <v-list-tile-title>-->
+<!--            </v-list-item-action>-->
+<!--            <v-list-item-title>-->
 <!--              Avis de convocation-->
-<!--            </v-list-tile-title>-->
-<!--          </v-list-tile>-->
+<!--            </v-list-item-title>-->
+<!--          </v-list-item>-->
 <!--        </v-list>-->
         <v-card width="600" class="pt-12" flat>
           <v-card-title class="headline vh-center">
