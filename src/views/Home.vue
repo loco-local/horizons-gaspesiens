@@ -327,21 +327,26 @@
             <v-icon left>
               nordic_walking
             </v-icon>
-            Club de marche
+            <span v-if="$vuetify.breakpoint.mdAndUp">
+          Club de marche
+        </span>
           </v-tab>
           <v-tab>
             <v-icon left>
               self_improvement
             </v-icon>
-            Cours de Yoga
+            <span v-if="$vuetify.breakpoint.mdAndUp">
+          Cours de Yoga
+        </span>
           </v-tab>
           <v-tab>
             <v-icon left>
               emoji_emotions
             </v-icon>
-            Cours d'expression corporelle
+            <span v-if="$vuetify.breakpoint.mdAndUp">
+          Cours d'expression corporelle
+        </span>
           </v-tab>
-
           <v-tab-item>
             <v-card flat>
               <v-card-title>
@@ -358,7 +363,8 @@
               <v-card-text class="text-h6 font-weight-regular">
                 <p>
                   Vous souhaitez vous remettre en mouvement et vous ressentez l'envie et le besoin de partager des
-                  moments de groupe ? Venez rejoindre notre club de marche !!! Cette activité sera animée par plusieurs
+                  moments de groupe ? Venez rejoindre notre club de marche !!! Cette activité sera animée par
+                  plusieurs
                   animateurs : Céline Martin, psychomotricienne, Dominique Landry, animatrice culturelle, ...
                 </p>
                 <p>
@@ -367,14 +373,16 @@
                 </p>
                 <p>
                   Où ? : départ au garage municipal de Saint-Siméon le mercredi 6 et 13 janvier. Possibilité d'autres
-                  points de rendez-vous en fonction du choix du lieu de marche. N'hésitez pas à nous proposer les places
+                  points de rendez-vous en fonction du choix du lieu de marche. N'hésitez pas à nous proposer les
+                  places
                   où vous voulez marcher. Les marches pourront être dans le secteur autour de Bonaventure.
                 </p>
                 <p>
                   C'est une activité gratuite !!
                 </p>
                 <p>
-                  Les lieux de marche et les heures ne sont pas fixes alors si vous voulez venir marcher avec nous cette
+                  Les lieux de marche et les heures ne sont pas fixes alors si vous voulez venir marcher avec nous
+                  cette
                   année, inscrivez-vous !! Nous essayerons de nous adapter à vos demandes et vos propositions !!
                 </p>
               </v-card-text>
@@ -403,7 +411,8 @@
                 </p>
                 <p>
                   Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos
-                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir plus
+                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir
+                  plus
                   loin dans la rubrique inscription).
                   Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.
                   Les absences ne peuvent pas être remboursées.
