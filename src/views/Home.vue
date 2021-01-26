@@ -232,164 +232,255 @@
         </v-card>
       </div>
     </Cercle>
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <Cercle title="Bibliothèque d'outils" anchor="bibliothèque-outils" image="gardening-tools-1478547_1280.jpg"-->
-<!--            id="bibliothèque-outils">-->
-<!--      <div slot="subtitle">-->
-<!--        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous-->
-<!--        servirez qu'une fois dans votre vie, empruntez-le!-->
-<!--      </div>-->
-<!--      <div slot="content">-->
-<!--        <p>-->
-<!--          1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat, mécanique,-->
-<!--          jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <Cercle title="Bibliothèque d'outils" anchor="bibliothèque-outils" image="gardening-tools-1478547_1280.jpg"-->
+    <!--            id="bibliothèque-outils">-->
+    <!--      <div slot="subtitle">-->
+    <!--        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous-->
+    <!--        servirez qu'une fois dans votre vie, empruntez-le!-->
+    <!--      </div>-->
+    <!--      <div slot="content">-->
+    <!--        <p>-->
+    <!--          1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat, mécanique,-->
+    <!--          jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.-->
 
-<!--          2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à la-->
-<!--          population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des rencontres-->
-<!--          intergénérationnelles et interculturelles.-->
-<!--        </p>-->
-
-
-<!--        Des modèles ailleurs : La Remise à Montréal, La Patente à Québec.-->
-
-<!--        Pourquoi une bibliothèque d’outils?-->
-<!--        Pour :-->
-
-<!--        renforcer les liens sociaux;-->
-
-<!--        lutter contre le gaspillage des ressources;-->
-
-<!--        et augmenter la capacité d’agir de la communauté et de ses membres.-->
-
-<!--        BRICOLAGE – VOISINAGE – PARTAGE!-->
-
-<!--        Comment ça marche?-->
-<!--        Les abonnés ont accès à tous les outils de la bibliothèque.-->
-
-<!--        C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.-->
-
-<!--        Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre abonné.-->
-
-<!--        Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont une durée de-->
-<!--        vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.-->
+    <!--          2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à la-->
+    <!--          population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des rencontres-->
+    <!--          intergénérationnelles et interculturelles.-->
+    <!--        </p>-->
 
 
-<!--        Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se-->
-<!--        familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec d’autre monde!-->
+    <!--        Des modèles ailleurs : La Remise à Montréal, La Patente à Québec.-->
+
+    <!--        Pourquoi une bibliothèque d’outils?-->
+    <!--        Pour :-->
+
+    <!--        renforcer les liens sociaux;-->
+
+    <!--        lutter contre le gaspillage des ressources;-->
+
+    <!--        et augmenter la capacité d’agir de la communauté et de ses membres.-->
+
+    <!--        BRICOLAGE – VOISINAGE – PARTAGE!-->
+
+    <!--        Comment ça marche?-->
+    <!--        Les abonnés ont accès à tous les outils de la bibliothèque.-->
+
+    <!--        C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.-->
+
+    <!--        Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre abonné.-->
+
+    <!--        Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont une durée de-->
+    <!--        vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.-->
 
 
-<!--        Note : le fonctionnement exact est encore à établir. Détails à venir.-->
-
-<!--        Comment je fais pour m’inscrire!-->
-<!--        Vous devez d’abord être membre de la coop HG.-->
-
-<!--        Puis, payer un abonnement annuel.-->
-
-<!--        Suivez le lien!-->
-
-<!--        Comment puis-je aider?-->
-<!--        Un comité sera mis en place pour assurer le bon fonctionnement du projet.-->
-
-<!--        Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la qualité,-->
-<!--        assurer une offre intéressante, etc.)-->
-
-<!--        Voici les postes à combler :-->
-
-<!--        Cuisine-->
-
-<!--        Production alimentaire-->
-
-<!--        Couture et/ou artisanat-->
-
-<!--        Mécanique vélo-->
-
-<!--        Rénovation (menuiserie, électricité, plomberie)-->
-
-<!--        Électronique-->
-
-<!--        Programmation-->
-
-<!--        Coordination (membership, $, lien avec HG, communications)-->
+    <!--        Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se-->
+    <!--        familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec d’autre monde!-->
 
 
-<!--        Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer au projet, contactez-->
-<!--        arielle.paiement@gmail.com-->
-<!--      </div>-->
-<!--    </Cercle>-->
+    <!--        Note : le fonctionnement exact est encore à établir. Détails à venir.-->
+
+    <!--        Comment je fais pour m’inscrire!-->
+    <!--        Vous devez d’abord être membre de la coop HG.-->
+
+    <!--        Puis, payer un abonnement annuel.-->
+
+    <!--        Suivez le lien!-->
+
+    <!--        Comment puis-je aider?-->
+    <!--        Un comité sera mis en place pour assurer le bon fonctionnement du projet.-->
+
+    <!--        Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la qualité,-->
+    <!--        assurer une offre intéressante, etc.)-->
+
+    <!--        Voici les postes à combler :-->
+
+    <!--        Cuisine-->
+
+    <!--        Production alimentaire-->
+
+    <!--        Couture et/ou artisanat-->
+
+    <!--        Mécanique vélo-->
+
+    <!--        Rénovation (menuiserie, électricité, plomberie)-->
+
+    <!--        Électronique-->
+
+    <!--        Programmation-->
+
+    <!--        Coordination (membership, $, lien avec HG, communications)-->
+
+
+    <!--        Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer au projet, contactez-->
+    <!--        arielle.paiement@gmail.com-->
+    <!--      </div>-->
+    <!--    </Cercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Bouger Ensemble" anchor="bouger-ensemble" image="bouger-ensemble-marche.jpg" id="bouger-ensemble">
       <div slot="subtitle">
         Ces deux choses, bouger et socialiser, qui manquent cruellement en temps de pandémie
       </div>
       <div slot="content">
-        <v-tabs
-            color="cyan"
-            dark
-            slider-color="yellow"
-            grow
-            class="pa-0 ma-0"
-            v-model="bougerEnsembleTab"
-        >
-          <v-tab @click.prevent="$router.push('calendrier')" href="#">
-            <v-icon class="mr-6">calendar_today</v-icon>
-            Calendrier
-          </v-tab>
-          <v-tab @click.prevent="$router.push('réservation')" href="#">
-            <v-icon class="mr-6">
-              fa-clipboard
+        <v-tabs vertical>
+          <v-tab>
+            <v-icon left>
+              nordic_walking
             </v-icon>
-            Réservation
+            Club de marche
           </v-tab>
-          <v-tab-item class="mt-4 text-left" :class="{
-                        'pl-0' : $vuetify.breakpoint.mdAndUp,
-                        'pl-0' : $vuetify.breakpoint.smAndDown
-                    }">
-          </v-tab-item>
-          <v-tab-item touchless class='pl-0'>
+          <v-tab>
+            <v-icon left>
+              self_improvement
+            </v-icon>
+            Cours de Yoga
+          </v-tab>
+          <v-tab>
+            <v-icon left>
+              emoji_emotions
+            </v-icon>
+            Cours d'expression corporelle
+          </v-tab>
 
+          <v-tab-item>
+            <v-card flat>
+              <v-card-title>
+                <v-icon class="mr-2">nordic_walking</v-icon>
+                Club de marche
+              </v-card-title>
+              <v-card-subtitle class="pt-4 subtitle-1">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
+                   target="_blank">
+                  <v-icon class="mr-2">assignment</v-icon>
+                  Formulaire d'inscription à remplir
+                </a>
+              </v-card-subtitle>
+              <v-card-text class="text-h6 font-weight-regular">
+                <p>
+                  Vous souhaitez vous remettre en mouvement et vous ressentez l'envie et le besoin de partager des
+                  moments de groupe ? Venez rejoindre notre club de marche !!! Cette activité sera animée par plusieurs
+                  animateurs : Céline Martin, psychomotricienne, Dominique Landry, animatrice culturelle, ...
+                </p>
+                <p>
+                  Quand ? : Les activités se dérouleront le mercredi soir à partir de19h pour le mois de janvier. Pour
+                  les prochains mois, possibilité de modification du jour et de l'heure de marche.
+                </p>
+                <p>
+                  Où ? : départ au garage municipal de Saint-Siméon le mercredi 6 et 13 janvier. Possibilité d'autres
+                  points de rendez-vous en fonction du choix du lieu de marche. N'hésitez pas à nous proposer les places
+                  où vous voulez marcher. Les marches pourront être dans le secteur autour de Bonaventure.
+                </p>
+                <p>
+                  C'est une activité gratuite !!
+                </p>
+                <p>
+                  Les lieux de marche et les heures ne sont pas fixes alors si vous voulez venir marcher avec nous cette
+                  année, inscrivez-vous !! Nous essayerons de nous adapter à vos demandes et vos propositions !!
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat>
+              <v-card-title>
+                <v-icon class="mr-2">self_improvement</v-icon>
+                Cours de Yoga
+              </v-card-title>
+              <v-card-subtitle class="subtitle-1 pt-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGH6o1WhMQI4lkCyeEX2a7lyTZQWAFiHEd1rphUrhSpEqIXQ/viewform?fbclid=IwAR2AYwXZ7feqFmdOztRY7qQLqfC1o9iO0GPoILQaH533bWVvwnY7Xfm2IB4"
+                   target="_blank">
+                  <v-icon class="mr-2">assignment</v-icon>
+                  Formulaire d'inscription à remplir
+                </a>
+              </v-card-subtitle>
+              <v-card-text class="text-h6 font-weight-regular">
+                <p>
+                  Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!
+                  Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).
+                </p>
+                <p>
+                  Attention : cette activité se déroulera si nous repassons en zone orange ou jaune !!!
+                </p>
+                <p>
+                  Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos
+                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir plus
+                  loin dans la rubrique inscription).
+                  Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.
+                  Les absences ne peuvent pas être remboursées.
+                </p>
+                <p>
+                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans
+                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
+                </p>
+                <p>
+                  Les places sont limitées !
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat>
+              <v-card-title>
+                <v-icon class="mr-2">emoji_emotions</v-icon>
+                Cours d'expression corporelle
+              </v-card-title>
+              <v-card-subtitle class="subtitle-1 pt-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJY6cc5vNe9nIIr2I73pf1HeCQB8x_Xid8PQ58G_X6i4xR1w/viewform?fbclid=IwAR1vYwLCoJElOwUygM2-XWy2aX5Mq4qfFn7VzQEaKm0blguYZSxqNSN7crw"
+                   target="_blank">
+                  <v-icon class="mr-2">assignment</v-icon>
+                  Formulaire d'inscription à remplir
+                </a>
+              </v-card-subtitle>
+              <v-card-text class="text-h6 font-weight-regular">
+                <p>
+                  Vous souhaitez explorer les possibilités de votre corps, votre créativité dans le mouvement,
+                  développer votre conscience corporelle et le lâcher prise. Venez participer aux cours d’expression
+                  corporelle et de danse libre avec Céline Martin, psychomotricienne, pour prendre plaisir à être en
+                  mouvement ensemble et se faire du bien !
+                </p>
+                <p>
+                  Quand ? : Les cours se dérouleront les samedis 9 et 16 janvier de 10h à 11h.
+                </p>
+                <p>
+                  Où ? : Départ du Loco Local de Bonaventure (193A, avenue Grand-Pré). L'activité se déroulera à
+                  l'extérieur (possibilité d'annulation et de remboursement si la météo n'est pas favorable). Dès que
+                  possible les activités seront à l'intérieur du Loco Local.
+                </p>
+                <p>
+                  Coût:
+                  - Pour les 2 cours : de 10$ à 30$, selon vos capacités financières.* Le paiement se réalisera par
+                  virement bancaire ou virement interact (voir plus loin dans la rubrique inscription).
+                  - Au cours : contribution volontaire suggérée entre 5$ et 10$.
+                </p>
+                <p>
+                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans
+                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
+                </p>
+                <p>
+                  Les places sont limitées !
+                </p>
+              </v-card-text>
+            </v-card>
           </v-tab-item>
         </v-tabs>
-        <!--        <p class="">-->
-        <!--          <a href="#" @click.prevent="">-->
-        <!--            Remplissez ce formulaire-->
-        <!--          </a>-->
-        <!--          pour être au courant des activités à venir des changements qui peuvent survenir.-->
-        <!--        </p>-->
-        <!--        <v-list>-->
-        <!--          <v-subheader class="black&#45;&#45;text title">-->
-        <!--            Activités-->
-        <!--          </v-subheader>-->
-        <!--          <v-list-item>-->
-        <!--            <v-list-item-content>-->
-        <!--              <v-list-item-title>-->
-        <!--                Club de marche-->
-        <!--              </v-list-item-title>-->
-        <!--              <v-list-item-subtitle>-->
-        <!--                coool-->
-        <!--              </v-list-item-subtitle>-->
-        <!--            </v-list-item-content>-->
-        <!--          </v-list-item>-->
-        <!--          <v-list-item>-->
-        <!--            <v-list-item-content>-->
-        <!--              <v-list-item-title>-->
-        <!--                Yoga-->
-        <!--              </v-list-item-title>-->
-        <!--              <v-list-item-subtitle>-->
-        <!--                Avec Simon !-->
-        <!--              </v-list-item-subtitle>-->
-        <!--            </v-list-item-content>-->
-        <!--          </v-list-item>-->
-        <!--          <v-list-item>-->
-        <!--            <v-list-item-content>-->
-        <!--              <v-list-item-title>-->
-        <!--                Expression corporelle-->
-        <!--              </v-list-item-title>-->
-        <!--              <v-list-item-subtitle>-->
-        <!--                Libérez votre créativité-->
-        <!--              </v-list-item-subtitle>-->
-        <!--            </v-list-item-content>-->
-        <!--          </v-list-item>-->
-        <!--        </v-list>-->
+        <v-row>
+          <v-col cols="12" class="vh-center">
+            <v-card max-width="500" class="align-self-center">
+              <v-card-actions class="text-h6 font-weight-regular">
+                <v-spacer></v-spacer>
+                <v-icon class="mr-8" large>6_ft_apart</v-icon>
+                <v-icon class="mr-8" large>sanitizer</v-icon>
+                <v-icon class="mr-8" large>masks</v-icon>
+                <v-spacer></v-spacer>
+              </v-card-actions>
+              <v-card-actions class="text-h6 font-weight-regular">
+                <v-spacer></v-spacer>
+                Nous respectons les mesures sanitaires.
+                <v-spacer></v-spacer>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
@@ -1220,7 +1311,7 @@ export default {
       if (this.$route.path === "/paiement") {
         section = "paiement";
       }
-      if (["/calendrier", "/réservation"].indexOf(this.$route.path) > -1) {
+      if (["/calendrier", "/reservation"].indexOf(this.$route.path) > -1) {
         section = "calendrier";
       }
       if (this.$route.path === "/benevole") {

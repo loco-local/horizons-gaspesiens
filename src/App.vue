@@ -53,7 +53,7 @@
             </v-list-item-title>
           </v-list-item>
           <v-list-item
-              @click="Scroll.allerALaSection('calendrier', '/réservation')">
+              @click="Scroll.allerALaSection('calendrier', '/reservation')">
             <v-list-item-action>
               <v-icon>fa-clipboard</v-icon>
             </v-list-item-action>
@@ -182,7 +182,7 @@
               Calendrier
             </v-btn>
             <v-btn :small="$vuetify.breakpoint.lgAndDown" text
-                   @click="Scroll.allerALaSection('calendrier', '/réservation')">
+                   @click="Scroll.allerALaSection('calendrier', '/reservation')">
               <v-icon :class="{
                         'mr-3' : $vuetify.breakpoint.lgAndUp,
                         'mr-0' : $vuetify.breakpoint.mdAndDown

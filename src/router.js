@@ -67,8 +67,8 @@ export default new Router({
             component: Home
         },
         {
-            path: '/réservation',
-            name: 'réservation',
+            path: '/reservation',
+            name: 'reservation',
             component: Home
         },
         {
