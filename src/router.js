@@ -27,6 +27,11 @@ export default new Router({
             component: Home
         },
         {
+            path: '/biblio-outils',
+            name: 'biblio-outils',
+            component: Home
+        },
+        {
             path: '/bouger-ensemble',
             name: 'bouger-ensemble',
             component: Home

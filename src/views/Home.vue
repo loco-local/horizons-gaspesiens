@@ -232,90 +232,190 @@
         </v-card>
       </div>
     </Cercle>
-    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-    <!--    <Cercle title="Bibliothèque d'outils" anchor="bibliothèque-outils" image="gardening-tools-1478547_1280.jpg"-->
-    <!--            id="bibliothèque-outils">-->
-    <!--      <div slot="subtitle">-->
-    <!--        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous-->
-    <!--        servirez qu'une fois dans votre vie, empruntez-le!-->
-    <!--      </div>-->
-    <!--      <div slot="content">-->
-    <!--        <p>-->
-    <!--          1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat, mécanique,-->
-    <!--          jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.-->
-
-    <!--          2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à la-->
-    <!--          population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des rencontres-->
-    <!--          intergénérationnelles et interculturelles.-->
-    <!--        </p>-->
-
-
-    <!--        Des modèles ailleurs : La Remise à Montréal, La Patente à Québec.-->
-
-    <!--        Pourquoi une bibliothèque d’outils?-->
-    <!--        Pour :-->
-
-    <!--        renforcer les liens sociaux;-->
-
-    <!--        lutter contre le gaspillage des ressources;-->
-
-    <!--        et augmenter la capacité d’agir de la communauté et de ses membres.-->
-
-    <!--        BRICOLAGE – VOISINAGE – PARTAGE!-->
-
-    <!--        Comment ça marche?-->
-    <!--        Les abonnés ont accès à tous les outils de la bibliothèque.-->
-
-    <!--        C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.-->
-
-    <!--        Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre abonné.-->
-
-    <!--        Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont une durée de-->
-    <!--        vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.-->
-
-
-    <!--        Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se-->
-    <!--        familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec d’autre monde!-->
-
-
-    <!--        Note : le fonctionnement exact est encore à établir. Détails à venir.-->
-
-    <!--        Comment je fais pour m’inscrire!-->
-    <!--        Vous devez d’abord être membre de la coop HG.-->
-
-    <!--        Puis, payer un abonnement annuel.-->
-
-    <!--        Suivez le lien!-->
-
-    <!--        Comment puis-je aider?-->
-    <!--        Un comité sera mis en place pour assurer le bon fonctionnement du projet.-->
-
-    <!--        Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la qualité,-->
-    <!--        assurer une offre intéressante, etc.)-->
-
-    <!--        Voici les postes à combler :-->
-
-    <!--        Cuisine-->
-
-    <!--        Production alimentaire-->
-
-    <!--        Couture et/ou artisanat-->
-
-    <!--        Mécanique vélo-->
-
-    <!--        Rénovation (menuiserie, électricité, plomberie)-->
-
-    <!--        Électronique-->
-
-    <!--        Programmation-->
-
-    <!--        Coordination (membership, $, lien avec HG, communications)-->
-
-
-    <!--        Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer au projet, contactez-->
-    <!--        arielle.paiement@gmail.com-->
-    <!--      </div>-->
-    <!--    </Cercle>-->
+    <v-divider class="mt-6 mb-12"></v-divider>
+    <Cercle title="Bibliothèque d'outils" anchor="biblio-outils" image="gardening-tools-1478547_1280.jpg"
+            id="biblio-outils">
+      <div slot="subtitle">
+        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous
+        servirez qu'une fois dans votre vie, empruntez-le!
+      </div>
+      <div slot="content">
+        <v-card>
+          <v-card-text class="text-h6 font-weight-regular text-center">
+            Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer à la bibliothèque d'outils,
+            contactez
+            <a href="mailto:arielle.paiement@gmail.com">
+              <v-icon class="mr-2">mail</v-icon>
+              arielle.paiement@gmail.com
+            </a>
+          </v-card-text>
+        </v-card>
+        <v-tabs grow class="mt-4">
+          <v-tab>
+            C'est quoi
+          </v-tab>
+          <v-tab>
+            Participer
+          </v-tab>
+          <v-tab-item class="pt-4">
+            <h3>C'est quoi</h3>
+            <p>
+              1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat,
+              mécanique,
+              jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.
+            </p>
+            <p>
+              2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à la
+              population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des
+              rencontres
+              intergénérationnelles et interculturelles.
+            </p>
+            <p>
+              Des modèles ailleurs :
+              <a href="https://laremise.ca/">La Remise</a> à Montréal,
+              <a href="https://atelierlapatente.org/">La Patente</a> à Québec.
+            </p>
+            <h3>
+              Pourquoi une bibliothèque d’outils?
+            </h3>
+            <vlist>
+              <v-subheader class="subtitle-1">
+                pour
+              </v-subheader>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  renforcer les liens sociaux
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  lutter contre le gaspillage des ressources
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  augmenter la capacité d’agir de la communauté et de ses membres.
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  BRICOLAGE – VOISINAGE – PARTAGE!
+                </v-list-item-title>
+              </v-list-item>
+            </vlist>
+            <h3 class="pt-4">
+              Comment ça marche
+            </h3>
+            <p>
+              Les abonnés ont accès à tous les outils de la bibliothèque.
+            </p>
+            <p>
+              C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.
+            </p>
+            <p>
+              Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre
+              abonné.
+            </p>
+            <p>
+              Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont une
+              durée de
+              vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.
+            </p>
+            <p>
+              Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se
+              familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec d’autre
+              monde!
+            </p>
+            <p>
+              Note : le fonctionnement exact est encore à établir. Détails à venir.
+            </p>
+          </v-tab-item>
+          <v-tab-item class="pt-4">
+            <h3>
+              Don d'outils
+            </h3>
+            <p>
+              Nous reçevons les dons d'outils !
+            </p>
+            <p>
+              Nous espérons constituer la base de la bibliothèque grâce à vos dons.
+            </p>
+            <p>
+              Critère #1: l'outil doit être en état de fonctionner de manière sécuritaire
+            </p>
+            <p>
+              Si nous avons trop d'outils du même type, nous pourrions décider de les vendre, et les sous servirons à
+              financer les dépenses du projet
+            </p>
+            <h3>
+              Comité de la Bibliothèque d'outils
+            </h3>
+            <p>
+              Un comité sera mis en place pour assurer le bon fonctionnement du projet.
+            </p>
+            <p>
+              Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la
+              qualité,
+              assurer une offre intéressante, etc.)
+            </p>
+            <p class="mb-0">
+              Voici les postes à combler :
+            </p>
+            <v-list class="pt-0">
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Cuisine
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Production alimentaire
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Couture et/ou artisanat
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Mécanique vélo
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Rénovation (menuiserie, électricité, plomberie)
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Électronique
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Programmation
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title class="text-h6 font-weight-regular">
+                  Coordination (membership, $, lien avec HG, communications)
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+            <h3>
+              Abonnement
+            </h3>
+            <p>
+              Vous devez d’abord être membre de la coop HG.
+            </p>
+            <p>
+              Puis, payer un abonnement annuel.
+            </p>
+          </v-tab-item>
+        </v-tabs>
+      </div>
+    </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Bouger Ensemble" anchor="bouger-ensemble" image="bouger-ensemble-marche.jpg" id="bouger-ensemble">
       <div slot="subtitle">
@@ -1392,7 +1492,7 @@ export default {
         nom: "Arielle Paiement",
         cv: "Animation de groupe, Communication non violente, charpentière",
         avatar: "arielle-petit-carre.jpg",
-        cercles: ['gouvernance']
+        cercles: ['gouvernance', 'biblioOutils']
       },
       {
         nom: "Martin Zibeau",
