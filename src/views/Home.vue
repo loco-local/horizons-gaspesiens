@@ -1419,7 +1419,7 @@ export default {
       }.bind(this));
 
     },
-    goToRightSection: function () {
+    goToRightSection: async function () {
       let section = "app";
       if (this.$route.params.comite) {
         section = this.$route.params.comite;
@@ -1435,7 +1435,10 @@ export default {
       if (this.$route.path === "/benevole") {
         section = "benevole";
       }
-      Scroll.allerALaSection(section)
+      await this.$nextTick();
+      setTimeout(() => {
+        Scroll.allerALaSection(section)
+      }, 150)
     }
   },
   data() {
