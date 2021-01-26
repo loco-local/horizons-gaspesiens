@@ -6,6 +6,10 @@ export default {
         nom: "CA",
         desactive: true
     },
+    adhesion: {
+        nom: "Adhésion",
+        desactive: true
+    },
     espace: {
         nom: "Collaborium et espace de vie",
         containerId: "collaborium",

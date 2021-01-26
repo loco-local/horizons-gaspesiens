@@ -1516,7 +1516,7 @@ export default {
         nom: "Ann Guilbault",
         cv: "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
-        cercles: ['ca']
+        cercles: ['ca', 'adhesion']
       }
     ];
     return {
