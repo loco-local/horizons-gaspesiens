@@ -278,7 +278,7 @@
             <h3>
               Pourquoi une bibliothèque d’outils?
             </h3>
-            <vlist>
+            <v-list>
               <v-subheader class="subtitle-1">
                 pour
               </v-subheader>
@@ -302,7 +302,7 @@
                   BRICOLAGE – VOISINAGE – PARTAGE!
                 </v-list-item-title>
               </v-list-item>
-            </vlist>
+            </v-list>
             <h3 class="pt-4">
               Comment ça marche
             </h3>
@@ -1437,8 +1437,8 @@ export default {
       }
       await this.$nextTick();
       setTimeout(() => {
-        Scroll.allerALaSection(section)
-      }, 150)
+        Scroll.allerALaSection(section, undefined, 0)
+      }, 400)
     }
   },
   data() {
