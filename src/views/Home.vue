@@ -322,30 +322,39 @@
         Ces deux choses, bouger et socialiser, qui manquent cruellement en temps de pandémie
       </div>
       <div slot="content">
-        <v-tabs vertical>
+        <v-tabs>
           <v-tab>
             <v-icon left>
               nordic_walking
             </v-icon>
             <span v-if="$vuetify.breakpoint.mdAndUp">
-          Club de marche
-        </span>
+              Club de marche
+            </span>
+            <span v-else>
+              Marche
+            </span>
           </v-tab>
           <v-tab>
             <v-icon left>
               self_improvement
             </v-icon>
             <span v-if="$vuetify.breakpoint.mdAndUp">
-          Cours de Yoga
-        </span>
+              Cours de Yoga
+            </span>
+            <span v-else>
+              Yoga
+            </span>
           </v-tab>
           <v-tab>
             <v-icon left>
               emoji_emotions
             </v-icon>
             <span v-if="$vuetify.breakpoint.mdAndUp">
-          Cours d'expression corporelle
-        </span>
+              Cours d'expression corporelle
+            </span>
+            <span v-else>
+              Expression
+            </span>
           </v-tab>
           <v-tab-item>
             <v-card flat>
