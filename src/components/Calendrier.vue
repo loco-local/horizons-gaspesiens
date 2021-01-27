@@ -31,11 +31,11 @@
             class="pa-0 ma-0"
             v-model="calendarTab"
         >
-          <v-tab @click.prevent="$router.push('calendrier')" href="#">
+          <v-tab @click.prevent="$router.push('calendrier')" href="#" class="body-1">
             <v-icon class="mr-6">calendar_today</v-icon>
             Calendrier
           </v-tab>
-          <v-tab @click.prevent="$router.push('reservation')" href="#">
+          <v-tab @click.prevent="$router.push('reservation')" href="#" class="body-1">
             <v-icon class="mr-6">
               fa-clipboard
             </v-icon>
@@ -75,7 +75,7 @@
                   v-model="reserveTab"
                   touchless
               >
-                <v-tab href="#" @click.prevent>
+                <v-tab href="#" @click.prevent class="body-1">
                   <v-icon class="mr-2">
                     attach_money
                   </v-icon>
@@ -83,7 +83,7 @@
                                     Contributions et coûts
                                 </span>
                 </v-tab>
-                <v-tab href="#" @click.prevent>
+                <v-tab href="#" @click.prevent class="body-1">
                   <v-icon class="mr-2">
                     priority_high
                   </v-icon>
@@ -91,7 +91,7 @@
                                     Priorité
                                 </span>
                 </v-tab>
-                <v-tab href="#" @click.prevent>
+                <v-tab href="#" @click.prevent class="body-1">
                   <v-icon class="mr-2">
                     fa-edit
                   </v-icon>
@@ -99,7 +99,7 @@
                                     Inscrire mon activité
                                 </span>
                 </v-tab>
-                <v-tab href="#" @click.prevent>
+                <v-tab href="#" @click.prevent class="body-1">
                   <v-icon class="mr-2">
                     info
                   </v-icon>
@@ -107,7 +107,7 @@
                                     Informations à spécifier
                                 </span>
                 </v-tab>
-                <v-tab href="#" @click.prevent>
+                <v-tab href="#" @click.prevent class="body-1">
                   <v-icon class="mr-2">
                     fa-broom
                   </v-icon>

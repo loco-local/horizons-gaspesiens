@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:60px;">
+    <div style="margin-top:60px;" class="body-1">
         <v-layout row wrap>
             <v-flex xs12 md3>
                 <v-img :src="require('@/assets/demi-copie.jpg')"></v-img>
@@ -129,8 +129,8 @@
                     <v-card-title class="title">
                         Liens Externes
                     </v-card-title>
-                    <v-card-text>
-                        <div class="field-items"><div class="field-item even"><ul><li>Liste des commerces utilisant le demi:&nbsp;
+                    <v-card-text class="body-1">
+                        <div class="field-items"><div class="field-item even body-1"><ul><li>Liste des commerces utilisant le demi:&nbsp;
                             <ul><li><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit">Le&nbsp;</span><a class="profileLink" dir="ltr" href="https://www.facebook.com/locolocal1?hc_location=ufi" style="border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(36, 140, 200); transition: all 0.2s ease;" target="_blank">Loco Local</a><span style="font-family:inherit">&nbsp;à Bonaventure</span></span></span></span></span></li>
                                 <li><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><a class="profileLink" dir="ltr" href="https://www.facebook.com/pages/Fr%C3%ABtt-Design/139671956084485?hc_location=ufi" style="border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(36, 140, 200); transition: all 0.2s ease;" target="_blank">Frëtt Design</a><span style="font-family:inherit">&nbsp;à Caplan</span></span></span></span></span></li>
                                 <li><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><span style="font-family:inherit"><a class="profileLink" dir="ltr" href="https://www.facebook.com/Patrickduboix?hc_location=ufi" style="border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(36, 140, 200); transition: all 0.2s ease;" target="_blank">Patrick Dubois</a><span style="font-family:inherit">&nbsp;/&nbsp;</span><a class="profileLink" dir="ltr" href="https://www.facebook.com/LaPetiteGreve?hc_location=ufi" style="border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(36, 140, 200); transition: all 0.2s ease;" target="_blank">La Petite Grève</a><span style="font-family:inherit">&nbsp;à Carleton&nbsp;</span></span></span></span></span></span></li>

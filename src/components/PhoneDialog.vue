@@ -11,7 +11,7 @@
                     N'hésitez pas à contacter ces bénévoles pour le code de la porte, une réservation ou tout autre
                     sujet.
                 </v-card-subtitle>
-                <v-card-text class="pt-0">
+                <v-card-text class="pt-0 body-1">
                     <v-list two-line class="text-left">
                         <v-list-item
                                 v-for="phone in phoneNumbersRandom"

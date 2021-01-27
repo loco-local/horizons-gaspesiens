@@ -77,7 +77,7 @@
         <h1 class="display-2 font-weight-thin">
           Membres
         </h1>
-        <h4 class="subtitle-1 ">
+        <h4 class="subtitle-1">
           de comités actifs
         </h4>
       </v-flex>
@@ -252,10 +252,10 @@
           </v-card-text>
         </v-card>
         <v-tabs grow class="mt-4">
-          <v-tab>
+          <v-tab class="body-1">
             C'est quoi
           </v-tab>
-          <v-tab>
+          <v-tab class="body-1">
             Participer
           </v-tab>
           <v-tab-item class="pt-4 body-1">
@@ -424,7 +424,7 @@
       </div>
       <div slot="content">
         <v-tabs>
-          <v-tab>
+          <v-tab class="body-1">
             <v-icon left>
               nordic_walking
             </v-icon>
@@ -435,7 +435,7 @@
               Marche
             </span>
           </v-tab>
-          <v-tab>
+          <v-tab class="body-1">
             <v-icon left>
               self_improvement
             </v-icon>
@@ -446,7 +446,7 @@
               Yoga
             </span>
           </v-tab>
-          <v-tab>
+          <v-tab class="body-1">
             <v-icon left>
               emoji_emotions
             </v-icon>
@@ -862,7 +862,7 @@
           <v-list-item-action>
             <v-icon>list</v-icon>
           </v-list-item-action>
-          <v-list-item-title>
+          <v-list-item-title class="text-h6">
             Comités archivés
           </v-list-item-title>
         </v-list-item>
@@ -936,11 +936,11 @@
                       class="pa-0 ma-0"
                       v-model="paiementTab"
                   >
-                    <v-tab @click.prevent="paiementTab=0" href="#">
+                    <v-tab @click.prevent="paiementTab=0" href="#" class="body-1">
                       <v-icon class="mr-6">email</v-icon>
                       Par courriel
                     </v-tab>
-                    <v-tab @click.prevent="paiementTab=1" href="#">
+                    <v-tab @click.prevent="paiementTab=1" href="#" class="body-1">
                       Par transit Desjardins
                     </v-tab>
                     <v-tab-item>
@@ -948,7 +948,7 @@
                         <v-stepper-header>
                           <v-stepper-step editable :complete="paiementCourrielStepper > 1"
                                           step="1"
-                                          color="black">
+                                          color="black" class="body-1">
                             Virement
                           </v-stepper-step>
 
@@ -956,7 +956,7 @@
 
                           <v-stepper-step editable :complete="paiementCourrielStepper > 2"
                                           step="2"
-                                          color="black">
+                                          color="black" class="body-1">
                             Destinataire
                           </v-stepper-step>
                         </v-stepper-header>
@@ -994,20 +994,20 @@
                       <v-stepper non-linear v-model="desjardinsStepper" class="ml-6">
                         <v-stepper-header>
                           <v-stepper-step editable :complete="desjardinsStepper > 1" step="1"
-                                          color="black">
+                                          color="black" class="body-1">
                             Virement
                           </v-stepper-step>
 
                           <v-divider></v-divider>
 
                           <v-stepper-step editable :complete="desjardinsStepper > 2" step="2"
-                                          color="black">
+                                          color="black" class="body-1">
                             Folio et Transit
                           </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step editable step="3" color="black">
+                          <v-stepper-step editable step="3" color="black" class="body-1">
                             Fréquence
                           </v-stepper-step>
                         </v-stepper-header>
@@ -1018,7 +1018,7 @@
                               <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
                                 <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
                               </v-card-text>
-                              <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                              <v-card-text v-if="$vuetify.breakpoint.smAndDown" class="body-1">
                                 Dans votre AccèsD, choisissez "Virez" puis "Virements
                                 entre
                                 personnes
@@ -1070,7 +1070,7 @@
                           <v-stepper-content step="3">
                             <v-card
                             >
-                              <v-card-title>
+                              <v-card-title class="text-h6">
                                 Choisisez "Une fois le" pour un transfert ponctuel ou
                                 "Mensuelle" pour
                                 un don récurrent
@@ -1185,7 +1185,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="comitesArchives = false">close</v-icon>
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="body-1">
           <v-list>
             <v-list-item
                 to="/le-demi">
