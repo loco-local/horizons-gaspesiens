@@ -8,14 +8,15 @@
         class="vh-center text-center"
     >
       <v-card color="transparent" flat>
-        <v-card-title class="vh-center display-3 font-weight-thin mb-4 white--text" :class="{
-          'display-2' : $vuetify.breakpoint.smAndDown
+        <v-card-title class="vh-center  font-weight-thin mb-4 white--text" :class="{
+          'display-2' : $vuetify.breakpoint.lgAndDown,
+          'display-3' : $vuetify.breakpoint.xl
         }">
           <p>
-            Géré de façon horizontale par ses membres
+            Géré de façon <span style="white-space: nowrap">horizontale</span> par ses membres
           </p>
         </v-card-title>
-        <v-card-subtitle class="font-weight-thin white--text" style="font-size:19px;">
+        <v-card-subtitle class="font-weight-thin white--text" style="font-size:19px; line-height: 2;">
           Pour partager des ressources et des projets afin de s'adresser aux inégalités sociales et
           environnementales
         </v-card-subtitle>
@@ -1338,6 +1339,9 @@ export default {
     avatarSize: function () {
       if (this.$vuetify.breakpoint.mdAndDown) {
         return 70;
+      }
+      if(this.$vuetify.breakpoint.lg){
+        return 80;
       }
       return 100;
     },

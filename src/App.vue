@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{
+    'font-size-xl' : $vuetify.breakpoint.xl,
+    'font-size-lg-and-down' : $vuetify.breakpoint.lgAndDown
+  }">
     <v-app>
       <v-navigation-drawer
           clipped
@@ -142,7 +145,7 @@
                     }"
             style="z-index:4;"
         >
-          <v-app-bar-nav-icon  @click="drawer = !drawer" v-if="$vuetify.breakpoint.smAndDown"></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon @click="drawer = !drawer" v-if="$vuetify.breakpoint.smAndDown"></v-app-bar-nav-icon>
           <router-link to="/" class="mt-3" :class="{
              'pl-4' : $vuetify.breakpoint.smAndDown
           }">
@@ -494,8 +497,15 @@ export default {
 
 <style>
 * {
-  font-size: 1.10em;
   line-height: 1.8;
+}
+
+.font-size-xl * {
+  font-size: 1.1em;
+}
+
+.font-size-lg-and-down * {
+  font-size: 1em;
 }
 
 #header-banner {
