@@ -592,7 +592,6 @@
                 <v-spacer></v-spacer>
               </v-card-actions>
               <v-card-actions class="body-1">
-                <v-spacer></v-spacer>
                 Nous respectons les mesures sanitaires.
                 <v-spacer></v-spacer>
               </v-card-actions>

@@ -33,7 +33,7 @@
             <v-card-subtitle class="text-h6 text-left mt-1 ml-4">
               <slot name="subtitle"></slot>
             </v-card-subtitle>
-            <v-card-text class="text-left body-1" style="line-height: 1.8">
+            <v-card-text class="text-left body-1">
               <slot name="content"></slot>
             </v-card-text>
           </v-flex>
