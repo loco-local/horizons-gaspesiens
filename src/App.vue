@@ -494,7 +494,7 @@ export default {
 
 <style>
 * {
-  font-size: 1.03em;
+  font-size: 1.10em;
 }
 
 #header-banner {

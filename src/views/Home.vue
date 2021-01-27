@@ -32,8 +32,8 @@
       'pl-5 pr-2' : $vuetify.breakpoint.smAndDown
     }">
       <v-flex xs0 sm2 md3 lg4></v-flex>
-      <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify">
-        <p class="subtitle-1" style="font-size: 1.2em !important;font-weight: 300;line-height: 1.5;">
+      <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify body-1">
+        <p class="body-1" style="font-size: 1.2em !important;font-weight: 300;line-height: 1.5;">
           Horizons Gaspésiens est une coopérative de solidarité.
           L'organisme chapeaute différentes initiatives
           <a href="#" @click.prevent="Scroll.allerALaSection('cercle')">
@@ -81,7 +81,7 @@
         </h4>
       </v-flex>
     </v-layout>
-    <v-row wrap class="">
+    <v-row wrap class="body-2">
       <!--<v-flex xs0 lg3></v-flex>-->
       <v-col cols="12" class="col-md-6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
         <v-row class="mb-0" :class="{
@@ -207,7 +207,7 @@
               <v-list-item-action>
                 <v-icon>mail</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Demande d'adhésion à groupe.achat.hg@gmail.com
               </v-list-item-title>
             </v-list-item>
@@ -215,7 +215,7 @@
               <v-list-item-action>
                 <v-icon>fa-clipboard-list</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Logiciel de commande
               </v-list-item-title>
             </v-list-item>
@@ -224,7 +224,7 @@
               <v-list-item-action>
                 <v-icon>picture_as_pdf</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Compte rendu de réunion
               </v-list-item-title>
             </v-list-item>
@@ -241,7 +241,7 @@
       </div>
       <div slot="content">
         <v-card>
-          <v-card-text class="text-h6 font-weight-regular text-center">
+          <v-card-text class="body-1 text-center">
             Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer à la bibliothèque d'outils,
             contactez
             <a href="mailto:arielle.paiement@gmail.com">
@@ -257,7 +257,7 @@
           <v-tab>
             Participer
           </v-tab>
-          <v-tab-item class="pt-4">
+          <v-tab-item class="pt-4 body-1">
             <h3>C'est quoi</h3>
             <p>
               1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat,
@@ -283,22 +283,22 @@
                 pour
               </v-subheader>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   renforcer les liens sociaux
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   lutter contre le gaspillage des ressources
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   augmenter la capacité d’agir de la communauté et de ses membres.
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   BRICOLAGE – VOISINAGE – PARTAGE!
                 </v-list-item-title>
               </v-list-item>
@@ -330,7 +330,7 @@
               Note : le fonctionnement exact est encore à établir. Détails à venir.
             </p>
           </v-tab-item>
-          <v-tab-item class="pt-4">
+          <v-tab-item class="pt-4  body-1">
             <h3>
               Don d'outils
             </h3>
@@ -363,42 +363,42 @@
             </p>
             <v-list class="pt-0">
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Cuisine
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Production alimentaire
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Couture et/ou artisanat
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Mécanique vélo
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Rénovation (menuiserie, électricité, plomberie)
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Électronique
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Programmation
                 </v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Coordination (membership, $, lien avec HG, communications)
                 </v-list-item-title>
               </v-list-item>
@@ -469,7 +469,7 @@
                   Formulaire d'inscription à remplir
                 </a>
               </v-card-subtitle>
-              <v-card-text class="text-h6 font-weight-regular">
+              <v-card-text class="body-1">
                 <p>
                   Vous souhaitez vous remettre en mouvement et vous ressentez l'envie et le besoin de partager des
                   moments de groupe ? Venez rejoindre notre club de marche !!! Cette activité sera animée par
@@ -510,7 +510,7 @@
                   Formulaire d'inscription à remplir
                 </a>
               </v-card-subtitle>
-              <v-card-text class="text-h6 font-weight-regular">
+              <v-card-text class="body-1">
                 <p>
                   Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!
                   Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).
@@ -549,7 +549,7 @@
                   Formulaire d'inscription à remplir
                 </a>
               </v-card-subtitle>
-              <v-card-text class="text-h6 font-weight-regular">
+              <v-card-text class="body-1">
                 <p>
                   Vous souhaitez explorer les possibilités de votre corps, votre créativité dans le mouvement,
                   développer votre conscience corporelle et le lâcher prise. Venez participer aux cours d’expression
@@ -584,14 +584,14 @@
         <v-row>
           <v-col cols="12" class="vh-center">
             <v-card max-width="500" class="align-self-center">
-              <v-card-actions class="text-h6 font-weight-regular">
+              <v-card-actions class="body-1">
                 <v-spacer></v-spacer>
                 <v-icon class="mr-8" large>6_ft_apart</v-icon>
                 <v-icon class="mr-8" large>sanitizer</v-icon>
                 <v-icon class="mr-8" large>masks</v-icon>
                 <v-spacer></v-spacer>
               </v-card-actions>
-              <v-card-actions class="text-h6 font-weight-regular">
+              <v-card-actions class="body-1">
                 <v-spacer></v-spacer>
                 Nous respectons les mesures sanitaires.
                 <v-spacer></v-spacer>
@@ -803,7 +803,7 @@
               <v-list-item-action>
                 <v-icon>fa-book-reader</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Bande dessinée
               </v-list-item-title>
             </v-list-item>
@@ -812,7 +812,7 @@
               <v-list-item-action>
                 <v-icon>movie</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Vidéo
               </v-list-item-title>
             </v-list-item>
@@ -821,7 +821,7 @@
               <v-list-item-action>
                 <v-icon>account_balance</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="text-h6 font-weight-regular">
+              <v-list-item-title class="body-1">
                 Principes
               </v-list-item-title>
             </v-list-item>
@@ -845,7 +845,7 @@
                 <v-list-item-action>
                   <v-icon>fa-file</v-icon>
                 </v-list-item-action>
-                <v-list-item-title class="text-h6 font-weight-regular">
+                <v-list-item-title class="body-1">
                   Octobre 2018
                 </v-list-item-title>
               </v-list-item>
@@ -883,20 +883,20 @@
     </v-layout>
     <v-layout row wrap class="font-weight-thin">
       <v-flex xs12>
-        <v-card flat :class="{
+        <v-card flat class="body-1" :class="{
                 'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
                 'mt-5 mb-4': $vuetify.breakpoint.smAndDown
             }">
           <v-layout row wrap fill-height>
             <v-flex xs12 md6 class="">
-              <div class="text-h4  mb-8">
+              <div class="text-h5 mb-8">
                 Comment payer
               </div>
               <v-layout row wrap class="pb-2">
                 <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center">
+                <v-flex xs12 md8 class="text-md-left text-center body-1">
                   <v-icon class="mr-2">email</v-icon>
-                  <span class="font-weight-bold">Par courriel</span>
+                  <span class="font-weight-bold body-1">Par courriel</span>
                   à horizonsgaspesiens@gmail.com
                   <v-btn text v-clipboard:copy="'horizonsgaspesiens@gmail.com'" small>copier</v-btn>
                 </v-flex>
@@ -904,22 +904,22 @@
               <v-divider class="mt-8 mb-8"></v-divider>
               <v-layout row wrap>
                 <v-flex xs0 md2 xl2></v-flex>
-                <v-flex xs12 md4 xl3 class="text-md-left text-center" :class="{
+                <v-flex xs12 md4 xl3 class="text-md-left text-center " :class="{
                                     'pb-2':  $vuetify.breakpoint.smAndDown
                                 }">
-                  <span class="font-weight-bold">Par transit desjardins</span>
+                  <span class="font-weight-bold body-1">Par transit desjardins</span>
                 </v-flex>
-                <v-flex xs12 md6 xl7 class="text-md-left text-center pl-6 pb-6" style="margin-top:-7px;">
+                <v-flex xs12 md6 xl7 class="text-md-left text-center pl-6 pb-6 body-1" style="margin-top:-7px;">
                   <div>
-                    <span class="font-weight-bold">Transit caisse:</span> 40001
+                    <span class="font-weight-bold body-1">Transit caisse:</span> 40001
                     <v-btn text v-clipboard:copy="'40001'" small>copier</v-btn>
                   </div>
                   <div>
-                    <span class="font-weight-bold">No Institution:</span> 815
+                    <span class="font-weight-bold body-1">No Institution:</span> 815
                     <v-btn text v-clipboard:copy="'815'" small>copier</v-btn>
                   </div>
                   <div>
-                    <span class="font-weight-bold">Folio:</span> 0451286
+                    <span class="font-weight-bold body-1">Folio:</span> 0451286
                     <v-btn text v-clipboard:copy="'0451286'" small>copier</v-btn>
                   </div>
                 </v-flex>
@@ -1088,7 +1088,7 @@
               </v-card>
             </v-flex>
             <v-flex xs12 md6 left>
-              <v-card-text class="text-left text-h6 font-weight-regular">
+              <v-card-text class="text-left body-1">
                 <p>
                   Vous voulez soutenir l'établissement durable de ce projet "pour et par" la
                   communauté?
@@ -1140,7 +1140,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="visionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-left text-h6 font-weight-regular black--text" style="line-height: 1.5;">
+        <v-card-text class="text-left body-1 black--text" style="line-height: 1.5;">
           Une communauté autogérée ayant une empreinte écologique et sociale réduite sur son milieu. L’abondance s’y
           mesure par la multiplicité et la diversité du lien social, par l’épanouissement des individus, ainsi que par
           l’accès égalitaire et juste aux ressources.
@@ -1154,7 +1154,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="missionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-left text-h6 font-weight-regular black--text" style="line-height: 1.5">
+        <v-card-text class="text-left body-1 black--text" style="line-height: 1.5">
           Stimuler et soutenir la mise en commun et le partage de ressources, de lieux, de connaissances comme forme
           concrète de solidarité pour augmenter l’autonomie et la résilience des individus et des collectivités.
         </v-card-text>

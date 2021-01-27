@@ -6,7 +6,7 @@
         <h1 class="display-2 font-weight-thin">
           Calendrier et réservation du Loco Local
         </h1>
-        <h4 class="text-h6 font-weight-regular">
+        <h4 class="body-1">
           Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon
           autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de
           mobilisation citoyenne
@@ -41,7 +41,7 @@
             </v-icon>
             Réservation
           </v-tab>
-          <v-tabs-items touchless v-model="calendarTab">
+          <v-tabs-items touchless v-model="calendarTab" class="body-1">
             <v-tab-item class="mt-4 text-left" :class="{
                         'pl-0' : $vuetify.breakpoint.mdAndUp,
                         'pl-0' : $vuetify.breakpoint.smAndDown
@@ -115,7 +115,7 @@
                                     Entretien du local
                                 </span>
                 </v-tab>
-                <v-tabs-items touchless v-model="reserveTab">
+                <v-tabs-items touchless v-model="reserveTab" class="body-1">
                   <v-tab-item class="text-left pt-6 pb-6 pr-6" :class="{
                                 'pl-4' : $vuetify.breakpoint.mdAndUp,
                                 'pl-2' : $vuetify.breakpoint.smAndDown
@@ -231,17 +231,16 @@
                           Lorsqu'une organisation désire louer le local, nous proposons les tarifs
                           suivants:
                         </p>
-
                         <v-simple-table>
                           <template v-slot:default>
                             <thead>
                             <tr>
                               <th></th>
-                              <th class="subtitle-1">
+                              <th class="body-1">
                                 Un bloc de 4 heures<br>
                                 (matin, après-midi ou soirée)
                               </th>
-                              <th class="subtitle-1">
+                              <th class="body-1">
                                 Un bloc de 8 heures<br>
                                 (toute la journée)
                               </th>
@@ -249,13 +248,13 @@
                             </thead>
                             <tbody>
                             <template slot="item" slot-scope="props">
-                              <td class="text-h6 font-weight-regular">
+                              <td class="body-1">
                                 {{ props.item.row1 }}
                               </td>
-                              <td class="text-h6 font-weight-regular">
+                              <td class="body-1">
                                 {{ props.item.row2 }}
                               </td>
-                              <td class="text-h6 font-weight-regular">
+                              <td class="body-1">
                                 {{ props.item.row3 }}
                               </td>
                             </template>
@@ -263,9 +262,9 @@
                                 v-for="price in priceRows"
                                 :key="price.row1"
                             >
-                              <td class="text-h6 font-weight-regular">{{ price.row1 }}</td>
-                              <td class="text-h6 font-weight-regular">{{ price.row2 }}</td>
-                              <td class="text-h6 font-weight-regular">{{ price.row3 }}</td>
+                              <td class="body-1">{{ price.row1 }}</td>
+                              <td class="body-1">{{ price.row2 }}</td>
+                              <td class="body-1">{{ price.row3 }}</td>
                             </tr>
                             </tbody>
                           </template>
@@ -273,7 +272,7 @@
                       </v-card-text>
                     </v-card>
                     <v-card flat>
-                      <v-card-text class="text-center text-h6 font-weight-regular">
+                      <v-card-text class="text-center body-1">
                         Facture sur demande
                         <a href="mailto:horizonsgaspesiens@gmail.com">
                           <v-icon class="ml-2 mr-2">email</v-icon>
