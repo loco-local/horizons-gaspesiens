@@ -1601,6 +1601,12 @@ export default {
         cv: "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
         cercles: ['ca', 'adhesion']
+      },
+      {
+        nom: "Carole Gagnon",
+        cv: "Coach de vie et énergéticienne. Prof de yoga et de méditation",
+        avatar: "carole-gagnon-petit.jpg",
+        cercles: ['ca']
       }
     ];
     return {
