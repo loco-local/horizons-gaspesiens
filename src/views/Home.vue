@@ -505,17 +505,17 @@
               Marche
             </span>
           </v-tab>
-          <v-tab class="body-1">
-            <v-icon left>
-              self_improvement
-            </v-icon>
-            <span v-if="$vuetify.breakpoint.mdAndUp">
-              Cours de Yoga
-            </span>
-            <span v-else>
-              Yoga
-            </span>
-          </v-tab>
+<!--          <v-tab class="body-1">-->
+<!--            <v-icon left>-->
+<!--              self_improvement-->
+<!--            </v-icon>-->
+<!--            <span v-if="$vuetify.breakpoint.mdAndUp">-->
+<!--              Cours de Yoga-->
+<!--            </span>-->
+<!--            <span v-else>-->
+<!--              Yoga-->
+<!--            </span>-->
+<!--          </v-tab>-->
           <v-tab class="body-1">
             <v-icon left>
               emoji_emotions
@@ -543,75 +543,65 @@
               <v-card-text class="body-1">
                 <p>
                   Vous souhaitez vous remettre en mouvement et vous ressentez l'envie et le besoin de partager des
-                  moments de groupe ? Venez rejoindre notre club de marche !!! Cette activité sera animée par
-                  plusieurs
-                  animateurs : Céline Martin, psychomotricienne, Dominique Landry, animatrice culturelle, ...
-                </p>
-                <p>
-                  Quand ? : Les activités se dérouleront le mercredi soir à partir de19h pour le mois de janvier. Pour
-                  les prochains mois, possibilité de modification du jour et de l'heure de marche.
-                </p>
-                <p>
-                  Où ? : départ au garage municipal de Saint-Siméon le mercredi 6 et 13 janvier. Possibilité d'autres
-                  points de rendez-vous en fonction du choix du lieu de marche. N'hésitez pas à nous proposer les
-                  places
-                  où vous voulez marcher. Les marches pourront être dans le secteur autour de Bonaventure.
+                  moments de groupe ? Venez rejoindre notre club de marche !!!
+                  On vous invite à
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
+                     target="_blank">
+                    vous inscrire
+                  </a>
+                  pour nous faire savoir votre intérêt, c'est gratuit! L'heure et le lieu seront décidés en fonction des
+                  personnes inscrites, nous vous contacterons pour vous en informer.
                 </p>
                 <p>
                   C'est une activité gratuite !!
                 </p>
-                <p>
-                  Les lieux de marche et les heures ne sont pas fixes alors si vous voulez venir marcher avec nous
-                  cette
-                  année, inscrivez-vous !! Nous essayerons de nous adapter à vos demandes et vos propositions !!
-                </p>
               </v-card-text>
             </v-card>
           </v-tab-item>
-          <v-tab-item>
-            <v-card flat>
-              <v-card-title>
-                <v-icon class="mr-2">self_improvement</v-icon>
-                Cours de Yoga
-              </v-card-title>
-              <v-card-subtitle class="subtitle-1 pt-4">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGH6o1WhMQI4lkCyeEX2a7lyTZQWAFiHEd1rphUrhSpEqIXQ/viewform?fbclid=IwAR2AYwXZ7feqFmdOztRY7qQLqfC1o9iO0GPoILQaH533bWVvwnY7Xfm2IB4"
-                   target="_blank">
-                  <v-icon class="mr-2">assignment</v-icon>
-                  Formulaire d'inscription à remplir
-                </a>
-              </v-card-subtitle>
-              <v-card-text class="body-1">
-                <p>
-                  Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!
-                  Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).
-                </p>
-                <p>
-                  Attention : cette activité se déroulera si nous repassons en zone orange ou jaune !!!
-                </p>
-                <p>
-                  Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos
-                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir
-                  plus
-                  loin dans la rubrique inscription).
-                  Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.
-                  Les absences ne peuvent pas être remboursées.
-                </p>
-                <p>
-                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans
-                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
-                </p>
-                <p>
-                  Les places sont limitées !
-                </p>
-              </v-card-text>
-            </v-card>
-          </v-tab-item>
+<!--          <v-tab-item>-->
+<!--            <v-card flat>-->
+<!--              <v-card-title>-->
+<!--                <v-icon class="mr-2">self_improvement</v-icon>-->
+<!--                Cours de Yoga-->
+<!--              </v-card-title>-->
+<!--              <v-card-subtitle class="subtitle-1 pt-4">-->
+<!--                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGH6o1WhMQI4lkCyeEX2a7lyTZQWAFiHEd1rphUrhSpEqIXQ/viewform?fbclid=IwAR2AYwXZ7feqFmdOztRY7qQLqfC1o9iO0GPoILQaH533bWVvwnY7Xfm2IB4"-->
+<!--                   target="_blank">-->
+<!--                  <v-icon class="mr-2">assignment</v-icon>-->
+<!--                  Formulaire d'inscription à remplir-->
+<!--                </a>-->
+<!--              </v-card-subtitle>-->
+<!--              <v-card-text class="body-1">-->
+<!--                <p>-->
+<!--                  Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!-->
+<!--                  Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                  Attention : cette activité se déroulera si nous repassons en zone orange ou jaune !!!-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                  Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos-->
+<!--                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir-->
+<!--                  plus-->
+<!--                  loin dans la rubrique inscription).-->
+<!--                  Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.-->
+<!--                  Les absences ne peuvent pas être remboursées.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans-->
+<!--                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                  Les places sont limitées !-->
+<!--                </p>-->
+<!--              </v-card-text>-->
+<!--            </v-card>-->
+<!--          </v-tab-item>-->
           <v-tab-item>
             <v-card flat>
               <v-card-title>
                 <v-icon class="mr-2">emoji_emotions</v-icon>
-                Cours d'expression corporelle
+                Expression corporelle
               </v-card-title>
               <v-card-subtitle class="subtitle-1 pt-4">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJY6cc5vNe9nIIr2I73pf1HeCQB8x_Xid8PQ58G_X6i4xR1w/viewform?fbclid=IwAR1vYwLCoJElOwUygM2-XWy2aX5Mq4qfFn7VzQEaKm0blguYZSxqNSN7crw"
@@ -622,28 +612,22 @@
               </v-card-subtitle>
               <v-card-text class="body-1">
                 <p>
-                  Vous souhaitez explorer les possibilités de votre corps, votre créativité dans le mouvement,
-                  développer votre conscience corporelle et le lâcher prise. Venez participer aux cours d’expression
-                  corporelle et de danse libre avec Céline Martin, psychomotricienne, pour prendre plaisir à être en
-                  mouvement ensemble et se faire du bien !
+                  Vous souhaitez explorer les possibilités de votre corps, votre créativité dans le mouvement, développer votre conscience corporelle et le lâcher prise? Venez participer aux cours d’expression corporelle avec Élodie Samuel-Leduc!
                 </p>
                 <p>
-                  Quand ? : Les cours se dérouleront les samedis 9 et 16 janvier de 10h à 11h.
+                  <span class="font-weight-bold">Quand ?</span>
+                  Horaire à venir (activités ponctuelles)
                 </p>
                 <p>
-                  Où ? : Départ du Loco Local de Bonaventure (193A, avenue Grand-Pré). L'activité se déroulera à
-                  l'extérieur (possibilité d'annulation et de remboursement si la météo n'est pas favorable). Dès que
-                  possible les activités seront à l'intérieur du Loco Local.
+                  <span class="font-weight-bold">Où ?</span>
+                  Lieu à confirmer
                 </p>
                 <p>
-                  Coût:
-                  - Pour les 2 cours : de 10$ à 30$, selon vos capacités financières.* Le paiement se réalisera par
-                  virement bancaire ou virement interact (voir plus loin dans la rubrique inscription).
-                  - Au cours : contribution volontaire suggérée entre 5$ et 10$.
+                  <span class="font-weight-bold">Coût</span>
+                  Contribution suggérée entre 5$ et 10$.
                 </p>
                 <p>
-                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans
-                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
+                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
                 </p>
                 <p>
                   Les places sont limitées !
@@ -1430,7 +1414,7 @@ export default {
       this.biblioOutilsCestQuoi = parseInt(this.biblioOutilsCestQuoi) + 1;
       Scroll.allerALaSection('biblio-outils');
     },
-    biblioOutilsParticiperNextTab: function(){
+    biblioOutilsParticiperNextTab: function () {
       this.participerBiblioOutilsTab = parseInt(this.participerBiblioOutilsTab) + 1;
       Scroll.allerALaSection('biblio-outils');
     },
