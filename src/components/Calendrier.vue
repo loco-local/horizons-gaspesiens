@@ -345,8 +345,10 @@
                       </a>
                     </p>
                     <p>
-                      2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans le
-                      calendrier!
+                      2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans
+                      <a href="https://calendar.google.com/calendar/u/0/r?cid=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com" target="_blank">
+                        <v-icon class="mr-2">calendar_today</v-icon>le calendrier!
+                      </a>
                     </p>
                     <p>
                       *** N'oubliez pas de cliquer sur l'agenda du Loco Local lorsque vous ajouter une
