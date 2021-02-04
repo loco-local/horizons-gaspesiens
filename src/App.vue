@@ -88,11 +88,11 @@
             <v-list>
               <v-list-item
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
-                <v-list-item-title>Première fois</v-list-item-title>
+                <v-list-item-title class="body-1">Première fois</v-list-item-title>
               </v-list-item>
               <v-list-item
                   href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
-                <v-list-item-title>Renouvellement</v-list-item-title>
+                <v-list-item-title class="body-1">Renouvellement</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-list-group>
@@ -212,11 +212,11 @@
               <v-list>
                 <v-list-item
                     href="https://docs.google.com/forms/d/e/1FAIpQLSdQu47n0_bPKPO2kDAlWLdvg4JoJC-pasQWeBVQWVP2OI5tdw/viewform">
-                  <v-list-item-title>Première fois</v-list-item-title>
+                  <v-list-item-title class="body-1">Première fois</v-list-item-title>
                 </v-list-item>
                 <v-list-item
                     href="https://docs.google.com/forms/d/e/1FAIpQLSd8RP9Aaa1rZejOCZOTQRly5BaDa7OtpQIuxdFVW6wo8mE5Kw/viewform?usp=pp_url">
-                  <v-list-item-title>Renouvellement</v-list-item-title>
+                  <v-list-item-title class="body-1">Renouvellement</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>

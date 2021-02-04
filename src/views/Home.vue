@@ -1230,7 +1230,7 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="valeursModal" width="375">
+    <v-dialog v-model="valeursModal" width="450">
       <v-card>
         <v-card-title class="title">
           Valeurs
@@ -1238,7 +1238,7 @@
           <v-icon @click="valeursModal = false">close</v-icon>
         </v-card-title>
         <v-list class="text-left">
-          <v-list-item v-for="valeur in valeurs" :key="valeur">
+          <v-list-item v-for="valeur in valeurs" :key="valeur" class="body-1">
             <v-list-item-content>
               <v-list-item-title>
                 {{ valeur }}
