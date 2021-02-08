@@ -76,7 +76,12 @@
           <!--                        Infolettre-->
           <!--                    </v-list-item-title>-->
           <!--                </v-list-item>-->
-          <v-list-item href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">
+          <v-list-item
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+          >
+            <v-list-item-action>
+              <v-icon>group</v-icon>
+            </v-list-item-action>
             <v-list-item-title> Devenez membre </v-list-item-title>
           </v-list-item>
           <v-list-item @click="documentDialog = true">
@@ -91,7 +96,7 @@
             </v-list-item-action>
             <v-list-item-title> Dossier de presse </v-list-item-title>
           </v-list-item>
-          <v-list-group
+          <!-- <v-list-group
             prepend-icon="group_work"
             no-action
             expanded
@@ -113,7 +118,7 @@
                 <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-          </v-list-group>
+          </v-list-group> -->
         </v-list>
       </v-navigation-drawer>
       <div id="nav" class="pa-0">
