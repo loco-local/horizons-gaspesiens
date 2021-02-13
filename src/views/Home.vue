@@ -1142,7 +1142,7 @@
               </v-card>
             </v-flex>
             <v-flex xs12 md6 left>
-              <v-card-text class="text-left body-1 ">
+              <v-card-text class="text-left body-1">
                 <p>
                   Vous voulez soutenir l'établissement durable de ce projet "pour et par" la
                   communauté?
