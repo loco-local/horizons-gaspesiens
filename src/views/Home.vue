@@ -1,69 +1,84 @@
 <template>
   <div class="home">
     <v-layout
-        align-center
-        column
-        justify-center
-        id="header-banner"
-        class="vh-center text-center"
+      align-center
+      column
+      justify-center
+      id="header-banner"
+      class="vh-center text-center"
     >
       <v-card color="transparent" flat>
-        <v-card-title class="vh-center  font-weight-thin mb-4 white--text" :class="{
-          'display-2' : $vuetify.breakpoint.lgAndDown,
-          'display-3' : $vuetify.breakpoint.xl
-        }">
+        <v-card-title
+          class="vh-center font-weight-thin mb-4 white--text"
+          :class="{
+            'display-2': $vuetify.breakpoint.lgAndDown,
+            'display-3': $vuetify.breakpoint.xl,
+          }"
+        >
           <p>
-            Géré de façon <span style="white-space: nowrap">horizontale</span> par ses membres
+            Géré de façon
+            <span style="white-space: nowrap">horizontale</span> par ses membres
           </p>
         </v-card-title>
-        <v-card-subtitle class="font-weight-thin white--text" style="font-size:19px; line-height: 2;">
-          Pour partager des ressources et des projets afin de s'adresser aux inégalités sociales et
-          environnementales
+        <v-card-subtitle
+          class="font-weight-thin white--text"
+          style="font-size: 19px; line-height: 2"
+        >
+          Pour partager des ressources et des projets afin de s'adresser aux
+          inégalités sociales et environnementales
         </v-card-subtitle>
       </v-card>
     </v-layout>
     <v-layout row wrap class="mb-1 mt-12" id="about">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">
-          À propos
-        </h1>
+        <h1 class="display-2 font-weight-thin">À propos</h1>
       </v-flex>
     </v-layout>
-    <v-layout row wrap class="mt-6 mb-6" :class="{
-      'pl-5 pr-2' : $vuetify.breakpoint.smAndDown
-    }">
+    <v-layout
+      row
+      wrap
+      class="mt-6 mb-6"
+      :class="{
+        'pl-5 pr-2': $vuetify.breakpoint.smAndDown,
+      }"
+    >
       <v-flex xs0 sm2 md3 lg4></v-flex>
       <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify body-1">
-        <p class="body-1" style="font-size: 1.2em !important;font-weight: 300;line-height: 1.5;">
-          Horizons Gaspésiens est une coopérative de solidarité.
-          L'organisme chapeaute différentes initiatives
+        <p
+          class="body-1"
+          style="
+            font-size: 1.2em !important;
+            font-weight: 300;
+            line-height: 1.5;
+          "
+        >
+          Horizons Gaspésiens est une coopérative de solidarité. L'organisme
+          chapeaute différentes initiatives
           <a href="#" @click.prevent="Scroll.allerALaSection('cercle')">
             présentes
           </a>
           et
-          <a href="#" @click.prevent="comitesArchives=true">passées</a>
+          <a href="#" @click.prevent="comitesArchives = true">passées</a>
           portées par
           <a href="#" @click.prevent="Scroll.allerALaSection('benevole')">
             ses membres.
           </a>
           Les initiatives doivent être enlignées avec
-          <a href="#" @click.prevent="visionModal=true">
-            la vision,
-          </a>
-          <a href="#" @click.prevent="valeursModal=true">
-            les valeurs
-          </a>
+          <a href="#" @click.prevent="visionModal = true"> la vision, </a>
+          <a href="#" @click.prevent="valeursModal = true"> les valeurs </a>
           et
-          <a href="#" @click.prevent="missionModal=true">
-            la mission
-          </a>
+          <a href="#" @click.prevent="missionModal = true"> la mission </a>
           et les décisions, soumises à
           <a href="#" @click.prevent="Scroll.allerALaSection('gouvernance')">
             notre gouvernance.
           </a>
-          L'initiative principale est le Loco Local, un espace communautaire autogéré à
-          <a href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-             target="_blank" style="white-space: nowrap;">
+          L'initiative principale est le Loco Local, un espace communautaire
+          autogéré à
+          <a
+            href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+            target="_blank"
+            style="white-space: nowrap"
+          >
             <v-icon class="">location_on</v-icon>
             Bonaventure.
           </a>
@@ -74,32 +89,49 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <v-layout row wrap class="mb-12" id="benevole">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">
-          Membres
-        </h1>
-        <h4 class="subtitle-1">
-          de comités actifs
-        </h4>
+        <h1 class="display-2 font-weight-thin">Membres</h1>
+        <h4 class="subtitle-1">de comités actifs</h4>
       </v-flex>
     </v-layout>
     <v-row wrap class="body-2">
       <!--<v-flex xs0 lg3></v-flex>-->
-      <v-col cols="12" class="col-md-6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
-        <v-row class="mb-0" :class="{
-                    'ml-5 pl-12': $vuetify.breakpoint.mdAndUp
-              }">
-          <v-col cols="2" v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"></v-col>
-          <v-col cols="2" :class="{
-                            'mr-10 ml-4': $vuetify.breakpoint.smAndDown
-                        }">
+      <v-col
+        cols="12"
+        class="col-md-6"
+        v-for="(membre, index) in membresDeCerclesTries"
+        :key="membre.nom"
+      >
+        <v-row
+          class="mb-0"
+          :class="{
+            'ml-5 pl-12': $vuetify.breakpoint.mdAndUp,
+          }"
+        >
+          <v-col
+            cols="2"
+            v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"
+          ></v-col>
+          <v-col
+            cols="2"
+            :class="{
+              'mr-10 ml-4': $vuetify.breakpoint.smAndDown,
+            }"
+          >
             <v-avatar :size="avatarSize">
-              <img :src='require("../assets/" + membre.avatar)' :alt="membre.nom">
+              <img
+                :src="require('../assets/' + membre.avatar)"
+                :alt="membre.nom"
+              />
             </v-avatar>
           </v-col>
-          <v-col cols="8" class="text-left" :class="{
-                        'mt-3': $vuetify.breakpoint.mdAndUp,
-                        'mt-0': $vuetify.breakpoint.smAndDown
-                    }">
+          <v-col
+            cols="8"
+            class="text-left"
+            :class="{
+              'mt-3': $vuetify.breakpoint.mdAndUp,
+              'mt-0': $vuetify.breakpoint.smAndDown,
+            }"
+          >
             <h3 class="heading font-weight-regular">
               {{ membre.nom }}
             </h3>
@@ -107,15 +139,27 @@
               {{ membre.cv }}
             </p>
             <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
-            <v-breadcrumbs :items="membre.cercles"
-                           class="d-inline pa-0 subtitle-1 bullet-like" small>
+            <v-breadcrumbs
+              :items="membre.cercles"
+              class="d-inline pa-0 subtitle-1 bullet-like"
+              small
+            >
               <template slot="item" slot-scope="props" class="">
-                <a href="#"
-                   @click.prevent="Scroll.allerALaSection(cercle(props.item).containerId, cercle(props.item).lien)"
-                   v-if="!cercleEstDesactive(props.item)">
+                <a
+                  href="#"
+                  @click.prevent="
+                    Scroll.allerALaSection(
+                      cercle(props.item).containerId,
+                      cercle(props.item).lien
+                    )
+                  "
+                  v-if="!cercleEstDesactive(props.item)"
+                >
                   {{ nomDeCercle(props.item) }}
                 </a>
-                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{ nomDeCercle(props.item) }}</span>
+                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{
+                  nomDeCercle(props.item)
+                }}</span>
               </template>
             </v-breadcrumbs>
 
@@ -139,9 +183,12 @@
     <v-layout row wrap class="mb-12">
       <v-flex xs12 class="vh-center">
         <v-card max-width="450">
-          <v-card-text class="text-center title font-weight-regular black--text">
-            Merci aussi à tous nos autres membres. Votre implication est très précieuse
-            <span style="color:red">❤</span>
+          <v-card-text
+            class="text-center title font-weight-regular black--text"
+          >
+            Merci aussi à tous nos autres membres. Votre implication est très
+            précieuse
+            <span style="color: red">❤</span>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -152,20 +199,22 @@
     <!--</v-flex>-->
     <!--</v-layout>-->
     <v-parallax
-        :height="parallaxSize"
-        :src="require('../assets/peinture-rogner.jpg')"
+      :height="parallaxSize"
+      :src="require('../assets/peinture-rogner.jpg')"
     ></v-parallax>
     <v-layout row wrap class="pb-16 mt-12" id="cercle">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">
-          Comités actifs
-        </h1>
+        <h1 class="display-2 font-weight-thin">Comités actifs</h1>
       </v-flex>
     </v-layout>
-    <Cercle title="Collaborium et espace de vie" anchor="collaborium" image="travailler au LL.jpg">
+    <Cercle
+      title="Collaborium et espace de vie"
+      anchor="collaborium"
+      image="travailler au LL.jpg"
+    >
       <div slot="subtitle">
-        Central, flexible, collectif, le Collaborium est l'espace-temps de collaboration, terme francisé pour
-        "Coworking space".
+        Central, flexible, collectif, le Collaborium est l'espace-temps de
+        collaboration, terme francisé pour "Coworking space".
       </div>
       <div slot="content">
         <p class="">
@@ -177,34 +226,39 @@
           <v-icon>fastfood</v-icon>
           , divans
           <v-icon>fa-couch</v-icon>
-          pour
-          relaxer, autres travailleurs et travailleuses autonomes avec qui échanger (ou vous pouvez
-          apporter vos écouteurs pour créer votre espace perso), table de ping pong
+          pour relaxer, autres travailleurs et travailleuses autonomes avec qui
+          échanger (ou vous pouvez apporter vos écouteurs pour créer votre
+          espace perso), table de ping pong
           <v-icon>fa-table-tennis</v-icon>
-          et babyfoot pour
-          se changer les
-          idées: le Collaborium au Loco Local c'est tout ça et bien plus encore!
+          et babyfoot pour se changer les idées: le Collaborium au Loco Local
+          c'est tout ça et bien plus encore!
         </p>
-        <p>
-          Venez l'essayer!
-        </p>
+        <p>Venez l'essayer!</p>
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Groupe d'achat" anchor="groupe-achat" image="groupe-achat.jpg">
+    <Cercle
+      title="Groupe d'achat"
+      anchor="groupe-achat"
+      image="groupe-achat.jpg"
+    >
       <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
       <div slot="subtitle">
-        Commander des produits biologiques, locaux, en grand format pour limiter la quantité d'emballage, et
-        acheter ensemble pour réduire le coût d'achat et augmenter la diversité et l'accessibilité d'une
-        nourriture saine et responsable.
+        Commander des produits biologiques, locaux, en grand format pour limiter
+        la quantité d'emballage, et acheter ensemble pour réduire le coût
+        d'achat et augmenter la diversité et l'accessibilité d'une nourriture
+        saine et responsable.
       </div>
       <div slot="content">
         <p>
-          Manger devient alors un moyen de constuire une communauté durable et autonome, saine et solidaire.
+          Manger devient alors un moyen de constuire une communauté durable et
+          autonome, saine et solidaire.
         </p>
         <v-card class="mt-6">
           <v-list>
-            <v-list-item href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com">
+            <v-list-item
+              href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com"
+            >
               <v-list-item-action>
                 <v-icon>mail</v-icon>
               </v-list-item-action>
@@ -221,7 +275,8 @@
               </v-list-item-title>
             </v-list-item>
             <v-list-item
-                href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf">
+              href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf"
+            >
               <v-list-item-action>
                 <v-icon>picture_as_pdf</v-icon>
               </v-list-item-action>
@@ -234,50 +289,47 @@
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Bibliothèque d'outils" anchor="biblio-outils" image="gardening-tools-1478547_1280.jpg"
-            id="biblio-outils">
+    <Cercle
+      title="Bibliothèque d'outils"
+      anchor="biblio-outils"
+      image="gardening-tools-1478547_1280.jpg"
+      id="biblio-outils"
+    >
       <div slot="subtitle">
-        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que d'acheter un outil dont vous ne vous
-        servirez qu'une fois dans votre vie, empruntez-le!
+        Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que
+        d'acheter un outil dont vous ne vous servirez qu'une fois dans votre
+        vie, empruntez-le!
       </div>
       <div slot="content">
         <v-tabs grow class="" slider-color="#ff3301">
-          <v-tab class="body-1">
-            C'est quoi
-          </v-tab>
-          <v-tab class="body-1">
-            Participer
-          </v-tab>
+          <v-tab class="body-1"> C'est quoi </v-tab>
+          <v-tab class="body-1"> Participer </v-tab>
           <v-tab-item class="pt-4 body-1">
             <v-tabs grow v-model="biblioOutilsCestQuoi" slider-color="#ff3301">
-              <v-tab class="body-1">
-                Quoi
-              </v-tab>
-              <v-tab class="body-1">
-                Pourquoi
-              </v-tab>
-              <v-tab class="body-1">
-                Comment
-              </v-tab>
+              <v-tab class="body-1"> Quoi </v-tab>
+              <v-tab class="body-1"> Pourquoi </v-tab>
+              <v-tab class="body-1"> Comment </v-tab>
               <v-tabs-items v-model="biblioOutilsCestQuoi" class="mt-3 pb-4">
                 <v-tab-item class="body-1">
                   <h3>C'est quoi</h3>
                   <p>
-                    1) La bibliothèque d’outils entrepose des outils d’usage commun (cuisine, menuiserie, artisanat,
-                    mécanique,
-                    jardinage, électricité, etc.) qui sont mis à la disposition de ses abonné-e-s sous forme de prêts.
+                    1) La bibliothèque d’outils entrepose des outils d’usage
+                    commun (cuisine, menuiserie, artisanat, mécanique,
+                    jardinage, électricité, etc.) qui sont mis à la disposition
+                    de ses abonné-e-s sous forme de prêts.
                   </p>
                   <p>
-                    2) Des activités pratiques peuvent être organisées dans l’année qui permettent aux abonné-e-s et à
-                    la
-                    population de développer leurs savoirs faire et leurs habiletés manuelles, en plus d’y faire des
-                    rencontres
-                    intergénérationnelles et interculturelles.
+                    2) Des activités pratiques peuvent être organisées dans
+                    l’année qui permettent aux abonné-e-s et à la population de
+                    développer leurs savoirs faire et leurs habiletés manuelles,
+                    en plus d’y faire des rencontres intergénérationnelles et
+                    interculturelles.
                   </p>
                   <p>
                     Des modèles ailleurs :
                     <a href="https://laremise.ca/">La Remise</a> à Montréal,
-                    <a href="https://atelierlapatente.org/">La Patente</a> à Québec.
+                    <a href="https://atelierlapatente.org/">La Patente</a> à
+                    Québec.
                   </p>
                   <v-layout row class="pr-8">
                     <v-flex xs12 class="text-right">
@@ -288,13 +340,9 @@
                   </v-layout>
                 </v-tab-item>
                 <v-tab-item class="body-1">
-                  <h3>
-                    Pourquoi une bibliothèque d’outils?
-                  </h3>
+                  <h3>Pourquoi une bibliothèque d’outils?</h3>
                   <v-list>
-                    <v-subheader class="subtitle-1">
-                      pour
-                    </v-subheader>
+                    <v-subheader class="subtitle-1"> pour </v-subheader>
                     <v-list-item>
                       <v-list-item-title class="body-1">
                         renforcer les liens sociaux
@@ -307,7 +355,8 @@
                     </v-list-item>
                     <v-list-item>
                       <v-list-item-title class="body-1">
-                        augmenter la capacité d’agir de la communauté et de ses membres.
+                        augmenter la capacité d’agir de la communauté et de ses
+                        membres.
                       </v-list-item-title>
                     </v-list-item>
                     <v-list-item>
@@ -325,68 +374,64 @@
                   </v-layout>
                 </v-tab-item>
                 <v-tab-item class="body-1">
-                  <h3 class="">
-                    Comment ça marche
-                  </h3>
+                  <h3 class="">Comment ça marche</h3>
                   <p>
                     Les abonnés ont accès à tous les outils de la bibliothèque.
                   </p>
                   <p>
-                    C’est en libre-service, ça veut dire qu’ils remplissent eux-mêmes la fiche d’emprunt.
+                    C’est en libre-service, ça veut dire qu’ils remplissent
+                    eux-mêmes la fiche d’emprunt.
                   </p>
                   <p>
-                    Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à moins qu’il ait été réservé par un autre
-                    abonné.
+                    Ils peuvent emprunter l’outil pour 3 jours à 1 semaine, à
+                    moins qu’il ait été réservé par un autre abonné.
                   </p>
                   <p>
-                    Pour les consommables (lame, papier sablé, etc.) qui permettent aux outils de fonctionner, mais ont
-                    une
-                    durée de
-                    vie limitée, il sera possible d’en acheter sur place ou de payer une contribution à l’utilisation.
+                    Pour les consommables (lame, papier sablé, etc.) qui
+                    permettent aux outils de fonctionner, mais ont une durée de
+                    vie limitée, il sera possible d’en acheter sur place ou de
+                    payer une contribution à l’utilisation.
                   </p>
                   <p>
-                    Aussi, en lien avec le service du Partage’heure, des activités pourraient être organisées afin de se
-                    familiariser avec des outils, découvrir de nouveaux projets, et s’amuser à créer des objets avec
-                    d’autre
-                    monde!
+                    Aussi, en lien avec le service du Partage’heure, des
+                    activités pourraient être organisées afin de se familiariser
+                    avec des outils, découvrir de nouveaux projets, et s’amuser
+                    à créer des objets avec d’autre monde!
                   </p>
                   <p>
-                    Note : le fonctionnement exact est encore à établir. Détails à venir.
+                    Note : le fonctionnement exact est encore à établir. Détails
+                    à venir.
                   </p>
                 </v-tab-item>
               </v-tabs-items>
             </v-tabs>
           </v-tab-item>
-          <v-tab-item class="pt-4  body-1">
-            <v-tabs v-model="participerBiblioOutilsTab" slider-color="#ff3301" grow>
-              <v-tab class="body-1">
-                Don d'outils
-              </v-tab>
-              <v-tab class="body-1">
-                Comité
-              </v-tab>
-              <v-tab class="body-1">
-                Abonnement
-              </v-tab>
+          <v-tab-item class="pt-4 body-1">
+            <v-tabs
+              v-model="participerBiblioOutilsTab"
+              slider-color="#ff3301"
+              grow
+            >
+              <v-tab class="body-1"> Don d'outils </v-tab>
+              <v-tab class="body-1"> Comité </v-tab>
+              <v-tab class="body-1"> Abonnement </v-tab>
             </v-tabs>
             <v-tabs-items class="mt-3 pb-4" v-model="participerBiblioOutilsTab">
               <v-tab-item class="body-1">
-                <h3>
-                  Don d'outils
-                </h3>
+                <h3>Don d'outils</h3>
+                <p>Nous reçevons les dons d'outils !</p>
                 <p>
-                  Nous reçevons les dons d'outils !
+                  Nous espérons constituer la base de la bibliothèque grâce à
+                  vos dons.
                 </p>
                 <p>
-                  Nous espérons constituer la base de la bibliothèque grâce à vos dons.
+                  Critère #1: l'outil doit être en état de fonctionner de
+                  manière sécuritaire
                 </p>
                 <p>
-                  Critère #1: l'outil doit être en état de fonctionner de manière sécuritaire
-                </p>
-                <p>
-                  Si nous avons trop d'outils du même type, nous pourrions décider de les vendre, et les sous servirons
-                  à
-                  financer les dépenses du projet
+                  Si nous avons trop d'outils du même type, nous pourrions
+                  décider de les vendre, et les sous servirons à financer les
+                  dépenses du projet
                 </p>
                 <v-layout row class="pr-8">
                   <v-flex xs12 class="text-right">
@@ -397,20 +442,17 @@
                 </v-layout>
               </v-tab-item>
               <v-tab-item class="body-1">
-                <h3>
-                  Comité de la Bibliothèque d'outils
-                </h3>
+                <h3>Comité de la Bibliothèque d'outils</h3>
                 <p>
-                  Un comité sera mis en place pour assurer le bon fonctionnement du projet.
+                  Un comité sera mis en place pour assurer le bon fonctionnement
+                  du projet.
                 </p>
                 <p>
-                  Nous cherchons des gens qui auraient envie d’être responsable d’un volet des outils (gestion de la
-                  qualité,
-                  assurer une offre intéressante, etc.)
+                  Nous cherchons des gens qui auraient envie d’être responsable
+                  d’un volet des outils (gestion de la qualité, assurer une
+                  offre intéressante, etc.)
                 </p>
-                <p class="mb-0">
-                  Voici les postes à combler :
-                </p>
+                <p class="mb-0">Voici les postes à combler :</p>
                 <v-list class="pt-0">
                   <v-list-item>
                     <v-list-item-title class="body-1">
@@ -462,23 +504,17 @@
                 </v-layout>
               </v-tab-item>
               <v-tab-item class="body-1">
-                <h3>
-                  Abonnement
-                </h3>
-                <p>
-                  Vous devez d’abord être membre de la coop HG.
-                </p>
-                <p>
-                  Puis, payer un abonnement annuel.
-                </p>
+                <h3>Abonnement</h3>
+                <p>Vous devez d’abord être membre de la coop HG.</p>
+                <p>Puis, payer un abonnement annuel.</p>
               </v-tab-item>
             </v-tabs-items>
           </v-tab-item>
         </v-tabs>
         <v-card class="mt-4">
           <v-card-text class="body-1 text-center">
-            Pour toute question, ou pour manifester votre intérêt à soutenir ou à participer à la bibliothèque d'outils,
-            contactez
+            Pour toute question, ou pour manifester votre intérêt à soutenir ou
+            à participer à la bibliothèque d'outils, contactez
             <a href="mailto:arielle.paiement@gmail.com">
               <v-icon class="mr-2">mail</v-icon>
               arielle.paiement@gmail.com
@@ -488,45 +524,296 @@
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Bouger Ensemble" anchor="bouger-ensemble" image="bouger-ensemble-marche.jpg" id="bouger-ensemble">
+    <Cercle
+      title="Bouger Ensemble !"
+      anchor="bouger-ensemble"
+      :image="bougerEnsembleImage"
+      id="bouger-ensemble"
+    >
       <div slot="subtitle">
-        Ces deux choses, bouger et socialiser, qui manquent cruellement en temps de pandémie
+        Ces deux choses, bouger et socialiser, qui manquent cruellement en temps
+        de pandémie
       </div>
       <div slot="content">
         <v-tabs slider-color="#ff3301">
-          <v-tab class="body-1">
-            <v-icon left>
-              nordic_walking
-            </v-icon>
-            <span v-if="$vuetify.breakpoint.mdAndUp">
-              Club de marche
-            </span>
-            <span v-else>
-              Marche
-            </span>
+          <v-tab
+            class="body-1"
+            @click="bougerEnsembleImage = 'cardio-boxe-viking.jpg'"
+          >
+            <v-icon left> sports_mma </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp"> Cardio-Boxe Viking </span>
+            <span v-else> Cardio-Boxe </span>
           </v-tab>
-<!--          <v-tab class="body-1">-->
-<!--            <v-icon left>-->
-<!--              self_improvement-->
-<!--            </v-icon>-->
-<!--            <span v-if="$vuetify.breakpoint.mdAndUp">-->
-<!--              Cours de Yoga-->
-<!--            </span>-->
-<!--            <span v-else>-->
-<!--              Yoga-->
-<!--            </span>-->
-<!--          </v-tab>-->
-          <v-tab class="body-1">
-            <v-icon left>
-              emoji_emotions
-            </v-icon>
+          <v-tab
+            class="body-1"
+            @click="bougerEnsembleImage = 'meditations_marchees.jpg'"
+          >
+            <v-icon left> self_improvement </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp">
+              Méditations marchées
+            </span>
+            <span v-else> Méditations </span>
+          </v-tab>
+          <v-tab class="body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
+            <v-icon left> people </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp">
+              Semaine de relâche - activités familiales
+            </span>
+            <span v-else> Relâche </span>
+          </v-tab>          
+          <v-tab class="body-1" @click="bougerEnsembleImage = 'bouger-ensemble-marche.jpg'">
+            <v-icon left> nordic_walking </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp"> Club de marche </span>
+            <span v-else> Marche </span>
+          </v-tab>
+          <!--          <v-tab class="body-1">-->
+          <!--            <v-icon left>-->
+          <!--              self_improvement-->
+          <!--            </v-icon>-->
+          <!--            <span v-if="$vuetify.breakpoint.mdAndUp">-->
+          <!--              Cours de Yoga-->
+          <!--            </span>-->
+          <!--            <span v-else>-->
+          <!--              Yoga-->
+          <!--            </span>-->
+          <!--          </v-tab>-->
+          <!-- <v-tab class="body-1">
+            <v-icon left> emoji_emotions </v-icon>
             <span v-if="$vuetify.breakpoint.mdAndUp">
               Cours d'expression corporelle
             </span>
-            <span v-else>
-              Expression
-            </span>
-          </v-tab>
+            <span v-else> Expression </span>
+          </v-tab> -->
+          <v-tab-item>
+            <v-card flat>
+              <v-card-title class="text-h6">
+                <v-icon left>sports_mma</v-icon>
+                Cardio-Boxe Viking édition extérieure
+              </v-card-title>
+              <v-list>
+                <v-list-item
+                  href="https://forms.gle/1SAdbssmnmKqdbWG8"
+                  target="_blank"
+                  class="subtitle-1"
+                >
+                  <v-list-item-action>
+                    <v-icon>assignment</v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Inscription au cours d'essai
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                  href="https://forms.gle/GDFUjtbjDTGEH3cb7"
+                  target="_blank"
+                  class="subtitle-1"
+                >
+                  <v-list-item-action>
+                    <v-icon>assignment</v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Inscriptions à la session
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <v-card-text class="body-1">
+                <p>
+                  Premier cours d'essai du 20 février GRATUIT! Dépêchez-vous,
+                  les places sont limitées!
+                </p>
+                <p>
+                  Venez vous entraîner avec Cardio-boxe Viking édition marche
+                  extérieure! Entraînement cardio à l'extérieur inspiré par la
+                  boxe. La Boxe est une bonne façon d'augmenter votre
+                  coordination, votre santé physique mais également de renforcer
+                  votre santé mentale. Dans une ambiance récréative et amusante
+                  vous apprendrez des techniques de base de la boxe et ferez
+                  travailler votre coeur dans un bon pas de marche et
+                  entraînement fitness. Avec Jasmine Savard, coach de
+                  cardio-boxe.
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold">Quand</v-subheader>
+                  Chaque samedi à partir du 20 février à 13h, sauf un samedi par
+                  mois. Session de 10 cours. Durée des séances: 1h
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold">Où?</v-subheader>
+                  À l'extérieur du Loco Local, 193a rue Grand-Pré
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold">Pour qui?</v-subheader>
+                  Ouvert à tous! Les enfants de moins de 12 ans doivent être
+                  accompagnés d'un parent. Maximum de 8 participants.
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold"
+                    >Équipement requis:
+                  </v-subheader>
+                  Bouteille d'eau, bottes de marche, mitaines ou gants.
+                  Vêtements pour être à l'extérieur dans un mélange de boxe et
+                  de marche. Aucun équipement spécifique requis pour cette
+                  session, cours sans contact vu les mesures sanitaires en
+                  place.
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold">Coût? </v-subheader>
+                  Selon vos moyens, entre 35 et 80$ pour la session. Détails sur
+                  la feuille d'inscription.
+                </p>
+                <p>
+                  <v-subheader class="font-weight-bold"
+                    >Pour plus d’information sur l’activité</v-subheader
+                  >
+                  Coach Jasmine Savard : 514-463-8992
+                </p>
+                <p>
+                  * Si la session doit être annulée en raison de la COVID, il
+                  sera d'abord proposé de reporter la session, sinon vous serez
+                  remboursé au prorata des cours restants selon votre paiement.
+                  Les absences ne peuvent pas être remboursées.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat>
+              <v-card-title class="text-h6">
+                <v-icon left>self_improvement</v-icon>
+                Méditations
+              </v-card-title>
+              <v-list>
+                <v-list-item
+                  href="https://forms.gle/W6wU265dhSixR5b68"
+                  target="_blank"
+                  class="subtitle-1"
+                >
+                  <v-list-item-action>
+                    <v-icon>assignment</v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Inscription au cours d'essai
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <v-card-text class="body-1">
+                <p>
+                  8 Séances de méditations marchées et de mouvement conscient
+                </p>
+                <p>
+                  <v-subheader>Quoi?</v-subheader>
+                  Des techniques variées de méditation en mouvement et marchée
+                  vous seront proposées, dont l’objectif est de favoriser la
+                  présence, la détente, la connexion à soi et à la nature. Des
+                  exercices de réchauffement ponctueront les séances. Aucun
+                  prérequis.
+                </p>
+                <p>
+                  <v-subheader>Quand?</v-subheader>
+                  Chaque jeudi, du 18 février au 8 avril. 17h30 à 18h15. Durée
+                  des séances: 45 minutes
+                </p>
+                <p>
+                  <v-subheader>Où?</v-subheader>
+                  L’activité aura lieu à l’extérieur, à différents endroits dans
+                  la nature entre Caplan et New Carlisle. Il est recommandé de
+                  s’habiller chaudement. Nous vous invitons à laisser un message
+                  en commentaire à la fin du formulaire si vous avez des
+                  restrictions d'horaire pour vous déplacer sur le territoire.
+                </p>
+                <p>
+                  <v-subheader>Pour qui?</v-subheader>
+                  Adultes et jeunes de 14 ans et plus.
+                </p>
+                <p>
+                  <v-subheader
+                    >Pour plus d’information sur l’activité</v-subheader
+                  >
+                  Bruno Mainville,
+                  <a href="tel:514-910-8363"> 514-910-8363 </a>
+                </p>
+              </v-card-text>
+              <v-alert colored-border type="info" elevation="1" class="body-1">
+                * Si la session doit être annulée en raison de la COVID, Il sera
+                d'abord proposé de reporter la session, sinon vous serez
+                remboursé au prorata des cours restants selon votre paiement.
+                Les absences ne peuvent pas être remboursées.
+              </v-alert>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat>            
+              <v-tabs slider-color="#ff3301">
+                <v-tab class="body-1">
+                  <v-icon left>sports_mma</v-icon>
+                  Cardio-Boxe Viking extérieur pour toute la famille
+                  </v-tab>
+                  <!-- <v-tab class="body-1">
+                    <v-icon left>downhill_skiing</v-icon>
+                    Initiation au ski de fond pour 5 à 12 ans
+                  </v-tab> -->
+                  <!-- <v-tab class="body-1">
+                    <v-icon left>downhill_skiing</v-icon>
+                    Initiation au ski de fond pour 5 à 12 ans
+                  </v-tab> -->
+                  <v-tab-item>
+                    <v-card flat>
+                      <v-list>
+                        <v-list-item
+                          href="https://forms.gle/Eax9wNV9FeJjmeZs5"
+                          target="_blank"
+                          class="subtitle-1"
+                        >
+                          <v-list-item-action>
+                            <v-icon>assignment</v-icon>
+                          </v-list-item-action>
+                          <v-list-item-content>
+                            <v-list-item-title>
+                              Inscription
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-list>                  
+                      <v-card-text class="body-1">
+                        <p>
+                          Initiez-vous aux savoirs de base de la boxe dans un entraînement fitness et marche à l'extérieur. 
+                        </p>
+                        <p>
+                          <v-subheader>Quand?</v-subheader>
+                          Dimanche 28 février. Choix de deux heures : 13h et 14h15. Durée du cours: 1h
+                        </p>
+                        <p>
+                          <v-subheader>Où?</v-subheader>
+                          Départ à l'extérieur du Loco Local 193a Avenue Grand-Pré, Bonaventure 
+                        </p>
+                        <p>
+                          <v-subheader>Pour qui?</v-subheader>
+                          Ouvert à tous! Les enfants de moins de 12 ans doivent être accompagnés d'un parent. Maximum de 8 participants.
+                        </p>
+                        <p>
+                          <v-subheader>Équipement requis</v-subheader>
+                          Bouteille d'eau, bottes de marche, mitaines ou gants. Vêtements pour être à l'extérieur dans un mélange de boxe et de marche. Aucun équipement spécifique requis, cours sans contact vu les mesures sanitaires en place.
+                        </p>
+                        <p>
+                          <v-subheader>Coût? </v-subheader>
+                          5 à 12$ par personne selon vos moyens. Détails sur la feuille d'inscription.
+                        </p>
+                        <p>
+                          Pour plus d’information sur l’activité:
+                          Coach Jasmine Savard : <a href="tel:514-463-8992">514-463-8992</a>
+                        </p>
+                      </v-card-text>
+                    </v-card>
+                  </v-tab-item>
+              </v-tabs>
+            </v-card>
+          </v-tab-item>
           <v-tab-item>
             <v-card flat>
               <v-card-title>
@@ -534,85 +821,93 @@
                 Club de marche
               </v-card-title>
               <v-card-subtitle class="pt-4 subtitle-1">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
-                   target="_blank">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
+                  target="_blank"
+                >
                   <v-icon class="mr-2">assignment</v-icon>
                   Formulaire d'inscription à remplir
                 </a>
               </v-card-subtitle>
               <v-card-text class="body-1">
                 <p>
-                  Vous souhaitez vous remettre en mouvement et vous ressentez l'envie et le besoin de partager des
-                  moments de groupe ? Venez rejoindre notre club de marche !!!
-                  On vous invite à
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
-                     target="_blank">
+                  Vous souhaitez vous remettre en mouvement et vous ressentez
+                  l'envie et le besoin de partager des moments de groupe ? Venez
+                  rejoindre notre club de marche !!! On vous invite à
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
+                    target="_blank"
+                  >
                     vous inscrire
                   </a>
-                  pour nous faire savoir votre intérêt, c'est gratuit! L'heure et le lieu seront décidés en fonction des
-                  personnes inscrites, nous vous contacterons pour vous en informer.
+                  pour nous faire savoir votre intérêt, c'est gratuit! L'heure
+                  et le lieu seront décidés en fonction des personnes inscrites,
+                  nous vous contacterons pour vous en informer.
                 </p>
-                <p>
-                  C'est une activité gratuite !!
-                </p>
+                <p>C'est une activité gratuite !!</p>
               </v-card-text>
             </v-card>
           </v-tab-item>
-<!--          <v-tab-item>-->
-<!--            <v-card flat>-->
-<!--              <v-card-title>-->
-<!--                <v-icon class="mr-2">self_improvement</v-icon>-->
-<!--                Cours de Yoga-->
-<!--              </v-card-title>-->
-<!--              <v-card-subtitle class="subtitle-1 pt-4">-->
-<!--                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGH6o1WhMQI4lkCyeEX2a7lyTZQWAFiHEd1rphUrhSpEqIXQ/viewform?fbclid=IwAR2AYwXZ7feqFmdOztRY7qQLqfC1o9iO0GPoILQaH533bWVvwnY7Xfm2IB4"-->
-<!--                   target="_blank">-->
-<!--                  <v-icon class="mr-2">assignment</v-icon>-->
-<!--                  Formulaire d'inscription à remplir-->
-<!--                </a>-->
-<!--              </v-card-subtitle>-->
-<!--              <v-card-text class="body-1">-->
-<!--                <p>-->
-<!--                  Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!-->
-<!--                  Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                  Attention : cette activité se déroulera si nous repassons en zone orange ou jaune !!!-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                  Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos-->
-<!--                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir-->
-<!--                  plus-->
-<!--                  loin dans la rubrique inscription).-->
-<!--                  Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.-->
-<!--                  Les absences ne peuvent pas être remboursées.-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans-->
-<!--                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                  Les places sont limitées !-->
-<!--                </p>-->
-<!--              </v-card-text>-->
-<!--            </v-card>-->
-<!--          </v-tab-item>-->
-          <v-tab-item>
+          <!--          <v-tab-item>-->
+          <!--            <v-card flat>-->
+          <!--              <v-card-title>-->
+          <!--                <v-icon class="mr-2">self_improvement</v-icon>-->
+          <!--                Cours de Yoga-->
+          <!--              </v-card-title>-->
+          <!--              <v-card-subtitle class="subtitle-1 pt-4">-->
+          <!--                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGH6o1WhMQI4lkCyeEX2a7lyTZQWAFiHEd1rphUrhSpEqIXQ/viewform?fbclid=IwAR2AYwXZ7feqFmdOztRY7qQLqfC1o9iO0GPoILQaH533bWVvwnY7Xfm2IB4"-->
+          <!--                   target="_blank">-->
+          <!--                  <v-icon class="mr-2">assignment</v-icon>-->
+          <!--                  Formulaire d'inscription à remplir-->
+          <!--                </a>-->
+          <!--              </v-card-subtitle>-->
+          <!--              <v-card-text class="body-1">-->
+          <!--                <p>-->
+          <!--                  Envie de vous délier le corps et d'apaiser votre esprit? Venez faire du yoga avec Simon Carrothers!-->
+          <!--                  Les cours ont lieu les mardi soir au Loco Local de Bonaventure (193A, avenue Grand-Pré).-->
+          <!--                </p>-->
+          <!--                <p>-->
+          <!--                  Attention : cette activité se déroulera si nous repassons en zone orange ou jaune !!!-->
+          <!--                </p>-->
+          <!--                <p>-->
+          <!--                  Coût: On demande une participation suggérée de 30$ à 100$ pour une session de 8 cours, selon vos-->
+          <!--                  capacités financières.* Le paiement se réalisera par virement bancaire ou virement interact (voir-->
+          <!--                  plus-->
+          <!--                  loin dans la rubrique inscription).-->
+          <!--                  Si les cours doivent cesser à cause de la COVID, les cours restants vous seront remboursés.-->
+          <!--                  Les absences ne peuvent pas être remboursées.-->
+          <!--                </p>-->
+          <!--                <p>-->
+          <!--                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans-->
+          <!--                  l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!-->
+          <!--                </p>-->
+          <!--                <p>-->
+          <!--                  Les places sont limitées !-->
+          <!--                </p>-->
+          <!--              </v-card-text>-->
+          <!--            </v-card>-->
+          <!--          </v-tab-item>-->
+          <!-- <v-tab-item>
             <v-card flat>
               <v-card-title>
                 <v-icon class="mr-2">emoji_emotions</v-icon>
                 Expression corporelle
               </v-card-title>
               <v-card-subtitle class="subtitle-1 pt-4">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJY6cc5vNe9nIIr2I73pf1HeCQB8x_Xid8PQ58G_X6i4xR1w/viewform?fbclid=IwAR1vYwLCoJElOwUygM2-XWy2aX5Mq4qfFn7VzQEaKm0blguYZSxqNSN7crw"
-                   target="_blank">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeJY6cc5vNe9nIIr2I73pf1HeCQB8x_Xid8PQ58G_X6i4xR1w/viewform?fbclid=IwAR1vYwLCoJElOwUygM2-XWy2aX5Mq4qfFn7VzQEaKm0blguYZSxqNSN7crw"
+                  target="_blank"
+                >
                   <v-icon class="mr-2">assignment</v-icon>
                   Formulaire d'inscription à remplir
                 </a>
               </v-card-subtitle>
               <v-card-text class="body-1">
                 <p>
-                  Vous souhaitez explorer les possibilités de votre corps, votre créativité dans le mouvement, développer votre conscience corporelle et le lâcher prise? Venez participer aux cours d’expression corporelle avec Élodie Samuel-Leduc!
+                  Vous souhaitez explorer les possibilités de votre corps, votre
+                  créativité dans le mouvement, développer votre conscience
+                  corporelle et le lâcher prise? Venez participer aux cours
+                  d’expression corporelle avec Élodie Samuel-Leduc!
                 </p>
                 <p>
                   <span class="font-weight-bold">Quand ?</span>
@@ -627,14 +922,14 @@
                   Contribution suggérée entre 5$ et 10$.
                 </p>
                 <p>
-                  *Contactez-nous en privé si vous avez des limites financières à participer au cours, c’est dans l’esprit du Loco Local de permettre l’accès aux activités peu importe votre revenu!
+                  *Contactez-nous en privé si vous avez des limites financières
+                  à participer au cours, c’est dans l’esprit du Loco Local de
+                  permettre l’accès aux activités peu importe votre revenu!
                 </p>
-                <p>
-                  Les places sont limitées !
-                </p>
+                <p>Les places sont limitées !</p>
               </v-card-text>
             </v-card>
-          </v-tab-item>
+          </v-tab-item> -->
         </v-tabs>
         <v-row>
           <v-col cols="12" class="vh-center">
@@ -656,34 +951,46 @@
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Page Pourpre" anchor="page-pourpre" :image="pagePourpreImages">
+    <Cercle
+      title="Page Pourpre"
+      anchor="page-pourpre"
+      :image="pagePourpreImages"
+    >
       <div slot="subtitle">
         Bibliothèque féministe, trans, queer et inclusive
       </div>
       <div slot="content">
         <p class="">
-          La bibliothèque la Page Pourpre, c'est un espace de rencontre et un centre de référence permettant
-          d'emprunter gratuitement des livres sur diverses questions féministes, queer, intersectionelles, ou
-          autrement connexe, ainsi que des ouvrages de fiction et de poésie touchant à notre thématique. Sera
-          éventuellement disponible une sélection de livres pour enfants qui vont à l'encontre des stéréotypes
-          de genre et parlent de transsexualité, d'homoparentalité et d'éducation non-binaire, mais également
-          des ressources sur l'éducation et la parentalité à l'extérieur de la binarité des genres.
+          La bibliothèque la Page Pourpre, c'est un espace de rencontre et un
+          centre de référence permettant d'emprunter gratuitement des livres sur
+          diverses questions féministes, queer, intersectionelles, ou autrement
+          connexe, ainsi que des ouvrages de fiction et de poésie touchant à
+          notre thématique. Sera éventuellement disponible une sélection de
+          livres pour enfants qui vont à l'encontre des stéréotypes de genre et
+          parlent de transsexualité, d'homoparentalité et d'éducation
+          non-binaire, mais également des ressources sur l'éducation et la
+          parentalité à l'extérieur de la binarité des genres.
         </p>
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Imaginez demain" anchor="imaginez-demain" image="imagine-demain.jpg">
+    <Cercle
+      title="Imaginez demain"
+      anchor="imaginez-demain"
+      image="imagine-demain.jpg"
+    >
       <div slot="subtitle">
-        C’est une tempête d’idées, une place pour exprimer nos visions les plus idéalistes, réalistes ou
-        fantaisistes
+        C’est une tempête d’idées, une place pour exprimer nos visions les plus
+        idéalistes, réalistes ou fantaisistes
       </div>
       <div slot="content">
         <p class="">
           Pour rêver collectivement d'un demain résilient, aligné à nos valeurs.
         </p>
         <p>
-          Un espace aussi de débat d'idées, de liens et d’actions concrètes, d'humour.
-          <br>
+          Un espace aussi de débat d'idées, de liens et d’actions concrètes,
+          d'humour.
+          <br />
           <v-icon class="mr-2" color="orange">wb_sunny</v-icon>
           Que du positif S.V.P.
         </p>
@@ -691,21 +998,19 @@
           <v-list-item href="https://www.facebook.com/groups/2573860966056660/">
             <v-list-item-action>
               <img
-                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30">
+                src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
+              />
             </v-list-item-action>
-            <v-list-item-title>
-              Notre page Facebook
-            </v-list-item-title>
+            <v-list-item-title> Notre page Facebook </v-list-item-title>
           </v-list-item>
           <v-list-item
-              href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#">
+            href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#"
+          >
             <v-list-item-action>
               <v-icon>fa-file</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
-                Notre document Google Doc
-              </v-list-item-title>
+              <v-list-item-title> Notre document Google Doc </v-list-item-title>
               <v-list-item-subtitle class="subtitle-1">
                 Fable de la perdrix et la poule
               </v-list-item-subtitle>
@@ -715,14 +1020,11 @@
         <p>
           À surveiller : discussions
           <v-icon class="mr-2">videocam</v-icon>
-          zoom et
-          rencontres physiques sur une
+          zoom et rencontres physiques sur une
           <v-icon class="mr-2">beach_access</v-icon>
           plage.
         </p>
-        <p>
-          On câle la shot sur Facebook et on réinvente le monde !
-        </p>
+        <p>On câle la shot sur Facebook et on réinvente le monde !</p>
       </div>
     </Cercle>
     <!--    <v-divider></v-divider>-->
@@ -741,27 +1043,38 @@
     <Cercle title="Produits Lemieux" anchor="produits-lemieux">
       <div slot="image">
         <div id="fb-root"></div>
-        <div class="fb-video" data-href="https://www.facebook.com/locolocal1/videos/2443361492361573/"
-             data-width="500" data-show-text="false">
+        <div
+          class="fb-video"
+          data-href="https://www.facebook.com/locolocal1/videos/2443361492361573/"
+          data-width="500"
+          data-show-text="false"
+        >
           <div class="fb-xfbml-parse-ignore">
-            <blockquote cite="https://www.facebook.com/locolocal1/videos/2443361492361573/">
-              <a href="https://www.facebook.com/locolocal1/videos/2443361492361573/">How to Share With
-                Just Friends</a>
+            <blockquote
+              cite="https://www.facebook.com/locolocal1/videos/2443361492361573/"
+            >
+              <a
+                href="https://www.facebook.com/locolocal1/videos/2443361492361573/"
+                >How to Share With Just Friends</a
+              >
               <p>How to share with just friends.</p>
-              Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on Friday, December 5,
-              2014
+              Posted by
+              <a href="https://www.facebook.com/facebook/">Facebook</a> on
+              Friday, December 5, 2014
             </blockquote>
           </div>
         </div>
       </div>
       <div slot="subtitle">
-        En plus de sentir bon, d'utiliser des produits nettoyants qui ne sont pas nocifs pour votre santé et
-        celle de vos enfants, de protéger l'environnement en utilisant des produits biodégradables, choisissez
-        le vrac pour favoriser la réutilisation des contenants!
+        En plus de sentir bon, d'utiliser des produits nettoyants qui ne sont
+        pas nocifs pour votre santé et celle de vos enfants, de protéger
+        l'environnement en utilisant des produits biodégradables, choisissez le
+        vrac pour favoriser la réutilisation des contenants!
       </div>
       <div slot="content">
         <p class="">
-          Achetez les produits Lemieux au Loco Local. Si vous avez des questions, écrivez-nous à
+          Achetez les produits Lemieux au Loco Local. Si vous avez des
+          questions, écrivez-nous à
           <a href="mailto:horizonsgaspesiens@gmail.com">
             horizonsgaspesiens@gmail.com
           </a>
@@ -773,14 +1086,17 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <Cercle title="Comptabilité" anchor="comptable" class="pa-0" v-if="false">
       <div slot="image" class="pa-0">
-        <v-card
-            class="text-center pa-0"
-            dark
+        <v-card class="text-center pa-0" dark width="100%">
+          <v-card-text
+            id="dessin-comptable"
+            style="min-height: 400px"
+            class=""
             width="100%"
-        >
-          <v-card-text id="dessin-comptable" style="min-height:400px;" class="" width="100%"></v-card-text>
+          ></v-card-text>
           <v-card-text>
-            <div class="display-1 font-weight-thin">Balance Revenus/Dépenses 2018-2019</div>
+            <div class="display-1 font-weight-thin">
+              Balance Revenus/Dépenses 2018-2019
+            </div>
           </v-card-text>
           <v-card-title class="pt-1">
             <v-spacer></v-spacer>
@@ -791,8 +1107,11 @@
           <v-divider></v-divider>
 
           <v-card-actions class="justify-center pa-0">
-            <v-btn block text
-                   href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0">
+            <v-btn
+              block
+              text
+              href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0"
+            >
               <!--<v-icon class="mr-2">fa-dropbox</v-icon>-->
               Détails sur fichier Dropbox. Faites télécharger.
             </v-btn>
@@ -800,60 +1119,73 @@
         </v-card>
       </div>
       <div slot="subtitle">
-        La transparence est vitale à l'autogestion. L'argent est un composant important du pouvoir. Faut donc
-        que ça soit clair !
+        La transparence est vitale à l'autogestion. L'argent est un composant
+        important du pouvoir. Faut donc que ça soit clair !
       </div>
       <div slot="content">
         <p>
-          Il n'y a pas encore d'expert en comptabilité dans notre comité. Par contre, on s'améliore tout le
-          temps.
+          Il n'y a pas encore d'expert en comptabilité dans notre comité. Par
+          contre, on s'améliore tout le temps.
         </p>
         <p>
-          On manque d'argent par contre mais ça, c'est la responsabilité de tous les membres et du
-          <router-link to="/cercle/financement">comité financement !</router-link>
+          On manque d'argent par contre mais ça, c'est la responsabilité de tous
+          les membres et du
+          <router-link to="/cercle/financement"
+            >comité financement !</router-link
+          >
         </p>
         <p>
-          De plus, en date de janvier 2019, nous avons une dette sans intérêts de 11955.89$ sur laquelle nous
-          payons 100$ / mois.
+          De plus, en date de janvier 2019, nous avons une dette sans intérêts
+          de 11955.89$ sur laquelle nous payons 100$ / mois.
         </p>
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Financement" anchor="financement" class="pa-0" image="sourie.jpg">
+    <Cercle
+      title="Financement"
+      anchor="financement"
+      class="pa-0"
+      image="sourie.jpg"
+    >
       <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
       <div slot="subtitle">
-        La créativité, la débrouille et la persévérence sont au rendez-vous pour ceux qui veulent développer
-        leur sens de l'entreprenariat social.
+        La créativité, la débrouille et la persévérence sont au rendez-vous pour
+        ceux qui veulent développer leur sens de l'entreprenariat social.
       </div>
       <div slot="content">
         <p>
-          Et continuer à rendre la merveilleuse expérience du Loco Local possible pour plus longtemps encore.
+          Et continuer à rendre la merveilleuse expérience du Loco Local
+          possible pour plus longtemps encore.
         </p>
         <p>
-          La location de salle, la vente de produits nettoyants, le chocolat, les serviettes sanitaires etc,
-          le groupe d'achat, le reconditionnement d'ordinateur sont tous des moyens actuels de payer le local.
+          La location de salle, la vente de produits nettoyants, le chocolat,
+          les serviettes sanitaires etc, le groupe d'achat, le reconditionnement
+          d'ordinateur sont tous des moyens actuels de payer le local.
         </p>
-        <p>
-          Venez donc y ajouter votre touche personnelle.
-        </p>
+        <p>Venez donc y ajouter votre touche personnelle.</p>
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Cercle title="Notre structure de gouvernance: l'Holacracy!" anchor="gouvernance" class="pa-0"
-            :image="gouvernanceImages">
+    <Cercle
+      title="Notre structure de gouvernance: l'Holacracy!"
+      anchor="gouvernance"
+      class="pa-0"
+      :image="gouvernanceImages"
+    >
       <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
       <div slot="subtitle">
-        L'Holacracy est une méthode de gestion horizontale qui fonctionne avec des cercles (comités) de travail
-        et nous demandons à chacun des cercles
-        de définir sa raison d'être au sein d'Horizons Gaspésiens, ses rôles et redevabilités.
+        L'Holacracy est une méthode de gestion horizontale qui fonctionne avec
+        des cercles (comités) de travail et nous demandons à chacun des cercles
+        de définir sa raison d'être au sein d'Horizons Gaspésiens, ses rôles et
+        redevabilités.
       </div>
       <div slot="content">
         <v-card class="mb-6">
-          <v-card-title class="title">
-            À propos de l'Holacracy
-          </v-card-title>
+          <v-card-title class="title"> À propos de l'Holacracy </v-card-title>
           <v-list>
-            <v-list-item href="https://labdsurlholacracy.com/bande-dessinee-holacracy">
+            <v-list-item
+              href="https://labdsurlholacracy.com/bande-dessinee-holacracy"
+            >
               <v-list-item-action>
                 <v-icon>fa-book-reader</v-icon>
               </v-list-item-action>
@@ -861,32 +1193,24 @@
                 Bande dessinée
               </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                href="https://www.holacracy.org/webinar-recording">
+            <v-list-item href="https://www.holacracy.org/webinar-recording">
               <v-list-item-action>
                 <v-icon>movie</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="body-1">
-                Vidéo
-              </v-list-item-title>
+              <v-list-item-title class="body-1"> Vidéo </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                href="https://igipartners.com/constitution-holacracy">
+            <v-list-item href="https://igipartners.com/constitution-holacracy">
               <v-list-item-action>
                 <v-icon>account_balance</v-icon>
               </v-list-item-action>
-              <v-list-item-title class="body-1">
-                Principes
-              </v-list-item-title>
+              <v-list-item-title class="body-1"> Principes </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card>
+        <p>Les cercles et leurs membres sont énumérés sur ce site.</p>
         <p>
-          Les cercles et leurs membres sont énumérés sur ce site.
-        </p>
-        <p>
-          La raison d'être du cercle "Gouvernance" est d'installer la gestion participative dans Horizons
-          Gaspésiens.
+          La raison d'être du cercle "Gouvernance" est d'installer la gestion
+          participative dans Horizons Gaspésiens.
         </p>
         <p>
           <v-card>
@@ -895,7 +1219,8 @@
             </v-card-title>
             <v-list>
               <v-list-item
-                  href="https://docs.google.com/document/d/1XQFmsfxNzZA4oryQ1IvUjf0otLuk0TjkVTEEglNEqE8">
+                href="https://docs.google.com/document/d/1XQFmsfxNzZA4oryQ1IvUjf0otLuk0TjkVTEEglNEqE8"
+              >
                 <v-list-item-action>
                   <v-icon>fa-file</v-icon>
                 </v-list-item-action>
@@ -909,10 +1234,9 @@
       </div>
     </Cercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <div style="width:100%" class="vh-center">
+    <div style="width: 100%" class="vh-center">
       <v-list>
-        <v-list-item
-            @click="comitesArchives = true">
+        <v-list-item @click="comitesArchives = true">
           <v-list-item-action>
             <v-icon>list</v-icon>
           </v-list-item-action>
@@ -923,58 +1247,83 @@
       </v-list>
     </div>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Calendrier :class="{
-                'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
-                'mt-5 mb-4': $vuetify.breakpoint.smAndDown
-            }"></Calendrier>
+    <Calendrier
+      :class="{
+        'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
+        'mt-5 mb-4': $vuetify.breakpoint.smAndDown,
+      }"
+    ></Calendrier>
     <v-divider class="mt-6 mb-12"></v-divider>
     <v-layout row wrap class="mb-1 mt-12" id="paiement">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">
-          Dons et paiements
-        </h1>
+        <h1 class="display-2 font-weight-thin">Dons et paiements</h1>
       </v-flex>
     </v-layout>
     <v-layout row wrap class="font-weight-thin">
       <v-flex xs12>
-        <v-card flat class="body-1" :class="{
-                'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
-                'mt-5 mb-4': $vuetify.breakpoint.smAndDown
-            }">
+        <v-card
+          flat
+          class="body-1"
+          :class="{
+            'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
+            'mt-5 mb-4': $vuetify.breakpoint.smAndDown,
+          }"
+        >
           <v-layout row wrap fill-height>
             <v-flex xs12 md6 class="">
-              <div class="text-h5 mb-8">
-                Comment payer
-              </div>
+              <div class="text-h5 mb-8">Comment payer</div>
               <v-layout row wrap class="pb-2">
                 <v-flex xs0 md2></v-flex>
                 <v-flex xs12 md8 class="text-md-left text-center body-1">
                   <v-icon class="mr-2">email</v-icon>
                   <span class="font-weight-bold body-1">Par courriel</span>
                   à horizonsgaspesiens@gmail.com
-                  <v-btn text v-clipboard:copy="'horizonsgaspesiens@gmail.com'" small>copier</v-btn>
+                  <v-btn
+                    text
+                    v-clipboard:copy="'horizonsgaspesiens@gmail.com'"
+                    small
+                    >copier</v-btn
+                  >
                 </v-flex>
               </v-layout>
               <v-divider class="mt-8 mb-8"></v-divider>
               <v-layout row wrap>
                 <v-flex xs0 md2 xl2></v-flex>
-                <v-flex xs12 md4 xl3 class="text-md-left text-center " :class="{
-                                    'pb-2':  $vuetify.breakpoint.smAndDown
-                                }">
-                  <span class="font-weight-bold body-1">Par transit desjardins</span>
+                <v-flex
+                  xs12
+                  md4
+                  xl3
+                  class="text-md-left text-center"
+                  :class="{
+                    'pb-2': $vuetify.breakpoint.smAndDown,
+                  }"
+                >
+                  <span class="font-weight-bold body-1"
+                    >Par transit desjardins</span
+                  >
                 </v-flex>
-                <v-flex xs12 md6 xl7 class="text-md-left text-center pl-6 pb-6 body-1" style="margin-top:-7px;">
+                <v-flex
+                  xs12
+                  md6
+                  xl7
+                  class="text-md-left text-center pl-6 pb-6 body-1"
+                  style="margin-top: -7px"
+                >
                   <div>
-                    <span class="font-weight-bold body-1">Transit caisse:</span> 40001
+                    <span class="font-weight-bold body-1">Transit caisse:</span>
+                    40001
                     <v-btn text v-clipboard:copy="'40001'" small>copier</v-btn>
                   </div>
                   <div>
-                    <span class="font-weight-bold body-1">No Institution:</span> 815
+                    <span class="font-weight-bold body-1">No Institution:</span>
+                    815
                     <v-btn text v-clipboard:copy="'815'" small>copier</v-btn>
                   </div>
                   <div>
                     <span class="font-weight-bold body-1">Folio:</span> 0451286
-                    <v-btn text v-clipboard:copy="'0451286'" small>copier</v-btn>
+                    <v-btn text v-clipboard:copy="'0451286'" small
+                      >copier</v-btn
+                    >
                   </div>
                 </v-flex>
               </v-layout>
@@ -984,33 +1333,53 @@
                 </v-card-title>
                 <v-card-text class="pt-0">
                   <v-tabs
-                      color="black"
-                      slider-color="#ff3301"
-                      grow
-                      class="pa-0 ma-0"
-                      v-model="paiementTab"
+                    color="black"
+                    slider-color="#ff3301"
+                    grow
+                    class="pa-0 ma-0"
+                    v-model="paiementTab"
                   >
-                    <v-tab @click.prevent="paiementTab=0" href="#" class="body-1">
+                    <v-tab
+                      @click.prevent="paiementTab = 0"
+                      href="#"
+                      class="body-1"
+                    >
                       <v-icon class="mr-6">email</v-icon>
                       Par courriel
                     </v-tab>
-                    <v-tab @click.prevent="paiementTab=1" href="#" class="body-1">
+                    <v-tab
+                      @click.prevent="paiementTab = 1"
+                      href="#"
+                      class="body-1"
+                    >
                       Par transit Desjardins
                     </v-tab>
                     <v-tab-item>
-                      <v-stepper non-linear v-model="paiementCourrielStepper" class="ml-6">
+                      <v-stepper
+                        non-linear
+                        v-model="paiementCourrielStepper"
+                        class="ml-6"
+                      >
                         <v-stepper-header>
-                          <v-stepper-step editable :complete="paiementCourrielStepper > 1"
-                                          step="1"
-                                          color="black" class="body-1">
+                          <v-stepper-step
+                            editable
+                            :complete="paiementCourrielStepper > 1"
+                            step="1"
+                            color="black"
+                            class="body-1"
+                          >
                             Virement
                           </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step editable :complete="paiementCourrielStepper > 2"
-                                          step="2"
-                                          color="black" class="body-1">
+                          <v-stepper-step
+                            editable
+                            :complete="paiementCourrielStepper > 2"
+                            step="2"
+                            color="black"
+                            class="body-1"
+                          >
                             Destinataire
                           </v-stepper-step>
                         </v-stepper-header>
@@ -1019,24 +1388,29 @@
                           <v-stepper-content step="1">
                             <v-card>
                               <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                <v-img :src="require('../assets/virement interact.jpg')"></v-img>
+                                <v-img
+                                  :src="
+                                    require('../assets/virement interact.jpg')
+                                  "
+                                ></v-img>
                               </v-card-text>
                               <v-card-text v-if="$vuetify.breakpoint.smAndDown">
-                                Dans votre AccèsD, choisissez "Virez" puis "Virements
-                                Interact"
+                                Dans votre AccèsD, choisissez "Virez" puis
+                                "Virements Interact"
                               </v-card-text>
                             </v-card>
                           </v-stepper-content>
 
                           <v-stepper-content step="2">
-                            <v-card
-                            >
+                            <v-card>
                               <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                <v-img :src="require('../assets/faire virement.png')"></v-img>
+                                <v-img
+                                  :src="require('../assets/faire virement.png')"
+                                ></v-img>
                               </v-card-text>
                               <v-card-text v-if="$vuetify.breakpoint.smAndDown">
-                                Comme question de sécurité, vous pouvez inscrire:
-                                Q:Dans quelle ville est le Loco Local?
+                                Comme question de sécurité, vous pouvez
+                                inscrire: Q:Dans quelle ville est le Loco Local?
                                 R:Bonaventure
                               </v-card-text>
                             </v-card>
@@ -1045,23 +1419,42 @@
                       </v-stepper>
                     </v-tab-item>
                     <v-tab-item>
-                      <v-stepper non-linear v-model="desjardinsStepper" class="ml-6">
+                      <v-stepper
+                        non-linear
+                        v-model="desjardinsStepper"
+                        class="ml-6"
+                      >
                         <v-stepper-header>
-                          <v-stepper-step editable :complete="desjardinsStepper > 1" step="1"
-                                          color="black" class="body-1">
+                          <v-stepper-step
+                            editable
+                            :complete="desjardinsStepper > 1"
+                            step="1"
+                            color="black"
+                            class="body-1"
+                          >
                             Virement
                           </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step editable :complete="desjardinsStepper > 2" step="2"
-                                          color="black" class="body-1">
+                          <v-stepper-step
+                            editable
+                            :complete="desjardinsStepper > 2"
+                            step="2"
+                            color="black"
+                            class="body-1"
+                          >
                             Folio et Transit
                           </v-stepper-step>
 
                           <v-divider></v-divider>
 
-                          <v-stepper-step editable step="3" color="black" class="body-1">
+                          <v-stepper-step
+                            editable
+                            step="3"
+                            color="black"
+                            class="body-1"
+                          >
                             Fréquence
                           </v-stepper-step>
                         </v-stepper-header>
@@ -1070,50 +1463,54 @@
                           <v-stepper-content step="1">
                             <v-card>
                               <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                <v-img :src="require('../assets/virement entre personnes.jpg')"></v-img>
+                                <v-img
+                                  :src="
+                                    require('../assets/virement entre personnes.jpg')
+                                  "
+                                ></v-img>
                               </v-card-text>
-                              <v-card-text v-if="$vuetify.breakpoint.smAndDown" class="body-1">
-                                Dans votre AccèsD, choisissez "Virez" puis "Virements
-                                entre
-                                personnes
-                                Desjardins"
+                              <v-card-text
+                                v-if="$vuetify.breakpoint.smAndDown"
+                                class="body-1"
+                              >
+                                Dans votre AccèsD, choisissez "Virez" puis
+                                "Virements entre personnes Desjardins"
                               </v-card-text>
                             </v-card>
                           </v-stepper-content>
 
                           <v-stepper-content step="2">
-                            <v-card
-                            >
+                            <v-card>
                               <v-card-text v-if="$vuetify.breakpoint.smAndDown">
                                 Cliquez sur l'onglet "Ajouter un bénéficiaire"
                               </v-card-text>
                               <v-card-title class="subtitle-1 pb-0">
-                                                <span>
-                                                <span class="font-weight-bold">Transit caisse</span>
-                                                40001
-                                                    </span>
+                                <span>
+                                  <span class="font-weight-bold"
+                                    >Transit caisse</span
+                                  >
+                                  40001
+                                </span>
                                 <v-divider
-                                    class="mx-4"
-                                    inset
-                                    vertical
+                                  class="mx-4"
+                                  inset
+                                  vertical
                                 ></v-divider>
                                 <span>
-                                                    <span class="font-weight-bold">
-                                                        No Institution
-                                                    </span>
-                                                        815
-                                                </span>
+                                  <span class="font-weight-bold">
+                                    No Institution
+                                  </span>
+                                  815
+                                </span>
                                 <v-divider
-                                    class="mx-4"
-                                    inset
-                                    vertical
+                                  class="mx-4"
+                                  inset
+                                  vertical
                                 ></v-divider>
                                 <span>
-                                                    <span class="font-weight-bold">
-                                                        Folio
-                                                    </span>
-                                                        0451286
-                                                </span>
+                                  <span class="font-weight-bold"> Folio </span>
+                                  0451286
+                                </span>
                               </v-card-title>
                               <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
                               <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
@@ -1122,15 +1519,17 @@
                           </v-stepper-content>
 
                           <v-stepper-content step="3">
-                            <v-card
-                            >
+                            <v-card>
                               <v-card-title class="text-h6">
-                                Choisisez "Une fois le" pour un transfert ponctuel ou
-                                "Mensuelle" pour
-                                un don récurrent
+                                Choisisez "Une fois le" pour un transfert
+                                ponctuel ou "Mensuelle" pour un don récurrent
                               </v-card-title>
                               <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
-                                <v-img :src="require('../assets/virement mensuel.png')"></v-img>
+                                <v-img
+                                  :src="
+                                    require('../assets/virement mensuel.png')
+                                  "
+                                ></v-img>
                               </v-card-text>
                             </v-card>
                           </v-stepper-content>
@@ -1144,41 +1543,34 @@
             <v-flex xs12 md6 left>
               <v-card-text class="text-left body-1">
                 <p>
-                  Vous voulez soutenir l'établissement durable de ce projet "pour et par" la
-                  communauté?
+                  Vous voulez soutenir l'établissement durable de ce projet
+                  "pour et par" la communauté?
                 </p>
                 <ul>
                   <li>
-                    Devenez membre utilisateurs-consommateurs de la Coopérative Horizons Gaspésiens,
-                    dont le Loco Local est un des projets.
-
+                    Devenez membre utilisateurs-consommateurs de la Coopérative
+                    Horizons Gaspésiens, dont le Loco Local est un des projets.
                   </li>
                   <li>
-                    Devenez membre de soutien du Loco Local en faisant une donation mensuelle
-                    régulière
+                    Devenez membre de soutien du Loco Local en faisant une
+                    donation mensuelle régulière
                   </li>
-                  <li>
-                    Ouvrez un compte-client de Produits Lemieux pour 150$
-                  </li>
+                  <li>Ouvrez un compte-client de Produits Lemieux pour 150$</li>
                 </ul>
                 <p>
-                  Un grand merci à toutes celles et ceux qui ont donné, en argent, temps, objets,
-                  idées,
-                  etc!
+                  Un grand merci à toutes celles et ceux qui ont donné, en
+                  argent, temps, objets, idées, etc!
                 </p>
-                <h3>
-                  Modes de paiement
-                </h3>
+                <h3>Modes de paiement</h3>
                 <p>
-                  Argent comptant ou chèque: passez au Loco Local pour y déposer votre don dans une
-                  boîte
-                  de contribution volontaire à l'entrée, en argent comptant ou par chèque, en
-                  inscrivant
-                  que vous êtes passé-e!
+                  Argent comptant ou chèque: passez au Loco Local pour y déposer
+                  votre don dans une boîte de contribution volontaire à
+                  l'entrée, en argent comptant ou par chèque, en inscrivant que
+                  vous êtes passé-e!
                 </p>
                 <p>
-                  Virement entre personnes Desjardins par AccèsD, c'est la manière la plus simple et
-                  efficace pour nous.
+                  Virement entre personnes Desjardins par AccèsD, c'est la
+                  manière la plus simple et efficace pour nous.
                 </p>
               </v-card-text>
             </v-flex>
@@ -1194,10 +1586,14 @@
           <v-spacer></v-spacer>
           <v-icon @click="visionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-left body-1 black--text" style="line-height: 1.5;">
-          Une communauté autogérée ayant une empreinte écologique et sociale réduite sur son milieu. L’abondance s’y
-          mesure par la multiplicité et la diversité du lien social, par l’épanouissement des individus, ainsi que par
-          l’accès égalitaire et juste aux ressources.
+        <v-card-text
+          class="text-left body-1 black--text"
+          style="line-height: 1.5"
+        >
+          Une communauté autogérée ayant une empreinte écologique et sociale
+          réduite sur son milieu. L’abondance s’y mesure par la multiplicité et
+          la diversité du lien social, par l’épanouissement des individus, ainsi
+          que par l’accès égalitaire et juste aux ressources.
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -1208,9 +1604,14 @@
           <v-spacer></v-spacer>
           <v-icon @click="missionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="text-left body-1 black--text" style="line-height: 1.5">
-          Stimuler et soutenir la mise en commun et le partage de ressources, de lieux, de connaissances comme forme
-          concrète de solidarité pour augmenter l’autonomie et la résilience des individus et des collectivités.
+        <v-card-text
+          class="text-left body-1 black--text"
+          style="line-height: 1.5"
+        >
+          Stimuler et soutenir la mise en commun et le partage de ressources, de
+          lieux, de connaissances comme forme concrète de solidarité pour
+          augmenter l’autonomie et la résilience des individus et des
+          collectivités.
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -1241,47 +1642,26 @@
         </v-card-title>
         <v-card-text class="body-1">
           <v-list>
-            <v-list-item
-                to="/le-demi">
-              <v-list-item-title>
-                Le demi
-              </v-list-item-title>
+            <v-list-item to="/le-demi">
+              <v-list-item-title> Le demi </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/loco-linux">
-              <v-list-item-title>
-                Loco Linux
-              </v-list-item-title>
+            <v-list-item to="/loco-linux">
+              <v-list-item-title> Loco Linux </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/sel-de-mer">
-              <v-list-item-title>
-                Sel De Mer
-              </v-list-item-title>
+            <v-list-item to="/sel-de-mer">
+              <v-list-item-title> Sel De Mer </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/sécession">
-              <v-list-item-title>
-                Sécession
-              </v-list-item-title>
+            <v-list-item to="/sécession">
+              <v-list-item-title> Sécession </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/bibliothèque">
-              <v-list-item-title>
-                Bibliothèque collective
-              </v-list-item-title>
+            <v-list-item to="/bibliothèque">
+              <v-list-item-title> Bibliothèque collective </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/café-philo">
-              <v-list-item-title>
-                Cafés philo
-              </v-list-item-title>
+            <v-list-item to="/café-philo">
+              <v-list-item-title> Cafés philo </v-list-item-title>
             </v-list-item>
-            <v-list-item
-                to="/fablab">
-              <v-list-item-title>
-                Fablab
-              </v-list-item-title>
+            <v-list-item to="/fablab">
+              <v-list-item-title> Fablab </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card-text>
@@ -1291,7 +1671,6 @@
 </template>
 
 <script>
-
 const profitRatioOnLemieux = 0.45;
 
 const revenus = [
@@ -1303,7 +1682,7 @@ const revenus = [
   1456.65,
   4150.01,
   1382.45,
-  1013.02
+  1013.02,
 ];
 
 const depenses = [
@@ -1315,20 +1694,10 @@ const depenses = [
   1411.56,
   4969.86,
   1955.22,
-  1337.11
+  1337.11,
 ];
 
-const lemieuxDepenses = [
-  126.8,
-  0,
-  166.8,
-  410.6,
-  0,
-  268.13,
-  0,
-  706.89,
-  236.8
-];
+const lemieuxDepenses = [126.8, 0, 166.8, 410.6, 0, 268.13, 0, 706.89, 236.8];
 
 const lemieuxRevenus = [
   588.74,
@@ -1339,7 +1708,7 @@ const lemieuxRevenus = [
   172.9,
   348.75,
   696.35,
-  376.2
+  376.2,
 ];
 
 const dette = [
@@ -1351,37 +1720,37 @@ const dette = [
   7855.89,
   7755.89,
   7655.89,
-  7555.89
+  7555.89,
 ];
 
 const mois = [
-  'avril',
-  'mai',
-  'juin',
-  'juil',
-  'août',
-  'sept',
-  'oct',
-  'nov',
-  'dec'
+  "avril",
+  "mai",
+  "juin",
+  "juil",
+  "août",
+  "sept",
+  "oct",
+  "nov",
+  "dec",
 ];
 
-import Cercle from '@/components/Cercle'
-import {GoogleCharts} from 'google-charts';
-import Calendrier from '@/components/Calendrier.vue'
+import Cercle from "@/components/Cercle";
+import { GoogleCharts } from "google-charts";
+import Calendrier from "@/components/Calendrier.vue";
 
-import PhoneDialog from '@/components/PhoneDialog'
-import Cercles from '@/Cercles'
+import PhoneDialog from "@/components/PhoneDialog";
+import Cercles from "@/Cercles";
 
-import Scroll from '@/Scroll'
-import Shuffle from '@/Shuffle'
+import Scroll from "@/Scroll";
+import Shuffle from "@/Shuffle";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     Cercle,
     PhoneDialog,
-    Calendrier
+    Calendrier,
   },
   computed: {
     toolbarLogoHeight: function () {
@@ -1407,26 +1776,30 @@ export default {
     },
     host: function () {
       return window.location.hostname;
-    }
+    },
   },
   methods: {
     biblioOutilsQuoiNextTab: function () {
       this.biblioOutilsCestQuoi = parseInt(this.biblioOutilsCestQuoi) + 1;
-      Scroll.allerALaSection('biblio-outils');
+      Scroll.allerALaSection("biblio-outils");
     },
     biblioOutilsParticiperNextTab: function () {
-      this.participerBiblioOutilsTab = parseInt(this.participerBiblioOutilsTab) + 1;
-      Scroll.allerALaSection('biblio-outils');
+      this.participerBiblioOutilsTab =
+        parseInt(this.participerBiblioOutilsTab) + 1;
+      Scroll.allerALaSection("biblio-outils");
     },
     trierCercles: function (cercles) {
-      return cercles.sort(function (aClef, bClef) {
-        let aDesactive = this.cercle(aClef).desactive;
-        let bDesactive = this.cercle(bClef).desactive;
-        return (aDesactive === bDesactive) ? (
-                aClef.localeCompare(bClef)
-            ) :
-            aDesactive ? 1 : -1;
-      }.bind(this));
+      return cercles.sort(
+        function (aClef, bClef) {
+          let aDesactive = this.cercle(aClef).desactive;
+          let bDesactive = this.cercle(bClef).desactive;
+          return aDesactive === bDesactive
+            ? aClef.localeCompare(bClef)
+            : aDesactive
+            ? 1
+            : -1;
+        }.bind(this)
+      );
     },
     nomDeCercle: function (clefDeCercle) {
       return this.cercles[clefDeCercle].nom;
@@ -1436,7 +1809,7 @@ export default {
     },
     lienDeCercle: function (clefDeCercle) {
       let lien = this.cercles[clefDeCercle].lien;
-      return lien ? lien : '/cercle/' + clefDeCercle;
+      return lien ? lien : "/cercle/" + clefDeCercle;
     },
     cercleEstDesactive: function (clefDeCercle) {
       return this.cercles[clefDeCercle].desactive;
@@ -1445,8 +1818,10 @@ export default {
       let balance = [];
       for (let i = 0; i < revenus.length; i++) {
         let balanceAbsolue = revenus[i] - depenses[i];
-        let balanceSansLemieux = balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
-        let balanceAvecProfitsLemieux = balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux
+        let balanceSansLemieux =
+          balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
+        let balanceAvecProfitsLemieux =
+          balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux;
         this.balanceTotale += balanceAvecProfitsLemieux;
         balance[i] = Math.floor(balanceAvecProfitsLemieux);
       }
@@ -1456,39 +1831,40 @@ export default {
     dessinComptable() {
       return;
       let monthIndex = -1;
-      let data = new GoogleCharts.api.visualization.arrayToDataTable([
-        ['Mois', 'Balance']
-      ].concat(
+      let data = new GoogleCharts.api.visualization.arrayToDataTable(
+        [["Mois", "Balance"]].concat(
           this.balance.map(function (amount) {
             monthIndex++;
-            return [
-              mois[monthIndex],
-              amount
-            ];
+            return [mois[monthIndex], amount];
           })
-      ));
+        )
+      );
       let options = {
         chart: {
-          title: '',
-          subtitle: '',
+          title: "",
+          subtitle: "",
         },
         height: 400,
-        legend: {position: 'none'}
+        legend: { position: "none" },
       };
 
-      let chart = new GoogleCharts.api.charts.Line(document.getElementById('dessin-comptable'));
+      let chart = new GoogleCharts.api.charts.Line(
+        document.getElementById("dessin-comptable")
+      );
 
       chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
 
-      GoogleCharts.api.visualization.events.addListener(chart, 'ready', function () {
-      }.bind(this));
-
+      GoogleCharts.api.visualization.events.addListener(
+        chart,
+        "ready",
+        function () {}.bind(this)
+      );
     },
     goToRightSection: async function () {
       let section = "app";
       if (this.$route.params.comite) {
         section = this.$route.params.comite;
-      } else if (this.$route.name !== 'home') {
+      } else if (this.$route.name !== "home") {
         section = this.$route.name;
       }
       if (this.$route.path === "/paiement") {
@@ -1502,23 +1878,24 @@ export default {
       }
       await this.$nextTick();
       setTimeout(() => {
-        Scroll.allerALaSection(section, undefined, 0)
-      }, 400)
-    }
+        Scroll.allerALaSection(section, undefined, 0);
+      }, 400);
+    },
   },
   data() {
     let membresDeCercles = [
       {
         nom: "Hug Arsenault",
-        cv: "Cayen, artiste de murale et de la débrouille, danseur alternatif, aubergiste.",
+        cv:
+          "Cayen, artiste de murale et de la débrouille, danseur alternatif, aubergiste.",
         avatar: "hug_petit_carre.jpg",
-        cercles: ['ca', 'financement', 'gouvernance', 'imaginezDemain']
+        cercles: ["ca", "financement", "gouvernance", "imaginezDemain"],
       },
       {
         nom: "Gabrielle Margineanu",
         cv: "Graphiste, Bédéiste, mère, humaniste",
         avatar: "gaby-petit-carre.jpg",
-        cercles: ['ca', 'comptable']
+        cercles: ["ca", "comptable"],
       },
       // {
       //   nom: "Marie-Claire Larocque",
@@ -1530,7 +1907,7 @@ export default {
         nom: "Bruno Mainville",
         cv: "Peintre, Enseignant, Philosophe",
         avatar: "bruno-petit-carre.jpg",
-        cercles: ['espace']
+        cercles: ["espace"],
       },
       // {
       //     nom: "Roy Poirier",
@@ -1542,7 +1919,7 @@ export default {
         nom: "Vincent Blouin",
         cv: "Programmeur, architecte de carte mentale, sportif",
         avatar: "chenzo2-petit-carre.jpg",
-        cercles: ['siteWeb']
+        cercles: ["siteWeb"],
       },
       // {
       //     nom: "Fred Guilbault",
@@ -1552,48 +1929,51 @@ export default {
       // },
       {
         nom: "Francine Larocque",
-        cv: "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
+        cv:
+          "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
         avatar: "francine-petit-carre.png",
-        cercles: ['groupe']
+        cercles: ["groupe"],
       },
       {
         nom: "Arielle Paiement",
         cv: "Animation de groupe, Communication non violente, charpentière",
         avatar: "arielle-petit-carre.jpg",
-        cercles: ['gouvernance', 'biblioOutils']
+        cercles: ["gouvernance", "biblioOutils"],
       },
       {
         nom: "Martin Zibeau",
         cv: "Comédien, Philosophe, Expérimenteur social",
         avatar: "martin-zibeau-petit-carre.jpg",
-        cercles: ['lemieux']
+        cercles: ["lemieux"],
       },
       {
         nom: "Solange Lecot",
         cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
         avatar: "solange-petit-carre.jpeg",
-        cercles: ['ca', 'pagePourpre']
+        cercles: ["ca", "pagePourpre"],
       },
       {
         nom: "Dominique Landry",
         cv: "Organisatrice d'événements, Artiste de scène, Jardinère engagée",
         avatar: "dô-petit-carre.jpg",
-        cercles: ['ca', 'pagePourpre', 'bougerEnsemble']
+        cercles: ["ca", "pagePourpre", "bougerEnsemble"],
       },
       {
         nom: "Ann Guilbault",
-        cv: "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
+        cv:
+          "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
-        cercles: ['ca', 'adhesion']
+        cercles: ["ca", "adhesion"],
       },
       {
         nom: "Carole Gagnon",
         cv: "Coach de vie et énergéticienne. Prof de yoga et de méditation",
         avatar: "carole-gagnon-petit.jpg",
-        cercles: ['ca']
-      }
+        cercles: ["ca"],
+      },
     ];
     return {
+      bougerEnsembleImage: "cardio-boxe-viking.jpg",
       balanceTotale: 0,
       comitesArchives: false,
       Scroll: Scroll,
@@ -1612,41 +1992,36 @@ export default {
       biblioOutilsCestQuoi: 0,
       participerBiblioOutilsTab: 0,
       valeurs: [
-        'Respect',
-        'Bienveillance',
-        'Ouverture',
-        'Solidarité',
-        'Inclusion / Non-discrimination / Féminisme',
-        'Partage',
-        'Autonomie individuelle',
-        'Égalité / Considération'
+        "Respect",
+        "Bienveillance",
+        "Ouverture",
+        "Solidarité",
+        "Inclusion / Non-discrimination / Féminisme",
+        "Partage",
+        "Autonomie individuelle",
+        "Égalité / Considération",
       ],
-      gouvernanceImages: [
-        "reunion-debout.jpg",
-        "gouvernance-2.jpg"
-      ],
-      pagePourpreImages: [
-        "page-pourpre.jpg",
-        "livres-pourpre.jpg"
-      ],
+      gouvernanceImages: ["reunion-debout.jpg", "gouvernance-2.jpg"],
+      pagePourpreImages: ["page-pourpre.jpg", "livres-pourpre.jpg"],
       popDocImages: [
         "popdoc/popdoc.jpg",
         "popdoc/inuk-en-colere.jpg",
         "popdoc/etats-unis-afrique.jpg",
         "popdoc/chez-le-barbier.jpg",
-      ]
-    }
+      ],
+    };
   },
   mounted() {
-    this.membresDeCercles.forEach(function (membre) {
-      membre.cercles = this.trierCercles(membre.cercles)
-    }.bind(this));
+    this.membresDeCercles.forEach(
+      function (membre) {
+        membre.cercles = this.trierCercles(membre.cercles);
+      }.bind(this)
+    );
     this.balance = this.balanceCalculate();
-    GoogleCharts.load(this.dessinComptable, {'packages': ['line']});
+    GoogleCharts.load(this.dessinComptable, { packages: ["line"] });
     this.goToRightSection();
-  }
-}
+  },
+};
 </script>
 <style>
-
 </style>
