@@ -1971,6 +1971,12 @@ export default {
         avatar: "carole-gagnon-petit.jpg",
         cercles: ["ca"],
       },
+      {
+        nom: "Claude Demers",
+        cv: "Thérapeute de l'âme et du corps, polyvalente en tout genre et libre.",
+        avatar: "claude-demers.jpg",
+        cercles: ["adhesion"],
+      },
     ];
     return {
       bougerEnsembleImage: "cardio-boxe-viking.jpg",
