@@ -226,12 +226,12 @@
         <v-tab-item>
           <v-card flat>
             <v-tabs slider-color="#ff3301">
-              <v-tab class="body-1">
+              <v-tab class="body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
                 <v-icon left>downhill_skiing</v-icon>
                 <span v-if="$vuetify.breakpoint.mdAndUp"> Initiation au ski de fond </span>
                 <span v-else> Ski de fond </span>
               </v-tab>
-              <v-tab class="body-1" @click="bougerEnsembleImage = 'meditations_marchees.jpg'">
+              <v-tab class="body-1" @click="bougerEnsembleImage = 'image_raquettes2.jpg'">
                 <v-icon left>snowshoeing</v-icon>
                 <span v-if="$vuetify.breakpoint.mdAndUp"> Découverte de sentiers en raquette </span>
                 <span v-else> Raquette </span>
