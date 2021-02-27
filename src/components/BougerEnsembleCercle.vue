@@ -6,19 +6,18 @@
       id="bouger-ensemble"
   >
     <div slot="subtitle">
-      Ces deux choses, bouger et socialiser, qui manquent cruellement en temps
-      de pandémie
+      Pour bouger et socialiser de façon agréable et sécuritaire
     </div>
     <div slot="content">
       <v-tabs slider-color="#ff3301">
-        <v-tab
-            class="body-1"
-            @click="bougerEnsembleImage = 'cardio-boxe-viking.jpg'"
-        >
-          <v-icon left> sports_mma</v-icon>
-          <span v-if="$vuetify.breakpoint.mdAndUp"> Cardio-Boxe Viking </span>
-          <span v-else> Cardio-Boxe </span>
-        </v-tab>
+        <!--        <v-tab-->
+        <!--            class="body-1"-->
+        <!--            @click="bougerEnsembleImage = 'cardio-boxe-viking.jpg'"-->
+        <!--        >-->
+        <!--          <v-icon left> sports_mma</v-icon>-->
+        <!--          <span v-if="$vuetify.breakpoint.mdAndUp"> Cardio-Boxe Viking </span>-->
+        <!--          <span v-else> Cardio-Boxe </span>-->
+        <!--        </v-tab>-->
         <v-tab
             class="body-1"
             @click="bougerEnsembleImage = 'meditations_marchees.jpg'"
@@ -59,103 +58,103 @@
           </span>
           <span v-else> Expression </span>
         </v-tab> -->
-        <v-tab-item>
-          <v-card flat>
-            <v-card-title class="text-h6">
-              <v-icon left>sports_mma</v-icon>
-              Cardio-Boxe Viking édition extérieure
-            </v-card-title>
-            <v-list>
-              <v-list-item
-                  href="https://forms.gle/1SAdbssmnmKqdbWG8"
-                  target="_blank"
-                  class="subtitle-1"
-              >
-                <v-list-item-action>
-                  <v-icon>assignment</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    Inscription au cours d'essai
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item
-                  href="https://forms.gle/GDFUjtbjDTGEH3cb7"
-                  target="_blank"
-                  class="subtitle-1"
-              >
-                <v-list-item-action>
-                  <v-icon>assignment</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    Inscriptions à la session
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-            <v-card-text class="body-1">
-              <p>
-                Premier cours d'essai du 20 février GRATUIT! Dépêchez-vous,
-                les places sont limitées!
-              </p>
-              <p>
-                Venez vous entraîner avec Cardio-boxe Viking édition marche
-                extérieure! Entraînement cardio à l'extérieur inspiré par la
-                boxe. La Boxe est une bonne façon d'augmenter votre
-                coordination, votre santé physique mais également de renforcer
-                votre santé mentale. Dans une ambiance récréative et amusante
-                vous apprendrez des techniques de base de la boxe et ferez
-                travailler votre coeur dans un bon pas de marche et
-                entraînement fitness. Avec Jasmine Savard, coach de
-                cardio-boxe.
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold">Quand</v-subheader>
-                Chaque samedi à partir du 20 février à 13h, sauf un samedi par
-                mois. Session de 10 cours. Durée des séances: 1h
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold">Où?</v-subheader>
-                À l'extérieur du Loco Local, 193a rue Grand-Pré
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold">Pour qui?</v-subheader>
-                Ouvert à tous! Les enfants de moins de 12 ans doivent être
-                accompagnés d'un parent. Maximum de 8 participants.
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold"
-                >Équipement requis:
-                </v-subheader>
-                Bouteille d'eau, bottes de marche, mitaines ou gants.
-                Vêtements pour être à l'extérieur dans un mélange de boxe et
-                de marche. Aucun équipement spécifique requis pour cette
-                session, cours sans contact vu les mesures sanitaires en
-                place.
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold">Coût?</v-subheader>
-                Selon vos moyens, entre 35 et 80$ pour la session. Détails sur
-                la feuille d'inscription.
-              </p>
-              <p>
-                <v-subheader class="font-weight-bold"
-                >Pour plus d’information sur l’activité
-                </v-subheader
-                >
-                Coach Jasmine Savard : 514-463-8992
-              </p>
-              <p>
-                * Si la session doit être annulée en raison de la COVID, il
-                sera d'abord proposé de reporter la session, sinon vous serez
-                remboursé au prorata des cours restants selon votre paiement.
-                Les absences ne peuvent pas être remboursées.
-              </p>
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
+        <!--        <v-tab-item>-->
+        <!--          <v-card flat>-->
+        <!--            <v-card-title class="text-h6">-->
+        <!--              <v-icon left>sports_mma</v-icon>-->
+        <!--              Cardio-Boxe Viking édition extérieure-->
+        <!--            </v-card-title>-->
+        <!--            <v-list>-->
+        <!--              <v-list-item-->
+        <!--                  href="https://forms.gle/1SAdbssmnmKqdbWG8"-->
+        <!--                  target="_blank"-->
+        <!--                  class="subtitle-1"-->
+        <!--              >-->
+        <!--                <v-list-item-action>-->
+        <!--                  <v-icon>assignment</v-icon>-->
+        <!--                </v-list-item-action>-->
+        <!--                <v-list-item-content>-->
+        <!--                  <v-list-item-title>-->
+        <!--                    Inscription au cours d'essai-->
+        <!--                  </v-list-item-title>-->
+        <!--                </v-list-item-content>-->
+        <!--              </v-list-item>-->
+        <!--              <v-list-item-->
+        <!--                  href="https://forms.gle/GDFUjtbjDTGEH3cb7"-->
+        <!--                  target="_blank"-->
+        <!--                  class="subtitle-1"-->
+        <!--              >-->
+        <!--                <v-list-item-action>-->
+        <!--                  <v-icon>assignment</v-icon>-->
+        <!--                </v-list-item-action>-->
+        <!--                <v-list-item-content>-->
+        <!--                  <v-list-item-title>-->
+        <!--                    Inscriptions à la session-->
+        <!--                  </v-list-item-title>-->
+        <!--                </v-list-item-content>-->
+        <!--              </v-list-item>-->
+        <!--            </v-list>-->
+        <!--            <v-card-text class="body-1">-->
+        <!--              <p>-->
+        <!--                Premier cours d'essai du 20 février GRATUIT! Dépêchez-vous,-->
+        <!--                les places sont limitées!-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                Venez vous entraîner avec Cardio-boxe Viking édition marche-->
+        <!--                extérieure! Entraînement cardio à l'extérieur inspiré par la-->
+        <!--                boxe. La Boxe est une bonne façon d'augmenter votre-->
+        <!--                coordination, votre santé physique mais également de renforcer-->
+        <!--                votre santé mentale. Dans une ambiance récréative et amusante-->
+        <!--                vous apprendrez des techniques de base de la boxe et ferez-->
+        <!--                travailler votre coeur dans un bon pas de marche et-->
+        <!--                entraînement fitness. Avec Jasmine Savard, coach de-->
+        <!--                cardio-boxe.-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold">Quand</v-subheader>-->
+        <!--                Chaque samedi à partir du 20 février à 13h, sauf un samedi par-->
+        <!--                mois. Session de 10 cours. Durée des séances: 1h-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold">Où?</v-subheader>-->
+        <!--                À l'extérieur du Loco Local, 193a rue Grand-Pré-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold">Pour qui?</v-subheader>-->
+        <!--                Ouvert à tous! Les enfants de moins de 12 ans doivent être-->
+        <!--                accompagnés d'un parent. Maximum de 8 participants.-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold"-->
+        <!--                >Équipement requis:-->
+        <!--                </v-subheader>-->
+        <!--                Bouteille d'eau, bottes de marche, mitaines ou gants.-->
+        <!--                Vêtements pour être à l'extérieur dans un mélange de boxe et-->
+        <!--                de marche. Aucun équipement spécifique requis pour cette-->
+        <!--                session, cours sans contact vu les mesures sanitaires en-->
+        <!--                place.-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold">Coût?</v-subheader>-->
+        <!--                Selon vos moyens, entre 35 et 80$ pour la session. Détails sur-->
+        <!--                la feuille d'inscription.-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                <v-subheader class="font-weight-bold"-->
+        <!--                >Pour plus d’information sur l’activité-->
+        <!--                </v-subheader-->
+        <!--                >-->
+        <!--                Coach Jasmine Savard : 514-463-8992-->
+        <!--              </p>-->
+        <!--              <p>-->
+        <!--                * Si la session doit être annulée en raison de la COVID, il-->
+        <!--                sera d'abord proposé de reporter la session, sinon vous serez-->
+        <!--                remboursé au prorata des cours restants selon votre paiement.-->
+        <!--                Les absences ne peuvent pas être remboursées.-->
+        <!--              </p>-->
+        <!--            </v-card-text>-->
+        <!--          </v-card>-->
+        <!--        </v-tab-item>-->
         <v-tab-item>
           <v-card flat>
             <v-card-title class="text-h6">
@@ -228,70 +227,181 @@
           <v-card flat>
             <v-tabs slider-color="#ff3301">
               <v-tab class="body-1">
-                <v-icon left>sports_mma</v-icon>
-                Cardio-Boxe Viking extérieur pour toute la famille
+                <v-icon left>downhill_skiing</v-icon>
+                <span v-if="$vuetify.breakpoint.mdAndUp"> Initiation au ski de fond </span>
+                <span v-else> Ski de fond </span>
               </v-tab>
-              <!-- <v-tab class="body-1">
-                <v-icon left>downhill_skiing</v-icon>
-                Initiation au ski de fond pour 5 à 12 ans
-              </v-tab> -->
-              <!-- <v-tab class="body-1">
-                <v-icon left>downhill_skiing</v-icon>
-                Initiation au ski de fond pour 5 à 12 ans
-              </v-tab> -->
-              <v-tab-item>
-                <v-card flat>
-                  <v-list>
-                    <v-list-item
-                        href="https://forms.gle/Eax9wNV9FeJjmeZs5"
-                        target="_blank"
-                        class="subtitle-1"
-                    >
-                      <v-list-item-action>
-                        <v-icon>assignment</v-icon>
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>
-                          Inscription
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list>
+              <v-tab class="body-1" @click="bougerEnsembleImage = 'meditations_marchees.jpg'">
+                <v-icon left>snowshoeing</v-icon>
+                <span v-if="$vuetify.breakpoint.mdAndUp"> Découverte de sentiers en raquette </span>
+                <span v-else> Raquette </span>
+              </v-tab>
+              <v-tab-item class="body-1">
+                <v-card>
+                  <v-card-title class="text-h6">
+                    <v-icon left>downhill_skiing</v-icon>
+                    Cours d’initiation au ski
+                  </v-card-title>
+                  <v-card-subtitle class="">
+                    Avec l’instructeur Jack Rabbit Christophe Turcotte (Baie-des-Chaleurs
+                    active et en santé).
+                  </v-card-subtitle>
                   <v-card-text class="body-1">
+                    <p class="font-weight-bold">
+                      Inscription obligatoire via nos formulaires en ligne. Dépêchez-vous, les places sont limitées!
+                    </p>
+                    <v-list>
+                      <v-list-item href="https://forms.gle/JGo882zUZNBWibMp6" target="_blank">
+                        <v-list-item-content>
+                          <v-list-item-title>
+                            Inscription 5 à 7 ans
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                      <v-list-item href="https://forms.gle/Kia5wKcfoqhkpEPS7" target="_blank">
+                        <v-list-item-content>
+                          <v-list-item-title>
+                            Inscription 8 à 15 ans
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list>
                     <p>
-                      Initiez-vous aux savoirs de base de la boxe dans un entraînement fitness et marche à
-                      l'extérieur.
+                      <v-subheader>Où?</v-subheader>
+                      Au Centre de Plein-Air Tourbillon, 100 Route de la Rivière, Bonaventure
                     </p>
                     <p>
                       <v-subheader>Quand?</v-subheader>
-                      Dimanche 28 février. Choix de deux heures : 13h et 14h15. Durée du cours: 1h
+                      Choix entre mercredi le 3 mars et vendredi le 5 mars
                     </p>
                     <p>
-                      <v-subheader>Où?</v-subheader>
-                      Départ à l'extérieur du Loco Local 193a Avenue Grand-Pré, Bonaventure
+                      <v-subheader>Coût</v-subheader>
+                      Gratuit!
                     </p>
                     <p>
-                      <v-subheader>Pour qui?</v-subheader>
-                      Ouvert à tous! Les enfants de moins de 12 ans doivent être accompagnés d'un parent. Maximum de 8
-                      participants.
+                      <v-subheader>5 à 7 ans</v-subheader>
+                      (13h à 14h15): initiation à l’équilibre et jeux avec pause à l’intérieur après 30 minutes. Les
+                      adultes accompagnateurs doivent rester proche du chalet pour les 5 à 7 ans.
+                    </p>
+                    <p>
+                      <v-subheader>8 à 15 ans</v-subheader>
+                      (14h30 à 16h): initiation à la poussée et à la glisse suivi d'une boucle de 2 km.
                     </p>
                     <p>
                       <v-subheader>Équipement requis</v-subheader>
-                      Bouteille d'eau, bottes de marche, mitaines ou gants. Vêtements pour être à l'extérieur dans un
-                      mélange de boxe et de marche. Aucun équipement spécifique requis, cours sans contact vu les
-                      mesures sanitaires en place.
-                    </p>
-                    <p>
-                      <v-subheader>Coût?</v-subheader>
-                      5 à 12$ par personne selon vos moyens. Détails sur la feuille d'inscription.
-                    </p>
-                    <p>
-                      Pour plus d’information sur l’activité:
-                      Coach Jasmine Savard : <a href="tel:514-463-8992">514-463-8992</a>
+                      Le prêt de skis est possible sur place, et ce, gratuitement. Détails dans le formulaire.
                     </p>
                   </v-card-text>
                 </v-card>
               </v-tab-item>
+              <v-tab-item class="body-1">
+                <v-card>
+                  <v-card-title class="text-h6">
+                    <v-icon left>snowshoeing</v-icon>
+                    Découverte de sentiers en raquette
+                  </v-card-title>
+                  <v-card-text class="body-1">
+                    <p>
+                      Inscrivez-vous à une ou plusieurs sorties
+                      <a href="https://forms.gle/NNi6XC2QkJ7Arsbp7" target="_blank">
+                        via notre formulaire !
+                      </a>
+                    </p>
+                    <p>
+                      Découvrez des endroits magnifiques aménagés par 3 centres de plein-air de notre région pendant ces
+                      3 ballades en raquette! Nous vous ferons connaître les autres services offerts sur place (prêt de
+                      skis, glissade etc.). Bienvenue aux familles et aux nouveaux arrivants, ouvert à tous! Avec
+                      Dominique Landry, animatrice pour Bouger Ensemble.
+                    </p>
+                    <p>
+                      Durée des randonnées: 1 à 2 h
+                    </p>
+                    <p>
+                      Coût: Gratuit!
+                    </p>
+                    <p>
+                      Mercredi 3 mars à 10h: Club de plein-air Tourbillon, Bonaventure (sentier de 3,6km)
+                    </p>
+                    <p>
+                      Dimanche 7 mars à 10h: Domaine des Chutes du Ruisseau Creux, Saint-Alphonse (sentier de 6 km)
+                    </p>
+                    <p>
+                      Dimanche 14 mars à 10h: Centre de plein-air les Monticoles, Paspébiac (Sentier à déterminer)
+                    </p>
+                    <p>
+                      Pour qui? Amateurs de raquettes ou débutants, 8 ans et plus. 8 personnes/groupe max.
+                    </p>
+                    <p>
+                      Équipement requis - Bouteille d'eau et collation au besoin. Amenez vos raquettes si vous en avez. Une quantité limitée de raquettes pour adultes et enfants sont disponible pour un prêt gratuit (voir formulaire d'inscription).
+                    </p>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <!--              <v-tab class="body-1">-->
+              <!--                <v-icon left>sports_mma</v-icon>-->
+              <!--                Cardio-Boxe Viking extérieur pour toute la famille-->
+              <!--              </v-tab>-->
+              <!-- <v-tab class="body-1">
+                <v-icon left>downhill_skiing</v-icon>
+                Initiation au ski de fond pour 5 à 12 ans
+              </v-tab> -->
+              <!-- <v-tab class="body-1">
+                <v-icon left>downhill_skiing</v-icon>
+                Initiation au ski de fond pour 5 à 12 ans
+              </v-tab> -->
+              <!--              <v-tab-item>-->
+              <!--                <v-card flat>-->
+              <!--                  <v-list>-->
+              <!--                    <v-list-item-->
+              <!--                        href="https://forms.gle/Eax9wNV9FeJjmeZs5"-->
+              <!--                        target="_blank"-->
+              <!--                        class="subtitle-1"-->
+              <!--                    >-->
+              <!--                      <v-list-item-action>-->
+              <!--                        <v-icon>assignment</v-icon>-->
+              <!--                      </v-list-item-action>-->
+              <!--                      <v-list-item-content>-->
+              <!--                        <v-list-item-title>-->
+              <!--                          Inscription-->
+              <!--                        </v-list-item-title>-->
+              <!--                      </v-list-item-content>-->
+              <!--                    </v-list-item>-->
+              <!--                  </v-list>-->
+              <!--                  <v-card-text class="body-1">-->
+              <!--                    <p>-->
+              <!--                      Initiez-vous aux savoirs de base de la boxe dans un entraînement fitness et marche à-->
+              <!--                      l'extérieur.-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      <v-subheader>Quand?</v-subheader>-->
+              <!--                      Dimanche 28 février. Choix de deux heures : 13h et 14h15. Durée du cours: 1h-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      <v-subheader>Où?</v-subheader>-->
+              <!--                      Départ à l'extérieur du Loco Local 193a Avenue Grand-Pré, Bonaventure-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      <v-subheader>Pour qui?</v-subheader>-->
+              <!--                      Ouvert à tous! Les enfants de moins de 12 ans doivent être accompagnés d'un parent. Maximum de 8-->
+              <!--                      participants.-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      <v-subheader>Équipement requis</v-subheader>-->
+              <!--                      Bouteille d'eau, bottes de marche, mitaines ou gants. Vêtements pour être à l'extérieur dans un-->
+              <!--                      mélange de boxe et de marche. Aucun équipement spécifique requis, cours sans contact vu les-->
+              <!--                      mesures sanitaires en place.-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      <v-subheader>Coût?</v-subheader>-->
+              <!--                      5 à 12$ par personne selon vos moyens. Détails sur la feuille d'inscription.-->
+              <!--                    </p>-->
+              <!--                    <p>-->
+              <!--                      Pour plus d’information sur l’activité:-->
+              <!--                      Coach Jasmine Savard : <a href="tel:514-463-8992">514-463-8992</a>-->
+              <!--                    </p>-->
+              <!--                  </v-card-text>-->
+              <!--                </v-card>-->
+              <!--              </v-tab-item>-->
             </v-tabs>
           </v-card>
         </v-tab-item>
@@ -412,7 +522,6 @@
           </v-card>
         </v-tab-item> -->
       </v-tabs>
-      7
       <v-row>
         <v-col cols="12" class="vh-center">
           <v-card max-width="500" class="align-self-center">
@@ -443,7 +552,7 @@ export default {
   },
   data: function () {
     return {
-      bougerEnsembleImage: "cardio-boxe-viking.jpg",
+      bougerEnsembleImage: "meditations_marchees.jpg",
       bougerEnsembleTab: 0,
     }
   }
