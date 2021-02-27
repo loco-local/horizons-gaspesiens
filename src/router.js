@@ -14,6 +14,19 @@ Vue.use(Router)
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        savedPosition
+                    });
+                }, 1000);
+            });
+        } else {
+            return {x: 0, y: 0}
+        }
+    },
     routes: [
         {
             path: '/',
@@ -27,14 +40,19 @@ export default new Router({
             component: Home
         },
         {
+            path: '/gouvernance',
+            name: 'gouvernance',
+            component: () => import("@/views/GouvernancePage")
+        },
+        {
             path: '/biblio-outils',
             name: 'biblio-outils',
-            component: Home
+            component: () => import("@/views/BibliothequeOutilsPage")
         },
         {
             path: '/bouger-ensemble',
             name: 'bouger-ensemble',
-            component: Home
+            component: () => import("@/views/BougerEnsemblePage")
         },
         {
             path: '/loco-linux',
@@ -42,19 +60,19 @@ export default new Router({
             component: LocoLinux
         },
         {
-            path: '/produits-lemieux',
-            name: 'produits-lemieux',
-            component: Home
+            path: '/produits-nettoyant',
+            name: 'produits-nettoyant',
+            component: () => import("@/views/ProduitsNettoyantPage")
         },
         {
             path: '/groupe-achat',
             name: 'groupe-achat',
-            component: Home
+            component: () => import("@/views/GroupeAchatPage")
         },
         {
             path: '/collaborium',
             name: 'collaborium',
-            component: Home
+            component: () => import("@/views/CollaboriumPage")
         },
         {
             path: '/cercle',
@@ -84,18 +102,18 @@ export default new Router({
         {
             path: '/page-pourpre',
             name: 'page-pourpre',
-            component: Home
+            component: () => import("@/views/PagePourprePage")
         },
-        {
-            path: '/pop-doc',
-            name: 'pop-doc',
-            component: Home
-        },
-        {
-            path: '/imaginez-demain',
-            name: 'imaginez-demain',
-            component: Home
-        },
+        // {
+        //     path: '/pop-doc',
+        //     name: 'pop-doc',
+        //     component: Home
+        // },
+        // {
+        //     path: '/imaginez-demain',
+        //     name: 'imaginez-demain',
+        //     component: Home
+        // },
         {
             path: '/le-demi',
             name: 'demi',

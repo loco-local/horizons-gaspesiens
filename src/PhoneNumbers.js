@@ -3,11 +3,11 @@
  */
 export default{
     data: [
-        {
-            "nom": "Hug Arsenault",
-            "avatar": "hug1-petit-carre.png",
-            "telephone": "418-392-9867"
-        },
+        // {
+        //     "nom": "Hug Arsenault",
+        //     "avatar": "hug1-petit-carre.png",
+        //     "telephone": "418-392-9867"
+        // },
         {
             "nom": "Gabrielle Margineanu",
             "avatar": "gaby-petit-carre.jpg",

@@ -650,6 +650,11 @@ export default {
   flex-direction: column;
 }
 
+.h-center {
+  display: flex;
+  justify-content: center;
+}
+
 .grey-text {
   color: rgba(0, 0, 0, 0.54) !important;
 }
@@ -685,5 +690,8 @@ a {
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.v-card__title {
+  word-break: inherit !important;
 }
 </style>

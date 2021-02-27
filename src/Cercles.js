@@ -29,17 +29,17 @@ export default {
     gouvernance: {
         nom: "Gouvernance",
         containerId: "gouvernance",
-        lien: "/cercle/gouvernance"
+        lien: "/gouvernance"
     },
     financement: {
         nom: "Financement",
         containerId: "financement",
-        lien: "/cercle/financement"
+        lien: "/financement"
     },
     lemieux: {
-        nom: "Produits Nettoyants Lemieux",
-        containerId: "produits-lemieux",
-        lien: "/produits-lemieux"
+        nom: "Produits nettoyants",
+        containerId: "produits-nettoyant",
+        lien: "/produits-nettoyant"
     },
     communication: {
         nom: "Communication",
@@ -52,26 +52,26 @@ export default {
     pagePourpre: {
         nom: "Page Pourpre",
         containerId: "page-pourpre",
-        lien:"/page-pourpre"
+        lien: "/page-pourpre"
     },
     popDoc: {
         nom: "Pop Doc",
         containerId: "pop-doc",
-        lien:"/pop-doc"
+        lien: "/pop-doc"
     },
     imaginezDemain: {
         nom: "Imaginez Demain",
         containerId: "imaginez-demain",
-        lien:"/imaginez-demain"
+        lien: "/imaginez-demain"
     },
     bougerEnsemble: {
         nom: "Bouger Ensemble",
         containerId: "bouger-ensemble",
-        lien:"/bouger-ensemble"
+        lien: "/bouger-ensemble"
     },
     biblioOutils: {
         nom: "Bibliothèque d'outils",
         containerId: "biblio-outils",
-        lien:"/biblio-outils"
+        lien: "/biblio-outils"
     }
 }
