@@ -75,6 +75,11 @@ export default new Router({
             component: () => import("@/views/CollaboriumPage")
         },
         {
+            path: '/financement',
+            name: 'financement',
+            component: () => import("@/views/FinancementPage")
+        },
+        {
             path: '/cercle',
             name: 'cercle',
             component: Home
@@ -82,17 +87,17 @@ export default new Router({
         {
             path: '/paiement',
             name: 'paiement',
-            component: Home
+            component: () => import("@/views/PaiementPage")
         },
         {
             path: '/calendrier',
             name: 'calendrier',
-            component: Home
+            component: () => import("@/views/CalendrierPage")
         },
         {
             path: '/reservation',
             name: 'reservation',
-            component: Home
+            component: () => import("@/views/CalendrierPage")
         },
         {
             path: '/benevole',
@@ -125,17 +130,17 @@ export default new Router({
             component: SelDeMer
         },
         {
-            path: '/sécession',
+            path: '/secession',
             name: 'Sécession',
             component: Sécession
         },
         {
-            path: '/bibliothèque',
+            path: '/bibliotheque',
             name: 'Bibliotheque',
             component: Bibliotheque
         },
         {
-            path: '/café-philo',
+            path: '/cafe-philo',
             name: 'CafePhilo',
             component: CafePhilo
         },

@@ -57,12 +57,14 @@ export default {
     popDoc: {
         nom: "Pop Doc",
         containerId: "pop-doc",
-        lien: "/pop-doc"
+        lien: "/pop-doc",
+        desactive: true
     },
     imaginezDemain: {
         nom: "Imaginez Demain",
         containerId: "imaginez-demain",
-        lien: "/imaginez-demain"
+        lien: "/imaginez-demain",
+        desactive: true
     },
     bougerEnsemble: {
         nom: "Bouger Ensemble",

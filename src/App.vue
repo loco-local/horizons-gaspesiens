@@ -1,26 +1,26 @@
 <template>
   <div
-    id="app"
-    :class="{
+      id="app"
+      :class="{
       'font-size-xl': $vuetify.breakpoint.xl,
       'font-size-lg-and-down': $vuetify.breakpoint.lgAndDown,
     }"
   >
     <v-app>
       <v-navigation-drawer
-        clipped
-        v-model="drawer"
-        enable-resize-watcher
-        fixed
-        app
-        dense
-        id="app-navigation"
+          clipped
+          v-model="drawer"
+          enable-resize-watcher
+          fixed
+          app
+          dense
+          id="app-navigation"
       >
         <v-list avatar>
           <div
-            v-for="phone in phoneNumbers"
-            :key="phone.nom"
-            :href="'tel:' + phone.telephone"
+              v-for="phone in phoneNumbers"
+              :key="phone.nom"
+              :href="'tel:' + phone.telephone"
           >
             <v-list-item :href="'tel:' + phone.telephone">
               <v-list-item-action>
@@ -30,13 +30,13 @@
                 {{ phone.nom }}
               </v-list-item-title>
               <v-list-item-avatar>
-                <img :src="require('./assets/' + phone.avatar)" />
+                <img :src="require('./assets/' + phone.avatar)"/>
               </v-list-item-avatar>
             </v-list-item>
             <v-divider class="mb-2 mt-2"></v-divider>
           </div>
           <v-list-item
-            href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+              href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
           >
             <v-list-item-action>
               <v-icon>location_on</v-icon>
@@ -45,27 +45,27 @@
               193a Avenue Grand-Pré, Bonaventure, QC
             </v-list-item-title>
           </v-list-item>
-          <v-list-item @click="Scroll.allerALaSection('paiement', '/paiement')">
+          <v-list-item to="/paiement">
             <v-list-item-action>
               <v-icon>attach_money</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Don et paiement </v-list-item-title>
+            <v-list-item-title> Don et paiement</v-list-item-title>
           </v-list-item>
           <v-list-item
-            @click="Scroll.allerALaSection('calendrier', '/calendrier')"
+              to="/calendrier"
           >
             <v-list-item-action>
               <v-icon>calendar_today</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Calendrier </v-list-item-title>
+            <v-list-item-title> Calendrier</v-list-item-title>
           </v-list-item>
           <v-list-item
-            @click="Scroll.allerALaSection('calendrier', '/reservation')"
+              to="/reservation"
           >
             <v-list-item-action>
               <v-icon>fa-clipboard</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Réservation </v-list-item-title>
+            <v-list-item-title> Réservation</v-list-item-title>
           </v-list-item>
           <!--                <v-list-item-->
           <!--                        href="http://eepurl.com/c7iHkr">-->
@@ -77,30 +77,30 @@
           <!--                    </v-list-item-title>-->
           <!--                </v-list-item>-->
           <v-list-item
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
           >
             <v-list-item-action>
               <v-icon>group</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Devenez membre </v-list-item-title>
+            <v-list-item-title> Devenez membre</v-list-item-title>
           </v-list-item>
           <v-list-item @click="documentDialog = true">
             <v-list-item-action>
               <v-icon>fa-file</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Documents </v-list-item-title>
+            <v-list-item-title> Documents</v-list-item-title>
           </v-list-item>
           <v-list-item @click="presseDialog = true">
             <v-list-item-action>
               <v-icon>fa-newspaper</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Dossier de presse </v-list-item-title>
+            <v-list-item-title> Dossier de presse</v-list-item-title>
           </v-list-item>
-          <!-- <v-list-group
-            prepend-icon="group_work"
-            no-action
-            expanded
-            :value="true"
+          <v-list-group
+              prepend-icon="group_work"
+              no-action
+              expanded
+              :value="true"
           >
             <v-list-item slot="activator">
               <v-list-item-content>
@@ -109,35 +109,35 @@
             </v-list-item>
 
             <v-list-item
-              v-for="(cercle, clef) in cercles"
-              :key="clef"
-              v-if="!cercle.desactive"
-              @click="Scroll.allerALaSection(clef, '/cercle/' + clef)"
+                v-for="(cercle, clef) in cercles"
+                :key="clef"
+                v-if="!cercle.desactive"
+                :to="cercle.lien"
             >
               <v-list-item-content>
                 <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-          </v-list-group> -->
+          </v-list-group>
         </v-list>
       </v-navigation-drawer>
       <div id="nav" class="pa-0">
         <v-app-bar
-          color="white"
-          app
-          :class="{
+            color="white"
+            app
+            :class="{
             'no-padding': $vuetify.breakpoint.smAndDown,
           }"
-          style="z-index: 4"
+            style="z-index: 4"
         >
           <v-app-bar-nav-icon
-            @click="drawer = !drawer"
-            v-if="$vuetify.breakpoint.smAndDown"
+              @click="drawer = !drawer"
+              v-if="$vuetify.breakpoint.smAndDown"
           ></v-app-bar-nav-icon>
           <router-link
-            to="/"
-            class="mt-3"
-            :class="{
+              to="/"
+              class="mt-3"
+              :class="{
               'pl-4': $vuetify.breakpoint.smAndDown,
             }"
           >
@@ -149,55 +149,55 @@
             <!--:height="this.toolbarLogoHeight" @click="Scroll.allerALaSection('app')">-->
             <!--</transition>-->
             <img
-              :src="require('./assets/logo-horizontal.png')"
-              :height="this.toolbarLogoHeight"
-              v-if="true"
-              @click="Scroll.allerALaSection('app')"
+                :src="require('./assets/logo-horizontal.png')"
+                :height="this.toolbarLogoHeight"
+                v-if="true"
+                @click="Scroll.allerALaSection('app')"
             />
             <img
-              :src="require('./assets/logo-loco-horizontal.png')"
-              :height="this.toolbarLogoHeight + 20"
-              v-if="false"
+                :src="require('./assets/logo-loco-horizontal.png')"
+                :height="this.toolbarLogoHeight + 20"
+                v-if="false"
             />
           </router-link>
           <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
           <v-toolbar-items class="hidden-sm-and-down">
             <v-btn
-              :small="$vuetify.breakpoint.lgAndDown"
-              text
-              @click="Scroll.allerALaSection('paiement', '/paiement')"
+                :small="$vuetify.breakpoint.lgAndDown"
+                text
+                to="/paiement"
             >
               <v-icon
-                :class="{
+                  :class="{
                   'mr-3': $vuetify.breakpoint.xlOnly,
                   'mr-0': $vuetify.breakpoint.mdAndDown,
                 }"
-                >attach_money
+              >attach_money
               </v-icon>
               <span v-if="$vuetify.breakpoint.xlOnly"> Don et paiement </span>
               <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
             </v-btn>
             <v-btn
-              :small="$vuetify.breakpoint.lgAndDown"
-              text
-              @click="Scroll.allerALaSection('calendrier', '/calendrier')"
+                :small="$vuetify.breakpoint.lgAndDown"
+                text
+                to="/calendrier"
             >
               <v-icon
-                :class="{
+                  :class="{
                   'mr-3': $vuetify.breakpoint.xlOnly,
                   'mr-0': $vuetify.breakpoint.lgAndDown,
                 }"
-                >calendar_today
+              >calendar_today
               </v-icon>
               Calendrier
             </v-btn>
             <v-btn
-              :small="$vuetify.breakpoint.lgAndDown"
-              text
-              @click="Scroll.allerALaSection('calendrier', '/reservation')"
+                :small="$vuetify.breakpoint.lgAndDown"
+                text
+                to="/reservation"
             >
               <v-icon
-                :class="{
+                  :class="{
                   'mr-3': $vuetify.breakpoint.lgAndUp,
                   'mr-0': $vuetify.breakpoint.mdAndDown,
                 }"
@@ -207,40 +207,40 @@
               Réservation
             </v-btn>
             <v-btn
-              dark
-              color="#ff3301"
-              :small="$vuetify.breakpoint.lgAndDown"
-              v-if="$vuetify.breakpoint.lgAndUp"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+                dark
+                color="#ff3301"
+                :small="$vuetify.breakpoint.lgAndDown"
+                v-if="$vuetify.breakpoint.lgAndUp"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
             >
               Devenez membre
             </v-btn>
 
             <v-btn
-              :small="$vuetify.breakpoint.lgAndDown"
-              text
-              href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+                :small="$vuetify.breakpoint.lgAndDown"
+                text
+                href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
             >
               <v-icon
-                :class="{
+                  :class="{
                   'mr-3': $vuetify.breakpoint.xlOnly,
                   'mr-0': $vuetify.breakpoint.lgAndDown,
                 }"
-                >location_on
+              >location_on
               </v-icon>
               Adresse
             </v-btn>
             <v-btn
-              :small="$vuetify.breakpoint.lgAndDown"
-              text
-              @click="$refs.phoneDialog.show()"
+                :small="$vuetify.breakpoint.lgAndDown"
+                text
+                @click="$refs.phoneDialog.show()"
             >
               <v-icon
-                :class="{
+                  :class="{
                   'mr-3': $vuetify.breakpoint.xlOnly,
                   'mr-0': $vuetify.breakpoint.lgAndDown,
                 }"
-                >phone
+              >phone
               </v-icon>
               <span v-if="$vuetify.breakpoint.xlOnly">Téléphones</span>
               <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
@@ -254,43 +254,43 @@
             <!--                    Infolettre-->
             <!--                </v-btn>-->
             <v-btn
-              text
-              href="https://www.facebook.com/locolocal1"
-              :small="$vuetify.breakpoint.mdAndDown"
+                text
+                href="https://www.facebook.com/locolocal1"
+                :small="$vuetify.breakpoint.mdAndDown"
             >
               <img
-                src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
+                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
               />
             </v-btn>
           </v-toolbar-items>
           <v-toolbar-title
-            class="text-h6 text-uppercase special-font"
-            style="font-weight: bold"
+              class="text-h6 text-uppercase special-font"
+              style="font-weight: bold"
           >
           </v-toolbar-title>
         </v-app-bar>
       </div>
-      <router-view class="mb-2" />
+      <router-view class="mb-2"/>
       <p
-        class="special-font headline mb-6"
-        style="font-family: 'Pacifico', cursive !important"
+          class="special-font headline mb-6"
+          style="font-family: 'Pacifico', cursive !important"
       >
         Merci à tous les bénévoles, clients et organismes partenaires
       </p>
       <v-footer class="pa-4" dark>
         <v-spacer></v-spacer>
         <v-btn
-          text
-          @click="documentDialog = true"
-          v-if="$vuetify.breakpoint.mdAndUp"
+            text
+            @click="documentDialog = true"
+            v-if="$vuetify.breakpoint.mdAndUp"
         >
           <v-icon class="mr-4">fa-file</v-icon>
           Documents
         </v-btn>
         <v-btn
-          text
-          @click="presseDialog = true"
-          v-if="$vuetify.breakpoint.mdAndUp"
+            text
+            @click="presseDialog = true"
+            v-if="$vuetify.breakpoint.mdAndUp"
         >
           <v-icon class="mr-4">fa-newspaper</v-icon>
           Presse
@@ -301,10 +301,10 @@
         <v-spacer></v-spacer>
         <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
           <img
-            height="32"
-            width="32"
-            :src="require('@/assets/GitHub-Mark-Light-32px.png')"
-            class="mt-1"
+              height="32"
+              width="32"
+              :src="require('@/assets/GitHub-Mark-Light-32px.png')"
+              class="mt-1"
           />
         </a>
       </v-footer>
@@ -319,9 +319,9 @@
           <v-card-text>
             <v-list>
               <v-list-item
-                v-for="presse in dossiersDePresse"
-                :key="presse.lien"
-                :href="presse.lien"
+                  v-for="presse in dossiersDePresse"
+                  :key="presse.lien"
+                  :href="presse.lien"
               >
                 <v-list-item-title>
                   <span class="grey-text">
@@ -344,9 +344,9 @@
           <v-card-text>
             <v-list>
               <v-list-item
-                v-for="document in documents"
-                :key="document.nom"
-                :href="document.lien"
+                  v-for="document in documents"
+                  :key="document.nom"
+                  :href="document.lien"
               >
                 <v-list-item-action>
                   <v-icon>fa-file</v-icon>
@@ -407,7 +407,6 @@
 <script>
 import PhoneDialog from "@/components/PhoneDialog";
 import PhoneNumbers from "@/PhoneNumbers";
-import VueScrollTo from "vue-scrollto";
 import Scroll from "@/Scroll";
 import Cercles from "@/Cercles";
 
@@ -446,35 +445,35 @@ export default {
       documents: [
         {
           lien:
-            "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
+              "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
           nom: "Règlements généraux de la coopérative",
         },
         {
           lien:
-            "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
+              "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
           nom:
-            "La petite histoire financière du Loco Local en date du 31 janvier 2016",
+              "La petite histoire financière du Loco Local en date du 31 janvier 2016",
         },
         {
           lien:
-            "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
+              "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
           nom: "Plan d'action pour la pérennisation du Loco Local",
         },
         {
           lien:
-            "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
+              "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
           nom:
-            "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement.",
+              "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement.",
         },
         {
           lien:
-            "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+              "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
           nom:
-            "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017.",
+              "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017.",
         },
         {
           lien:
-            "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+              "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
           nom: "Bilan final du projet Béati 2017-2018",
         },
       ],
@@ -488,7 +487,7 @@ export default {
           date: "Mai 2015",
           text: "Revue Kaléidoscope",
           lien:
-            "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/",
+              "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/",
         },
         {
           date: "5 juin 2015",
@@ -498,29 +497,29 @@ export default {
         {
           date: "4 novembre 2015",
           text:
-            "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
+              "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
           lien:
-            "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/",
+              "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/",
         },
         {
           date: "9 avril 2016",
           text:
-            "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
+              "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
           lien: "http://www.economiesdecommunaute.org/programme/",
         },
         {
           date: "9 avril 2016",
           text:
-            " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
+              " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
           lien:
-            "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map",
+              "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map",
         },
         {
           date: "14 juin 2016",
           text:
-            "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
+              "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
           lien:
-            "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/",
+              "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/",
         },
         {
           date: "27 juillet 2016",
@@ -530,20 +529,20 @@ export default {
         {
           date: "27 juillet 2016",
           text:
-            "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
+              "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
           lien: "https://www.ababord.org/-No-65-ete-2016-",
         },
         {
           date: "22 août 2016",
           text: "Un living lab en Gaspésie ?",
           lien:
-            "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
+              "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
         },
         {
           date: "Septembre 2016",
           text: "Sur la page de Visages régionaux",
           lien:
-            "http://visagesregionaux.org/les-initiatives/initiative/economie-sociale-solidaire/cooperative-de-transition-et-de-solidarite-horizons-gaspesiens/",
+              "http://visagesregionaux.org/les-initiatives/initiative/economie-sociale-solidaire/cooperative-de-transition-et-de-solidarite-horizons-gaspesiens/",
         },
       ],
     };
@@ -688,9 +687,11 @@ a {
   transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
   opacity: 0;
 }
+
 .v-card__title {
   word-break: inherit !important;
 }

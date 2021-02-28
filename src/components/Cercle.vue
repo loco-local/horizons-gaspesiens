@@ -3,7 +3,7 @@
     <v-flex xs12>
       <v-card flat :class="{
                 'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
-                'pl-4 mt-5 mb-4': $vuetify.breakpoint.smAndDown
+                'pl-4 mt-5 mb-4': $route.name === 'home' && $vuetify.breakpoint.smAndDown
             }">
         <v-layout :reverse="imageAtRight" row wrap fill-height>
           <v-flex xs12 md5 class="">

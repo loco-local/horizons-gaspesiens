@@ -1,6 +1,6 @@
 <template>
   <div class="calendar" id="calendrier">
-    <v-layout row wrap class="mt-12">
+    <v-layout row wrap>
       <v-flex xs0 lg3></v-flex>
       <v-flex xs12 lg6 class="text-center">
         <h1 class="display-2 font-weight-thin">
