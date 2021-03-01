@@ -8,6 +8,35 @@
   >
     <v-app>
       <v-navigation-drawer
+          v-model="desktopDrawer"
+          fixed
+          right
+          app
+          temporary
+      >
+        <v-list-item
+            v-for="(cercle, clef) in cercles"
+            :key="clef"
+            v-if="!cercle.desactive"
+            :to="cercle.lien"
+            class="text-left body-2"
+        >
+          <v-list-item-content>
+            <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item href="https://www.facebook.com/locolocal1" class="body-1">
+          <v-list-item-title class="text-left">
+            /locolocal1
+          </v-list-item-title>
+          <v-list-item-action>
+            <img
+                src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
+            />
+          </v-list-item-action>
+        </v-list-item>
+      </v-navigation-drawer>
+      <v-navigation-drawer
           clipped
           v-model="drawer"
           enable-resize-watcher
@@ -23,49 +52,49 @@
               :href="'tel:' + phone.telephone"
           >
             <v-list-item :href="'tel:' + phone.telephone">
-              <v-list-item-action>
-                <v-icon>phone</v-icon>
-              </v-list-item-action>
-              <v-list-item-title>
-                {{ phone.nom }}
-              </v-list-item-title>
               <v-list-item-avatar>
                 <img :src="require('./assets/' + phone.avatar)"/>
               </v-list-item-avatar>
+              <v-list-item-title>
+                {{ phone.nom }}
+              </v-list-item-title>
+              <v-list-item-action>
+                <v-icon>phone</v-icon>
+              </v-list-item-action>
             </v-list-item>
             <v-divider class="mb-2 mt-2"></v-divider>
           </div>
           <v-list-item
               href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
           >
+            <v-list-item-title class="text-left">
+              193a Avenue Grand-Pré, Bonaventure, QC
+            </v-list-item-title>
             <v-list-item-action>
               <v-icon>location_on</v-icon>
             </v-list-item-action>
-            <v-list-item-title>
-              193a Avenue Grand-Pré, Bonaventure, QC
-            </v-list-item-title>
           </v-list-item>
           <v-list-item to="/paiement">
+            <v-list-item-title class="text-left">Don et paiement</v-list-item-title>
             <v-list-item-action>
               <v-icon>attach_money</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Don et paiement</v-list-item-title>
           </v-list-item>
           <v-list-item
               to="/calendrier"
           >
+            <v-list-item-title class="text-left">Calendrier</v-list-item-title>
             <v-list-item-action>
               <v-icon>calendar_today</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Calendrier</v-list-item-title>
           </v-list-item>
           <v-list-item
               to="/reservation"
           >
+            <v-list-item-title class="text-left"> Réservation</v-list-item-title>
             <v-list-item-action>
               <v-icon>fa-clipboard</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Réservation</v-list-item-title>
           </v-list-item>
           <!--                <v-list-item-->
           <!--                        href="http://eepurl.com/c7iHkr">-->
@@ -79,46 +108,34 @@
           <v-list-item
               href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
           >
+            <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
             <v-list-item-action>
               <v-icon>group</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Devenez membre</v-list-item-title>
           </v-list-item>
           <v-list-item @click="documentDialog = true">
+            <v-list-item-title class="text-left"> Documents</v-list-item-title>
             <v-list-item-action>
               <v-icon>fa-file</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Documents</v-list-item-title>
           </v-list-item>
           <v-list-item @click="presseDialog = true">
+            <v-list-item-title class="text-left">Dossier de presse</v-list-item-title>
             <v-list-item-action>
               <v-icon>fa-newspaper</v-icon>
             </v-list-item-action>
-            <v-list-item-title> Dossier de presse</v-list-item-title>
           </v-list-item>
-          <v-list-group
-              prepend-icon="group_work"
-              no-action
-              expanded
-              :value="true"
+          <v-list-item
+              v-for="(cercle, clef) in cercles"
+              :key="clef"
+              v-if="!cercle.desactive"
+              :to="cercle.lien"
+              class="text-left"
           >
-            <v-list-item slot="activator">
-              <v-list-item-content>
-                <v-list-item-title>Comités</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-
-            <v-list-item
-                v-for="(cercle, clef) in cercles"
-                :key="clef"
-                v-if="!cercle.desactive"
-                :to="cercle.lien"
-            >
-              <v-list-item-content>
-                <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
+            <v-list-item-content>
+              <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
       <div id="nav" class="pa-0">
@@ -253,21 +270,14 @@
             <!--                    </v-icon>-->
             <!--                    Infolettre-->
             <!--                </v-btn>-->
-            <v-btn
-                text
-                href="https://www.facebook.com/locolocal1"
-                :small="$vuetify.breakpoint.mdAndDown"
-            >
-              <img
-                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
-              />
-            </v-btn>
           </v-toolbar-items>
           <v-toolbar-title
               class="text-h6 text-uppercase special-font"
               style="font-weight: bold"
           >
           </v-toolbar-title>
+          <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
+                              v-if="$vuetify.breakpoint.mdAndUp"></v-app-bar-nav-icon>
         </v-app-bar>
       </div>
       <router-view class="mb-2"/>
@@ -299,6 +309,15 @@
           Visages régionaux
         </v-btn>
         <v-spacer></v-spacer>
+        <v-btn
+            text
+            href="https://www.facebook.com/locolocal1"
+            class="mr-2"
+        >
+          <img
+              src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
+          />
+        </v-btn>
         <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
           <img
               height="32"
@@ -440,6 +459,7 @@ export default {
       visageDialog: false,
       Scroll: Scroll,
       drawer: false,
+      desktopDrawer: false,
       phoneNumbers: PhoneNumbers.data,
       cercles: Cercles,
       documents: [
