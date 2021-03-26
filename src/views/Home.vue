@@ -735,7 +735,7 @@ export default {
         nom: "Solange Lecot",
         cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
         avatar: "solange-petit-carre.jpeg",
-        cercles: ["ca", "pagePourpre"],
+        cercles: ["pagePourpre"],
       },
       {
         nom: "Dominique Landry",

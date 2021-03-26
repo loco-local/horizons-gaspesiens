@@ -305,14 +305,11 @@
           <v-icon class="mr-4">fa-newspaper</v-icon>
           Presse
         </v-btn>
-        <v-btn text href="http://visagesregionaux.org/">
-          Visages régionaux
-        </v-btn>
         <v-spacer></v-spacer>
         <v-btn
             text
             href="https://www.facebook.com/locolocal1"
-            class="mr-2"
+            class="mr-2 mb-1"
         >
           <img
               src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
@@ -335,14 +332,15 @@
             <v-spacer></v-spacer>
             <v-icon @click="presseDialog = false">close</v-icon>
           </v-card-title>
-          <v-card-text>
+          <v-card-text class="body-1">
             <v-list>
               <v-list-item
                   v-for="presse in dossiersDePresse"
                   :key="presse.lien"
                   :href="presse.lien"
+                  class="text-left"
               >
-                <v-list-item-title>
+                <v-list-item-title class="body-1">
                   <span class="grey-text">
                     {{ presse.date }}
                   </span>
@@ -360,12 +358,13 @@
             <v-spacer></v-spacer>
             <v-icon @click="documentDialog = false">close</v-icon>
           </v-card-title>
-          <v-card-text>
+          <v-card-text class="body-1">
             <v-list>
               <v-list-item
                   v-for="document in documents"
                   :key="document.nom"
                   :href="document.lien"
+                  class="text-left"
               >
                 <v-list-item-action>
                   <v-icon>fa-file</v-icon>
@@ -375,47 +374,6 @@
                 </v-list-item-title>
               </v-list-item>
             </v-list>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="visageDialog" width="900">
-        <v-card>
-          <v-card-title class="title">
-            Visages régionaux
-            <v-spacer></v-spacer>
-            <v-icon @click="visageDialog = false">close</v-icon>
-          </v-card-title>
-          <v-card-text class="text-left">
-            <a href="http://visagesregionaux.org/"> Visages régionaux </a>
-            <p>
-              Visages régionaux a débuté en 2011, propulsé par un intérêt
-              personnel d’aller vivre en campagne.
-            </p>
-            <p>
-              La bourse Laure Waridel a permis à Marie-Eve Arbour et Simon Côté
-              de sillonner le Québec à la découverte de cinquante initiatives
-              rurales porteuses de changement.
-            </p>
-            <p>
-              Cinq ans plus tard, Visages régionaux veut documenter les
-              initiatives qui dessinent une ruralité en émergence. Démontrer
-              qu'il y a une panoplie de projets originaux et mobilisateurs et
-              que cette multiplication redéfinit la vie rurale. Avec ces
-              données, Visages régionaux entend analyser et communiquer les
-              tendances en émergence qui agissent de manière structurante sur
-              les communautés et sur la société québécoise dans son ensemble.
-            </p>
-            <p>
-              C'est avec plaisir et avec l'accord de Marie-Eve que nous vous
-              partageons ici le lien vers le site web de Visages régionaux afin
-              que vous y entriez votre projet ou un projet qui selon vous
-              devrait s'y trouver.
-            </p>
-            <p>
-              Merci de contribuer à dresser le portrait des artisans et
-              artisannes du changement en Gaspésie et partout ailleurs au
-              Québec.
-            </p>
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -456,7 +414,6 @@ export default {
       currentLogo: "logo-horizontal.png",
       documentDialog: false,
       presseDialog: false,
-      visageDialog: false,
       Scroll: Scroll,
       drawer: false,
       desktopDrawer: false,
@@ -557,13 +514,7 @@ export default {
           text: "Un living lab en Gaspésie ?",
           lien:
               "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
-        },
-        {
-          date: "Septembre 2016",
-          text: "Sur la page de Visages régionaux",
-          lien:
-              "http://visagesregionaux.org/les-initiatives/initiative/economie-sociale-solidaire/cooperative-de-transition-et-de-solidarite-horizons-gaspesiens/",
-        },
+        }
       ],
     };
   },
