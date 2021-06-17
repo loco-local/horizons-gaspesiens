@@ -552,7 +552,9 @@ export default {
   /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
   /*background-image: linear-gradient(120deg, #667eea 0%, #764ba2 100%);*/
   width: 100 wh;
-  height: 90vh;
+  height: auto;
+  padding-top: 15%;
+  padding-bottom: 15%;
   background: linear-gradient(-45deg, #007dc8, #ff1a1a, #007dc8);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;

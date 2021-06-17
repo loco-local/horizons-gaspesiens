@@ -12,7 +12,7 @@
             class="vh-center font-weight-thin mb-4 white--text"
             :class="{
             'display-2': $vuetify.breakpoint.lgAndDown,
-            'display-3': $vuetify.breakpoint.xl,
+            'display-3': $vuetify.breakpoint.xl
           }"
         >
           <p>

@@ -56,6 +56,12 @@
                 Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection documentaires,
                 discussions et plus encore.
               </p>
+<!--              <p v-if="$vuetify.breakpoint.smAndDown">-->
+<!--                <v-btn-->
+<!--                    to="https://calendar.google.com/calendar/u/0/embed?src=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com&ctz=America/Toronto">-->
+<!--                  Voir-->
+<!--                </v-btn>-->
+<!--              </p>-->
               <div id="hide-calendar-title" class="pa-0 ma-0"></div>
               <iframe frameborder="0" :height="calendarHeight" scrolling="no"
                       src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
@@ -346,8 +352,10 @@
                     </p>
                     <p>
                       2. Vous pourrez ensuite inscrire et décrire vous-même vos activités dans
-                      <a href="https://calendar.google.com/calendar/u/0/r?cid=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com" target="_blank">
-                        <v-icon class="mr-2">calendar_today</v-icon>le calendrier!
+                      <a href="https://calendar.google.com/calendar/u/0/r?cid=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com"
+                         target="_blank">
+                        <v-icon class="mr-2">calendar_today</v-icon>
+                        le calendrier!
                       </a>
                     </p>
                     <p>
