@@ -75,5 +75,10 @@ export default {
         nom: "Bibliothèque d'outils",
         containerId: "biblio-outils",
         lien: "/biblio-outils"
+    },
+    reparation: {
+        nom: "Café réparation",
+        containerId: "cafe-reparation",
+        lien: "/cafe-reparation"
     }
 }

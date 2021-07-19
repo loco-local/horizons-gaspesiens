@@ -208,6 +208,8 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
+    <CafeReparationCercle></CafeReparationCercle>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <BougerEnsembleCercle></BougerEnsembleCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <PagePourpreCercle></PagePourpreCercle>
@@ -535,6 +537,7 @@ import Shuffle from "@/Shuffle";
 export default {
   name: "home",
   components: {
+    CafeReparationCercle: () => import("@/components/CafeReparationCercle"),
     GroupeAchatCercle: () => import("@/components/GroupeAchatCercle"),
     CollaboriumCercle: () => import("@/components/CollaboriumCercle"),
     GouvernanceCercle: () => import("@/components/GouvernanceCercle"),
@@ -712,6 +715,13 @@ export default {
       //     avatar: "fred-guilbault-petit-carre.jpg",
       //     cercles: []
       // },
+      {
+        nom: "Lancelot Tremblay",
+        cv:
+            "Capitaine passionné du St-Laurent, Violoniste et donneur de seconde vie",
+        avatar: "lancelot-petit-carré.jpg",
+        cercles: ["reparation"],
+      },
       {
         nom: "Francine Larocque",
         cv:

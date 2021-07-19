@@ -50,6 +50,12 @@ export default new Router({
             component: () => import("@/views/BibliothequeOutilsPage")
         },
         {
+            path: '/cafe-reparation',
+            alias: '/café-réparation',
+            name: 'CafeReparation',
+            component: () => import("@/views/CafeReparationPage")
+        },
+        {
             path: '/bouger-ensemble',
             name: 'bouger-ensemble',
             component: () => import("@/views/BougerEnsemblePage")
