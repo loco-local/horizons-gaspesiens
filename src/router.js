@@ -61,6 +61,11 @@ export default new Router({
             component: () => import("@/views/BougerEnsemblePage")
         },
         {
+            path: '/partage-heure',
+            name: 'partage-heure',
+            component: () => import("@/views/PartageHeurePage")
+        },
+        {
             path: '/loco-linux',
             name: 'loco-linux',
             component: LocoLinux

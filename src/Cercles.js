@@ -80,5 +80,10 @@ export default {
         nom: "Café réparation",
         containerId: "cafe-reparation",
         lien: "/cafe-reparation"
+    },
+    partageHeure: {
+        nom: "Partage Heure",
+        containerId: "partage-heure",
+        lien: "/partage-heure"
     }
 }

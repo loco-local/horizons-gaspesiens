@@ -21,6 +21,7 @@
                                 }"
                 v-if="image && !isCarousel"
                 contain
+                top
             ></v-img>
             <slot name="image"></slot>
           </v-flex>
@@ -29,6 +30,7 @@
                             'mt-4' : $vuetify.breakpoint.smAndDown
                         }">
               {{ title }}
+              <slot name="title"></slot>
             </v-card-title>
             <v-card-subtitle class="body-1 font-weight-bold text-left mt-1 ml-4">
               <slot name="subtitle"></slot>

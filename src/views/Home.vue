@@ -210,10 +210,12 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <CafeReparationCercle></CafeReparationCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
+    <PartageHeureCercle></PartageHeureCercle>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
 <!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
     <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
 <!--    <Cercle-->
 <!--        title="Imaginez demain"-->
 <!--        anchor="imaginez-demain"-->
@@ -279,9 +281,9 @@
     <!--        </p>-->
     <!--      </div>-->
     <!--    </Cercle>-->
-    <v-divider class="mt-6 mb-12"></v-divider>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
 <!--    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>-->
-    <v-divider class="mt-6 mb-12"></v-divider>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
 <!--    <Cercle title="Comptabilité" anchor="comptable" class="pa-0">-->
 <!--      <div slot="image" class="pa-0">-->
 <!--        <v-card class="text-center pa-0" dark width="100%">-->
@@ -537,6 +539,7 @@ export default {
     CafeReparationCercle: () => import("@/components/CafeReparationCercle"),
     GroupeAchatCercle: () => import("@/components/GroupeAchatCercle"),
     CollaboriumCercle: () => import("@/components/CollaboriumCercle"),
+    PartageHeureCercle: () => import("@/components/PartageHeureCercle"),
     GouvernanceCercle: () => import("@/components/GouvernanceCercle"),
     FinancementCercle: () => import("@/components/FinancementCercle"),
     // ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
@@ -704,7 +707,7 @@ export default {
         nom: "Vincent Blouin",
         cv: "Programmeur, architecte de carte mentale, sportif",
         avatar: "chenzo2-petit-carre.jpg",
-        cercles: ["siteWeb"],
+        cercles: ["siteWeb", "partageHeure", "groupe"],
       },
       // {
       //     nom: "Fred Guilbault",
@@ -730,7 +733,7 @@ export default {
         nom: "Arielle Paiement",
         cv: "Animation de groupe, Communication non violente, charpentière",
         avatar: "arielle-petit-carre.jpg",
-        cercles: ["gouvernance", "biblioOutils"],
+        cercles: ["gouvernance", "biblioOutils", "partageHeure"],
       },
       // {
       //   nom: "Martin Zibeau",
