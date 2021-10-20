@@ -2,16 +2,16 @@
   <Cercle
       title="Café réparation"
       anchor="cafe-reparation"
-      image="cafe-reparation.jpg"
+      :image="images"
   >
     <div slot="subtitle">
       Ce que j'achète m'appartient, j'en suis responsable tout au long de sa durée. ce n'est pas un déchet, mais une
       richesse
     </div>
     <div slot="content">
-      <a href="https://www.facebook.com/events/878354296102947">
+      <a href="https://www.facebook.com/locolocal1">
         <v-alert colored-border icon="calendar_today" elevation="1" class="body-1">
-          Prochain atelier le dimanche 1er août 2021 de 13h30 à 16h30 au <a href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983">Loco Local</a>
+          Suivez notre page facebook pour connaître la date du prochain café de réparation.
         </v-alert>
       </a>
       <p class="">
@@ -31,7 +31,7 @@
 <!--            <v-icon>facebook</v-icon>-->
 <!--          </v-list-item-action>-->
           <v-list-item-title class="body-1">
-            Un café-réparation qui a pignon sur sur à Montréal
+            Un café-réparation qui a pignon sur rue à Montréal
           </v-list-item-title>
         </v-list-item>
         <v-list-item href="https://www.facebook.com/groups/touskisrepare/">
@@ -53,6 +53,11 @@ export default {
   components: {
     Cercle: () => import("@/components/Cercle")
   },
+  data: function(){
+    return {
+      images: ["cafe-reparation/café-réparation.jpg", "cafe-reparation/café-réparation2.jpg", "cafe-reparation/café-réparation3.jpg", "cafe-reparation/café-réparation4.jpg", "cafe-reparation/café-réparation5.jpg"]
+    }
+  }
 }
 </script>
 

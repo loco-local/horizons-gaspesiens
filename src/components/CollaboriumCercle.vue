@@ -2,7 +2,7 @@
   <Cercle
       title="Collaborium et espace de vie"
       anchor="collaborium"
-      image="travailler au LL.jpg"
+      :image="images"
   >
     <div slot="subtitle">
       Central, flexible, collectif, le Collaborium est l'espace-temps de
@@ -36,6 +36,11 @@ export default {
   components: {
     Cercle: () => import("@/components/Cercle")
   },
+  data: function(){
+    return {
+      images:['collab/equipe.jpg','collab/travailler au LL.jpg']
+    }
+  }
 }
 </script>
 

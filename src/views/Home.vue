@@ -206,13 +206,13 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <GroupeAchatCercle></GroupeAchatCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
+    <PagePourpreCercle></PagePourpreCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <CafeReparationCercle></CafeReparationCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <BougerEnsembleCercle></BougerEnsembleCercle>
+<!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
-    <PagePourpreCercle></PagePourpreCercle>
+    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
 <!--    <Cercle-->
 <!--        title="Imaginez demain"-->
@@ -280,7 +280,7 @@
     <!--      </div>-->
     <!--    </Cercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
-    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>
+<!--    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
 <!--    <Cercle title="Comptabilité" anchor="comptable" class="pa-0">-->
 <!--      <div slot="image" class="pa-0">-->
@@ -396,10 +396,7 @@
             class="text-left body-1 black--text"
             style="line-height: 1.5"
         >
-          Stimuler et soutenir la mise en commun et le partage de ressources, de
-          lieux, de connaissances comme forme concrète de solidarité pour
-          augmenter l’autonomie et la résilience des individus et des
-          collectivités.
+          Soutenir le partage de ressources, de lieux et connaissances au service de la solidarité et de la résilience.
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -542,8 +539,8 @@ export default {
     CollaboriumCercle: () => import("@/components/CollaboriumCercle"),
     GouvernanceCercle: () => import("@/components/GouvernanceCercle"),
     FinancementCercle: () => import("@/components/FinancementCercle"),
-    ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
-    BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
+    // ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
+    // BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
     PagePourpreCercle: () => import("@/components/PagePourpreCercle"),
     BibliothequeOutilsCercle : () => import("@/components/BibliothequeOutilsCercle"),
     Paiement : () => import("@/components/Paiement"),
@@ -735,12 +732,12 @@ export default {
         avatar: "arielle-petit-carre.jpg",
         cercles: ["gouvernance", "biblioOutils"],
       },
-      {
-        nom: "Martin Zibeau",
-        cv: "Comédien, Philosophe, Expérimenteur social",
-        avatar: "martin-zibeau-petit-carre.jpg",
-        cercles: ["lemieux"],
-      },
+      // {
+      //   nom: "Martin Zibeau",
+      //   cv: "Comédien, Philosophe, Expérimenteur social",
+      //   avatar: "martin-zibeau-petit-carre.jpg",
+      //   cercles: ["lemieux"],
+      // },
       {
         nom: "Solange Lecot",
         cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
@@ -751,7 +748,7 @@ export default {
         nom: "Dominique Landry",
         cv: "Organisatrice d'événements, Artiste de scène, Jardinère engagée",
         avatar: "dô-petit-carre.jpg",
-        cercles: ["ca", "pagePourpre", "bougerEnsemble"],
+        cercles: ["ca", "pagePourpre"],
       },
       {
         nom: "Ann Guilbault",
@@ -759,12 +756,6 @@ export default {
             "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
         cercles: ["ca", "adhesion"],
-      },
-      {
-        nom: "Carole Gagnon",
-        cv: "Coach de vie et énergéticienne. Prof de yoga et de méditation",
-        avatar: "carole-gagnon-petit.jpg",
-        cercles: ["ca"],
       },
       {
         nom: "Claude Demers",
