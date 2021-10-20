@@ -303,7 +303,7 @@
                     Devenez membre de soutien du Loco Local en faisant une
                     donation mensuelle régulière
                   </li>
-                  <li>Ouvrez un compte-client de Produits Lemieux pour 150$</li>
+                  <li>Ouvrez un compte prépayé pour savons, chocolat et autres pour 150$</li>
                 </ul>
                 <p>
                   Un grand merci à toutes celles et ceux qui ont donné, en
