@@ -14,6 +14,13 @@
           app
           temporary
       >
+        <v-list-item @click="Scroll.allerALaSection('about');desktopDrawer=false;" class="text-left body-2">
+          <v-list-item-content>
+            <v-list-item-title>
+              À propos
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item
             v-for="(cercle, clef) in cercles"
             :key="clef"
@@ -112,6 +119,11 @@
             <v-list-item-action>
               <v-icon>group</v-icon>
             </v-list-item-action>
+          </v-list-item>
+          <v-list-item @click="Scroll.allerALaSection('about');drawer=false;" class="text-left">
+            <v-list-item-title>
+              À propos
+            </v-list-item-title>
           </v-list-item>
           <v-list-item @click="documentDialog = true">
             <v-list-item-title class="text-left"> Documents</v-list-item-title>

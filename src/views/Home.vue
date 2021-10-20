@@ -30,7 +30,8 @@
         </v-card-subtitle>
       </v-card>
     </v-layout>
-    <v-layout row wrap class="mb-1 mt-12" id="about">
+    <div id="about" class="mb-12"></div>
+    <v-layout row wrap class="mb-1">
       <v-flex xs12 class="text-center">
         <h1 class="display-2 font-weight-thin">À propos</h1>
       </v-flex>
