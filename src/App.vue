@@ -14,7 +14,7 @@
           app
           temporary
       >
-        <v-list-item @click="Scroll.allerALaSection('about');desktopDrawer=false;" class="text-left body-2">
+        <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;" class="text-left body-2">
           <v-list-item-content>
             <v-list-item-title>
               À propos
@@ -120,7 +120,7 @@
               <v-icon>group</v-icon>
             </v-list-item-action>
           </v-list-item>
-          <v-list-item @click="Scroll.allerALaSection('about');drawer=false;" class="text-left">
+          <v-list-item @click="Scroll.allerALaSection('about', 'home');drawer=false;" class="text-left">
             <v-list-item-title>
               À propos
             </v-list-item-title>

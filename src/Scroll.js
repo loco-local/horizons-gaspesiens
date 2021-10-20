@@ -2,9 +2,16 @@ import VueScrollTo from 'vue-scrollto'
 import router from '@/router'
 
 export default {
-    allerALaSection: function (elementId, route, offset) {
+    allerALaSection: async function (elementId, route, offset) {
         if (offset === undefined) {
             offset = -60;
+        }
+        if (route) {
+            try{
+                await router.push(route);
+            }catch(e){
+                //continue
+            }
         }
         VueScrollTo.scrollTo(
             document.getElementById(elementId), 500, {
@@ -12,8 +19,5 @@ export default {
                 offset: offset
             }
         );
-        if (route) {
-            router.push(route);
-        }
     }
 }
