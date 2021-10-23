@@ -2,7 +2,7 @@
   <Cercle
       title="Groupe d'achat"
       anchor="groupe-achat"
-      image="groupe-achat.jpg"
+      :image="images"
   >
     <!--https://pixabay.com/fr/haricots-assortiment-agriculture-3861864/-->
     <div slot="subtitle">
@@ -58,6 +58,11 @@ export default {
   components: {
     Cercle: () => import("@/components/Cercle")
   },
+  data: function () {
+    return {
+      images: ['groupe-achat/groupe-achat-2.jpg', 'groupe-achat/groupe-achat-3.jpg']
+    }
+  }
 }
 </script>
 
