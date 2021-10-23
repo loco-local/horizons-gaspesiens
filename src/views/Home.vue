@@ -212,64 +212,64 @@
     <CafeReparationCercle></CafeReparationCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <PartageHeureCercle></PartageHeureCercle>
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
     <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <Cercle-->
-<!--        title="Imaginez demain"-->
-<!--        anchor="imaginez-demain"-->
-<!--        image="imagine-demain.jpg"-->
-<!--    >-->
-<!--      <div slot="subtitle">-->
-<!--        C’est une tempête d’idées, une place pour exprimer nos visions les plus-->
-<!--        idéalistes, réalistes ou fantaisistes-->
-<!--      </div>-->
-<!--      <div slot="content">-->
-<!--        <p class="">-->
-<!--          Pour rêver collectivement d'un demain résilient, aligné à nos valeurs.-->
-<!--        </p>-->
-<!--        <p>-->
-<!--          Un espace aussi de débat d'idées, de liens et d’actions concrètes,-->
-<!--          d'humour.-->
-<!--          <br/>-->
-<!--          <v-icon class="mr-2" color="orange">wb_sunny</v-icon>-->
-<!--          Que du positif S.V.P.-->
-<!--        </p>-->
-<!--        <v-list>-->
-<!--          <v-list-item href="https://www.facebook.com/groups/2573860966056660/">-->
-<!--            <v-list-item-action>-->
-<!--              <img-->
-<!--                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"-->
-<!--              />-->
-<!--            </v-list-item-action>-->
-<!--            <v-list-item-title> Notre page Facebook</v-list-item-title>-->
-<!--          </v-list-item>-->
-<!--          <v-list-item-->
-<!--              href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#"-->
-<!--          >-->
-<!--            <v-list-item-action>-->
-<!--              <v-icon>fa-file</v-icon>-->
-<!--            </v-list-item-action>-->
-<!--            <v-list-item-content>-->
-<!--              <v-list-item-title> Notre document Google Doc</v-list-item-title>-->
-<!--              <v-list-item-subtitle class="subtitle-1">-->
-<!--                Fable de la perdrix et la poule-->
-<!--              </v-list-item-subtitle>-->
-<!--            </v-list-item-content>-->
-<!--          </v-list-item>-->
-<!--        </v-list>-->
-<!--        <p>-->
-<!--          À surveiller : discussions-->
-<!--          <v-icon class="mr-2">videocam</v-icon>-->
-<!--          zoom et rencontres physiques sur une-->
-<!--          <v-icon class="mr-2">beach_access</v-icon>-->
-<!--          plage.-->
-<!--        </p>-->
-<!--        <p>On câle la shot sur Facebook et on réinvente le monde !</p>-->
-<!--      </div>-->
-<!--    </Cercle>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <Cercle-->
+    <!--        title="Imaginez demain"-->
+    <!--        anchor="imaginez-demain"-->
+    <!--        image="imagine-demain.jpg"-->
+    <!--    >-->
+    <!--      <div slot="subtitle">-->
+    <!--        C’est une tempête d’idées, une place pour exprimer nos visions les plus-->
+    <!--        idéalistes, réalistes ou fantaisistes-->
+    <!--      </div>-->
+    <!--      <div slot="content">-->
+    <!--        <p class="">-->
+    <!--          Pour rêver collectivement d'un demain résilient, aligné à nos valeurs.-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--          Un espace aussi de débat d'idées, de liens et d’actions concrètes,-->
+    <!--          d'humour.-->
+    <!--          <br/>-->
+    <!--          <v-icon class="mr-2" color="orange">wb_sunny</v-icon>-->
+    <!--          Que du positif S.V.P.-->
+    <!--        </p>-->
+    <!--        <v-list>-->
+    <!--          <v-list-item href="https://www.facebook.com/groups/2573860966056660/">-->
+    <!--            <v-list-item-action>-->
+    <!--              <img-->
+    <!--                  src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"-->
+    <!--              />-->
+    <!--            </v-list-item-action>-->
+    <!--            <v-list-item-title> Notre page Facebook</v-list-item-title>-->
+    <!--          </v-list-item>-->
+    <!--          <v-list-item-->
+    <!--              href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#"-->
+    <!--          >-->
+    <!--            <v-list-item-action>-->
+    <!--              <v-icon>fa-file</v-icon>-->
+    <!--            </v-list-item-action>-->
+    <!--            <v-list-item-content>-->
+    <!--              <v-list-item-title> Notre document Google Doc</v-list-item-title>-->
+    <!--              <v-list-item-subtitle class="subtitle-1">-->
+    <!--                Fable de la perdrix et la poule-->
+    <!--              </v-list-item-subtitle>-->
+    <!--            </v-list-item-content>-->
+    <!--          </v-list-item>-->
+    <!--        </v-list>-->
+    <!--        <p>-->
+    <!--          À surveiller : discussions-->
+    <!--          <v-icon class="mr-2">videocam</v-icon>-->
+    <!--          zoom et rencontres physiques sur une-->
+    <!--          <v-icon class="mr-2">beach_access</v-icon>-->
+    <!--          plage.-->
+    <!--        </p>-->
+    <!--        <p>On câle la shot sur Facebook et on réinvente le monde !</p>-->
+    <!--      </div>-->
+    <!--    </Cercle>-->
     <!--    <v-divider></v-divider>-->
     <!--    <Cercle title="POP DOC" anchor="pop-doc" :image="popDocImages">-->
     <!--      <div slot="subtitle"></div>-->
@@ -282,66 +282,66 @@
     <!--        </p>-->
     <!--      </div>-->
     <!--    </Cercle>-->
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>-->
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <Cercle title="Comptabilité" anchor="comptable" class="pa-0">-->
-<!--      <div slot="image" class="pa-0">-->
-<!--        <v-card class="text-center pa-0" dark width="100%">-->
-<!--          <v-card-text-->
-<!--              id="dessin-comptable"-->
-<!--              style="min-height: 400px"-->
-<!--              class=""-->
-<!--              width="100%"-->
-<!--          ></v-card-text>-->
-<!--          <v-card-text>-->
-<!--            <div class="display-1 font-weight-thin">-->
-<!--              Balance Revenus/Dépenses 2018-2019-->
-<!--            </div>-->
-<!--          </v-card-text>-->
-<!--          <v-card-title class="pt-1">-->
-<!--            <v-spacer></v-spacer>-->
-<!--            Balance totale: {{ balanceTotale }}$-->
-<!--            <v-spacer></v-spacer>-->
-<!--          </v-card-title>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <Cercle title="Comptabilité" anchor="comptable" class="pa-0">-->
+    <!--      <div slot="image" class="pa-0">-->
+    <!--        <v-card class="text-center pa-0" dark width="100%">-->
+    <!--          <v-card-text-->
+    <!--              id="dessin-comptable"-->
+    <!--              style="min-height: 400px"-->
+    <!--              class=""-->
+    <!--              width="100%"-->
+    <!--          ></v-card-text>-->
+    <!--          <v-card-text>-->
+    <!--            <div class="display-1 font-weight-thin">-->
+    <!--              Balance Revenus/Dépenses 2018-2019-->
+    <!--            </div>-->
+    <!--          </v-card-text>-->
+    <!--          <v-card-title class="pt-1">-->
+    <!--            <v-spacer></v-spacer>-->
+    <!--            Balance totale: {{ balanceTotale }}$-->
+    <!--            <v-spacer></v-spacer>-->
+    <!--          </v-card-title>-->
 
-<!--          <v-divider></v-divider>-->
+    <!--          <v-divider></v-divider>-->
 
-<!--          <v-card-actions class="justify-center pa-0">-->
-<!--            <v-btn-->
-<!--                block-->
-<!--                text-->
-<!--                href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0"-->
-<!--            >-->
-<!--              &lt;!&ndash;<v-icon class="mr-2">fa-dropbox</v-icon>&ndash;&gt;-->
-<!--              Détails sur fichier Dropbox. Faites télécharger.-->
-<!--            </v-btn>-->
-<!--          </v-card-actions>-->
-<!--        </v-card>-->
-<!--      </div>-->
-<!--      <div slot="subtitle">-->
-<!--        La transparence est vitale à l'autogestion. L'argent est un composant-->
-<!--        important du pouvoir. Faut donc que ça soit clair !-->
-<!--      </div>-->
-<!--      <div slot="content">-->
-<!--        <p>-->
-<!--          Il n'y a pas encore d'expert en comptabilité dans notre comité. Par-->
-<!--          contre, on s'améliore tout le temps.-->
-<!--        </p>-->
-<!--        <p>-->
-<!--          On manque d'argent par contre mais ça, c'est la responsabilité de tous-->
-<!--          les membres et du-->
-<!--          <router-link to="/cercle/financement"-->
-<!--          >comité financement !-->
-<!--          </router-link-->
-<!--          >-->
-<!--        </p>-->
-<!--        <p>-->
-<!--          De plus, en date de janvier 2019, nous avons une dette sans intérêts-->
-<!--          de 11955.89$ sur laquelle nous payons 100$ / mois.-->
-<!--        </p>-->
-<!--      </div>-->
-<!--    </Cercle>-->
+    <!--          <v-card-actions class="justify-center pa-0">-->
+    <!--            <v-btn-->
+    <!--                block-->
+    <!--                text-->
+    <!--                href="https://www.dropbox.com/s/4410d7cmwhgnurm/Comptabilit%C3%A9%202018-2019.ods?dl=0"-->
+    <!--            >-->
+    <!--              &lt;!&ndash;<v-icon class="mr-2">fa-dropbox</v-icon>&ndash;&gt;-->
+    <!--              Détails sur fichier Dropbox. Faites télécharger.-->
+    <!--            </v-btn>-->
+    <!--          </v-card-actions>-->
+    <!--        </v-card>-->
+    <!--      </div>-->
+    <!--      <div slot="subtitle">-->
+    <!--        La transparence est vitale à l'autogestion. L'argent est un composant-->
+    <!--        important du pouvoir. Faut donc que ça soit clair !-->
+    <!--      </div>-->
+    <!--      <div slot="content">-->
+    <!--        <p>-->
+    <!--          Il n'y a pas encore d'expert en comptabilité dans notre comité. Par-->
+    <!--          contre, on s'améliore tout le temps.-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--          On manque d'argent par contre mais ça, c'est la responsabilité de tous-->
+    <!--          les membres et du-->
+    <!--          <router-link to="/cercle/financement"-->
+    <!--          >comité financement !-->
+    <!--          </router-link-->
+    <!--          >-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--          De plus, en date de janvier 2019, nous avons une dette sans intérêts-->
+    <!--          de 11955.89$ sur laquelle nous payons 100$ / mois.-->
+    <!--        </p>-->
+    <!--      </div>-->
+    <!--    </Cercle>-->
     <v-divider class="mt-6 mb-12"></v-divider>
     <FinancementCercle></FinancementCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
@@ -546,8 +546,8 @@ export default {
     // ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
     // BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
     PagePourpreCercle: () => import("@/components/PagePourpreCercle"),
-    BibliothequeOutilsCercle : () => import("@/components/BibliothequeOutilsCercle"),
-    Paiement : () => import("@/components/Paiement"),
+    BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
+    Paiement: () => import("@/components/Paiement"),
     Cercle,
     PhoneDialog,
     Calendrier,
@@ -684,7 +684,7 @@ export default {
         nom: "Gabrielle Margineanu",
         cv: "Graphiste, Bédéiste, mère, humaniste",
         avatar: "gaby-petit-carre.jpg",
-        cercles: ["ca", "comptable"],
+        cercles: ["pagePourpre", "ca", "comptable"],
       },
       // {
       //   nom: "Marie-Claire Larocque",
@@ -759,7 +759,7 @@ export default {
         cv:
             "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
-        cercles: ["ca", "adhesion"],
+        cercles: ["ca", "adhesion", "groupe"],
       },
       {
         nom: "Claude Demers",
