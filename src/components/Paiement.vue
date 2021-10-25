@@ -22,7 +22,7 @@
               <v-layout row wrap class="pb-2">
                 <v-flex xs0 md2></v-flex>
                 <v-flex xs12 md8 class="text-md-left text-center body-1">
-                  <v-icon class="mr-2">email</v-icon>
+                  <v-icon left>email</v-icon>
                   <span class="font-weight-bold body-1">Par courriel</span>
                   à horizonsgaspesiens@gmail.com
                   <v-btn

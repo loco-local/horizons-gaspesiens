@@ -767,6 +767,12 @@ export default {
         avatar: "claude-demers.jpg",
         cercles: ["adhesion"],
       },
+      {
+        nom: "Marie-Claude Ricard",
+        cv: "Ecologiste de religion, agricultrice et permacultrice mondiale. Pro-autonomie",
+        avatar: "membres/mc-ricard.jpg",
+        cercles: ["ca"]
+      }
     ];
     return {
       balanceTotale: 0,
