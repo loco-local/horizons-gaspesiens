@@ -1,3 +1,4 @@
+-
 <template>
   <div>
     <v-layout row wrap class="" id="paiement">
@@ -31,6 +32,14 @@
                   >copier
                   </v-btn
                   >
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs0 md2></v-flex>
+                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+                  Utilisez
+                  <span class="font-weight-bold">bonaventure</span>
+                  comme réponse à la question
                 </v-flex>
               </v-layout>
               <v-divider class="mt-8 mb-8"></v-divider>
