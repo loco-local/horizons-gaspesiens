@@ -2,7 +2,7 @@
   <Cercle
       title="Page Pourpre"
       anchor="page-pourpre"
-      :image="pagePourpreImages"
+      :image="images"
   >
     <div slot="subtitle">
       Bibliothèque féministe, trans, queer et inclusive
@@ -26,12 +26,12 @@
 <script>
 export default {
   name: "PagePourpreCercle",
-  components:{
+  components: {
     Cercle: () => import("@/components/Cercle")
   },
-  data: function(){
+  data: function () {
     return {
-      pagePourpreImages: ["page-pourpre.jpg", "livres-pourpre.jpg"]
+      images: ["page-pourpre/leila_salon_du_livre_2021.jpg", "page-pourpre/page-pourpre.jpg", "page-pourpre/livres-pourpre.jpg"]
     }
   }
 }
