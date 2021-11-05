@@ -10,7 +10,8 @@
 
 <script>
 export default {
-  name: "Page"
+  name: "Page",
+  props: []
 }
 </script>
 

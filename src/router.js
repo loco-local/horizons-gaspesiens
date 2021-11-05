@@ -170,5 +170,10 @@ export default new Router({
             name: 'AGA',
             component: () => import('@/views/AGA2020.vue')
         },
+        {
+            path: '/adhesion',
+            name: 'Adhesion',
+            component: () => import('@/views/Adhesion.vue')
+        }
     ]
 })

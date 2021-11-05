@@ -1,0 +1,132 @@
+<template>
+  <Page class="vh-center">
+    <v-row slot="content" class="h-center">
+      <v-col cols="6">
+        <v-card width="800" flat>
+          <v-card-title class="text-h6">
+            Statut d'adhésion
+          </v-card-title>
+          <v-card-text class="body-1 text-center h-center" v-if="status !== null">
+            <v-card class="text-center" width="400">
+              <v-card-text>
+                <div v-if="status.status === 'active'">
+                  <v-icon color="success" x-large left>done</v-icon>
+                  Actif
+                </div>
+                <div v-if="status.status === 'inactive'">
+                  <v-icon color="error" x-large left>highlight_off</v-icon>
+                  Inactif
+                </div>
+              </v-card-text>
+              <v-card-text v-if="status.reason === 'no renewal date'" class="body-1 text-left">
+                <p class="body-1">
+                  Vous avez rempli le formulaire d'adhésion mais nous n'avons pas encore confirmé votre paiement
+                </p>
+                <strong class="body-1 font-weight-bold">Quoi faire</strong>
+                <ul class="body-1">
+                  <li class="body-1">
+                    <a href="/paiement">Payez votre adhésion</a> au montant de 25$ la première année et 15$ les années
+                    subséquentes, taxes incluses
+                  </li>
+                  <li class="body-1">
+                    Écrivez nous un courriel à <a href="mailto:horizonsgaspesiens@gmail.com">horizonsgaspesiens@gmail.com</a>
+                    si vous avez payé votre adhésion mais que votre statut est toujours inactif
+                  </li>
+                </ul>
+              </v-card-text>
+              <v-card-text v-if="status.reason === 'email not found'" class="body-1 text-left">
+                <p>
+                  Votre courriel n'est pas associé à un membre de Horizons Gaspésiens.
+                </p>
+                <p>
+                  Pour être membre vous devez remplir et suivre les instructions du
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">formulaire
+                    d'adhésion</a>
+                  de Horizons Gaspésiens
+                </p>
+                <p>
+                  Contactez nous à <a href="mailto:horizonsgaspesiens@gmail.com">horizonsgaspesiens@gmail.com</a> s'il
+                  s'agit d'une erreur.
+                </p>
+              </v-card-text>
+              <v-card-title class="h-center"
+                            v-if="!status.reason || ['email not found','no renewal date'].indexOf(status.reason) ===  -1">
+                <v-icon left>calendar_today</v-icon>
+                <strong class="body-1 font-weight-bold">Date d'expiration</strong>
+              </v-card-title>
+              <v-card-text class="body-1">
+                {{ status.subscriptionRenewalDate }}
+              </v-card-text>
+              <v-card-text v-if="status.status === 'inactive' && status.reason === undefined" class="body-1 text-left">
+                <p>
+                  Pour renouveller votre adhésion, <a href="/paiement">effectuez un paiement</a> de 15$
+                  taxes incluses à Horizons Gaspésiens.
+                </p>
+                <p>
+                  Notez qu'un délai est nécessaire pour qu'un responsable confirme votre paiement.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-card-text>
+          <v-card-text class="body-1">
+            <v-form>
+              <v-text-field
+                  v-model="email"
+                  label="Courriel"
+                  required
+                  class="body-2"
+              ></v-text-field>
+              <v-btn @click="checkStatus" :loading="loading">
+                Vérifier
+              </v-btn>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </Page>
+</template>
+
+<script>
+import MembershipService from "@/service/MembershipService";
+import {fr} from 'date-fns/locale'
+import {format} from 'date-fns'
+
+export default {
+  name: "Adhesion",
+  components: {
+    Page: () => import("@/components/Page")
+  },
+  data: function () {
+    return {
+      email: null,
+      loading: false,
+      status: null
+    };
+  },
+  mounted: function () {
+    this.loading = false;
+  },
+  methods: {
+    checkStatus: async function () {
+      this.loading = true;
+      const response = await MembershipService.get(this.email);
+      this.status = response.data;
+      if (this.status.subscriptionRenewalDate) {
+        this.status.subscriptionRenewalDate = format(
+            new Date(this.status.subscriptionRenewalDate),
+            'd MMMM yyyy',
+            {
+              locale: fr
+            }
+        )
+      }
+      this.loading = false;
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
