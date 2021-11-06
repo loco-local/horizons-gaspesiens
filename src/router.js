@@ -174,6 +174,11 @@ export default new Router({
             path: '/adhesion',
             name: 'Adhesion',
             component: () => import('@/views/Adhesion.vue')
+        },
+        {
+            path: '/adhesion/:email',
+            name: 'AdhesionWithEmail',
+            component: () => import('@/views/Adhesion.vue')
         }
     ]
 })

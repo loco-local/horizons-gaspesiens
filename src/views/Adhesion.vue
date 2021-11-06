@@ -25,12 +25,13 @@
                 <strong class="body-1 font-weight-bold">Quoi faire</strong>
                 <ul class="body-1">
                   <li class="body-1">
-                    <a href="/paiement">Payez votre adhésion</a> au montant de 25$ la première année et 15$ les années
-                    subséquentes, taxes incluses
+                    <router-link to="/paiement">Payez votre adhésion</router-link>
+                    au montant de 25$ la première année et 15$ les années
+                    subséquentes.
                   </li>
                   <li class="body-1">
                     Écrivez nous un courriel à <a href="mailto:horizonsgaspesiens@gmail.com">horizonsgaspesiens@gmail.com</a>
-                    si vous avez payé votre adhésion mais que votre statut est toujours inactif
+                    si vous avez payé votre adhésion mais que votre statut est toujours inactif. Notez qu'un délai est nécessaire pour qu'un responsable confirme votre paiement.
                   </li>
                 </ul>
               </v-card-text>
@@ -59,11 +60,26 @@
               </v-card-text>
               <v-card-text v-if="status.status === 'inactive' && status.reason === undefined" class="body-1 text-left">
                 <p>
-                  Pour renouveller votre adhésion, <a href="/paiement">effectuez un paiement</a> de 15$
-                  taxes incluses à Horizons Gaspésiens.
+                  Pour renouveller votre adhésion,
+                  <router-link to="/paiement">
+                    effectuez un paiement
+                  </router-link>
+                  de 15$ à Horizons Gaspésiens.
                 </p>
                 <p>
                   Notez qu'un délai est nécessaire pour qu'un responsable confirme votre paiement.
+                </p>
+              </v-card-text>
+              <v-card-text v-if="status.status === 'active' && !status.reason" class="body-1 text-left">
+                <p class="body-1">
+                  S.V.P renouvellez votre adhésion à l'avance.
+                </p>
+                <p class="body-1">
+                  Pour ce faire,
+                  <router-link to="/paiement">
+                    effectuez un paiement
+                  </router-link>
+                  de 15$ et nous ajouterons une année à votre date d'expiration.
                 </p>
               </v-card-text>
             </v-card>
@@ -106,9 +122,16 @@ export default {
   },
   mounted: function () {
     this.loading = false;
+    if (this.$route.params.email !== null) {
+      this.email = this.$route.params.email;
+      this.checkStatus();
+    }
   },
   methods: {
     checkStatus: async function () {
+      if (this.email === null || this.email === undefined || this.email.trim() === "") {
+        return;
+      }
       this.loading = true;
       const response = await MembershipService.get(this.email);
       this.status = response.data;
