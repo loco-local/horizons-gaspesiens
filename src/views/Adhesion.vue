@@ -31,23 +31,30 @@
                   </li>
                   <li class="body-1">
                     Écrivez nous un courriel à <a href="mailto:horizonsgaspesiens@gmail.com">horizonsgaspesiens@gmail.com</a>
-                    si vous avez payé votre adhésion mais que votre statut est toujours inactif. Notez qu'un délai est nécessaire pour qu'un responsable confirme votre paiement.
+                    si vous avez payé votre adhésion mais que votre statut est toujours inactif. Notez qu'un délai est
+                    nécessaire pour qu'un responsable confirme votre paiement.
                   </li>
                 </ul>
+                <p class="body-1 mt-4 mb-0 pb-0">
+                  Merci.
+                </p>
               </v-card-text>
               <v-card-text v-if="status.reason === 'email not found'" class="body-1 text-left">
-                <p>
+                <p class="body-1">
                   Votre courriel n'est pas associé à un membre de Horizons Gaspésiens.
                 </p>
-                <p>
+                <p class="body-1">
                   Pour être membre vous devez remplir et suivre les instructions du
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">formulaire
                     d'adhésion</a>
                   de Horizons Gaspésiens
                 </p>
-                <p>
+                <p class="body-1">
                   Contactez nous à <a href="mailto:horizonsgaspesiens@gmail.com">horizonsgaspesiens@gmail.com</a> s'il
                   s'agit d'une erreur.
+                </p>
+                <p class="body-1 pb-0 mb-0">
+                  Merci.
                 </p>
               </v-card-text>
               <v-card-title class="h-center"
@@ -69,6 +76,9 @@
                 <p>
                   Notez qu'un délai est nécessaire pour qu'un responsable confirme votre paiement.
                 </p>
+                <p class="body-1 mb-0">
+                  Merci.
+                </p>
               </v-card-text>
               <v-card-text v-if="status.status === 'active' && !status.reason" class="body-1 text-left">
                 <p class="body-1">
@@ -80,6 +90,9 @@
                     effectuez un paiement
                   </router-link>
                   de 15$ et nous ajouterons une année à votre date d'expiration.
+                </p>
+                <p class="body-1 mb-0">
+                  Merci.
                 </p>
               </v-card-text>
             </v-card>
@@ -97,6 +110,30 @@
               </v-btn>
             </v-form>
           </v-card-text>
+        </v-card>
+        <v-card class="mt-12">
+          <v-card-title class="text-h6 h-center">
+             Liste complète et détaillé des membres
+          </v-card-title>
+          <v-card-subtitle class="subtitle-1">
+            L'accès à ces données est limité.
+          </v-card-subtitle>
+          <v-list>
+            <v-list-item href="https://datastudio.google.com/u/1/reporting/95640869-6dcc-46bf-9ee7-634ec8a6e0ba/page/aKkbC" target="_blank">
+              <v-list-item-content>
+                <v-list-item-title class="body-1">
+                  Google Studio associé au Excel
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item href="https://docs.google.com/spreadsheets/d/1_KH43HPFDERGgB6wmQEPS-cujtw10YKS4I7X3S6Mwio/edit?resourcekey#gid=1827893226" target="_blank">
+              <v-list-item-content>
+                <v-list-item-title class="body-1">
+                  Excel associé au formulaire
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-card>
       </v-col>
     </v-row>
