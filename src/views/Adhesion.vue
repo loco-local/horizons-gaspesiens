@@ -1,7 +1,7 @@
 <template>
   <Page class="vh-center">
     <v-row slot="content" class="h-center">
-      <v-col cols="6">
+      <v-col class="col-xs-12 col-md-8 col-lg-6">
         <v-card width="800" flat>
           <v-card-title class="text-h6">
             Statut d'adhésion
