@@ -112,6 +112,7 @@
                   label="Courriel"
                   required
                   class="body-2"
+                  @keydown="keydown"
               ></v-text-field>
               <v-btn @click="changeRouteForEmail" :loading="loading">
                 Vérifier
@@ -157,6 +158,7 @@ import MembershipService from "@/service/MembershipService";
 import {fr} from 'date-fns/locale'
 import {format} from 'date-fns'
 
+const ENTER_KEY_CODE = 13;
 export default {
   name: "Adhesion",
   components: {
@@ -177,6 +179,11 @@ export default {
     }
   },
   methods: {
+    keydown: function (event) {
+      if (event.keyCode === ENTER_KEY_CODE) {
+        this.changeRouteForEmail();
+      }
+    },
     changeRouteForEmail: function () {
       if (this.$route.params.email !== this.email.trim()) {
         this.$router.push({name: 'AdhesionWithEmail', params: {email: this.email.trim()}})
