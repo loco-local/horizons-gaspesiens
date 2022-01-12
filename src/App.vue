@@ -390,6 +390,25 @@
         </v-card>
       </v-dialog>
     </v-app>
+    <v-bottom-sheet v-model="isMessagePandemie">
+      <v-sheet
+          class="text-center"
+          height="200px"
+      >
+        <v-btn
+            class="mt-6"
+            text
+            color="red"
+            @click="isMessagePandemie = !isMessagePandemie"
+        >
+          Fermer
+        </v-btn>
+        <div class="py-3 text-h6 font-weight-regular">
+          Pour savoir ce qui est possible de faire au Loco Local avec les mesures sanitaires, vous pouvez nous
+          <a @click.prevent="$refs.phoneDialog.show()" class="text-h6 font-weight-regular">contacter par téléphone.</a>
+        </div>
+      </v-sheet>
+    </v-bottom-sheet>
   </div>
 </template>
 
@@ -423,6 +442,7 @@ export default {
   },
   data() {
     return {
+      isMessagePandemie: true,
       currentLogo: "logo-horizontal.png",
       documentDialog: false,
       presseDialog: false,
