@@ -442,7 +442,7 @@ export default {
   },
   data() {
     return {
-      isMessagePandemie: true,
+      isMessagePandemie: false,
       currentLogo: "logo-horizontal.png",
       documentDialog: false,
       presseDialog: false,
