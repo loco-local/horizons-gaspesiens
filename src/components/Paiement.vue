@@ -24,10 +24,10 @@
                 <v-flex xs12 md8 class="text-md-left text-center body-1">
                   <v-icon left>email</v-icon>
                   <span class="font-weight-bold body-1">Par courriel</span>
-                  à horizonsgaspesiens@gmail.com
+                  à admin@loco-local.net
                   <v-btn
                       text
-                      v-clipboard:copy="'horizonsgaspesiens@gmail.com'"
+                      v-clipboard:copy="'admin@loco-local.net'"
                       small
                   >copier
                   </v-btn
@@ -40,6 +40,23 @@
                   Utilisez
                   <span class="font-weight-bold">bonaventure</span>
                   comme réponse à la question
+                </v-flex>
+              </v-layout>
+              <v-divider class="mt-8 mb-8"></v-divider>
+              <v-layout row wrap class="pb-2">
+                <v-flex xs0 md2></v-flex>
+                <v-flex xs12 md8 class="text-md-left text-center body-1">
+                  <v-icon left>paid</v-icon>
+                  <span class="font-weight-bold body-1">En argent comptant,</span>
+                  à la caisse du Loco Local
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs0 md2></v-flex>
+                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+                  Inscrire la transaction
+                  <a href="https://caisse.loco-local.net">dans l'application</a>
+                  ou bien indiquer le descriptif sur la feuille des transactions.
                 </v-flex>
               </v-layout>
               <v-divider class="mt-8 mb-8"></v-divider>
