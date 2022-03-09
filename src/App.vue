@@ -376,6 +376,7 @@
                   v-for="document in documents"
                   :key="document.nom"
                   :href="document.lien"
+                  target="_blank"
                   class="text-left"
               >
                 <v-list-item-action>
@@ -453,16 +454,23 @@ export default {
       cercles: Cercles,
       documents: [
         {
-          lien:
-              "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
-          nom: "Règlements généraux de la coopérative",
+          lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",
+          nom: "Un p'tit tour du Loco, document d'intégration en cours de rédaction"
         },
         {
-          lien:
-              "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
-          nom:
-              "La petite histoire financière du Loco Local en date du 31 janvier 2016",
+          lien: "https://docs.google.com/document/d/1GbJSM-szWptTxLtF--VWmFrnX9f9S61l8KqXDed50gk",
+          nom: "Orientations 2021-2022"
         },
+        {
+          lien: "https://drive.google.com/file/d/1NbibEbKB8MCw7XI-bsxJuBnRX0vDUFIv/view",
+          nom: "Rapport annuel 2020-21"
+        },
+        // {
+        //   lien:
+        //       "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
+        //   nom:
+        //       "La petite histoire financière du Loco Local en date du 31 janvier 2016",
+        // },
         {
           lien:
               "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
@@ -470,21 +478,26 @@ export default {
         },
         {
           lien:
-              "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
-          nom:
-              "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement.",
-        },
-        {
-          lien:
-              "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
-          nom:
-              "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017.",
-        },
-        {
-          lien:
-              "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
-          nom: "Bilan final du projet Béati 2017-2018",
-        },
+              "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
+          nom: "Règlements généraux de la coopérative",
+        }
+        // {
+        //   lien:
+        //       "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
+        //   nom:
+        //       "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement.",
+        // },
+        // {
+        //   lien:
+        //       "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+        //   nom:
+        //       "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017.",
+        // },
+        // {
+        //   lien:
+        //       "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
+        //   nom: "Bilan final du projet Béati 2017-2018",
+        // },
       ],
       dossiersDePresse: [
         {
