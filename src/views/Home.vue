@@ -65,7 +65,7 @@
           <a href="#" @click.prevent="Scroll.allerALaSection('benevole')">
             ses membres.
           </a>
-          Les initiatives doivent être enlignées avec
+          Les initiatives doivent être alignées avec
           <a href="#" @click.prevent="visionModal = true"> la vision, </a>
           <a href="#" @click.prevent="valeursModal = true"> les valeurs </a>
           et
