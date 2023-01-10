@@ -21,6 +21,13 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item to="/adhesion" class="text-left body-2">
+          <v-list-item-content>
+            <v-list-item-title>
+              Vérifiez votre adhésion
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item
             v-for="(cercle, clef) in cercles"
             :key="clef"
@@ -118,6 +125,14 @@
             <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
             <v-list-item-action>
               <v-icon>group</v-icon>
+            </v-list-item-action>
+          </v-list-item>
+          <v-list-item
+              to="/adhesion"
+          >
+            <v-list-item-title class="text-left">Vérifiez votre adhésion</v-list-item-title>
+            <v-list-item-action>
+              <v-icon>check</v-icon>
             </v-list-item-action>
           </v-list-item>
           <v-list-item @click="Scroll.allerALaSection('about', '/');drawer=false;" class="text-left">
