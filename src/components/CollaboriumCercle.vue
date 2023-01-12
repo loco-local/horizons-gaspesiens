@@ -36,9 +36,12 @@ export default {
   components: {
     Cercle: () => import("@/components/Cercle")
   },
-  data: function(){
+  data: function () {
     return {
-      images:['collab/equipe-2022.jpg','collab/travailler au LL.jpg']
+      images: [
+        'collab/equipe-2022.jpg',
+        'collab/travailler au LL.jpg'
+      ]
     }
   }
 }
