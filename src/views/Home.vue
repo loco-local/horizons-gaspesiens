@@ -742,12 +742,12 @@ export default {
       //   avatar: "martin-zibeau-petit-carre.jpg",
       //   cercles: ["lemieux"],
       // },
-      {
-        nom: "Solange Lecot",
-        cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
-        avatar: "solange-petit-carre.jpeg",
-        cercles: ["pagePourpre"],
-      },
+      // {
+      //   nom: "Solange Lecot",
+      //   cv: "Défend les droits des oppriméEs, Gestion bois et forêt",
+      //   avatar: "solange-petit-carre.jpeg",
+      //   cercles: ["pagePourpre"],
+      // },
       {
         nom: "Dominique Landry",
         cv: "Organisatrice d'événements, Artiste de scène, Jardinère engagée",
