@@ -22,15 +22,14 @@
         Mais aussi pour différents enjeux comme le design intérieur, le ménage, l'adhésion et le système de réservation de la salle.
       </p>
       <p>
-        Les membres on accès à liste des comités et des membres qui les composent pour se joindre eux même à des comités ou pour en consulter
-        ses membres.
+        Les membres ont accès à la liste des comités et des membres qui les composent pour s'y joindre ou pour consulter les membres des comités.
       </p>
       <p>
         Ainsi, pour apporter une amélioration, on consulte d'abord les membres du comité.
         Si tout le monde est d'accord, on peut apporter le changement et c'est aussi une occasion de demander de l'aide.
       </p>
       <p>
-        Par contre, si les opinions par rapport à un changement sont contradictoires ou trop variés et complexes,
+        Par contre, si les opinions par rapport à un changement sont contradictoires ou trop variées et complexes,
         la procédure est de se rencontrer en personne, de discuter et éventuellement de voter et la majorité l'emporte.
       </p>
       <p>
