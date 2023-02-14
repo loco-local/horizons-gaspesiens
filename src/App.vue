@@ -286,7 +286,7 @@
                 }"
               >phone
               </v-icon>
-              <span v-if="$vuetify.breakpoint.xlOnly">Téléphones</span>
+              <span v-if="$vuetify.breakpoint.xlOnly">Téléphone</span>
               <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
             </v-btn>
             <!--                <v-btn :small="$vuetify.breakpoint.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
