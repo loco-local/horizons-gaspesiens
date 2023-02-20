@@ -60,6 +60,20 @@
                 </v-flex>
               </v-layout>
               <v-divider class="mt-8 mb-8"></v-divider>
+              <v-layout row wrap class="pb-2">
+                <v-flex xs0 md2></v-flex>
+                <v-flex xs12 md8 class="text-md-left text-center body-1">
+                  <v-icon left>receipt</v-icon>
+                  <span class="font-weight-bold body-1">Par chèque</span>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs0 md2></v-flex>
+                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+                  Au nom de la Coopérative de Solidarité Horizons Gaspésiens.
+                </v-flex>
+              </v-layout>
+              <v-divider class="mt-8 mb-8"></v-divider>
               <v-layout row wrap>
                 <v-flex xs0 md2 xl2></v-flex>
                 <v-flex
@@ -71,6 +85,7 @@
                     'pb-2': $vuetify.breakpoint.smAndDown,
                   }"
                 >
+                  <v-icon left>account_balance</v-icon>
                   <span class="font-weight-bold body-1"
                   >Par transit desjardins</span
                   >
