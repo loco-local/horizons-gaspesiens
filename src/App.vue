@@ -307,13 +307,59 @@
                               v-if="$vuetify.breakpoint.mdAndUp"></v-app-bar-nav-icon>
         </v-app-bar>
       </div>
-      <router-view class="mb-2"/>
+      <router-view/>
+      <v-divider class="mt-8 mb-8"></v-divider>
       <p
-          class="special-font headline mb-6"
+          class="special-font headline"
           style="font-family: 'Pacifico', cursive !important"
       >
         Merci à tous les bénévoles, clients et organismes partenaires
       </p>
+      <v-divider class="mt-8 mb-8"></v-divider>
+      <v-row class="pl-4 pr-4">
+        <v-col cols="0" lg="2"></v-col>
+        <v-col cols="12" md="4" :class="{
+          'vh-center' : $vuetify.breakpoint.smAndDown
+          }">
+          <v-card flat href="https://mrcbonaventure.com/" width="300" :class="{
+            'float-right': $vuetify.breakpoint.mdAndUp
+          }">
+            <v-card style="background-color: #002c51;" class="pa-4" flat outlined>
+              <v-img :src="require('@/assets/logo_mrcbona.png')" alt="MRC de Bonaventure"></v-img>
+            </v-card>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4" class="align-self-center">
+          <p class="text-left text-h6 font-weight-regular">
+            Merci à la MRC de Bonaventure pour la subvention dans le cadre du plan de communauté en développement
+            social.
+          </p>
+        </v-col>
+        <v-col cols="0" lg="2"></v-col>
+      </v-row>
+      <v-row class="pl-4 pr-4">
+        <v-col cols="0" lg="2"></v-col>
+        <v-col cols="12" md="4" :class="{
+          'vh-center' : $vuetify.breakpoint.smAndDown
+          }">
+          <v-card flat href="https://www.urlsgim.com/" width="300" :class="{
+            'float-right': $vuetify.breakpoint.mdAndUp
+          }">
+            <v-card class="pa-4" flat outlined>
+              <v-img :src="require('@/assets/logo-loisir-et-sport-gim.png')"
+                     alt="Loisir et Sport Gaspésie-Îles-de-la-Madeleine"></v-img>
+            </v-card>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4" class="align-self-center">
+          <p class="text-left body-1 text-h6 font-weight-regular">
+            Merci à Loisir et Sport Gaspésie-Îles-de-la-Madeleine pour les dons d'équipements pour bouger au Loco Local
+            !
+          </p>
+        </v-col>
+        <v-col cols="0" lg="2"></v-col>
+      </v-row>
+      <div class="mt-8 mb-8"></div>
       <v-footer class="pa-4" dark>
         <v-spacer></v-spacer>
         <v-btn
