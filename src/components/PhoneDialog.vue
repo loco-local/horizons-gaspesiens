@@ -22,25 +22,6 @@
                 581-630-0058
               </v-list-item-title>
             </v-list-item>
-            <!--                        <v-list-item-->
-            <!--                                v-for="phone in phoneNumbersRandom"-->
-            <!--                                :key="phone.nom"-->
-            <!--                                avatar-->
-            <!--                                :href="'tel:' + phone.telephone"-->
-            <!--                        >-->
-            <!--                            <v-list-item-avatar size="55">-->
-            <!--                                <img :src="require('@/assets/' + phone.avatar)">-->
-            <!--                            </v-list-item-avatar>-->
-
-            <!--                            <v-list-item-content>-->
-            <!--                                <v-list-item-title>-->
-            <!--                                    {{phone.nom}}-->
-            <!--                                </v-list-item-title>-->
-            <!--                                <v-list-item-subtitle>-->
-            <!--                                    {{phone.telephone}}-->
-            <!--                                </v-list-item-subtitle>-->
-            <!--                            </v-list-item-content>-->
-            <!--                        </v-list-item>-->
           </v-list>
         </v-card-text>
       </v-card>
@@ -49,16 +30,11 @@
 </template>
 
 <script>
-import PhoneNumbers from '@/PhoneNumbers'
-import Shuffle from '@/Shuffle'
-
 export default {
   name: "PhoneDialog",
   data() {
     return {
-      phoneModal: false,
-      phoneNumbers: PhoneNumbers.data,
-      phoneNumbersRandom: Shuffle.array(PhoneNumbers.data)
+      phoneModal: false
     }
   },
   methods: {
