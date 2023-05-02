@@ -42,8 +42,7 @@
     "sass": "^1.22.9",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^2.0.3",
-    "vuetify-loader": "^1.9.2",
-    "vuetify-scss": "^1.4.0"
+    "vuetify-loader": "^1.9.2"
   },
   "eslintConfig": {
     "root": true,
