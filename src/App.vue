@@ -105,15 +105,17 @@
                     >
                         <v-list-item-title class="text-left">Calendrier</v-list-item-title>
                         <v-list-item-action>
-                            <v-icon>calendar_today</v-icon>
+                            <v-icon>calendar_month</v-icon>
                         </v-list-item-action>
                     </v-list-item>
                     <v-list-item
                             to="/reservation"
                     >
-                        <v-list-item-title class="text-left"> Réservation</v-list-item-title>
+                        <v-list-item-title class="text-left">
+                            Réservation
+                        </v-list-item-title>
                         <v-list-item-action>
-                            <v-icon>fa-clipboard</v-icon>
+                            <v-icon>event</v-icon>
                         </v-list-item-action>
                     </v-list-item>
                     <!--                <v-list-item-->
@@ -130,7 +132,7 @@
                     >
                         <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
                         <v-list-item-action>
-                            <v-icon>group</v-icon>
+                            <v-icon>check</v-icon>
                         </v-list-item-action>
                     </v-list-item>
                     <v-list-item
@@ -147,15 +149,15 @@
                         </v-list-item-title>
                     </v-list-item>
                     <v-list-item @click="documentDialog = true">
-                        <v-list-item-title class="text-left"> Documents</v-list-item-title>
+                        <v-list-item-title class="text-left">Documents</v-list-item-title>
                         <v-list-item-action>
-                            <v-icon>fa-file</v-icon>
+                            <v-icon>articles</v-icon>
                         </v-list-item-action>
                     </v-list-item>
                     <v-list-item @click="presseDialog = true">
                         <v-list-item-title class="text-left">Dossier de presse</v-list-item-title>
                         <v-list-item-action>
-                            <v-icon>fa-newspaper</v-icon>
+                            <v-icon>newspaper</v-icon>
                         </v-list-item-action>
                     </v-list-item>
                     <v-list-item
@@ -237,7 +239,8 @@
                   'mr-3': $vuetify.breakpoint.xlOnly,
                   'mr-0': $vuetify.breakpoint.lgAndDown,
                 }"
-                            >calendar_today
+                            >
+                                calendar_month
                             </v-icon>
                             Calendrier
                         </v-btn>
@@ -252,7 +255,7 @@
                   'mr-0': $vuetify.breakpoint.mdAndDown,
                 }"
                             >
-                                fa-clipboard
+                                event
                             </v-icon>
                             Réservation
                         </v-btn>
@@ -263,6 +266,7 @@
                                 v-if="$vuetify.breakpoint.lgAndUp"
                                 href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
                         >
+                            <v-icon left>check</v-icon>
                             Devenez membre
                         </v-btn>
 
@@ -375,7 +379,9 @@
                         @click="documentDialog = true"
                         v-if="$vuetify.breakpoint.mdAndUp"
                 >
-                    <v-icon class="mr-4">fa-file</v-icon>
+                    <v-icon left>
+                        articles
+                    </v-icon>
                     Documents
                 </v-btn>
                 <v-btn
@@ -383,7 +389,9 @@
                         @click="presseDialog = true"
                         v-if="$vuetify.breakpoint.mdAndUp"
                 >
-                    <v-icon class="mr-4">fa-newspaper</v-icon>
+                    <v-icon left>
+                        newspaper
+                    </v-icon>
                     Presse
                 </v-btn>
                 <v-spacer></v-spacer>
@@ -449,7 +457,7 @@
                                     class="text-left"
                             >
                                 <v-list-item-action>
-                                    <v-icon>fa-file</v-icon>
+                                    <v-icon>articles</v-icon>
                                 </v-list-item-action>
                                 <v-list-item-title>
                                     {{ document.nom }}
@@ -782,5 +790,11 @@ a {
 
 .v-card__title {
     word-break: inherit !important;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
 }
 </style>

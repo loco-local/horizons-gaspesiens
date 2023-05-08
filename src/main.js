@@ -3,6 +3,8 @@ import vuetify from '@/plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import VueClipboard from 'vue-clipboard2'
+import 'material-icons/iconfont/filled.css';
+import 'material-icons/iconfont/outlined.css';
 
 Vue.config.productionTip = false;
 

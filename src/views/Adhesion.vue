@@ -65,7 +65,7 @@
                 </v-card-text>
                 <v-card-title class="h-center"
                               v-if="!status.reason || ['email not found','no renewal date'].indexOf(status.reason) ===  -1">
-                  <v-icon left>calendar_today</v-icon>
+                  <v-icon left>calendar_month</v-icon>
                   <strong class="body-1 font-weight-bold">Date d'expiration</strong>
                 </v-card-title>
                 <v-card-text class="body-1">

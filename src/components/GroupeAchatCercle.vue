@@ -30,7 +30,7 @@
           </v-list-item>
           <v-list-item href="https://foodclub.org/bonaventure">
             <v-list-item-action>
-              <v-icon>fa-clipboard-list</v-icon>
+              <v-icon>app_shortcut</v-icon>
             </v-list-item-action>
             <v-list-item-title class="body-1">
               Logiciel de commande

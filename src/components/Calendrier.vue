@@ -25,13 +25,13 @@
                         class="pa-0 ma-0"
                         v-model="calendarTab"
                 >
-                    <v-tab @click.prevent="$router.push('calendrier')" href="#" class="body-1" key="calendrier">
-                        <v-icon class="mr-6">calendar_today</v-icon>
+                    <v-tab @click.prevent="$router.push('calendrier')" class="body-1" key="calendrier">
+                        <v-icon class="mr-6">calendar_month</v-icon>
                         Calendrier
                     </v-tab>
-                    <v-tab @click.prevent="$router.push('reservation')" href="#" class="body-1" key="reservation">
+                    <v-tab @click.prevent="$router.push('reservation')" class="body-1" key="reservation">
                         <v-icon class="mr-6">
-                            fa-clipboard
+                            event
                         </v-icon>
                         Réservation
                     </v-tab>
@@ -43,32 +43,27 @@
                         }"
                                 key="calendrier"
                     >
-                        <v-card flat>
-                            <v-card-text>
-                                calendrier
-                            </v-card-text>
-                        </v-card>
-                        <!--                            <p class="">-->
-                        <!--                                Ce calendrier est notre référence pour réserver le local!-->
-                        <!--                                <v-btn @click="calendarTab = 1">-->
-                        <!--                                    Réserver-->
-                        <!--                                </v-btn>-->
-                        <!--                            </p>-->
-                        <!--                            <p class="text-left pa-0 ma-0">-->
-                        <!--                                Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection-->
-                        <!--                                documentaires,-->
-                        <!--                                discussions et plus encore.-->
-                        <!--                            </p>-->
-                        <!--                            &lt;!&ndash;              <p v-if="$vuetify.breakpoint.smAndDown">&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                <v-btn&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                    to="https://calendar.google.com/calendar/u/0/embed?src=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com&ctz=America/Toronto">&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                  Voir&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                </v-btn>&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;              </p>&ndash;&gt;-->
-                        <!--                            <div id="hide-calendar-title" class="pa-0 ma-0"></div>-->
-                        <!--                            <iframe frameborder="0" :height="calendarHeight" scrolling="no"-->
-                        <!--                                    src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"-->
-                        <!--                                    style=" border-width:0 " width="100%"></iframe>-->
+                        <p class="">
+                            Ce calendrier est notre référence pour réserver le local!
+                            <v-btn @click="calendarTab = 1">
+                                Réserver
+                            </v-btn>
+                        </p>
+                        <p class="text-left pa-0 ma-0">
+                            Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection
+                            documentaires,
+                            discussions et plus encore.
+                        </p>
+                        <!--              <p v-if="$vuetify.breakpoint.smAndDown">-->
+                        <!--                <v-btn-->
+                        <!--                    to="https://calendar.google.com/calendar/u/0/embed?src=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com&ctz=America/Toronto">-->
+                        <!--                  Voir-->
+                        <!--                </v-btn>-->
+                        <!--              </p>-->
+                        <div id="hide-calendar-title" class="pa-0 ma-0"></div>
+                        <iframe frameborder="0" :height="calendarHeight" scrolling="no"
+                                src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
+                                style=" border-width:0 " width="100%"></iframe>
                     </v-tab-item>
                     <v-tab-item touchless :class="{
                             'pl-4': $vuetify.breakpoint.smAndDown,
@@ -76,12 +71,7 @@
                         }"
                                 key="reservation"
                     >
-                        <!--                        <Reservation></Reservation>-->
-                        <v-card flat>
-                            <v-card-text>
-                                reservation
-                            </v-card-text>
-                        </v-card>
+                        <Reservation></Reservation>
                     </v-tab-item>
                 </v-tabs-items>
             </v-flex>
@@ -108,11 +98,10 @@ export default {
     },
     mounted: function () {
         this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 600;
-        // this.refreshTabWithPath();
+        this.refreshTabWithPath();
     },
     methods: {
-        refreshTabWithPath: function () {
-            return;
+        refreshTabWithPath: async function () {
             if (this.$route.name === "calendrier") {
                 this.calendarTab = 0;
             }
@@ -129,9 +118,6 @@ export default {
     watch: {
         routeName: function () {
             this.refreshTabWithPath();
-        },
-        calendarTab: function () {
-            console.log(this.calendarTab)
         }
     }
 }

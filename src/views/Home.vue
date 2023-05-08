@@ -250,7 +250,7 @@
     <!--              href="https://docs.google.com/document/d/172_fsomZRI60H8MAF-V-sunT82BHllKV05htQLDBOKo/edit?fbclid=IwAR0gC3NsLbV1NCksk5LyRX0FjhLjV4r6C_0Gix7T5ls2E7JaO3fgDSAk9M8#"-->
     <!--          >-->
     <!--            <v-list-item-action>-->
-    <!--              <v-icon>fa-file</v-icon>-->
+    <!--              <v-icon>articles</v-icon>-->
     <!--            </v-list-item-action>-->
     <!--            <v-list-item-content>-->
     <!--              <v-list-item-title> Notre document Google Doc</v-list-item-title>-->

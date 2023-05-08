@@ -129,16 +129,12 @@
                       v-model="paiementTab"
                   >
                     <v-tab
-                        @click.prevent="paiementTab = 0"
-                        href="#"
                         class="body-1"
                     >
                       <v-icon class="mr-6">email</v-icon>
                       Par courriel
                     </v-tab>
                     <v-tab
-                        @click.prevent="paiementTab = 1"
-                        href="#"
                         class="body-1"
                     >
                       Par transit Desjardins
