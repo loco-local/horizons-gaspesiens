@@ -54,16 +54,71 @@
                             documentaires,
                             discussions et plus encore.
                         </p>
-                        <!--              <p v-if="$vuetify.breakpoint.smAndDown">-->
-                        <!--                <v-btn-->
-                        <!--                    to="https://calendar.google.com/calendar/u/0/embed?src=kg43q7s4qltiom7s1gntdhts3k@group.calendar.google.com&ctz=America/Toronto">-->
-                        <!--                  Voir-->
-                        <!--                </v-btn>-->
-                        <!--              </p>-->
-                        <div id="hide-calendar-title" class="pa-0 ma-0"></div>
-                        <iframe frameborder="0" :height="calendarHeight" scrolling="no"
-                                src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
-                                style=" border-width:0 " width="100%"></iframe>
+                        <v-sheet height="64">
+                            <v-toolbar
+                                    flat
+                            >
+                                <v-btn
+                                        outlined
+                                        class="mr-4"
+                                        color="grey darken-2"
+                                        @click="setToday"
+                                >
+                                    Aujourd'hui
+                                </v-btn>
+                                <v-btn
+                                        fab
+                                        text
+                                        small
+                                        color="grey darken-2"
+                                        @click="prev"
+                                >
+                                    <v-icon small>
+                                        chevron_left
+                                    </v-icon>
+                                </v-btn>
+                                <v-btn
+                                        fab
+                                        text
+                                        small
+                                        color="grey darken-2"
+                                        @click="next"
+                                        left
+                                >
+                                    <v-icon small>
+                                        chevron_right
+                                    </v-icon>
+                                </v-btn>
+                                <v-toolbar-title v-if="$refs.calendar">
+                                    {{ $refs.calendar.title }}
+                                </v-toolbar-title>
+                                <v-spacer></v-spacer>
+                                <v-btn @click="addEvent" color="primary">
+                                    <v-icon>add</v-icon>
+                                    Ajouter
+                                </v-btn>
+                            </v-toolbar>
+                        </v-sheet>
+                        <v-sheet :height="calendarHeight">
+                            <v-overlay
+                                    :absolute="false"
+                                    :value="isLoading"
+                            >
+                                <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
+                            </v-overlay>
+                            <v-calendar
+                                    ref="calendar"
+                                    v-model="calendarFocus"
+                                    :weekdays="weekdays"
+                                    type="week"
+                                    :events="events"
+                                    event-overlap-mode="column"
+                                    :event-overlap-threshold="30"
+                                    :colors="colors"
+                                    :event-color="getEventColor"
+                                    @change="getEvents"
+                            ></v-calendar>
+                        </v-sheet>
                     </v-tab-item>
                     <v-tab-item touchless :class="{
                             'pl-4': $vuetify.breakpoint.smAndDown,
@@ -71,7 +126,7 @@
                         }"
                                 key="reservation"
                     >
-                        <Reservation></Reservation>
+                        <ReservationForm></ReservationForm>
                     </v-tab-item>
                 </v-tabs-items>
             </v-flex>
@@ -83,24 +138,67 @@
 
 <script>
 import PhoneDialog from '@/components/PhoneDialog'
-import Reservation from "@/components/Reservation.vue";
+import ReservationForm from "@/components/ReservationForm.vue";
+import EventService from "@/service/EventService";
+import {format} from "date-fns";
 
 export default {
     components: {
-        Reservation,
+        ReservationForm,
         PhoneDialog
     },
     data: function () {
         return {
+            isLoading: false,
             calendarTab: 0,
-            calendarHeight: 0
+            calendarHeight: 0,
+            events: [],
+            weekdays: [1, 2, 3, 4, 5, 6, 0],
+            calendarFocus: '',
+            colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
+            googleColors: []
         }
     },
     mounted: function () {
-        this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 600;
+        this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 700;
         this.refreshTabWithPath();
+        this.$refs.calendar.scrollToTime('08:00')
+        this.defineGoogleColors()
     },
     methods: {
+        addEvent: function () {
+
+        },
+        setToday() {
+            this.calendarFocus = ''
+        },
+        prev() {
+            this.$refs.calendar.prev()
+        },
+        next() {
+            this.$refs.calendar.next()
+        },
+        getEventColor: function () {
+            return 'cyan'
+        },
+        getEvents: async function (date) {
+            this.isLoading = true;
+            const events = await EventService.list(
+                date.start.date,
+                date.end.date
+            )
+            console.log(events);
+            this.events = events.map((event) => {
+                const start = new Date(event.start.dateTime)
+                const end = new Date(event.end.dateTime)
+                return {
+                    name: event.summary,
+                    start: format(start, "yyyy-MM-dd HH:mm"),
+                    end: format(end, "yyyy-MM-dd HH:mm")
+                }
+            })
+            this.isLoading = false;
+        },
         refreshTabWithPath: async function () {
             if (this.$route.name === "calendrier") {
                 this.calendarTab = 0;
@@ -108,6 +206,39 @@ export default {
             if (this.$route.name === "reservation") {
                 this.calendarTab = 1;
             }
+        },
+        defineGoogleColors: async function () {
+            this.googleColors = [{
+                "background": "#a4bdfc",
+                "foreground": "#1d1d1d",
+                "id": "1"
+            }, {"background": "#7ae7bf", "foreground": "#1d1d1d", "id": "2"}, {
+                "background": "#dbadff",
+                "foreground": "#1d1d1d",
+                "id": "3"
+            }, {"background": "#ff887c", "foreground": "#1d1d1d", "id": "4"}, {
+                "background": "#fbd75b",
+                "foreground": "#1d1d1d",
+                "id": "5"
+            }, {"background": "#ffb878", "foreground": "#1d1d1d", "id": "6"}, {
+                "background": "#46d6db",
+                "foreground": "#1d1d1d",
+                "id": "7"
+            }, {"background": "#e1e1e1", "foreground": "#1d1d1d", "id": "8"}, {
+                "background": "#5484ed",
+                "foreground": "#1d1d1d",
+                "id": "9"
+            }, {"background": "#51b749", "foreground": "#1d1d1d", "id": "10"}, {
+                "background": "#dc2127",
+                "foreground": "#1d1d1d",
+                "id": "11"
+            }]
+            // this.googleColors = await EventService.listColors();
+            // this.googleColors = Object.keys(this.googleColors.event).map((colorId) => {
+            //     const color = this.googleColors.event[colorId];
+            //     color.id = colorId
+            //     return color;
+            // })
         }
     },
     computed: {
@@ -132,5 +263,13 @@ export default {
 
 .v-tabs__slider {
     height: 3px;
+}
+
+.v-calendar-daily__interval-text {
+    font-size: 14px !important
+}
+
+.v-calendar-daily_head-weekday {
+    font-size: 14px !important
 }
 </style>
