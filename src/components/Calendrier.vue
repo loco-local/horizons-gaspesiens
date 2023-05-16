@@ -214,11 +214,36 @@
                                 </v-menu>
                             </v-col>
                             <v-col cols="12" lg="6">
-                                <v-time-picker
-                                    format="24hr"
-                                    v-model="newEvent.startTime"
-                                    label="heure"
-                                ></v-time-picker>
+                                <v-menu
+                                    ref="timeMenu"
+                                    v-model="timeMenu"
+                                    :close-on-content-click="false"
+                                    :nudge-right="40"
+                                    :return-value.sync="newEvent.startTime"
+                                    transition="scale-transition"
+                                    offset-y
+                                    max-width="290px"
+                                    min-width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="newEvent.startTime"
+                                            label="Heure"
+                                            prepend-icon="mdi-clock-time-four-outline"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-time-picker
+                                        format="24hr"
+                                        v-model="newEvent.startTime"
+                                        label="heure"
+                                        v-if="timeMenu"
+                                        full-width
+                                        @click:minute="$refs.timeMenu.save(newEvent.startTime)"
+                                    ></v-time-picker>
+                                </v-menu>
                             </v-col>
                         </v-row>
                         {{ newEvent }}
@@ -260,7 +285,8 @@ export default {
             addEventDialog: false,
             isSaveEventLoading: false,
             rules: Rules,
-            eventStartDateMenu: false
+            eventStartDateMenu: false,
+            timeMenu: false
         }
     },
     mounted: function () {
@@ -302,12 +328,11 @@ export default {
                 this.newEvent = this.createEvent = {
                     name: `Event #${this.events.length}`,
                     startDay: format(createDate, "yyyy-MM-dd"),
-                    startTime: format(createDate, "HH-mm"),
+                    startTime: format(createDate, "HH:mm"),
                     end: this.createStart,
                     timed: true,
                 }
             }
-            console.log("startTime")
         },
         extendBottom(event) {
             this.createEvent = event
