@@ -10,7 +10,7 @@
     </div>
     <div slot="content">
       <a href="https://www.facebook.com/locolocal1">
-        <v-alert colored-border icon="calendar_month" elevation="1" class="body-1">
+        <v-alert colored-border icon="calendar_month" large elevation="1" class="text-smaller-2" prominent>
           Suivez notre page facebook pour connaître la date du prochain café de réparation.
         </v-alert>
       </a>
@@ -30,7 +30,7 @@
 <!--          <v-list-item-action>-->
 <!--            <v-icon>facebook</v-icon>-->
 <!--          </v-list-item-action>-->
-          <v-list-item-title class="body-1">
+          <v-list-item-title class="text-smaller-2">
             Un café-réparation qui a pignon sur rue à Montréal
           </v-list-item-title>
         </v-list-item>
@@ -38,7 +38,7 @@
 <!--          <v-list-item-action>-->
 <!--            <v-icon>facebook</v-icon>-->
 <!--          </v-list-item-action>-->
-          <v-list-item-title class="body-1">
+          <v-list-item-title class="text-smaller-2">
             Groupe Facebook d'échange d'informations
           </v-list-item-title>
         </v-list-item>

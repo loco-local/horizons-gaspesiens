@@ -17,7 +17,7 @@
                 <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;"
                              class="text-left body-2">
                     <v-list-item-content>
-                        <v-list-item-title>
+                        <v-list-item-title class="text">
                             À propos
                         </v-list-item-title>
                     </v-list-item-content>
@@ -226,7 +226,7 @@
                 }"
                             >attach_money
                             </v-icon>
-                            <span v-if="$vuetify.breakpoint.xlOnly"> Don et paiement </span>
+                            <span v-if="$vuetify.breakpoint.xlOnly" class=""> Don et paiement </span>
                             <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
                         </v-btn>
                         <v-btn
@@ -650,25 +650,75 @@ export default {
 </script>
 
 
-<style>
-* {
+<style lang="scss">
+.text {
     line-height: 1.8;
 }
 
-.font-size-xl * {
-    font-size: 1.1em;
+.text-smaller {
+    line-height: 1.6;
+}
+.font-size-xl {
+    .text {
+        font-size: 1.4em;
+    }
+
+    .text-smaller {
+        font-size: 1.3em;
+    }
+
+    .text-smaller-2 {
+        font-size: 1em;
+    }
 }
 
-.font-size-lg-and-down * {
-    font-size: 1em;
-}
+.font-size-lg-and-down {
+    .text {
+        font-size: 1em;
+    }
 
+    .text-smaller {
+        font-size: 0.9em;
+    }
+
+    .text-smaller-2 {
+        font-size: 0.8em;
+    }
+}
 .v-tab {
     font-size: 1em;
 }
 
 .v-tab * {
     font-size: 1em;
+}
+
+.v-tabs__slider {
+    height: 3px;
+}
+
+.v-calendar-daily__interval-text {
+    font-size: 14px !important
+}
+
+.v-calendar-daily_head-weekday {
+    font-size: 14px !important
+}
+
+.v-time-picker-clock__item {
+    font-size: 16px;
+}
+
+.v-input {
+    font-size: 18px;
+}
+
+button {
+    font-size: 18px !important;
+}
+
+.v-date-picker-table .v-btn {
+    font-size: 12px !important;
 }
 
 #header-banner {
@@ -791,6 +841,7 @@ a {
 .v-card__title {
     word-break: inherit !important;
 }
+
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0,
     'wght' 400,

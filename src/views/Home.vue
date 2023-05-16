@@ -33,7 +33,7 @@
     <div id="about" class="mb-12"></div>
     <v-layout row wrap class="mb-1">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">À propos</h1>
+        <h1 class="display-2 font-weight-thin text">À propos</h1>
       </v-flex>
     </v-layout>
     <v-layout
@@ -47,12 +47,8 @@
       <v-flex xs0 sm2 md3 lg4></v-flex>
       <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify body-1">
         <p
-            class="body-1"
-            style="
-            font-size: 1.2em !important;
-            font-weight: 300;
-            line-height: 1.5;
-          "
+            class="text"
+            style="font-weight: 300;"
         >
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
           chapeaute différentes initiatives
@@ -91,8 +87,8 @@
     <v-divider class="mt-6 mb-12"></v-divider>
     <v-layout row wrap class="mb-12" id="benevole">
       <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">Membres</h1>
-        <h4 class="subtitle-1">de comités actifs</h4>
+        <h1 class="display-2 font-weight-thin text">Membres</h1>
+          <h4 class="text-smaller font-weight-thin">comités actifs</h4>
       </v-flex>
     </v-layout>
     <v-row wrap class="body-2">
@@ -134,10 +130,10 @@
               'mt-0': $vuetify.breakpoint.smAndDown,
             }"
           >
-            <h3 class="heading font-weight-regular">
+            <h3 class="heading font-weight-medium text">
               {{ membre.nom }}
             </h3>
-            <p class="grey-text mb-0">
+            <p class="grey-text mb-0 text">
               {{ membre.cv }}
             </p>
             <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
@@ -150,10 +146,11 @@
                 <router-link
                     :to="cercle(props.item).lien"
                     v-if="!cercleEstDesactive(props.item)"
+                    class="text-smaller"
                 >
                   {{ nomDeCercle(props.item) }}
                 </router-link>
-                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1">{{
+                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1 text-smaller">{{
                     nomDeCercle(props.item)
                   }}</span>
               </template>

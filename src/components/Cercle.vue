@@ -32,10 +32,10 @@
               {{ title }}
               <slot name="title"></slot>
             </v-card-title>
-            <v-card-subtitle class="body-1 font-weight-bold text-left mt-1 ml-4">
+            <v-card-subtitle class="text-smaller font-weight-bold text-left mt-1 ml-4">
               <slot name="subtitle"></slot>
             </v-card-subtitle>
-            <v-card-text class="text-left body-1">
+            <v-card-text class="text-left text">
               <slot name="content"></slot>
             </v-card-text>
           </v-flex>

@@ -101,7 +101,7 @@
                         </v-sheet>
                         <v-sheet :height="calendarHeight">
                             <v-overlay
-                                    :absolute="false"
+                                    absolute
                                     :value="isLoading"
                             >
                                 <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
@@ -117,7 +117,23 @@
                                     :colors="colors"
                                     :event-color="getEventColor"
                                     @change="getEvents"
-                            ></v-calendar>
+                                    @mousedown:event="startDrag"
+                                    @mousedown:time="startTime"
+                                    @mousemove:time="mouseMove"
+                                    @mouseup:time="endDrag"
+                                    @mouseleave.native="cancelDrag"
+                            >
+                                <template v-slot:event="{ event, timed, eventSummary }">
+                                    <div class="v-event-draggable">
+                                        <component :is="{ render: eventSummary }"></component>
+                                    </div>
+                                    <div
+                                            v-if="timed"
+                                            class="v-event-drag-bottom"
+                                            @mousedown.stop="extendBottom(event)"
+                                    ></div>
+                                </template>
+                            </v-calendar>
                         </v-sheet>
                     </v-tab-item>
                     <v-tab-item touchless :class="{
@@ -133,6 +149,83 @@
             <v-flex xs0 lg2></v-flex>
         </v-layout>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
+        <v-dialog :fullscreen="true" v-model="addEventDialog" v-if="addEventDialog">
+            <v-card>
+                <v-toolbar
+                        dark
+                        color="primary"
+                >
+                    <v-btn
+                            icon
+                            dark
+                            @click="cancelSave"
+                    >
+                        <v-icon>close</v-icon>
+                    </v-btn>
+                    <v-toolbar-title>
+                        Réservation
+                    </v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-toolbar-items>
+                        <v-btn
+                                dark
+                                text
+                                @click="save"
+                                :loading="isSaveEventLoading"
+                        >
+                            Sauvegarder
+                        </v-btn>
+                    </v-toolbar-items>
+                </v-toolbar>
+                <v-container>
+                    <v-form name="eventForm" ref="eventForm">
+                        <v-row class="text-left mt-4">
+                            <v-col cols="12">
+                                <h2>Jour et Heure</h2>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" lg="6">
+                                <v-menu
+                                    ref="orderOpenDateMenu"
+                                    v-model="eventStartDateMenu"
+                                    :close-on-content-click="false"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="auto"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="newEvent.startDay"
+                                            label="Jour"
+                                            prepend-icon="calendar"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            :rules="[rules.required]"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        v-model="newEvent.startDay"
+                                        no-title
+                                        scrollable
+                                        @input="orderOpenDateMenu = false"
+                                    ></v-date-picker>
+                                </v-menu>
+                            </v-col>
+                            <v-col cols="12" lg="6">
+                                <v-time-picker
+                                    format="24hr"
+                                    v-model="newEvent.startTime"
+                                    label="heure"
+                                ></v-time-picker>
+                            </v-col>
+                        </v-row>
+                        {{ newEvent }}
+                    </v-form>
+                </v-container>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -141,6 +234,7 @@ import PhoneDialog from '@/components/PhoneDialog'
 import ReservationForm from "@/components/ReservationForm.vue";
 import EventService from "@/service/EventService";
 import {format} from "date-fns";
+import Rules from "@/Rules";
 
 export default {
     components: {
@@ -156,7 +250,17 @@ export default {
             weekdays: [1, 2, 3, 4, 5, 6, 0],
             calendarFocus: '',
             colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-            googleColors: []
+            googleColors: [],
+            dragEvent: null,
+            dragStart: null,
+            createEvent: null,
+            newEvent: null,
+            createStart: null,
+            extendOriginal: null,
+            addEventDialog: false,
+            isSaveEventLoading: false,
+            rules: Rules,
+            eventStartDateMenu: false
         }
     },
     mounted: function () {
@@ -166,8 +270,125 @@ export default {
         this.defineGoogleColors()
     },
     methods: {
-        addEvent: function () {
+        cancelSave: function () {
+            this.addEventDialog = false;
+            console.log("cancelSave")
+        },
+        save: function () {
+            this.isSaveEventLoading = true;
+            this.events.push(this.createEvent)
+            this.isSaveEventLoading = false;
+            this.addEventDialog = false;
+            console.log("save")
+        },
+        startDrag({event, timed}) {
+            if (event && timed) {
+                this.dragEvent = event
+                this.dragTime = null
+                this.extendOriginal = null
+            }
+            console.log("startDrag")
+        },
+        startTime(tms) {
+            const mouse = this.toTime(tms)
 
+            if (this.dragEvent && this.dragTime === null) {
+                const start = this.dragEvent.start
+
+                this.dragTime = mouse - start
+            } else {
+                this.createStart = this.roundTime(mouse)
+                const createDate = new Date(this.createStart);
+                this.newEvent = this.createEvent = {
+                    name: `Event #${this.events.length}`,
+                    startDay: format(createDate, "yyyy-MM-dd"),
+                    startTime: format(createDate, "HH-mm"),
+                    end: this.createStart,
+                    timed: true,
+                }
+            }
+            console.log("startTime")
+        },
+        extendBottom(event) {
+            this.createEvent = event
+            this.createStart = event.start
+            this.extendOriginal = event.end
+            console.log("extendBottom")
+        },
+        mouseMove(tms) {
+            const mouse = this.toTime(tms)
+
+            if (this.dragEvent && this.dragTime !== null) {
+                const start = this.dragEvent.start
+                const end = this.dragEvent.end
+                const duration = end - start
+                const newStartTime = mouse - this.dragTime
+                const newStart = this.roundTime(newStartTime)
+                const newEnd = newStart + duration
+
+                this.dragEvent.start = newStart
+                this.dragEvent.end = newEnd
+            } else if (this.createEvent && this.createStart !== null) {
+                const mouseRounded = this.roundTime(mouse, false)
+                const min = Math.min(mouseRounded, this.createStart)
+                const max = Math.max(mouseRounded, this.createStart)
+
+                this.createEvent.start = min
+                this.createEvent.end = max
+            }
+            console.log("mousemove")
+        },
+        async endDrag() {
+            const showDialog = this.createEvent !== null;
+            this.dragTime = null
+            this.dragEvent = null
+            this.createEvent = null
+            this.createStart = null
+            this.extendOriginal = null
+            if (showDialog) {
+                setTimeout(() => {
+                    this.addEventDialog = true;
+                }, 100)
+            }
+            console.log("endDrag")
+        },
+        cancelDrag() {
+            if (this.createEvent) {
+                if (this.extendOriginal) {
+                    this.createEvent.end = this.extendOriginal
+                } else {
+                    const i = this.events.indexOf(this.createEvent)
+                    if (i !== -1) {
+                        this.events.splice(i, 1)
+                    }
+                }
+            }
+
+            this.createEvent = null
+            this.createStart = null
+            this.dragTime = null
+            this.dragEvent = null
+            console.log("cancelDrag")
+        },
+        roundTime(time, down = true) {
+            const roundTo = 15 // minutes
+            const roundDownTime = roundTo * 60 * 1000
+
+            return down
+                ? time - time % roundDownTime
+                : time + (roundDownTime - (time % roundDownTime))
+        },
+        toTime(tms) {
+            return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
+        },
+        rnd(a, b) {
+            return Math.floor((b - a + 1) * Math.random()) + a
+        },
+        rndElement(arr) {
+            return arr[this.rnd(0, arr.length - 1)]
+        },
+        addEvent: function () {
+            console.log('yo')
         },
         setToday() {
             this.calendarFocus = ''
@@ -178,8 +399,8 @@ export default {
         next() {
             this.$refs.calendar.next()
         },
-        getEventColor: function () {
-            return 'cyan'
+        getEventColor: function (event) {
+            return event.color
         },
         getEvents: async function (date) {
             this.isLoading = true;
@@ -193,8 +414,10 @@ export default {
                 const end = new Date(event.end.dateTime)
                 return {
                     name: event.summary,
+                    color: this.getColorFromId(event.colorId).background,
                     start: format(start, "yyyy-MM-dd HH:mm"),
-                    end: format(end, "yyyy-MM-dd HH:mm")
+                    end: format(end, "yyyy-MM-dd HH:mm"),
+                    id: event.id
                 }
             })
             this.isLoading = false;
@@ -206,6 +429,12 @@ export default {
             if (this.$route.name === "reservation") {
                 this.calendarTab = 1;
             }
+        },
+        getColorFromId: function (colorId) {
+            const color = this.googleColors.filter((color) => {
+                return color.id === colorId
+            })
+            return color.length ? color[0] : this.getColorFromId("9")
         },
         defineGoogleColors: async function () {
             this.googleColors = [{
@@ -261,15 +490,4 @@ export default {
     background-color: white;
 }
 
-.v-tabs__slider {
-    height: 3px;
-}
-
-.v-calendar-daily__interval-text {
-    font-size: 14px !important
-}
-
-.v-calendar-daily_head-weekday {
-    font-size: 14px !important
-}
 </style>

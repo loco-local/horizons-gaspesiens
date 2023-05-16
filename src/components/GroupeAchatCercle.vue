@@ -17,22 +17,22 @@
         autonome, saine et solidaire.
       </p>
       <v-card class="mt-6">
-        <v-list>
+        <v-list class="">
           <v-list-item
               href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com"
           >
             <v-list-item-action>
-              <v-icon>mail</v-icon>
+              <v-icon large>mail</v-icon>
             </v-list-item-action>
-            <v-list-item-title class="body-1">
+            <v-list-item-title class="text-smaller-2">
               Demande d'adhésion à groupe.achat.hg@gmail.com
             </v-list-item-title>
           </v-list-item>
           <v-list-item href="https://foodclub.org/bonaventure">
             <v-list-item-action>
-              <v-icon>app_shortcut</v-icon>
+              <v-icon large>app_shortcut</v-icon>
             </v-list-item-action>
-            <v-list-item-title class="body-1">
+            <v-list-item-title class="text-smaller-2">
               Logiciel de commande
             </v-list-item-title>
           </v-list-item>
@@ -40,9 +40,9 @@
               href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf"
           >
             <v-list-item-action>
-              <v-icon>picture_as_pdf</v-icon>
+              <v-icon large>picture_as_pdf</v-icon>
             </v-list-item-action>
-            <v-list-item-title class="body-1">
+            <v-list-item-title class="text-smaller-2">
               Compte rendu de réunion
             </v-list-item-title>
           </v-list-item>
