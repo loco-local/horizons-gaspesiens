@@ -177,73 +177,134 @@
                         </v-btn>
                     </v-toolbar-items>
                 </v-toolbar>
-                <v-container>
+                <v-container class="mt-8">
                     <v-form name="eventForm" ref="eventForm">
+                        <v-row>
+                            <v-col cols="12" lg="6" xl="4">
+                                <v-text-field
+                                        v-model="newEvent.summary"
+                                        label="Nom de l'événement"
+                                        :rules="[rules.required]">
+                                </v-text-field>
+                            </v-col>
+                        </v-row>
                         <v-row class="text-left mt-4">
                             <v-col cols="12">
-                                <h2>Jour et Heure</h2>
+                                <h4>Jour et Heure</h4>
                             </v-col>
                         </v-row>
                         <v-row>
-                            <v-col cols="12" lg="6">
+                            <v-col cols="12" lg="4">
                                 <v-menu
-                                    ref="orderOpenDateMenu"
-                                    v-model="eventStartDateMenu"
-                                    :close-on-content-click="false"
-                                    transition="scale-transition"
-                                    offset-y
-                                    min-width="auto"
+                                        ref="orderOpenDateMenu"
+                                        v-model="eventStartDateMenu"
+                                        :close-on-content-click="false"
+                                        transition="scale-transition"
+                                        offset-y
+                                        min-width="auto"
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                            v-model="newEvent.startDay"
-                                            label="Jour"
-                                            prepend-icon="calendar"
-                                            readonly
-                                            v-bind="attrs"
-                                            v-on="on"
-                                            :rules="[rules.required]"
+                                                v-model="newEvent.startDay"
+                                                label="Jour"
+                                                prepend-icon="calendar"
+                                                readonly
+                                                v-bind="attrs"
+                                                v-on="on"
+                                                :rules="[rules.required]"
                                         ></v-text-field>
                                     </template>
                                     <v-date-picker
-                                        v-model="newEvent.startDay"
-                                        no-title
-                                        scrollable
-                                        @input="orderOpenDateMenu = false"
+                                            v-model="newEvent.startDay"
+                                            no-title
+                                            scrollable
+                                            @input="eventStartDateMenu = false"
                                     ></v-date-picker>
                                 </v-menu>
                             </v-col>
-                            <v-col cols="12" lg="6">
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" lg="4">
                                 <v-menu
-                                    ref="timeMenu"
-                                    v-model="timeMenu"
-                                    :close-on-content-click="false"
-                                    :nudge-right="40"
-                                    :return-value.sync="newEvent.startTime"
-                                    transition="scale-transition"
-                                    offset-y
-                                    max-width="290px"
-                                    min-width="290px"
+                                        ref="startTimeMenu"
+                                        v-model="startTimeMenu"
+                                        :close-on-content-click="false"
+                                        :nudge-right="40"
+                                        :return-value.sync="newEvent.startTime"
+                                        transition="scale-transition"
+                                        offset-y
+                                        max-width="290px"
+                                        min-width="290px"
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                            v-model="newEvent.startTime"
-                                            label="Heure"
-                                            prepend-icon="mdi-clock-time-four-outline"
-                                            readonly
-                                            v-bind="attrs"
-                                            v-on="on"
+                                                v-model="newEvent.startTime"
+                                                label="Début"
+                                                prepend-icon="mdi-clock-time-four-outline"
+                                                readonly
+                                                v-bind="attrs"
+                                                v-on="on"
+                                                :rules="[rules.required]"
                                         ></v-text-field>
                                     </template>
                                     <v-time-picker
-                                        format="24hr"
-                                        v-model="newEvent.startTime"
-                                        label="heure"
-                                        v-if="timeMenu"
-                                        full-width
-                                        @click:minute="$refs.timeMenu.save(newEvent.startTime)"
+                                            format="24hr"
+                                            v-model="newEvent.startTime"
+                                            label="heure"
+                                            v-if="startTimeMenu"
+                                            full-width
+                                            @click:minute="$refs.startTimeMenu.save(newEvent.startTime)"
                                     ></v-time-picker>
                                 </v-menu>
+                            </v-col>
+                            <v-col cols="12" lg="4">
+                                <v-menu
+                                        ref="endTimeMenu"
+                                        v-model="endTimeMenu"
+                                        :close-on-content-click="false"
+                                        :nudge-right="40"
+                                        :return-value.sync="newEvent.endTime"
+                                        transition="scale-transition"
+                                        offset-y
+                                        max-width="290px"
+                                        min-width="290px"
+                                >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                                v-model="newEvent.endTime"
+                                                label="Fin"
+                                                prepend-icon="mdi-clock-time-four-outline"
+                                                readonly
+                                                v-bind="attrs"
+                                                v-on="on"
+                                                :rules="[rules.required]"
+                                        ></v-text-field>
+                                    </template>
+                                    <v-time-picker
+                                            format="24hr"
+                                            v-model="newEvent.endTime"
+                                            label="heure"
+                                            v-if="endTimeMenu"
+                                            full-width
+                                            @click:minute="$refs.endTimeMenu.save(newEvent.endTime)"
+                                    ></v-time-picker>
+                                </v-menu>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" lg="6" xl="4">
+                                <v-textarea>
+                                    v-model="newEvent.description"
+                                    label="Plus d'informations"
+                                    :rules="[rules.required]">
+                                </v-textarea>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" class="text-left">
+                                <v-btn color="primary" @click="save" :loading="isSaveEventLoading">
+                                    Ajouter
+                                </v-btn>
                             </v-col>
                         </v-row>
                         {{ newEvent }}
@@ -258,7 +319,7 @@
 import PhoneDialog from '@/components/PhoneDialog'
 import ReservationForm from "@/components/ReservationForm.vue";
 import EventService from "@/service/EventService";
-import {format} from "date-fns";
+import {addHours, format} from "date-fns";
 import Rules from "@/Rules";
 
 export default {
@@ -286,7 +347,8 @@ export default {
             isSaveEventLoading: false,
             rules: Rules,
             eventStartDateMenu: false,
-            timeMenu: false
+            startTimeMenu: false,
+            endTimeMenu: false
         }
     },
     mounted: function () {
@@ -300,9 +362,12 @@ export default {
             this.addEventDialog = false;
             console.log("cancelSave")
         },
-        save: function () {
+        save: async function () {
             this.isSaveEventLoading = true;
-            this.events.push(this.createEvent)
+            await EventService.add(
+                this.newEvent
+            )
+            this.events.push(this.newEvent)
             this.isSaveEventLoading = false;
             this.addEventDialog = false;
             console.log("save")
@@ -325,10 +390,13 @@ export default {
             } else {
                 this.createStart = this.roundTime(mouse)
                 const createDate = new Date(this.createStart);
+                const end = addHours(createDate, 2);
                 this.newEvent = this.createEvent = {
                     name: `Event #${this.events.length}`,
                     startDay: format(createDate, "yyyy-MM-dd"),
                     startTime: format(createDate, "HH:mm"),
+                    endTime: format(end, "HH:mm"),
+                    start: this.createStart,
                     end: this.createStart,
                     timed: true,
                 }
