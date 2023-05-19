@@ -162,7 +162,7 @@
                     >
                         <v-icon>close</v-icon>
                     </v-btn>
-                    <v-toolbar-title>
+                    <v-toolbar-title class="text">
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
@@ -179,9 +179,9 @@
                 </v-toolbar>
                 <v-container class="mt-8">
                     <v-form name="eventForm" ref="eventForm">
-                        <v-row class="text-left mt-4">
+                        <v-row class="text-left">
                             <v-col cols="12">
-                                <h4>Jour et Heure</h4>
+                                <h4 class="text">Jour et Heure</h4>
                             </v-col>
                         </v-row>
                         <v-row>
@@ -289,7 +289,7 @@
                             <v-col cols="12">
                                 <v-row class="text-left">
                                     <v-col cols="12">
-                                        <h4>Organisateur</h4>
+                                        <h4 class="text">Organisateur</h4>
                                     </v-col>
                                     <v-col cols="12">
                                         <v-row>
@@ -320,7 +320,7 @@
                                         </v-row>
                                     </v-col>
                                     <v-col cols="12" class="">
-                                        <h4>
+                                        <h4 class="text">
                                             <v-icon left>check</v-icon>
                                             Vous devez être membre de la coopérative pour réserver la salle
                                         </h4>
@@ -338,7 +338,7 @@
                         </v-row>
                         <v-row class="">
                             <v-col cols="12" class="text-left">
-                                <h4>Événement</h4>
+                                <h4 class="text">Événement</h4>
                             </v-col>
                             <v-col cols="12" lg="6" xl="4">
                                 <v-text-field
@@ -365,10 +365,12 @@
                         </v-row>
                         <v-row>
                             <v-col cols="12">
-                                <h4 class="text-left">Partage de la salle</h4>
+                                <h4 class="text-left text">Partage de la salle</h4>
                                 <v-radio-group
                                         v-model="newEvent.colorId"
                                         column
+                                        :rules="[rules.required]"
+
                                 >
                                     <v-radio
                                             label="Seuls les participants à l'activité peuvent être dans la salle"
@@ -391,10 +393,75 @@
                         <v-divider class="mt-6 mb-6"></v-divider>
                         <v-row>
                             <v-col cols="12" class="text-left">
-                                <h4>Tarification</h4>
+                                <h4 class="text">Tarification</h4>
                             </v-col>
                             <v-col cols="12" class="text-left">
-
+                                <p class="body-1 font-weight-bold text-center">
+                                    Contribution minimale pour la location
+                                    de la salle.
+                                </p>
+                                <v-card class="mb-8">
+                                    <v-simple-table>
+                                        <template v-slot:default>
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th class="body-1">
+                                                    Un bloc de 4 heures<br>
+                                                    (matin, après-midi ou soirée)
+                                                </th>
+                                                <th class="body-1">
+                                                    Un bloc de 8 heures<br>
+                                                    (toute la journée)
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <template slot="item" slot-scope="props">
+                                                <td class="body-1">
+                                                    {{ props.item.row1 }}
+                                                </td>
+                                                <td class="body-1">
+                                                    {{ props.item.row2 }}
+                                                </td>
+                                                <td class="body-1">
+                                                    {{ props.item.row3 }}
+                                                </td>
+                                            </template>
+                                            <tr
+                                                    v-for="price in priceRows"
+                                                    :key="price.row1"
+                                            >
+                                                <td class="body-1">{{ price.row1 }}</td>
+                                                <td class="body-1">{{ price.row2 }}</td>
+                                                <td class="body-1">{{ price.row3 }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
+                                </v-card>
+                                <v-alert
+                                    color="primary"
+                                    border="left"
+                                    elevation="2"
+                                    colored-border
+                                    icon="mdi-twitter"
+                                >
+                                    <p class="body-1">
+                                        Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les frais de
+                                        location de
+                                        la salle,
+                                        un total inférieur au montant suggéré peut être donné au Loco.
+                                    </p>
+                                    <p class="body-1">
+                                        Toutefois des démarches doivent alors êtres entreprises par l'organisateur pour
+                                        parvenir à donner la contribution minimale lors des prochaines activités.
+                                    </p>
+                                    <p class="body-1">
+                                        Aussi, lorsque l'événement est financé par contributions volontaires, les taxes ne sont pas
+                                        chargées.
+                                    </p>
+                                </v-alert>
                             </v-col>
                         </v-row>
                         <v-divider class="mt-6 mb-6"></v-divider>
@@ -456,7 +523,24 @@ export default {
             rules: Rules,
             eventStartDateMenu: false,
             startTimeMenu: false,
-            endTimeMenu: false
+            endTimeMenu: false,
+            priceRows: [
+                {
+                    row1: 'Grande salle (40 personnes)',
+                    row2: '50$ + taxes',
+                    row3: '75$ + taxes',
+                },
+                {
+                    row1: 'Cuisine',
+                    row2: '25$ + taxes',
+                    row3: '40$ + taxes',
+                },
+                {
+                    row1: 'Petite salle de réunion (5 personnes)',
+                    row2: '20$ + taxes',
+                    row3: '30$ + taxes',
+                }
+            ]
         }
     },
     mounted: function () {
