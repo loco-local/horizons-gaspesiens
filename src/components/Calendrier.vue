@@ -179,15 +179,6 @@
                 </v-toolbar>
                 <v-container class="mt-8">
                     <v-form name="eventForm" ref="eventForm">
-                        <v-row>
-                            <v-col cols="12" lg="6" xl="4">
-                                <v-text-field
-                                        v-model="newEvent.summary"
-                                        label="Nom de l'événement"
-                                        :rules="[rules.required]">
-                                </v-text-field>
-                            </v-col>
-                        </v-row>
                         <v-row class="text-left mt-4">
                             <v-col cols="12">
                                 <h4>Jour et Heure</h4>
@@ -292,12 +283,127 @@
                             </v-col>
                         </v-row>
                         <v-row>
+                            <v-col cols="12">
+                                <v-divider></v-divider>
+                            </v-col>
+                            <v-col cols="12">
+                                <v-row class="text-left">
+                                    <v-col cols="12">
+                                        <h4>Organisateur</h4>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-row>
+                                            <v-col cols="12" lg="4">
+                                                <v-text-field
+                                                        label="Votre nom"
+                                                        v-model="newEvent.organizer.fullname"
+                                                ></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                        <v-row>
+                                            <v-col cols="12" lg="4">
+                                                <v-text-field
+                                                        label="Votre courriel"
+                                                        v-model="newEvent.organizer.email"
+                                                        prepend-icon="email"
+                                                        :rules="[rules.required]"
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" lg="4">
+                                                <v-text-field
+                                                        label="Votre téléphone"
+                                                        v-model="newEvent.organizer.phone"
+                                                        prepend-icon="phone"
+                                                        :rules="[rules.required]"
+                                                ></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </v-col>
+                                    <v-col cols="12" class="">
+                                        <h4>
+                                            <v-icon left>check</v-icon>
+                                            Vous devez être membre de la coopérative pour réserver la salle
+                                        </h4>
+                                    </v-col>
+                                    <v-col cols="12" class="pa-0">
+                                        <VerificationAdhesion></VerificationAdhesion>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-divider></v-divider>
+                            </v-col>
+                        </v-row>
+                        <v-row class="">
+                            <v-col cols="12" class="text-left">
+                                <h4>Événement</h4>
+                            </v-col>
                             <v-col cols="12" lg="6" xl="4">
-                                <v-textarea>
-                                    v-model="newEvent.description"
-                                    label="Plus d'informations"
-                                    :rules="[rules.required]">
+                                <v-text-field
+                                        v-model="newEvent.summary"
+                                        label="Nom de l'événement"
+                                        prepend-icon="event"
+                                        :rules="[rules.required]">
+                                </v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" lg="6" xl="4">
+                                <v-textarea
+                                        v-model="newEvent.description"
+                                        label="Informations additionnelles"
+                                >
                                 </v-textarea>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-divider></v-divider>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <h4 class="text-left">Partage de la salle</h4>
+                                <v-radio-group
+                                        v-model="newEvent.colorId"
+                                        column
+                                >
+                                    <v-radio
+                                            label="Seuls les participants à l'activité peuvent être dans la salle"
+                                            color="#dc2127"
+                                            value="11"
+                                    ></v-radio>
+                                    <v-radio
+                                            label="La salle peut être partagée si les autres respectent le bon déroulement de notre activité."
+                                            color="#5484ed"
+                                            value="9"
+                                    ></v-radio>
+                                    <v-radio
+                                            label="Pas prioritaire, réservez par dessus cet événement"
+                                            color="#1d1d1d"
+                                            value="10"
+                                    ></v-radio>
+                                </v-radio-group>
+                            </v-col>
+                        </v-row>
+                        <v-divider class="mt-6 mb-6"></v-divider>
+                        <v-row>
+                            <v-col cols="12" class="text-left">
+                                <h4>Tarification</h4>
+                            </v-col>
+                            <v-col cols="12" class="text-left">
+
+                            </v-col>
+                        </v-row>
+                        <v-divider class="mt-6 mb-6"></v-divider>
+                        <v-row>
+                            <v-col cols="12" class="text-left">
+                                <h4>Conditions d'utilisations de la salle</h4>
+                            </v-col>
+                            <v-col cols="12" class="text-left">
+
                             </v-col>
                         </v-row>
                         <v-row>
@@ -321,9 +427,11 @@ import ReservationForm from "@/components/ReservationForm.vue";
 import EventService from "@/service/EventService";
 import {addHours, format} from "date-fns";
 import Rules from "@/Rules";
+import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 
 export default {
     components: {
+        VerificationAdhesion,
         ReservationForm,
         PhoneDialog
     },
@@ -399,6 +507,11 @@ export default {
                     start: this.createStart,
                     end: this.createStart,
                     timed: true,
+                    organizer: {
+                        fullname: null,
+                        email: null,
+                        phone: null
+                    }
                 }
             }
         },
@@ -534,10 +647,10 @@ export default {
                 "background": "#a4bdfc",
                 "foreground": "#1d1d1d",
                 "id": "1"
-            }, {"background": "#7ae7bf", "foreground": "#1d1d1d", "id": "2"}, {
-                "background": "#dbadff",
-                "foreground": "#1d1d1d",
-                "id": "3"
+            }, {
+                "background": "#7ae7bf", "foreground": "#1d1d1d", "id": "2"
+            }, {
+                "background": "#dbadff", "foreground": "#1d1d1d", "id": "3"
             }, {"background": "#ff887c", "foreground": "#1d1d1d", "id": "4"}, {
                 "background": "#fbd75b",
                 "foreground": "#1d1d1d",
