@@ -152,17 +152,21 @@
         <v-dialog :fullscreen="true" v-model="addEventDialog" v-if="addEventDialog">
             <v-card>
                 <v-toolbar
-                        dark
-                        color="primary"
+                        color="white"
                 >
                     <v-btn
                             icon
-                            dark
                             @click="cancelSave"
                     >
                         <v-icon>close</v-icon>
                     </v-btn>
-                    <v-toolbar-title class="text">
+                    <img
+                            :src="require('@/assets/logo-loco-horizontal.png')"
+                            height="40"
+                            class="mr-4"
+                    />
+                    <v-toolbar-title class="text ">
+                        <v-icon left>event</v-icon>
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
@@ -320,8 +324,8 @@
                                         </v-row>
                                     </v-col>
                                     <v-col cols="12" class="">
-                                        <h4 class="text">
-                                            <v-icon left>check</v-icon>
+                                        <h4 class="text font-weight-medium">
+                                            <v-icon left large>check</v-icon>
                                             Vous devez être membre de la coopérative pour réserver la salle
                                         </h4>
                                     </v-col>
@@ -383,7 +387,7 @@
                                             value="9"
                                     ></v-radio>
                                     <v-radio
-                                            label="Pas prioritaire, réservez par dessus cet événement"
+                                            label="Pas prioritaire, d'autres peuvent réserver par dessus cet événement"
                                             color="#1d1d1d"
                                             value="10"
                                     ></v-radio>
@@ -440,28 +444,29 @@
                                         </template>
                                     </v-simple-table>
                                 </v-card>
-                                <v-alert
-                                    color="primary"
-                                    border="left"
-                                    elevation="2"
-                                    colored-border
-                                    icon="mdi-twitter"
-                                >
-                                    <p class="body-1">
-                                        Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les frais de
-                                        location de
-                                        la salle,
-                                        un total inférieur au montant suggéré peut être donné au Loco.
-                                    </p>
-                                    <p class="body-1">
-                                        Toutefois des démarches doivent alors êtres entreprises par l'organisateur pour
-                                        parvenir à donner la contribution minimale lors des prochaines activités.
-                                    </p>
-                                    <p class="body-1">
-                                        Aussi, lorsque l'événement est financé par contributions volontaires, les taxes ne sont pas
-                                        chargées.
-                                    </p>
-                                </v-alert>
+                                <h4 class="mb-2">
+                                    Taxes
+                                </h4>
+                                <p class="body-1 ml-4">
+                                    Lorsque l'événement est financé par contributions volontaires, les taxes
+                                    ne sont pas
+                                    chargées.
+                                </p>
+                                <h4 class="mb-2">
+                                    Allègement des tarifs
+                                </h4>
+                                <p class="body-1 ml-4">
+                                    Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les
+                                    frais de
+                                    location de
+                                    la salle,
+                                    un montant inférieur peut être donné au Loco.
+                                </p>
+                                <p class="body-1 ml-4">
+                                    Toutefois des démarches doivent êtres entreprises par l'organisateur pour
+                                    parvenir à donner la contribution minimale lors des prochaines activités.
+                                </p>
+
                             </v-col>
                         </v-row>
                         <v-divider class="mt-6 mb-6"></v-divider>
@@ -470,13 +475,58 @@
                                 <h4>Conditions d'utilisations de la salle</h4>
                             </v-col>
                             <v-col cols="12" class="text-left">
-
+                                <v-list>
+                                    <v-list-item>
+                                        <v-list-item-action>
+                                            <v-icon>
+                                                cleaning_services
+                                            </v-icon>
+                                        </v-list-item-action>
+                                        <v-list-item-content>
+                                            <v-list-item-title class="body-1">
+                                                Laisser l'endroit plus propre qu'il ne l'était avant l'événement.
+                                            </v-list-item-title>
+                                            <v-list-item-subtitle class="body-1">
+                                                Balayer, nettoyer le plancher, les comptoirs, les tables, la salle de
+                                                bain, vider les poubelles, recyclage, compost au besoin.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1">
+                                                Replacer les objets à leur place dont les tables et ranger la table de
+                                                ping pong.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1">
+                                                Faire le tour du Local pour voir si rien ne traîne.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1">
+                                                Remonter les rideaux et fermer les lumières.
+                                            </v-list-item-subtitle>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-action>
+                                            <v-icon>
+                                                security
+                                            </v-icon>
+                                        </v-list-item-action>
+                                        <v-list-item-content>
+                                            <v-list-item-title class="body-1">
+                                                Barrer la porte en sortant ou s'assurer que ceux qui restent dans le
+                                                local sont membres et majeurs.
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-list>
+                                <v-checkbox
+                                        v-model="newEvent.accepteConditions"
+                                        label="Je m'engage à respecter ces conditions."
+                                        :rules="[rules.required]"
+                                ></v-checkbox>
                             </v-col>
                         </v-row>
                         <v-row>
                             <v-col cols="12" class="text-left">
                                 <v-btn color="primary" @click="save" :loading="isSaveEventLoading">
-                                    Ajouter
+                                    Ajouter l'événement
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -555,6 +605,9 @@ export default {
             console.log("cancelSave")
         },
         save: async function () {
+            if (!this.$refs.eventForm.validate()) {
+                return
+            }
             this.isSaveEventLoading = true;
             await EventService.add(
                 this.newEvent
@@ -595,7 +648,8 @@ export default {
                         fullname: null,
                         email: null,
                         phone: null
-                    }
+                    },
+                    accepteConditions: false
                 }
             }
         },
