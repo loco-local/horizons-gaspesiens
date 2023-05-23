@@ -85,6 +85,7 @@
                             :event-overlap-threshold="30"
                             :event-color="getEventColor"
                             @change="getEvents"
+                            @click:event="showEvent"
                             @mousedown:event="startDrag"
                             @mousedown:time="startTime"
                             @mousemove:time="mouseMove"
@@ -544,6 +545,46 @@
                 </v-container>
             </v-card>
         </v-dialog>
+        <v-menu
+                v-model="selectedOpen"
+                :close-on-content-click="false"
+                :activator="selectedElement"
+                offset-x
+        >
+            <v-card
+                    color="grey lighten-4"
+                    min-width="350px"
+                    flat
+            >
+                <v-toolbar
+                        :color="selectedEvent.color"
+                        dark
+                >
+                    <v-btn icon>
+                        <v-icon>mdi-pencil</v-icon>
+                    </v-btn>
+                    <v-toolbar-title v-html="selectedEvent.summary"></v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                    </v-btn>
+                    <v-btn icon>
+                        <v-icon>mdi-dots-vertical</v-icon>
+                    </v-btn>
+                </v-toolbar>
+                <v-card-text>
+                    <span v-html="selectedEvent.description"></span>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn
+                            text
+                            @click="selectedOpen = false"
+                    >
+                        Fermer
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-menu>
     </div>
 </template>
 
@@ -566,6 +607,9 @@ export default {
         return {
             isLoading: false,
             calendarHeight: 0,
+            selectedEvent: {},
+            selectedElement: null,
+            selectedOpen: false,
             events: [],
             weekdays: [1, 2, 3, 4, 5, 6, 0],
             calendarFocus: '',
@@ -603,10 +647,25 @@ export default {
     },
     mounted: function () {
         this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 700;
-        this.refreshTabWithPath();
         this.$refs.calendar.scrollToTime('08:00')
     },
     methods: {
+        showEvent({nativeEvent, event}) {
+            const open = () => {
+                this.selectedEvent = event
+                this.selectedElement = nativeEvent.target
+                requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
+            }
+
+            if (this.selectedOpen) {
+                this.selectedOpen = false
+                requestAnimationFrame(() => requestAnimationFrame(() => open()))
+            } else {
+                open()
+            }
+
+            nativeEvent.stopPropagation()
+        },
         cancelSave: function () {
             this.addEventDialog = false;
             console.log("cancelSave")
@@ -617,9 +676,9 @@ export default {
                 return
             }
             this.isSaveEventLoading = true;
-            this.newEvent.description = this.newEvent.organizer.fullname + " " +
+            this.newEvent.description = "Contactez " + this.newEvent.organizer.fullname + " " +
                 this.newEvent.organizer.email + " " + this.newEvent.organizer.phone +
-                " " + this.newEvent.description;
+                ". " + this.newEvent.description;
             const newEvent = await EventService.add(
                 this.newEvent
             )
@@ -759,24 +818,6 @@ export default {
             this.isLoading = false;
         },
 
-        refreshTabWithPath: async function () {
-            if (this.$route.name === "calendrier") {
-                this.calendarTab = 0;
-            }
-            if (this.$route.name === "reservation") {
-                this.calendarTab = 1;
-            }
-        },
-    },
-    computed: {
-        routeName: function () {
-            return this.$route.name;
-        }
-    },
-    watch: {
-        routeName: function () {
-            this.refreshTabWithPath();
-        }
     }
 }
 </script>

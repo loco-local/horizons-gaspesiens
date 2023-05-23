@@ -35,13 +35,11 @@ const Event = {
     toVuetifyCalendar: function (event) {
         const start = new Date(event.start.dateTime)
         const end = new Date(event.end.dateTime)
-        return {
-            name: event.summary,
-            color: Event.getColorFromId(event.colorId).background,
-            start: format(start, "yyyy-MM-dd HH:mm"),
-            end: format(end, "yyyy-MM-dd HH:mm"),
-            id: event.id
-        }
+        event.name = event.summary;
+        event.color = Event.getColorFromId(event.colorId).background;
+        event.start = format(start, "yyyy-MM-dd HH:mm");
+        event.end = format(end, "yyyy-MM-dd HH:mm");
+        return event;
     },
     getColorFromId: function (colorId) {
         const color = Event.googleColors.filter((color) => {
