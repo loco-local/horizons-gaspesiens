@@ -49,5 +49,24 @@ const Event = {
         })
         return color.length ? color[0] : Event.getColorFromId("9")
     },
+    initNewEvent: function (createDate, end) {
+        const newEvent = {
+            timed: true,
+            organizer: {
+                fullname: null,
+                email: null,
+                phone: null
+            },
+            accepteConditions: false
+        }
+        if (createDate) {
+            newEvent.startDay = format(createDate, "yyyy-MM-dd");
+            newEvent.startTime = format(createDate, "HH:mm");
+        }
+        if (end) {
+            newEvent.endTime = format(end, "HH:mm");
+        }
+        return newEvent;
+    }
 }
 export default Event;

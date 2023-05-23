@@ -61,7 +61,8 @@
                             {{ $refs.calendar.title }}
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown" :outlined="$vuetify.breakpoint.smAndDown">
+                        <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown"
+                               :outlined="$vuetify.breakpoint.smAndDown">
                             <v-icon>add</v-icon>
                             <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
                         </v-btn>
@@ -612,6 +613,7 @@ export default {
         },
         save: async function () {
             if (!this.$refs.eventForm.validate()) {
+                this.$refs.eventForm.$el.scrollIntoView({behavior: 'smooth'})
                 return
             }
             this.isSaveEventLoading = true;
@@ -646,18 +648,10 @@ export default {
                 this.createStart = this.roundTime(mouse)
                 const createDate = new Date(this.createStart);
                 const end = addHours(createDate, 2);
-                this.newEvent = this.createEvent = {
-                    startDay: format(createDate, "yyyy-MM-dd"),
-                    startTime: format(createDate, "HH:mm"),
-                    endTime: format(end, "HH:mm"),
-                    timed: true,
-                    organizer: {
-                        fullname: null,
-                        email: null,
-                        phone: null
-                    },
-                    accepteConditions: false
-                }
+
+                this.newEvent = this.createEvent = Event.initNewEvent(
+                    createDate, end
+                )
             }
         },
         extendBottom(event) {
@@ -739,7 +733,8 @@ export default {
             return arr[this.rnd(0, arr.length - 1)]
         },
         addEvent: function () {
-            console.log('yo')
+            this.newEvent = Event.initNewEvent()
+            this.addEventDialog = true;
         },
         setToday() {
             this.calendarFocus = ''
@@ -801,8 +796,8 @@ export default {
     white-space: normal
 }
 
-.dense-hours{
-    .v-calendar-daily__intervals-body, .v-calendar-daily__intervals-head{
+.dense-hours {
+    .v-calendar-daily__intervals-body, .v-calendar-daily__intervals-head {
         width: 25px !important;
     }
 }
