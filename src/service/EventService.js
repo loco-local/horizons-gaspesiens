@@ -31,10 +31,10 @@ export default {
             'dateTime': endDate,
             'timeZone': 'America/Toronto',
         };
-        const response = await Service.api().post(
+        await Service.api().post(
             '/events',
             event
         );
-        return response.data;
+        return event;
     }
 }

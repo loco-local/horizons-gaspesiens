@@ -77,7 +77,6 @@
                             :events="events"
                             event-overlap-mode="column"
                             :event-overlap-threshold="30"
-                            :colors="colors"
                             :event-color="getEventColor"
                             @change="getEvents"
                             @mousedown:event="startDrag"
@@ -123,34 +122,35 @@
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-<!--                    <v-toolbar-items>-->
-<!--                        <v-btn-->
-<!--                                dark-->
-<!--                                text-->
-<!--                                @click="save"-->
-<!--                                :loading="isSaveEventLoading"-->
-<!--                        >-->
-<!--                            Sauvegarder-->
-<!--                        </v-btn>-->
-<!--                    </v-toolbar-items>-->
+                    <!--                    <v-toolbar-items>-->
+                    <!--                        <v-btn-->
+                    <!--                                dark-->
+                    <!--                                text-->
+                    <!--                                @click="save"-->
+                    <!--                                :loading="isSaveEventLoading"-->
+                    <!--                        >-->
+                    <!--                            Sauvegarder-->
+                    <!--                        </v-btn>-->
+                    <!--                    </v-toolbar-items>-->
                 </v-toolbar>
-                <v-container class="mt-8">
+                <v-container class="mt-8 pb-16">
                     <v-alert
-                        color="primary"
-                        border="left"
-                        elevation="2"
-                        colored-border
-                        icon="schedule"
+                            color="primary"
+                            border="left"
+                            elevation="2"
+                            colored-border
+                            icon="schedule"
 
                     >
                         <p class="body-1">
-                            La règle de « la première arrivée, première servie » est de mise, pour la réservation.
+                            La règle de « la première arrivée, première servie » est de mise.
                         </p>
                         <p class="body-1">
                             Mais n'hésitez pas à contacter la personne qui a réservé, s'il y a conflit d'horaire.
                         </p>
                         <p class="body-1">
-                            Enfin, vérifiez que votre événement apparaisse sur le calendrier pour confirmer votre réservation.
+                            Enfin, vérifiez que votre événement apparaisse sur le calendrier pour confirmer votre
+                            réservation.
                         </p>
                     </v-alert>
                     <v-form name="eventForm" ref="eventForm">
@@ -260,7 +260,8 @@
                         <v-row>
                             <v-col cols="12">
                                 <p class="body-1 text-left">
-                                    Pensez à réserver du temps avant et après votre événement pour préparer et ranger la salle.
+                                    <v-icon left>more_time</v-icon>
+                                    Pensez à ajouter du temps avant et après pour préparer et ranger la salle.
                                 </p>
                             </v-col>
                         </v-row>
@@ -431,6 +432,12 @@
                                     chargées.
                                 </p>
                                 <h4 class="mb-2">
+                                    Modes de paiement
+                                </h4>
+                                <p class="body-1 ml-4">
+                                    Disponible sur notre site web
+                                </p>
+                                <h4 class="mb-2">
                                     Allègement des tarifs
                                 </h4>
                                 <p class="body-1 ml-4">
@@ -444,7 +451,6 @@
                                     Toutefois des démarches doivent êtres entreprises par l'organisateur pour
                                     parvenir à donner la contribution minimale lors des prochaines activités.
                                 </p>
-
                             </v-col>
                         </v-row>
                         <v-divider class="mt-6 mb-6"></v-divider>
@@ -501,7 +507,9 @@
                                         </v-list-item-action>
                                         <v-list-item-content>
                                             <v-list-item-title class="body-1">
-                                                En cas de conflit d'horaire, je m'engage à collaborer, mettre mes limites, être de bonne foi et de garder en tête le bien être du Loco Local.
+                                                En cas de conflit d'horaire, je m'engage à collaborer, mettre mes
+                                                limites, être de bonne foi et de garder en tête le bien être du Loco
+                                                Local.
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -515,13 +523,12 @@
                         </v-row>
                         <v-row>
                             <v-col cols="12" class="text-left">
-                                <v-btn color="primary" @click="save" :loading="isSaveEventLoading">
-                                    <v-icon left>event</v-icon>
+                                <v-btn color="primary" @click="save" :loading="isSaveEventLoading" large>
+                                    <v-icon left>add</v-icon>
                                     Ajouter l'événement
                                 </v-btn>
                             </v-col>
                         </v-row>
-                        {{ newEvent }}
                     </v-form>
                 </v-container>
             </v-card>
@@ -536,6 +543,7 @@ import EventService from "@/service/EventService";
 import {addHours, format} from "date-fns";
 import Rules from "@/Rules";
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
+import Event from "@/Event"
 
 export default {
     components: {
@@ -546,13 +554,10 @@ export default {
     data: function () {
         return {
             isLoading: false,
-            calendarTab: 0,
             calendarHeight: 0,
             events: [],
             weekdays: [1, 2, 3, 4, 5, 6, 0],
             calendarFocus: '',
-            colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-            googleColors: [],
             dragEvent: null,
             dragStart: null,
             createEvent: null,
@@ -588,7 +593,6 @@ export default {
         this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 700;
         this.refreshTabWithPath();
         this.$refs.calendar.scrollToTime('08:00')
-        this.defineGoogleColors()
     },
     methods: {
         cancelSave: function () {
@@ -600,13 +604,17 @@ export default {
                 return
             }
             this.isSaveEventLoading = true;
-            await EventService.add(
+            this.newEvent.description = this.newEvent.organizer.fullname + " " +
+                this.newEvent.organizer.email + " " + this.newEvent.organizer.phone +
+                " " + this.newEvent.description;
+            const newEvent = await EventService.add(
                 this.newEvent
             )
-            this.events.push(this.newEvent)
+            this.events.push(
+                Event.toVuetifyCalendar(newEvent)
+            )
             this.isSaveEventLoading = false;
             this.addEventDialog = false;
-            console.log("save")
         },
         startDrag({event, timed}) {
             if (event && timed) {
@@ -628,12 +636,9 @@ export default {
                 const createDate = new Date(this.createStart);
                 const end = addHours(createDate, 2);
                 this.newEvent = this.createEvent = {
-                    name: `Event #${this.events.length}`,
                     startDay: format(createDate, "yyyy-MM-dd"),
                     startTime: format(createDate, "HH:mm"),
                     endTime: format(end, "HH:mm"),
-                    start: this.createStart,
-                    end: this.createStart,
                     timed: true,
                     organizer: {
                         fullname: null,
@@ -744,19 +749,10 @@ export default {
                 date.end.date
             )
             console.log(events);
-            this.events = events.map((event) => {
-                const start = new Date(event.start.dateTime)
-                const end = new Date(event.end.dateTime)
-                return {
-                    name: event.summary,
-                    color: this.getColorFromId(event.colorId).background,
-                    start: format(start, "yyyy-MM-dd HH:mm"),
-                    end: format(end, "yyyy-MM-dd HH:mm"),
-                    id: event.id
-                }
-            })
+            this.events = events.map(Event.toVuetifyCalendar)
             this.isLoading = false;
         },
+
         refreshTabWithPath: async function () {
             if (this.$route.name === "calendrier") {
                 this.calendarTab = 0;
@@ -765,45 +761,6 @@ export default {
                 this.calendarTab = 1;
             }
         },
-        getColorFromId: function (colorId) {
-            const color = this.googleColors.filter((color) => {
-                return color.id === colorId
-            })
-            return color.length ? color[0] : this.getColorFromId("9")
-        },
-        defineGoogleColors: async function () {
-            this.googleColors = [{
-                "background": "#a4bdfc",
-                "foreground": "#1d1d1d",
-                "id": "1"
-            }, {
-                "background": "#7ae7bf", "foreground": "#1d1d1d", "id": "2"
-            }, {
-                "background": "#dbadff", "foreground": "#1d1d1d", "id": "3"
-            }, {"background": "#ff887c", "foreground": "#1d1d1d", "id": "4"}, {
-                "background": "#fbd75b",
-                "foreground": "#1d1d1d",
-                "id": "5"
-            }, {"background": "#ffb878", "foreground": "#1d1d1d", "id": "6"}, {
-                "background": "#46d6db",
-                "foreground": "#1d1d1d",
-                "id": "7"
-            }, {"background": "#e1e1e1", "foreground": "#1d1d1d", "id": "8"}, {
-                "background": "#5484ed",
-                "foreground": "#1d1d1d",
-                "id": "9"
-            }, {"background": "#51b749", "foreground": "#1d1d1d", "id": "10"}, {
-                "background": "#dc2127",
-                "foreground": "#1d1d1d",
-                "id": "11"
-            }]
-            // this.googleColors = await EventService.listColors();
-            // this.googleColors = Object.keys(this.googleColors.event).map((colorId) => {
-            //     const color = this.googleColors.event[colorId];
-            //     color.id = colorId
-            //     return color;
-            // })
-        }
     },
     computed: {
         routeName: function () {
