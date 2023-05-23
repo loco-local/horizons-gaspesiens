@@ -1,4 +1,5 @@
 import Service from '@/service/Service'
+import Event from '@/Event'
 
 export default {
     list: async function (minDate, maxDate) {
@@ -14,27 +15,24 @@ export default {
         return response.data;
     },
     add: async function (event) {
-        const date = new Date(
-            event.startDay.replaceAll("-", "/")
-        )
-        const startTime = event.startTime.split(":");
-        date.setHours(startTime[0], startTime[1]);
-        const startDate = date.toISOString()
-        const endTime = event.endTime.split(":");
-        date.setHours(endTime[0], endTime[1]);
-        const endDate = date.toISOString();
-        event.start = {
-            'dateTime': startDate,
-            'timeZone': 'America/Toronto',
-        };
-        event.end = {
-            'dateTime': endDate,
-            'timeZone': 'America/Toronto',
-        };
-        await Service.api().post(
+        Event.formatEventForGoogleApi(event);
+        const response = await Service.api().post(
             '/events',
             event
         );
-        return event;
+        return response.data;
+    },
+    update: async function (event) {
+        Event.formatEventForGoogleApi(event);
+        const response = await Service.api().put(
+            `/events/${event.id}`,
+            event
+        );
+        return response.data;
+    },
+    delete: async function (eventId) {
+        return Service.api().delete(
+            `/events/${eventId}`
+        );
     }
 }

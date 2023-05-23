@@ -94,6 +94,7 @@
                             :class="{
                                 'dense-hours' : $vuetify.breakpoint.smAndDown
                             }"
+                            v-if="!editEventDialog"
                     >
                         <template v-slot:event="{ event, timed, eventSummary }">
                             <div class="v-event-draggable">
@@ -111,7 +112,7 @@
             <v-flex xs0 lg2></v-flex>
         </v-layout>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
-        <v-dialog :fullscreen="true" v-model="addEventDialog" v-if="addEventDialog">
+        <v-dialog :fullscreen="true" v-model="editEventDialog" v-if="editEventDialog">
             <v-card>
                 <v-toolbar
                         color="white"
@@ -133,16 +134,10 @@
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <!--                    <v-toolbar-items>-->
-                    <!--                        <v-btn-->
-                    <!--                                dark-->
-                    <!--                                text-->
-                    <!--                                @click="save"-->
-                    <!--                                :loading="isSaveEventLoading"-->
-                    <!--                        >-->
-                    <!--                            Sauvegarder-->
-                    <!--                        </v-btn>-->
-                    <!--                    </v-toolbar-items>-->
+                    <v-btn @click="remove" :loading="isRemoveEventLoading" text color="red">
+                        <v-icon left class="material-icons-outlined">delete</v-icon>
+                        Supprimer
+                    </v-btn>
                 </v-toolbar>
                 <v-container class="mt-8 pb-16">
                     <v-alert
@@ -182,7 +177,7 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                                v-model="newEvent.startDay"
+                                                v-model="editedEvent.startDay"
                                                 label="Jour"
                                                 prepend-icon="calendar"
                                                 readonly
@@ -192,7 +187,7 @@
                                         ></v-text-field>
                                     </template>
                                     <v-date-picker
-                                            v-model="newEvent.startDay"
+                                            v-model="editedEvent.startDay"
                                             no-title
                                             scrollable
                                             @input="eventStartDateMenu = false"
@@ -207,7 +202,7 @@
                                         v-model="startTimeMenu"
                                         :close-on-content-click="false"
                                         :nudge-right="40"
-                                        :return-value.sync="newEvent.startTime"
+                                        :return-value.sync="editedEvent.startTime"
                                         transition="scale-transition"
                                         offset-y
                                         max-width="290px"
@@ -215,7 +210,7 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                                v-model="newEvent.startTime"
+                                                v-model="editedEvent.startTime"
                                                 label="Début"
                                                 prepend-icon="mdi-clock-time-four-outline"
                                                 readonly
@@ -226,11 +221,11 @@
                                     </template>
                                     <v-time-picker
                                             format="24hr"
-                                            v-model="newEvent.startTime"
+                                            v-model="editedEvent.startTime"
                                             label="heure"
                                             v-if="startTimeMenu"
                                             full-width
-                                            @click:minute="$refs.startTimeMenu.save(newEvent.startTime)"
+                                            @click:minute="$refs.startTimeMenu.save(editedEvent.startTime)"
                                     ></v-time-picker>
                                 </v-menu>
                             </v-col>
@@ -240,7 +235,7 @@
                                         v-model="endTimeMenu"
                                         :close-on-content-click="false"
                                         :nudge-right="40"
-                                        :return-value.sync="newEvent.endTime"
+                                        :return-value.sync="editedEvent.endTime"
                                         transition="scale-transition"
                                         offset-y
                                         max-width="290px"
@@ -248,7 +243,7 @@
                                 >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                                v-model="newEvent.endTime"
+                                                v-model="editedEvent.endTime"
                                                 label="Fin"
                                                 prepend-icon="mdi-clock-time-four-outline"
                                                 readonly
@@ -259,11 +254,11 @@
                                     </template>
                                     <v-time-picker
                                             format="24hr"
-                                            v-model="newEvent.endTime"
+                                            v-model="editedEvent.endTime"
                                             label="heure"
                                             v-if="endTimeMenu"
                                             full-width
-                                            @click:minute="$refs.endTimeMenu.save(newEvent.endTime)"
+                                            @click:minute="$refs.endTimeMenu.save(editedEvent.endTime)"
                                     ></v-time-picker>
                                 </v-menu>
                             </v-col>
@@ -276,7 +271,7 @@
                                 </p>
                             </v-col>
                         </v-row>
-                        <v-row>
+                        <v-row v-if="!isModifyEventFlow">
                             <v-col cols="12">
                                 <v-divider></v-divider>
                             </v-col>
@@ -290,7 +285,7 @@
                                             <v-col cols="12" lg="4">
                                                 <v-text-field
                                                         label="Votre nom"
-                                                        v-model="newEvent.organizer.fullname"
+                                                        v-model="editedEvent.organizer.fullname"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
                                             </v-col>
@@ -299,7 +294,7 @@
                                             <v-col cols="12" lg="4">
                                                 <v-text-field
                                                         label="Votre courriel"
-                                                        v-model="newEvent.organizer.email"
+                                                        v-model="editedEvent.organizer.email"
                                                         prepend-icon="email"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
@@ -307,7 +302,7 @@
                                             <v-col cols="12" lg="4">
                                                 <v-text-field
                                                         label="Votre téléphone"
-                                                        v-model="newEvent.organizer.phone"
+                                                        v-model="editedEvent.organizer.phone"
                                                         prepend-icon="phone"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
@@ -337,7 +332,7 @@
                             </v-col>
                             <v-col cols="12" lg="6" xl="4">
                                 <v-text-field
-                                        v-model="newEvent.summary"
+                                        v-model="editedEvent.summary"
                                         label="Nom de l'événement"
                                         prepend-icon="event"
                                         :rules="[rules.required]">
@@ -347,7 +342,7 @@
                         <v-row>
                             <v-col cols="12" lg="6" xl="4">
                                 <v-textarea
-                                        v-model="newEvent.description"
+                                        v-model="editedEvent.description"
                                         label="Informations additionnelles"
                                 >
                                 </v-textarea>
@@ -362,7 +357,7 @@
                             <v-col cols="12">
                                 <h4 class="text-left text">Partage de la salle</h4>
                                 <v-radio-group
-                                        v-model="newEvent.colorId"
+                                        v-model="editedEvent.colorId"
                                         column
                                         :rules="[rules.required]"
 
@@ -527,7 +522,7 @@
                                     </v-list-item>
                                 </v-list>
                                 <v-checkbox
-                                        v-model="newEvent.accepteConditions"
+                                        v-model="editedEvent.accepteConditions"
                                         label="Je m'engage à respecter ces conditions."
                                         :rules="[rules.required]"
                                 ></v-checkbox>
@@ -536,8 +531,13 @@
                         <v-row>
                             <v-col cols="12" class="text-left">
                                 <v-btn color="primary" @click="save" :loading="isSaveEventLoading" large>
-                                    <v-icon left>add</v-icon>
-                                    Ajouter l'événement
+                                    <v-icon left v-if="!isModifyEventFlow">add</v-icon>
+                                    <span v-if="isModifyEventFlow">
+                                        Modifier l'événement
+                                    </span>
+                                    <span v-else>
+                                        Ajouter l'événement
+                                    </span>
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -560,16 +560,10 @@
                         :color="selectedEvent.color"
                         dark
                 >
-                    <v-btn icon>
-                        <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
                     <v-toolbar-title v-html="selectedEvent.summary"></v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn icon>
-                        <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <v-btn icon>
-                        <v-icon>mdi-dots-vertical</v-icon>
+                    <v-btn icon @click="editEvent(selectedEvent)">
+                        <v-icon>edit</v-icon>
                     </v-btn>
                 </v-toolbar>
                 <v-card-text>
@@ -605,6 +599,7 @@ export default {
     },
     data: function () {
         return {
+            isRemoveEventLoading: false,
             isLoading: false,
             calendarHeight: 0,
             selectedEvent: {},
@@ -616,10 +611,10 @@ export default {
             dragEvent: null,
             dragStart: null,
             createEvent: null,
-            newEvent: null,
+            editedEvent: null,
             createStart: null,
             extendOriginal: null,
-            addEventDialog: false,
+            editEventDialog: false,
             isSaveEventLoading: false,
             rules: Rules,
             eventStartDateMenu: false,
@@ -650,6 +645,17 @@ export default {
         this.$refs.calendar.scrollToTime('08:00')
     },
     methods: {
+        editEvent: function (event) {
+            this.selectedOpen = false;
+            this.editedEvent = event;
+            this.editedEvent.accepteConditions = true;
+            Event.defineDatesFromVuetifyEvent(
+                this.editedEvent,
+                new Date(event.start),
+                new Date(event.end)
+            );
+            this.editEventDialog = true;
+        },
         showEvent({nativeEvent, event}) {
             const open = () => {
                 this.selectedEvent = event
@@ -667,8 +673,16 @@ export default {
             nativeEvent.stopPropagation()
         },
         cancelSave: function () {
-            this.addEventDialog = false;
+            this.editEventDialog = false;
             console.log("cancelSave")
+        },
+        remove: async function () {
+            this.isRemoveEventLoading = true;
+            await EventService.delete(
+                this.editedEvent.id
+            )
+            this.isRemoveEventLoading = false;
+            this.editEventDialog = false;
         },
         save: async function () {
             if (!this.$refs.eventForm.validate()) {
@@ -676,17 +690,31 @@ export default {
                 return
             }
             this.isSaveEventLoading = true;
-            this.newEvent.description = "Contactez " + this.newEvent.organizer.fullname + " " +
-                this.newEvent.organizer.email + " " + this.newEvent.organizer.phone +
-                ". " + this.newEvent.description;
-            const newEvent = await EventService.add(
-                this.newEvent
-            )
-            this.events.push(
-                Event.toVuetifyCalendar(newEvent)
-            )
+            if (!this.isModifyEventFlow) {
+                this.editedEvent.description = "Contactez " + this.editedEvent.organizer.fullname + " " +
+                    this.editedEvent.organizer.email + " " + this.editedEvent.organizer.phone +
+                    ". " + this.editedEvent.description;
+            }
+            if (this.isModifyEventFlow) {
+                const modifiedEvent = await EventService.update(
+                    this.editedEvent
+                );
+                this.events = this.events.map((event) => {
+                    if (event.id === modifiedEvent.id) {
+                        return Event.toVuetifyCalendar(modifiedEvent)
+                    }
+                    return event;
+                })
+            } else {
+                const newEvent = await EventService.add(
+                    this.editedEvent
+                )
+                this.events.push(
+                    Event.toVuetifyCalendar(newEvent)
+                )
+            }
             this.isSaveEventLoading = false;
-            this.addEventDialog = false;
+            this.editEventDialog = false;
         },
         startDrag({event, timed}) {
             if (event && timed) {
@@ -708,7 +736,7 @@ export default {
                 const createDate = new Date(this.createStart);
                 const end = addHours(createDate, 2);
 
-                this.newEvent = this.createEvent = Event.initNewEvent(
+                this.editedEvent = this.createEvent = Event.initNewEvent(
                     createDate, end
                 )
             }
@@ -740,7 +768,7 @@ export default {
                 this.createEvent.start = min
                 this.createEvent.end = max
             }
-            console.log("mousemove")
+            // console.log("mousemove")
         },
         async endDrag() {
             const showDialog = this.createEvent !== null;
@@ -751,7 +779,7 @@ export default {
             this.extendOriginal = null
             if (showDialog) {
                 setTimeout(() => {
-                    this.addEventDialog = true;
+                    this.editEventDialog = true;
                 }, 100)
             }
             console.log("endDrag")
@@ -792,8 +820,8 @@ export default {
             return arr[this.rnd(0, arr.length - 1)]
         },
         addEvent: function () {
-            this.newEvent = Event.initNewEvent()
-            this.addEventDialog = true;
+            this.editedEvent = Event.initNewEvent()
+            this.editEventDialog = true;
         },
         setToday() {
             this.calendarFocus = ''
@@ -817,7 +845,11 @@ export default {
             this.events = events.map(Event.toVuetifyCalendar)
             this.isLoading = false;
         },
-
+    },
+    computed: {
+        isModifyEventFlow: function () {
+            return this.editedEvent.id !== undefined
+        }
     }
 }
 </script>

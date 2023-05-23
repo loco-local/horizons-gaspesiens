@@ -57,14 +57,42 @@ const Event = {
             },
             accepteConditions: false
         }
+        Event.defineDatesFromVuetifyEvent(
+            newEvent, createDate, end
+        )
+        return newEvent;
+    },
+    defineDatesFromVuetifyEvent: function (event, createDate, end) {
+        // console.log("a")
         if (createDate) {
-            newEvent.startDay = format(createDate, "yyyy-MM-dd");
-            newEvent.startTime = format(createDate, "HH:mm");
+            // console.log(createDate)
+            event.startDay = format(createDate, "yyyy-MM-dd");
+            event.startTime = format(createDate, "HH:mm");
         }
         if (end) {
-            newEvent.endTime = format(end, "HH:mm");
+            // console.log("b")
+            // console.log(end)
+            event.endTime = format(end, "HH:mm");
         }
-        return newEvent;
+    },
+    formatEventForGoogleApi: function(event){
+        const date = new Date(
+            event.startDay.replaceAll("-", "/")
+        )
+        const startTime = event.startTime.split(":");
+        date.setHours(startTime[0], startTime[1]);
+        const startDate = date.toISOString()
+        const endTime = event.endTime.split(":");
+        date.setHours(endTime[0], endTime[1]);
+        const endDate = date.toISOString();
+        event.start = {
+            'dateTime': startDate,
+            'timeZone': 'America/Toronto',
+        };
+        event.end = {
+            'dateTime': endDate,
+            'timeZone': 'America/Toronto',
+        };
     }
 }
 export default Event;
