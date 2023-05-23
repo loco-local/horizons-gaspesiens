@@ -58,7 +58,7 @@
                         <v-spacer></v-spacer>
                         <v-btn @click="addEvent" color="primary">
                             <v-icon>add</v-icon>
-                            Ajouter
+                            <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
                         </v-btn>
                     </v-toolbar>
                 </v-sheet>
@@ -84,6 +84,9 @@
                             @mousemove:time="mouseMove"
                             @mouseup:time="endDrag"
                             @mouseleave.native="cancelDrag"
+                            :class="{
+                                'dense-hours' : $vuetify.breakpoint.smAndDown
+                            }"
                     >
                         <template v-slot:event="{ event, timed, eventSummary }">
                             <div class="v-event-draggable">
@@ -116,6 +119,7 @@
                             :src="require('@/assets/logo-loco-horizontal.png')"
                             height="40"
                             class="mr-4"
+                            v-if="$vuetify.breakpoint.mdAndUp"
                     />
                     <v-toolbar-title class="text ">
                         <v-icon left>event</v-icon>
@@ -280,6 +284,7 @@
                                                 <v-text-field
                                                         label="Votre nom"
                                                         v-model="newEvent.organizer.fullname"
+                                                        :rules="[rules.required]"
                                                 ></v-text-field>
                                             </v-col>
                                         </v-row>
@@ -427,7 +432,7 @@
                                     Taxes
                                 </h4>
                                 <p class="body-1 ml-4">
-                                    Lorsque l'événement est financé par contributions volontaires, les taxes
+                                    Pour les événements financés par contributions volontaires, les taxes
                                     ne sont pas
                                     chargées.
                                 </p>
@@ -467,21 +472,21 @@
                                             </v-icon>
                                         </v-list-item-action>
                                         <v-list-item-content>
-                                            <v-list-item-title class="body-1">
+                                            <v-list-item-title class="body-1 text-wrap">
                                                 Laisser l'endroit plus propre qu'il ne l'était avant l'événement.
                                             </v-list-item-title>
-                                            <v-list-item-subtitle class="body-1">
+                                            <v-list-item-subtitle class="body-1 text-wrap">
                                                 Balayer, nettoyer le plancher, les comptoirs, les tables, la salle de
                                                 bain, vider les poubelles, recyclage, compost au besoin.
                                             </v-list-item-subtitle>
-                                            <v-list-item-subtitle class="body-1">
+                                            <v-list-item-subtitle class="body-1 text-wrap">
                                                 Replacer les objets à leur place dont les tables et ranger la table de
                                                 ping pong.
                                             </v-list-item-subtitle>
-                                            <v-list-item-subtitle class="body-1">
+                                            <v-list-item-subtitle class="body-1 text-wrap">
                                                 Faire le tour du Local pour voir si rien ne traîne.
                                             </v-list-item-subtitle>
-                                            <v-list-item-subtitle class="body-1">
+                                            <v-list-item-subtitle class="body-1 text-wrap">
                                                 Remonter les rideaux et fermer les lumières.
                                             </v-list-item-subtitle>
                                         </v-list-item-content>
@@ -493,7 +498,7 @@
                                             </v-icon>
                                         </v-list-item-action>
                                         <v-list-item-content>
-                                            <v-list-item-title class="body-1">
+                                            <v-list-item-title class="body-1 text-wrap">
                                                 Barrer la porte en sortant ou s'assurer que ceux qui restent dans le
                                                 local sont membres et majeurs.
                                             </v-list-item-title>
@@ -506,9 +511,9 @@
                                             </v-icon>
                                         </v-list-item-action>
                                         <v-list-item-content>
-                                            <v-list-item-title class="body-1">
-                                                En cas de conflit d'horaire, je m'engage à collaborer, mettre mes
-                                                limites, être de bonne foi et de garder en tête le bien être du Loco
+                                            <v-list-item-title class="body-1 text-wrap">
+                                                En cas de conflit d'horaire, collaborer, mettre ses
+                                                limites, être de bonne foi et garder en tête le bien être du Loco
                                                 Local.
                                             </v-list-item-title>
                                         </v-list-item-content>
@@ -780,6 +785,20 @@ export default {
     height: 20px;
     top: 20px;
     background-color: white;
+}
+
+.v-calendar .v-event-timed-container {
+    margin-right: 0px;
+}
+
+.v-calendar .v-event-summary {
+    white-space: normal
+}
+
+.dense-hours{
+    .v-calendar-daily__intervals-body {
+        width: 25px !important;
+    }
 }
 
 </style>
