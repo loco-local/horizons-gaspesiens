@@ -17,134 +17,87 @@
         <v-layout row wrap class="mt-12">
             <v-flex xs0 lg2></v-flex>
             <v-flex xs12 lg8>
-                <v-tabs
-                        color="black"
-                        light
-                        slider-color="#ff3301"
-                        grow
-                        class="pa-0 ma-0"
-                        v-model="calendarTab"
-                >
-                    <v-tab @click.prevent="$router.push('calendrier')" class="body-1" key="calendrier">
-                        <v-icon class="mr-6">calendar_month</v-icon>
-                        Calendrier
-                    </v-tab>
-                    <v-tab @click.prevent="$router.push('reservation')" class="body-1" key="reservation">
-                        <v-icon class="mr-6">
-                            event
-                        </v-icon>
-                        Réservation
-                    </v-tab>
-                </v-tabs>
-                <v-tabs-items touchless v-model="calendarTab" class="body-1">
-                    <v-tab-item class="mt-4 text-left" :class="{
-                            'pl-0' : $vuetify.breakpoint.mdAndUp,
-                            'pl-0' : $vuetify.breakpoint.smAndDown
-                        }"
-                                key="calendrier"
+                <v-sheet height="64">
+                    <v-toolbar
+                            flat
                     >
-                        <p class="">
-                            Ce calendrier est notre référence pour réserver le local!
-                            <v-btn @click="calendarTab = 1">
-                                Réserver
-                            </v-btn>
-                        </p>
-                        <p class="text-left pa-0 ma-0">
-                            Formations, assemblées, soirées, rencontres, danses, slam, yoga, projection
-                            documentaires,
-                            discussions et plus encore.
-                        </p>
-                        <v-sheet height="64">
-                            <v-toolbar
-                                    flat
-                            >
-                                <v-btn
-                                        outlined
-                                        class="mr-4"
-                                        color="grey darken-2"
-                                        @click="setToday"
-                                >
-                                    Aujourd'hui
-                                </v-btn>
-                                <v-btn
-                                        fab
-                                        text
-                                        small
-                                        color="grey darken-2"
-                                        @click="prev"
-                                >
-                                    <v-icon small>
-                                        chevron_left
-                                    </v-icon>
-                                </v-btn>
-                                <v-btn
-                                        fab
-                                        text
-                                        small
-                                        color="grey darken-2"
-                                        @click="next"
-                                        left
-                                >
-                                    <v-icon small>
-                                        chevron_right
-                                    </v-icon>
-                                </v-btn>
-                                <v-toolbar-title v-if="$refs.calendar">
-                                    {{ $refs.calendar.title }}
-                                </v-toolbar-title>
-                                <v-spacer></v-spacer>
-                                <v-btn @click="addEvent" color="primary">
-                                    <v-icon>add</v-icon>
-                                    Ajouter
-                                </v-btn>
-                            </v-toolbar>
-                        </v-sheet>
-                        <v-sheet :height="calendarHeight">
-                            <v-overlay
-                                    absolute
-                                    :value="isLoading"
-                            >
-                                <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
-                            </v-overlay>
-                            <v-calendar
-                                    ref="calendar"
-                                    v-model="calendarFocus"
-                                    :weekdays="weekdays"
-                                    type="week"
-                                    :events="events"
-                                    event-overlap-mode="column"
-                                    :event-overlap-threshold="30"
-                                    :colors="colors"
-                                    :event-color="getEventColor"
-                                    @change="getEvents"
-                                    @mousedown:event="startDrag"
-                                    @mousedown:time="startTime"
-                                    @mousemove:time="mouseMove"
-                                    @mouseup:time="endDrag"
-                                    @mouseleave.native="cancelDrag"
-                            >
-                                <template v-slot:event="{ event, timed, eventSummary }">
-                                    <div class="v-event-draggable">
-                                        <component :is="{ render: eventSummary }"></component>
-                                    </div>
-                                    <div
-                                            v-if="timed"
-                                            class="v-event-drag-bottom"
-                                            @mousedown.stop="extendBottom(event)"
-                                    ></div>
-                                </template>
-                            </v-calendar>
-                        </v-sheet>
-                    </v-tab-item>
-                    <v-tab-item touchless :class="{
-                            'pl-4': $vuetify.breakpoint.smAndDown,
-                            'pl-0': $vuetify.breakpoint.mdAndUp
-                        }"
-                                key="reservation"
+                        <v-btn
+                                outlined
+                                class="mr-4"
+                                color="grey darken-2"
+                                @click="setToday"
+                        >
+                            Aujourd'hui
+                        </v-btn>
+                        <v-btn
+                                fab
+                                text
+                                small
+                                color="grey darken-2"
+                                @click="prev"
+                        >
+                            <v-icon small>
+                                chevron_left
+                            </v-icon>
+                        </v-btn>
+                        <v-btn
+                                fab
+                                text
+                                small
+                                color="grey darken-2"
+                                @click="next"
+                                left
+                        >
+                            <v-icon small>
+                                chevron_right
+                            </v-icon>
+                        </v-btn>
+                        <v-toolbar-title v-if="$refs.calendar">
+                            {{ $refs.calendar.title }}
+                        </v-toolbar-title>
+                        <v-spacer></v-spacer>
+                        <v-btn @click="addEvent" color="primary">
+                            <v-icon>add</v-icon>
+                            Ajouter
+                        </v-btn>
+                    </v-toolbar>
+                </v-sheet>
+                <v-sheet :height="calendarHeight">
+                    <v-overlay
+                            absolute
+                            :value="isLoading"
                     >
-                        <ReservationForm></ReservationForm>
-                    </v-tab-item>
-                </v-tabs-items>
+                        <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
+                    </v-overlay>
+                    <v-calendar
+                            ref="calendar"
+                            v-model="calendarFocus"
+                            :weekdays="weekdays"
+                            type="week"
+                            :events="events"
+                            event-overlap-mode="column"
+                            :event-overlap-threshold="30"
+                            :colors="colors"
+                            :event-color="getEventColor"
+                            @change="getEvents"
+                            @mousedown:event="startDrag"
+                            @mousedown:time="startTime"
+                            @mousemove:time="mouseMove"
+                            @mouseup:time="endDrag"
+                            @mouseleave.native="cancelDrag"
+                    >
+                        <template v-slot:event="{ event, timed, eventSummary }">
+                            <div class="v-event-draggable">
+                                <component :is="{ render: eventSummary }"></component>
+                            </div>
+                            <div
+                                    v-if="timed"
+                                    class="v-event-drag-bottom"
+                                    @mousedown.stop="extendBottom(event)"
+                            ></div>
+                        </template>
+                    </v-calendar>
+                </v-sheet>
             </v-flex>
             <v-flex xs0 lg2></v-flex>
         </v-layout>
@@ -170,18 +123,36 @@
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-toolbar-items>
-                        <v-btn
-                                dark
-                                text
-                                @click="save"
-                                :loading="isSaveEventLoading"
-                        >
-                            Sauvegarder
-                        </v-btn>
-                    </v-toolbar-items>
+<!--                    <v-toolbar-items>-->
+<!--                        <v-btn-->
+<!--                                dark-->
+<!--                                text-->
+<!--                                @click="save"-->
+<!--                                :loading="isSaveEventLoading"-->
+<!--                        >-->
+<!--                            Sauvegarder-->
+<!--                        </v-btn>-->
+<!--                    </v-toolbar-items>-->
                 </v-toolbar>
                 <v-container class="mt-8">
+                    <v-alert
+                        color="primary"
+                        border="left"
+                        elevation="2"
+                        colored-border
+                        icon="schedule"
+
+                    >
+                        <p class="body-1">
+                            La règle de « la première arrivée, première servie » est de mise, pour la réservation.
+                        </p>
+                        <p class="body-1">
+                            Mais n'hésitez pas à contacter la personne qui a réservé, s'il y a conflit d'horaire.
+                        </p>
+                        <p class="body-1">
+                            Enfin, vérifiez que votre événement apparaisse sur le calendrier pour confirmer votre réservation.
+                        </p>
+                    </v-alert>
                     <v-form name="eventForm" ref="eventForm">
                         <v-row class="text-left">
                             <v-col cols="12">
@@ -284,6 +255,13 @@
                                             @click:minute="$refs.endTimeMenu.save(newEvent.endTime)"
                                     ></v-time-picker>
                                 </v-menu>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <p class="body-1 text-left">
+                                    Pensez à réserver du temps avant et après votre événement pour préparer et ranger la salle.
+                                </p>
                             </v-col>
                         </v-row>
                         <v-row>
@@ -515,6 +493,18 @@
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-action>
+                                            <v-icon>
+                                                diversity_3
+                                            </v-icon>
+                                        </v-list-item-action>
+                                        <v-list-item-content>
+                                            <v-list-item-title class="body-1">
+                                                En cas de conflit d'horaire, je m'engage à collaborer, mettre mes limites, être de bonne foi et de garder en tête le bien être du Loco Local.
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
                                 </v-list>
                                 <v-checkbox
                                         v-model="newEvent.accepteConditions"
@@ -526,6 +516,7 @@
                         <v-row>
                             <v-col cols="12" class="text-left">
                                 <v-btn color="primary" @click="save" :loading="isSaveEventLoading">
+                                    <v-icon left>event</v-icon>
                                     Ajouter l'événement
                                 </v-btn>
                             </v-col>
