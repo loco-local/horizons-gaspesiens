@@ -27,7 +27,12 @@
                                 color="grey darken-2"
                                 @click="setToday"
                         >
-                            Aujourd'hui
+                            <span v-if="$vuetify.breakpoint.smAndDown">
+                                AJD
+                            </span>
+                            <span v-else>
+                                Aujourd'hui
+                            </span>
                         </v-btn>
                         <v-btn
                                 fab
@@ -56,7 +61,7 @@
                             {{ $refs.calendar.title }}
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-btn @click="addEvent" color="primary">
+                        <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown" :outlined="$vuetify.breakpoint.smAndDown">
                             <v-icon>add</v-icon>
                             <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
                         </v-btn>
@@ -117,9 +122,9 @@
                     </v-btn>
                     <img
                             :src="require('@/assets/logo-loco-horizontal.png')"
-                            height="40"
+                            :height="logoHeight"
                             class="mr-4"
-                            v-if="$vuetify.breakpoint.mdAndUp"
+
                     />
                     <v-toolbar-title class="text ">
                         <v-icon left>event</v-icon>
@@ -575,6 +580,7 @@ export default {
             eventStartDateMenu: false,
             startTimeMenu: false,
             endTimeMenu: false,
+            logoHeight: this.$vuetify.breakpoint.smAndDown ? 20 : 40,
             priceRows: [
                 {
                     row1: 'Grande salle (40 personnes)',
@@ -796,7 +802,7 @@ export default {
 }
 
 .dense-hours{
-    .v-calendar-daily__intervals-body {
+    .v-calendar-daily__intervals-body, .v-calendar-daily__intervals-head{
         width: 25px !important;
     }
 }
