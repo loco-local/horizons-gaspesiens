@@ -111,8 +111,11 @@
             <v-flex xs0 lg2></v-flex>
         </v-layout>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
-        <ReservationDialog ref="reservationDialog" @eventUpdated="updateEvent"
-                           @eventAdded="addNewEvent"></ReservationDialog>
+        <ReservationDialog ref="reservationDialog"
+                           @eventUpdated="updateEvent"
+                           @eventAdded="addNewEvent"
+                           @eventRemoved="removeEvent"
+        ></ReservationDialog>
         <v-menu
                 v-model="selectedOpen"
                 :close-on-content-click="false"
@@ -134,15 +137,15 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-btn
-                        text
-                        @click="selectedOpen = false"
+                            text
+                            @click="selectedOpen = false"
                     >
                         Fermer
                     </v-btn>
                     <v-spacer></v-spacer>
                     <v-btn
-                        text
-                        @click="editEvent(selectedEvent)"
+                            text
+                            @click="editEvent(selectedEvent)"
                     >
                         <v-icon left>edit</v-icon>
                         Modifier
@@ -193,6 +196,11 @@ export default {
         this.$refs.calendar.scrollToTime('08:00')
     },
     methods: {
+        removeEvent: function (removedEvent) {
+            this.events = this.events.filter((event) => {
+                return event.id !== removedEvent.id;
+            });
+        },
         updateEvent: function (modifiedEvent) {
             this.events = this.events.map((event) => {
                 if (event.id === modifiedEvent.id) {

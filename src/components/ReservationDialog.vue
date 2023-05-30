@@ -22,7 +22,7 @@
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn @click="remove" :loading="isRemoveEventLoading" text color="red">
+                    <v-btn @click="confirmRemoveDialog=true" text color="red">
                         <v-icon left class="material-icons-outlined">delete</v-icon>
                         Supprimer
                     </v-btn>
@@ -416,7 +416,7 @@
                         </v-row>
                         <v-row>
                             <v-col cols="12" class="text-left">
-                                <v-btn color="primary" @click="save" :loading="isSaveEventLoading" large>
+                                <v-btn color="primary" @click="save" large :loading="isSaveEventLoading">
                                     <v-icon left v-if="!isModifyEventFlow">add</v-icon>
                                     <span v-if="isModifyEventFlow">
                                         Modifier l'événement
@@ -429,6 +429,25 @@
                         </v-row>
                     </v-form>
                 </v-container>
+            </v-card>
+        </v-dialog>
+        <v-dialog width="600" v-model="confirmRemoveDialog" v-if="confirmRemoveDialog">
+            <v-card>
+                <v-card-title>
+                    {{ editedEvent.summary }}
+                    <v-spacer></v-spacer>
+                    <v-icon @click="confirmRemoveDialog=false">close</v-icon>
+                </v-card-title>
+                <v-card-actions>
+                    <v-btn color="red" text @click="remove" :loading="isRemoveEventLoading">
+                        <v-icon left class="material-icons-outlined">delete</v-icon>
+                        Supprimer
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn @click="confirmRemoveDialog=false">
+                        Annuler
+                    </v-btn>
+                </v-card-actions>
             </v-card>
         </v-dialog>
         <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
@@ -446,6 +465,7 @@ export default {
     components: {PaymentMethodsDialog, VerificationAdhesion},
     data: function () {
         return {
+            confirmRemoveDialog: false,
             isRemoveEventLoading: false,
             dialog: false,
             editedEvent: null,
@@ -489,7 +509,9 @@ export default {
                 this.editedEvent.id
             )
             this.isRemoveEventLoading = false;
-            this.editEventDialog = false;
+            this.confirmRemoveDialog = false;
+            this.dialog = false;
+            this.$emit('eventRemoved', this.editedEvent)
         },
         save: async function () {
             if (!this.$refs.eventForm.validate()) {
