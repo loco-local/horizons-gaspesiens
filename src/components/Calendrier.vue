@@ -26,6 +26,7 @@
                                 class="mr-4"
                                 color="grey darken-2"
                                 @click="setToday"
+                                v-if="!showGoogleCalendar"
                         >
                             <span v-if="$vuetify.breakpoint.smAndDown">
                                 AJD
@@ -40,6 +41,7 @@
                                 small
                                 color="grey darken-2"
                                 @click="prev"
+                                v-if="!showGoogleCalendar"
                         >
                             <v-icon small>
                                 chevron_left
@@ -52,12 +54,13 @@
                                 color="grey darken-2"
                                 @click="next"
                                 left
+                                v-if="!showGoogleCalendar"
                         >
                             <v-icon small>
                                 chevron_right
                             </v-icon>
                         </v-btn>
-                        <v-toolbar-title v-if="$refs.calendar">
+                        <v-toolbar-title v-if="$refs.calendar && !showGoogleCalendar">
                             {{ $refs.calendar.title }}
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
