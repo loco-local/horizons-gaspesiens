@@ -121,7 +121,6 @@
         >
             <v-card
                     color="grey lighten-4"
-                    min-width="350px"
                     flat
             >
                 <v-toolbar
@@ -129,20 +128,24 @@
                         dark
                 >
                     <v-toolbar-title v-html="selectedEvent.summary"></v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-btn icon @click="editEvent(selectedEvent)">
-                        <v-icon>edit</v-icon>
-                    </v-btn>
                 </v-toolbar>
                 <v-card-text>
                     <span v-html="selectedEvent.description"></span>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn
-                            text
-                            @click="selectedOpen = false"
+                        text
+                        @click="selectedOpen = false"
                     >
                         Fermer
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                        text
+                        @click="editEvent(selectedEvent)"
+                    >
+                        <v-icon left>edit</v-icon>
+                        Modifier
                     </v-btn>
                 </v-card-actions>
             </v-card>
