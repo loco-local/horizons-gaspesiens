@@ -111,6 +111,7 @@
                                             format="24hr"
                                             v-model="editedEvent.startTime"
                                             label="heure"
+                                            :allowed-minutes="allowedMinutes"
                                             v-if="startTimeMenu"
                                             full-width
                                             @click:minute="$refs.startTimeMenu.save(editedEvent.startTime)"
@@ -143,6 +144,7 @@
                                     <v-time-picker
                                             format="24hr"
                                             v-model="editedEvent.endTime"
+                                            :allowed-minutes="allowedMinutes"
                                             label="heure"
                                             v-if="endTimeMenu"
                                             full-width
@@ -470,6 +472,7 @@ export default {
     components: {PaymentMethodsDialog, VerificationAdhesion},
     data: function () {
         return {
+            allowedMinutes: [0, 15, 30, 45],
             confirmRemoveDialog: false,
             isRemoveEventLoading: false,
             dialog: false,
