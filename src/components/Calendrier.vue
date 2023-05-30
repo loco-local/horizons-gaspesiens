@@ -129,7 +129,7 @@
                             class="mr-4"
 
                     />
-                    <v-toolbar-title class="text ">
+                    <v-toolbar-title class="text" v-if="$vuetify.breakpoint.mdAndUp">
                         <v-icon left>event</v-icon>
                         Réservation
                     </v-toolbar-title>
@@ -430,6 +430,10 @@
                                         </template>
                                     </v-simple-table>
                                 </v-card>
+                                <v-btn @click="$refs.paymentMethodsDialog.enter()" class="mb-6">
+                                    <v-icon left class="">monetization_on</v-icon>
+                                    Modes de paiements
+                                </v-btn>
                                 <h4 class="mb-2">
                                     Taxes
                                 </h4>
@@ -437,12 +441,6 @@
                                     Pour les événements financés par contributions volontaires, les taxes
                                     ne sont pas
                                     chargées.
-                                </p>
-                                <h4 class="mb-2">
-                                    Modes de paiement
-                                </h4>
-                                <p class="body-1 ml-4">
-                                    Disponible sur notre site web
                                 </p>
                                 <h4 class="mb-2">
                                     Allègement des tarifs
@@ -579,6 +577,7 @@
                 </v-card-actions>
             </v-card>
         </v-menu>
+        <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
     </div>
 </template>
 
@@ -590,15 +589,18 @@ import {addHours, format} from "date-fns";
 import Rules from "@/Rules";
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
+import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 
 export default {
     components: {
+        PaymentMethodsDialog,
         VerificationAdhesion,
         ReservationForm,
         PhoneDialog
     },
     data: function () {
         return {
+            paymentMethodsDialog: false,
             isRemoveEventLoading: false,
             isLoading: false,
             calendarHeight: 0,
