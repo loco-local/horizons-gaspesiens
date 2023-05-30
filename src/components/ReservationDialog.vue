@@ -267,7 +267,7 @@
                                     ></v-radio>
                                     <v-radio
                                             label="Pas prioritaire, d'autres peuvent réserver par dessus cet événement"
-                                            color="#1d1d1d"
+                                            color="#51b749"
                                             value="10"
                                     ></v-radio>
                                 </v-radio-group>

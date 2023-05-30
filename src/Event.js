@@ -45,7 +45,7 @@ const Event = {
         const color = Event.googleColors.filter((color) => {
             return color.id === colorId
         })
-        return color.length ? color[0] : Event.getColorFromId("9")
+        return color.length ? color[0] : Event.getColorFromId("11")
     },
     initNewEvent: function (createDate, end) {
         const newEvent = {
