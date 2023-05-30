@@ -167,6 +167,9 @@
                                 <v-row class="text-left">
                                     <v-col cols="12">
                                         <h4 class="text">Organisateur</h4>
+                                        <div class="subtitle-1">
+                                            Ces informations seront publiées dans la description de l'événement
+                                        </div>
                                     </v-col>
                                     <v-col cols="12">
                                         <v-row>
@@ -204,7 +207,7 @@
                                         </h4>
                                     </v-col>
                                     <v-col cols="12" class="pa-0">
-                                        <VerificationAdhesion></VerificationAdhesion>
+                                        <VerificationAdhesion :email-input="editedEvent.organizer.email"></VerificationAdhesion>
                                     </v-col>
                                 </v-row>
                             </v-col>

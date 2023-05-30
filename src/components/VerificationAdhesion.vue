@@ -135,6 +135,7 @@ import {fr} from "date-fns/locale";
 
 export default {
     name: "VerificationAdhesion",
+    props: ['emailInput'],
     data: function () {
         return {
             email: null,
@@ -176,6 +177,11 @@ export default {
                 )
             }
             this.loading = false;
+        }
+    },
+    watch: {
+        emailInput: function () {
+            this.email = this.emailInput;
         }
     }
 }
