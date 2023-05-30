@@ -439,7 +439,6 @@
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 import EventService from "@/service/EventService";
-import Event from "@/Event";
 import Rules from "@/Rules";
 
 export default {

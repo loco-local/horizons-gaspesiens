@@ -71,7 +71,7 @@
                 <v-sheet :height="calendarHeight">
                     <v-overlay
                             absolute
-                            :value="isLoading"
+                            :value="isLoading && !isFirstLoading"
                     >
                         <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
                     </v-overlay>
@@ -111,7 +111,8 @@
             <v-flex xs0 lg2></v-flex>
         </v-layout>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
-        <ReservationDialog ref="reservationDialog" @eventUpdated="updateEvent" @eventAdded="addNewEvent"></ReservationDialog>
+        <ReservationDialog ref="reservationDialog" @eventUpdated="updateEvent"
+                           @eventAdded="addNewEvent"></ReservationDialog>
         <v-menu
                 v-model="selectedOpen"
                 :close-on-content-click="false"
@@ -167,6 +168,7 @@ export default {
     },
     data: function () {
         return {
+            isFirstLoading: true,
             isLoading: false,
             calendarHeight: 0,
             selectedEvent: {},
@@ -328,12 +330,6 @@ export default {
         toTime(tms) {
             return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
         },
-        rnd(a, b) {
-            return Math.floor((b - a + 1) * Math.random()) + a
-        },
-        rndElement(arr) {
-            return arr[this.rnd(0, arr.length - 1)]
-        },
         addEvent: function () {
             this.editedEvent = Event.initNewEvent()
             this.enterReservationDialog()
@@ -359,6 +355,7 @@ export default {
             console.log(events);
             this.events = events.map(Event.toVuetifyCalendar)
             this.isLoading = false;
+            this.isFirstLoading = false;
         },
     }
 }
