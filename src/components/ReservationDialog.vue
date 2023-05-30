@@ -22,7 +22,7 @@
                         Réservation
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn @click="confirmRemoveDialog=true" text color="red">
+                    <v-btn @click="confirmRemoveDialog=true" text color="red" v-if="isModifyEventFlow">
                         <v-icon left class="material-icons-outlined">delete</v-icon>
                         Supprimer
                     </v-btn>
@@ -168,7 +168,7 @@
                                     <v-col cols="12">
                                         <h4 class="text">Organisateur</h4>
                                         <div class="body-1">
-                                            Ces informations seront publiées dans la description de l'événement
+                                            Ces informations sont publiées dans la description de l'événement
                                         </div>
                                     </v-col>
                                     <v-col cols="12">
