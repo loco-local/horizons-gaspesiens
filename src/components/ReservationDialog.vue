@@ -167,7 +167,7 @@
                                 <v-row class="text-left">
                                     <v-col cols="12">
                                         <h4 class="text">Organisateur</h4>
-                                        <div class="subtitle-1">
+                                        <div class="body-1">
                                             Ces informations seront publiées dans la description de l'événement
                                         </div>
                                     </v-col>
@@ -200,10 +200,12 @@
                                             </v-col>
                                         </v-row>
                                     </v-col>
+                                    <v-col cols="12">
+                                        <v-divider></v-divider>
+                                    </v-col>
                                     <v-col cols="12" class="">
-                                        <h4 class="text font-weight-medium">
-                                            <v-icon left large>check</v-icon>
-                                            Vous devez être membre de la coopérative pour réserver la salle
+                                        <h4 class="text">
+                                            L'organisateur doit être membre de la coopérative
                                         </h4>
                                     </v-col>
                                     <v-col cols="12" class="pa-0">
