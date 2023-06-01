@@ -372,15 +372,13 @@
                                                 Laisser l'endroit plus propre qu'il ne l'était avant l'événement.
                                             </v-list-item-title>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Balayer, nettoyer le plancher, les comptoirs, les tables, la salle de
-                                                bain.
+                                                Nettoyer les planchers, les comptoirs, les tables.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Vider les poubelles, recyclage, compost au besoin.
+                                                Vider les poubelles, recyclage, compost et nettoyer la toilette au besoin.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Replacer les objets à leur place dont les tables et ranger la table de
-                                                ping pong.
+                                                Replacer meubles et objets à leur place.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
                                                 Faire le tour du Local pour voir si rien ne traîne.
@@ -445,7 +443,7 @@
                                         </v-list-item-action>
                                         <v-list-item-content>
                                             <v-list-item-title class="body-1 text-wrap">
-                                                Supprimer son événement s'il est annulé.
+                                                Supprimer son événement lorsqu'il est annulé.
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
