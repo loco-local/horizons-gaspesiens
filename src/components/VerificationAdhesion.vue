@@ -132,7 +132,7 @@
 import MembershipService from "@/service/MembershipService";
 import {format} from "date-fns";
 import {fr} from "date-fns/locale";
-
+const ENTER_KEY_CODE = 13;
 export default {
     name: "VerificationAdhesion",
     props: ['emailInput'],

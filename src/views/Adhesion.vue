@@ -42,8 +42,6 @@ import MembershipService from "@/service/MembershipService";
 import {fr} from 'date-fns/locale'
 import {format} from 'date-fns'
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
-
-const ENTER_KEY_CODE = 13;
 export default {
     name: "Adhesion",
     components: {
