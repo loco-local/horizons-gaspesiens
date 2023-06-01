@@ -168,7 +168,7 @@
                             <v-col cols="12">
                                 <v-row class="text-left">
                                     <v-col cols="12">
-                                        <h4 class="text">Organisateur</h4>
+                                        <h4 class="text">Organisatrice</h4>
                                         <div class="body-1">
                                             Ces informations sont publiées dans la description de l'événement
                                         </div>
@@ -207,7 +207,7 @@
                                     </v-col>
                                     <v-col cols="12" class="">
                                         <h4 class="text">
-                                            L'organisateur doit être membre de la coopérative
+                                            L'organisatrice doit être membre de la coopérative
                                         </h4>
                                     </v-col>
                                     <v-col cols="12" class="pa-0">
