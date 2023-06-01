@@ -381,9 +381,18 @@
                                             <v-list-item-subtitle class="body-1 text-wrap">
                                                 Faire le tour du Local pour voir si rien ne traîne.
                                             </v-list-item-subtitle>
-                                            <v-list-item-subtitle class="body-1 text-wrap">
-                                                Remonter les rideaux et fermer les lumières.
-                                            </v-list-item-subtitle>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-action>
+                                            <v-icon>
+                                                electric_bolt
+                                            </v-icon>
+                                        </v-list-item-action>
+                                        <v-list-item-content>
+                                            <v-list-item-title class="body-1 text-wrap">
+                                                Baisser le chauffage, fermer les lumières et ouvrir les rideaux pour les plantes.
+                                            </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
                                     <v-list-item>
