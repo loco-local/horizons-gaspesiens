@@ -433,7 +433,7 @@
                                                 Mettre ses limites.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Être de bonne foi et garder en tête le bien être du Loco Local.
+                                                Garder en tête le bien être du Loco Local.
                                             </v-list-item-subtitle>
                                         </v-list-item-content>
                                     </v-list-item>
