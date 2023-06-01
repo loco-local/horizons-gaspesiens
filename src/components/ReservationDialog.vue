@@ -211,7 +211,8 @@
                                         </h4>
                                     </v-col>
                                     <v-col cols="12" class="pa-0">
-                                        <VerificationAdhesion :email-input="editedEvent.organizer.email"></VerificationAdhesion>
+                                        <VerificationAdhesion
+                                                :email-input="editedEvent.organizer.email"></VerificationAdhesion>
                                     </v-col>
                                 </v-row>
                             </v-col>
@@ -372,7 +373,10 @@
                                             </v-list-item-title>
                                             <v-list-item-subtitle class="body-1 text-wrap">
                                                 Balayer, nettoyer le plancher, les comptoirs, les tables, la salle de
-                                                bain, vider les poubelles, recyclage, compost au besoin.
+                                                bain.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1 text-wrap">
+                                                Vider les poubelles, recyclage, compost au besoin.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
                                                 Replacer les objets à leur place dont les tables et ranger la table de
@@ -391,7 +395,8 @@
                                         </v-list-item-action>
                                         <v-list-item-content>
                                             <v-list-item-title class="body-1 text-wrap">
-                                                Baisser le chauffage, fermer les lumières et ouvrir les rideaux pour les plantes.
+                                                Baisser le chauffage, fermer les lumières et ouvrir les rideaux pour les
+                                                plantes.
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -403,9 +408,12 @@
                                         </v-list-item-action>
                                         <v-list-item-content>
                                             <v-list-item-title class="body-1 text-wrap">
-                                                Barrer la porte en sortant ou s'assurer que ceux qui restent dans le
-                                                local sont membres et majeurs.
+                                                Barrer la porte en sortant.
                                             </v-list-item-title>
+                                            <v-list-item-subtitle class="body-1 text-wrap">
+                                                Ou s'assurer que ceux qui restent dans le
+                                                local sont membres et majeurs.
+                                            </v-list-item-subtitle>
                                         </v-list-item-content>
                                     </v-list-item>
                                     <v-list-item>
@@ -416,9 +424,28 @@
                                         </v-list-item-action>
                                         <v-list-item-content>
                                             <v-list-item-title class="body-1 text-wrap">
-                                                En cas de conflit d'horaire, collaborer, mettre ses
-                                                limites, être de bonne foi et garder en tête le bien être du Loco
-                                                Local.
+                                                En cas de conflit d'horaire.
+                                            </v-list-item-title>
+                                            <v-list-item-subtitle class="body-1 text-wrap">
+                                                Collaborer.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1 text-wrap">
+                                                Mettre ses limites.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-subtitle class="body-1 text-wrap">
+                                                Être de bonne foi et garder en tête le bien être du Loco Local.
+                                            </v-list-item-subtitle>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-action>
+                                            <v-icon>
+                                                free_cancellation
+                                            </v-icon>
+                                        </v-list-item-action>
+                                        <v-list-item-content>
+                                            <v-list-item-title class="body-1 text-wrap">
+                                                Supprimer son événement s'il est annulé.
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
