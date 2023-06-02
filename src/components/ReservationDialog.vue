@@ -153,6 +153,46 @@
                                 </v-menu>
                             </v-col>
                         </v-row>
+                        <v-card :flat="!isWeekly" class="pl-8 mb-6">
+                            <v-row>
+                                <v-col cols="12">
+                                    <v-checkbox
+                                        v-if="!isModifyEventFlow"
+                                        v-model="isWeekly"
+                                        label="Est un événement qui se répète à chaque semaine"
+                                    ></v-checkbox>
+                                </v-col>
+                                <v-col cols="12" v-if="isWeekly" class="pt-0">
+                                    <v-menu
+                                        ref="weeklyUntilMenu"
+                                        v-model="weeklyUntilMenu"
+                                        :close-on-content-click="false"
+                                        transition="scale-transition"
+                                        offset-y
+                                        min-width="auto"
+                                    >
+                                        <template v-slot:activator="{ on, attrs }">
+                                            <v-text-field
+                                                v-model="weeklyUntilDate"
+                                                label="Jusqu'au"
+                                                prepend-icon="calendar"
+                                                readonly
+                                                v-bind="attrs"
+                                                v-on="on"
+                                                class="pt-0"
+                                                :rules="[rules.required]"
+                                            ></v-text-field>
+                                        </template>
+                                        <v-date-picker
+                                            v-model="weeklyUntilDate"
+                                            no-title
+                                            scrollable
+                                            @input="weeklyUntilMenu = false"
+                                        ></v-date-picker>
+                                    </v-menu>
+                                </v-col>
+                            </v-row>
+                        </v-card>
                         <v-row>
                             <v-col cols="12">
                                 <p class="body-1 text-left">
@@ -375,13 +415,14 @@
                                                 Nettoyer les planchers, les comptoirs, les tables.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Vider les poubelles, recyclage, compost et nettoyer la toilette au besoin.
+                                                Vider les poubelles, recyclage, compost et nettoyer la toilette au
+                                                besoin.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
                                                 Replacer meubles et objets à leur place.
                                             </v-list-item-subtitle>
                                             <v-list-item-subtitle class="body-1 text-wrap">
-                                                Faire le tour du Local pour voir si rien ne traîne.
+                                                Faire le tour du Local et s'assurer que rien ne traîne.
                                             </v-list-item-subtitle>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -500,12 +541,16 @@ import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 import EventService from "@/service/EventService";
 import Rules from "@/Rules";
+import {format} from "date-fns";
 
 export default {
     name: "ReservationDialog",
     components: {PaymentMethodsDialog, VerificationAdhesion},
     data: function () {
         return {
+            isWeekly: false,
+            weeklyUntilMenu: false,
+            weeklyUntilDate: null,
             allowedMinutes: [0, 15, 30, 45],
             confirmRemoveDialog: false,
             isRemoveEventLoading: false,
@@ -538,6 +583,7 @@ export default {
     },
     methods: {
         enter: function (editedEvent) {
+            this.isWeekly = false;
             this.editedEvent = Object.assign({}, editedEvent);
             this.editedEvent.organizer = editedEvent.organizer;
             this.dialog = true
@@ -572,6 +618,12 @@ export default {
                 );
                 this.$emit('eventUpdated', modifiedEvent)
             } else {
+                if (this.isWeekly) {
+                    const untilDateFormatted = this.weeklyUntilDate.replaceAll("-", "");
+                    this.editedEvent.recurrence = [
+                        "RRULE:FREQ=WEEKLY;UNTIL=" + untilDateFormatted
+                    ];
+                }
                 const newEvent = await EventService.add(
                     this.editedEvent
                 )
