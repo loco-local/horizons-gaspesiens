@@ -14,156 +14,157 @@
             </v-flex>
             <v-flex xs0 lg3></v-flex>
         </v-layout>
-        <v-layout row wrap class="">
-            <v-row class="vh-center">
-                <v-col cols="8">
-                    <v-card class="mt-12">
-                        <v-row class="" v-if="!showGoogleCalendar">
-                            <v-col cols="12" class="body-1 text-left pb-0 pl-8">
-                                Légende
-                            </v-col>
-                            <v-col cols="12" class="text-left">
-                                <v-chip
-                                        class="ma-2 body-1"
-                                        color="#5484ed"
-                                        dark
-                                >
-                                    La salle peut être partagée si les autres respectent le bon déroulement de
-                                    l'activité.
-                                </v-chip>
-                                <v-chip
-                                        class="ma-2 body-1"
-                                        color="#dc2127"
-                                        dark
-                                >
-                                    Seuls les participants à l'activité peuvent être dans la salle.
-                                </v-chip>
-                                <v-chip
-                                        class="ma-2 body-1"
-                                        color="#51b749"
-                                        dark
-                                >
-                                    Pas prioritaire, d'autres peuvent réserver par dessus cet événement.
-                                </v-chip>
-                            </v-col>
-                        </v-row>
-                        <v-divider class="mt-6 mb-6"></v-divider>
-                        <v-sheet height="64">
-                            <v-toolbar
-                                    flat
+
+        <v-row class="vh-center">
+            <v-col cols="12" lg="8" :class="{
+                'pl-0 pr-0' : $vuetify.breakpoint.smAndDown
+            }">
+                <v-card class="mt-12">
+                    <v-row class="" v-if="!showGoogleCalendar">
+                        <v-col cols="12" class="body-1 text-left pb-0 pl-8">
+                            Légende
+                        </v-col>
+                        <v-col cols="12" class="text-left">
+                            <v-chip
+                                    class="ma-2 body-1 text-truncate"
+                                    color="#5484ed"
+                                    dark
                             >
-                                <v-btn
-                                        outlined
-                                        class="mr-4"
-                                        color="grey darken-2"
-                                        @click="setToday"
-                                        v-if="!showGoogleCalendar"
-                                >
+                                La salle peut être partagée si les autres respectent le bon déroulement de
+                                l'activité.
+                            </v-chip>
+                            <v-chip
+                                    class="ma-2 body-1"
+                                    color="#dc2127"
+                                    dark
+                            >
+                                Seuls les participants à l'activité peuvent être dans la salle.
+                            </v-chip>
+                            <v-chip
+                                    class="ma-2 body-1"
+                                    color="#51b749"
+                                    dark
+                            >
+                                Pas prioritaire, d'autres peuvent réserver par dessus cet événement.
+                            </v-chip>
+                        </v-col>
+                    </v-row>
+                    <v-divider class="mt-6 mb-6"></v-divider>
+                    <v-sheet height="64">
+                        <v-toolbar
+                                flat
+                        >
+                            <v-btn
+                                    outlined
+                                    class="mr-4"
+                                    color="grey darken-2"
+                                    @click="setToday"
+                                    v-if="!showGoogleCalendar"
+                            >
                             <span v-if="$vuetify.breakpoint.smAndDown">
                                 AJD
                             </span>
-                                    <span v-else>
+                                <span v-else>
                                 Aujourd'hui
                             </span>
-                                </v-btn>
-                                <v-btn
-                                        fab
-                                        text
-                                        small
-                                        color="grey darken-2"
-                                        @click="prev"
-                                        v-if="!showGoogleCalendar"
-                                >
-                                    <v-icon small>
-                                        chevron_left
-                                    </v-icon>
-                                </v-btn>
-                                <v-btn
-                                        fab
-                                        text
-                                        small
-                                        color="grey darken-2"
-                                        @click="next"
-                                        left
-                                        v-if="!showGoogleCalendar"
-                                >
-                                    <v-icon small>
-                                        chevron_right
-                                    </v-icon>
-                                </v-btn>
-                                <v-toolbar-title v-if="$refs.calendar && !showGoogleCalendar">
-                                    {{ $refs.calendar.title }}
-                                </v-toolbar-title>
-                                <v-spacer></v-spacer>
-                                <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown"
-                                       :outlined="$vuetify.breakpoint.smAndDown">
-                                    <v-icon>add</v-icon>
-                                    <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
-                                </v-btn>
-                            </v-toolbar>
-                        </v-sheet>
-                        <v-sheet :height="calendarHeight">
-                            <v-card :height="calendarHeight" class="pa-0">
-                                <v-overlay
-                                        absolute
-                                        :value="isLoading"
-                                >
-                                    <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
-                                </v-overlay>
-                                <v-calendar
-                                        ref="calendar"
-                                        v-model="calendarFocus"
-                                        :weekdays="weekdays"
-                                        type="week"
-                                        :events="events"
-                                        event-overlap-mode="column"
-                                        :event-overlap-threshold="30"
-                                        :event-color="getEventColor"
-                                        @change="getEvents"
-                                        @click:event="showEvent"
-                                        @mousedown:event="startDrag"
-                                        @mousedown:time="startTime"
-                                        @mousemove:time="mouseMove"
-                                        @mouseup:time="endDrag"
-                                        @mouseleave.native="cancelDrag"
-                                        :class="{
+                            </v-btn>
+                            <v-btn
+                                    fab
+                                    text
+                                    small
+                                    color="grey darken-2"
+                                    @click="prev"
+                                    v-if="!showGoogleCalendar"
+                            >
+                                <v-icon small>
+                                    chevron_left
+                                </v-icon>
+                            </v-btn>
+                            <v-btn
+                                    fab
+                                    text
+                                    small
+                                    color="grey darken-2"
+                                    @click="next"
+                                    left
+                                    v-if="!showGoogleCalendar"
+                            >
+                                <v-icon small>
+                                    chevron_right
+                                </v-icon>
+                            </v-btn>
+                            <v-toolbar-title v-if="$refs.calendar && !showGoogleCalendar">
+                                {{ $refs.calendar.title }}
+                            </v-toolbar-title>
+                            <v-spacer></v-spacer>
+                            <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown"
+                                   :outlined="$vuetify.breakpoint.smAndDown">
+                                <v-icon>add</v-icon>
+                                <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
+                            </v-btn>
+                        </v-toolbar>
+                    </v-sheet>
+                    <v-sheet :height="calendarHeight">
+                        <v-card :height="calendarHeight" class="pa-0">
+                            <v-overlay
+                                    absolute
+                                    :value="isLoading"
+                            >
+                                <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
+                            </v-overlay>
+                            <v-calendar
+                                    ref="calendar"
+                                    v-model="calendarFocus"
+                                    :weekdays="weekdays"
+                                    type="week"
+                                    :events="events"
+                                    event-overlap-mode="column"
+                                    :event-overlap-threshold="30"
+                                    :event-color="getEventColor"
+                                    @change="getEvents"
+                                    @click:event="showEvent"
+                                    @mousedown:event="startDrag"
+                                    @mousedown:time="startTime"
+                                    @mousemove:time="mouseMove"
+                                    @mouseup:time="endDrag"
+                                    @mouseleave.native="cancelDrag"
+                                    :class="{
                                 'dense-hours' : $vuetify.breakpoint.smAndDown
                             }"
-                                        v-if="!showGoogleCalendar"
-                                >
-                                    <template v-slot:event="{ event, timed, eventSummary }">
-                                        <div class="v-event-draggable">
-                                            <component :is="{ render: eventSummary }"></component>
-                                        </div>
-                                        <div
-                                                v-if="timed"
-                                                class="v-event-drag-bottom"
-                                                @mousedown.stop="extendBottom(event)"
-                                        ></div>
-                                    </template>
-                                </v-calendar>
-                                <iframe frameborder="0" :height="calendarHeight" scrolling="no"
-                                        src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
-                                        style=" border-width:0 " width="100%"
-                                        v-if="showGoogleCalendar"
-                                        :key="googleCalendarUiKey"
-                                ></iframe>
-                                <v-row class="mt-4">
-                                    <v-col cols="12" class="text-right">
-                                        <v-btn text @click="showGoogleCalendar = true" v-if="!showGoogleCalendar">
-                                            Voir Calendrier Google
-                                        </v-btn>
-                                        <v-btn text @click="showGoogleCalendar = false" v-if="showGoogleCalendar">
-                                            Revenir au calendrier par défaut
-                                        </v-btn>
-                                    </v-col>
-                                </v-row>
-                            </v-card>
-                        </v-sheet>
-                    </v-card>
-                </v-col>
-            </v-row>
-        </v-layout>
+                                    v-if="!showGoogleCalendar"
+                            >
+                                <template v-slot:event="{ event, timed, eventSummary }">
+                                    <div class="v-event-draggable">
+                                        <component :is="{ render: eventSummary }"></component>
+                                    </div>
+                                    <div
+                                            v-if="timed"
+                                            class="v-event-drag-bottom"
+                                            @mousedown.stop="extendBottom(event)"
+                                    ></div>
+                                </template>
+                            </v-calendar>
+                            <iframe frameborder="0" :height="calendarHeight" scrolling="no"
+                                    src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
+                                    style=" border-width:0 " width="100%"
+                                    v-if="showGoogleCalendar"
+                                    :key="googleCalendarUiKey"
+                            ></iframe>
+                            <v-row class="mt-4">
+                                <v-col cols="12" class="text-right">
+                                    <v-btn text @click="showGoogleCalendar = true" v-if="!showGoogleCalendar">
+                                        Voir Calendrier Google
+                                    </v-btn>
+                                    <v-btn text @click="showGoogleCalendar = false" v-if="showGoogleCalendar">
+                                        Revenir au calendrier par défaut
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-card>
+                    </v-sheet>
+                </v-card>
+            </v-col>
+        </v-row>
         <PhoneDialog ref="phoneDialog"></PhoneDialog>
         <ReservationDialog ref="reservationDialog"
                            @eventUpdated="updateEvent"
@@ -418,7 +419,7 @@ export default {
         },
         getEvents: async function (date) {
             this.isLoading = true;
-            const endDate = addDays(new Date(date.end.date),2)
+            const endDate = addDays(new Date(date.end.date), 2)
             const events = await EventService.list(
                 date.start.date,
                 format(endDate, "yyyy-MM-dd")
@@ -447,8 +448,18 @@ export default {
 
 .dense-hours {
     .v-calendar-daily__intervals-body, .v-calendar-daily__intervals-head {
-        width: 25px !important;
+        width: 29px !important;
     }
 }
 
+.v-chip {
+    height: auto !important;
+}
+
+.v-chip .v-chip__content {
+    max-width: 100%;
+    height: auto;
+    min-height: 32px;
+    white-space: pre-wrap;
+}
 </style>
