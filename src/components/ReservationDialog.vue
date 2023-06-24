@@ -138,7 +138,10 @@
                         readonly
                         v-bind="attrs"
                         v-on="on"
-                        :rules="[rules.required]"
+                        :rules="[
+                            rules.required,
+                            rules.afterTime(editedEvent.endTime, editedEvent.startTime),
+                            ]"
                     ></v-text-field>
                   </template>
                   <v-time-picker
@@ -389,7 +392,7 @@
                   un montant inférieur peut être donné au Loco.
                 </p>
                 <p class="body-1 ml-4">
-                  Toutefois des démarches doivent êtres entreprises par l'organisateur pour
+                  Toutefois des démarches doivent êtres entreprises par l'organisatrice pour
                   parvenir à donner la contribution minimale lors des prochaines activités.
                 </p>
               </v-col>
