@@ -12,6 +12,9 @@ export default {
         return pattern.test(value) || "Courriel invalide"
     },
     afterTime: function (valueTime, time) {
+        if (!valueTime || !time) {
+            return true
+        }
         const valueDate = new Date();
         Event.setTimeToDate(valueTime, valueDate)
         const otherDate = new Date();
