@@ -28,7 +28,7 @@
               Demande d'adhésion à groupe.achat.hg@gmail.com
             </v-list-item-title>
           </v-list-item>
-          <v-list-item href="https://foodclub.org/bonaventure">
+          <v-list-item href="https://commande.loco-local.net/loco-local">
             <v-list-item-action>
               <v-icon large>app_shortcut</v-icon>
             </v-list-item-action>
