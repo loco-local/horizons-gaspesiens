@@ -88,26 +88,26 @@
           </template>
         </v-simple-table>
       </v-card>
-      <div class="text-left text text-h6" v-if="roomPicker">
-        Option de salle
-      </div>
-      <v-radio-group v-model="roomPiece" row @change="updatePrice" v-if="roomPicker">
-        <v-radio
-            label="Grande salle"
-            value="Grande salle"
-        ></v-radio>
-        <v-radio
-            label="Cuisine"
-            value="Cuisine"
-        ></v-radio>
-        <v-radio
-            label="Petite salle de réunion"
-            value="Petite salle de réunion"
-        ></v-radio>
-      </v-radio-group>
-      <div v-if="roomPicker" class="text-h5">
-        {{ price }}$
-      </div>
+<!--      <div class="text-left text text-h6" v-if="roomPicker">-->
+<!--        Option de salle-->
+<!--      </div>-->
+<!--      <v-radio-group v-model="roomPiece" row @change="updatePrice" v-if="roomPicker">-->
+<!--        <v-radio-->
+<!--            label="Grande salle"-->
+<!--            value="Grande salle"-->
+<!--        ></v-radio>-->
+<!--        <v-radio-->
+<!--            label="Cuisine"-->
+<!--            value="Cuisine"-->
+<!--        ></v-radio>-->
+<!--        <v-radio-->
+<!--            label="Petite salle de réunion"-->
+<!--            value="Petite salle de réunion"-->
+<!--        ></v-radio>-->
+<!--      </v-radio-group>-->
+<!--      <div v-if="roomPicker" class="text-h5">-->
+<!--        {{ price }}$-->
+<!--      </div>-->
       <v-btn @click="$refs.paymentMethodsDialog.enter()" class="mb-6">
         <v-icon left class="">monetization_on</v-icon>
         Modes de paiements
