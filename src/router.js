@@ -111,6 +111,11 @@ export default new Router({
             component: () => import("@/views/CalendrierPage")
         },
         {
+            path: '/tarification',
+            name: 'tarification',
+            component: () => import("@/views/CalendrierPage")
+        },
+        {
             path: '/benevole',
             name: 'benevole',
             component: Home

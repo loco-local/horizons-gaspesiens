@@ -50,7 +50,7 @@
           <v-form name="eventForm" ref="eventForm">
             <v-row class="text-left">
               <v-col cols="12">
-                <h4 class="text">Jour et Heure</h4>
+                <div class="text text-h5">Jour et Heure</div>
               </v-col>
             </v-row>
             <v-row>
@@ -211,7 +211,7 @@
               <v-col cols="12">
                 <v-row class="text-left">
                   <v-col cols="12">
-                    <h4 class="text">Organisatrice</h4>
+                    <div class="text text-h5">Organisatrice</div>
                     <div class="body-1">
                       Ces informations sont publiées dans la description de l'événement
                     </div>
@@ -249,9 +249,9 @@
                     <v-divider></v-divider>
                   </v-col>
                   <v-col cols="12" class="">
-                    <h4 class="text">
+                    <div class="text text-h5">
                       L'organisatrice doit être membre de la coopérative
-                    </h4>
+                    </div>
                   </v-col>
                   <v-col cols="12" class="pa-0">
                     <VerificationAdhesion
@@ -267,7 +267,7 @@
             </v-row>
             <v-row class="">
               <v-col cols="12" class="text-left">
-                <h4 class="text">Événement</h4>
+                <div class="text text-h5">Événement</div>
               </v-col>
               <v-col cols="12" lg="6" xl="4">
                 <v-text-field
@@ -294,7 +294,7 @@
             </v-row>
             <v-row>
               <v-col cols="12">
-                <h4 class="text-left text">Partage de la salle</h4>
+                <div class="text-left text text-h5">Partage de la salle</div>
                 <v-radio-group
                     v-model="editedEvent.colorId"
                     column
@@ -320,87 +320,11 @@
               </v-col>
             </v-row>
             <v-divider class="mt-6 mb-6"></v-divider>
-            <v-row>
-              <v-col cols="12" class="text-left">
-                <h4 class="text">Tarification</h4>
-              </v-col>
-              <v-col cols="12" class="text-left">
-                <p class="body-1 font-weight-bold text-center">
-                  Contribution minimale pour la location
-                  de la salle.
-                </p>
-                <v-card class="mb-8">
-                  <v-simple-table>
-                    <template v-slot:default>
-                      <thead>
-                      <tr>
-                        <th></th>
-                        <th class="body-1">
-                          Un bloc de 4 heures<br>
-                          (matin, après-midi ou soirée)
-                        </th>
-                        <th class="body-1">
-                          Un bloc de 8 heures<br>
-                          (toute la journée)
-                        </th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <template slot="item" slot-scope="props">
-                        <td class="body-1">
-                          {{ props.item.row1 }}
-                        </td>
-                        <td class="body-1">
-                          {{ props.item.row2 }}
-                        </td>
-                        <td class="body-1">
-                          {{ props.item.row3 }}
-                        </td>
-                      </template>
-                      <tr
-                          v-for="price in priceRows"
-                          :key="price.row1"
-                      >
-                        <td class="body-1">{{ price.row1 }}</td>
-                        <td class="body-1">{{ price.row2 }}</td>
-                        <td class="body-1">{{ price.row3 }}</td>
-                      </tr>
-                      </tbody>
-                    </template>
-                  </v-simple-table>
-                </v-card>
-                <v-btn @click="$refs.paymentMethodsDialog.enter()" class="mb-6">
-                  <v-icon left class="">monetization_on</v-icon>
-                  Modes de paiements
-                </v-btn>
-                <h4 class="mb-2">
-                  Taxes
-                </h4>
-                <p class="body-1 ml-4">
-                  Pour les événements financés par contributions volontaires, les taxes
-                  ne sont pas
-                  chargées.
-                </p>
-                <h4 class="mb-2">
-                  Allègement des tarifs
-                </h4>
-                <p class="body-1 ml-4">
-                  Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les
-                  frais de
-                  location de
-                  la salle,
-                  un montant inférieur peut être donné au Loco.
-                </p>
-                <p class="body-1 ml-4">
-                  Toutefois des démarches doivent êtres entreprises par l'organisatrice pour
-                  parvenir à donner la contribution minimale lors des prochaines activités.
-                </p>
-              </v-col>
-            </v-row>
+              <Tarification></Tarification>
             <v-divider class="mt-6 mb-6"></v-divider>
             <v-row>
               <v-col cols="12" class="text-left">
-                <h4>Conditions d'utilisations de la salle</h4>
+                <div class="text-h5">Conditions d'utilisations de la salle</div>
               </v-col>
               <v-col cols="12" class="text-left">
                 <v-list>
@@ -535,7 +459,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
   </div>
 </template>
 
@@ -544,11 +467,11 @@ import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 import EventService from "@/service/EventService";
 import Rules from "@/Rules";
-import {format} from "date-fns";
+import Tarification from "@/components/Tarification.vue";
 
 export default {
   name: "ReservationDialog",
-  components: {PaymentMethodsDialog, VerificationAdhesion},
+  components: {Tarification, PaymentMethodsDialog, VerificationAdhesion},
   data: function () {
     return {
       isWeekly: false,
@@ -564,24 +487,7 @@ export default {
       eventStartDateMenu: false,
       startTimeMenu: false,
       endTimeMenu: false,
-      logoHeight: this.$vuetify.breakpoint.smAndDown ? 20 : 40,
-      priceRows: [
-        {
-          row1: 'Grande salle (40 personnes)',
-          row2: '50$ + taxes',
-          row3: '75$ + taxes',
-        },
-        {
-          row1: 'Cuisine',
-          row2: '25$ + taxes',
-          row3: '40$ + taxes',
-        },
-        {
-          row1: 'Petite salle de réunion (5 personnes)',
-          row2: '20$ + taxes',
-          row3: '30$ + taxes',
-        }
-      ]
+      logoHeight: this.$vuetify.breakpoint.smAndDown ? 20 : 40
     }
   },
   methods: {

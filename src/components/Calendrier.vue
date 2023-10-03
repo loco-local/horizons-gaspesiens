@@ -14,12 +14,19 @@
       </v-flex>
       <v-flex xs0 lg3></v-flex>
     </v-layout>
-
-    <v-row class="vh-center">
+    <v-row class=" vh-center">
       <v-col cols="12" lg="8" :class="{
                 'pl-0 pr-0' : $vuetify.breakpoint.smAndDown
             }">
         <v-card class="mt-12">
+          <v-row>
+            <v-col cols="12" class="vh-center mt-3">
+              <v-btn @click="tarificationDialog = true;" outlined>
+                <v-icon left>attach_money</v-icon>
+                Tarification
+              </v-btn>
+            </v-col>
+          </v-row>
           <v-row class="" v-if="!showGoogleCalendar">
             <v-col cols="12" class="body-1 text-left pb-0 pl-8">
               Légende
@@ -171,7 +178,8 @@
             Lorsque vous êtes membre,
             <router-link to="/adhesion">vérifiez votre adhésion</router-link>
             , vous pouvez utiliser la salle, quand elle n'est pas réservée,
-            pour travailler sur votre ordi, jouer avec vos enfants, cuisiner, lire, socialiser, jouer au ping pong, danser etc. Dans ces
+            pour travailler sur votre ordi, jouer avec vos enfants, cuisiner, lire, socialiser, jouer au ping pong,
+            danser etc. Dans ces
             moments, ce n'est pas
             nécessaire de payer ou de réserver la salle. Mais, au minimum, gardez l'endroit très
             propre, et pensez quand même à redonner au Loco pour que la formule reste viable.
@@ -222,6 +230,18 @@
         </v-card-actions>
       </v-card>
     </v-menu>
+    <v-dialog v-model="tarificationDialog" max-width="900" :fullscreen="$vuetify.breakpoint.smAndDown">
+      <v-card>
+        <v-card-text class="pt-6 pb-6">
+          <Tarification :roomPicker="false" :topCloseButton="true" @close="tarificationDialog=false"></Tarification>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="tarificationDialog = false" text>
+            Fermer
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -233,9 +253,11 @@ import {addDays, addHours, format, parse} from "date-fns";
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
+import Tarification from "@/components/Tarification.vue";
 
 export default {
   components: {
+    Tarification,
     ReservationDialog,
     VerificationAdhesion,
     ReservationForm,
@@ -258,12 +280,16 @@ export default {
       editedEvent: null,
       createStart: null,
       extendOriginal: null,
-      googleCalendarUiKey: Math.random()
+      googleCalendarUiKey: Math.random(),
+      tarificationDialog: false
     }
   },
   mounted: function () {
     this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 700;
-    this.$refs.calendar.scrollToTime('08:00')
+    this.$refs.calendar.scrollToTime('08:00');
+    if (this.$router.currentRoute.name === 'tarification') {
+      this.tarificationDialog = true;
+    }
   },
   methods: {
     removeEvent: function (removedEvent) {
