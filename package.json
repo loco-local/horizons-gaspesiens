@@ -10,14 +10,14 @@
   "dependencies": {
     "google-charts": "^2.0.0",
     "vue": "^2.7.14",
-    "core-js": "^3.30.2",
-    "vue-clipboard2": "^0.3.1",
+    "core-js": "^3.33.0",
+    "vue-clipboard2": "^0.3.3",
     "vue-router": "^3.6.5",
     "vue-scrollto": "^2.20.0",
     "vuetify": "^2.7.1",
     "axios": "^0.27.2",
     "date-fns": "^2.30.0",
-    "material-icons": "^1.13.7"
+    "material-icons": "^1.13.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^5.0.8",

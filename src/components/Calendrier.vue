@@ -247,7 +247,6 @@
 
 <script>
 import PhoneDialog from '@/components/PhoneDialog'
-import ReservationForm from "@/components/ReservationForm.vue";
 import EventService from "@/service/EventService";
 import {addDays, addHours, format, parse} from "date-fns";
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
@@ -260,7 +259,6 @@ export default {
     Tarification,
     ReservationDialog,
     VerificationAdhesion,
-    ReservationForm,
     PhoneDialog
   },
   data: function () {

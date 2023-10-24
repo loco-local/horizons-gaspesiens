@@ -415,6 +415,18 @@
                       </v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
+                  <v-list-item>
+                    <v-list-item-action>
+                      <v-icon class="material-icons-outlined">
+                        diversity_1
+                      </v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title class="body-1 text-wrap">
+                        Respect des valeurs suivantes : respect, bienveillance, ouverture, solidarité, inclusion, partage, autonomie individuelle, et égalité.
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
                 </v-list>
                 <v-checkbox
                     v-model="editedEvent.accepteConditions"
