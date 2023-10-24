@@ -423,7 +423,7 @@
                     </v-list-item-action>
                     <v-list-item-content>
                       <v-list-item-title class="body-1 text-wrap">
-                        Respect des valeurs suivantes : respect, bienveillance, ouverture, solidarité, inclusion, partage, autonomie individuelle, et égalité.
+                        Respect des valeurs : respect, bienveillance, ouverture, solidarité, inclusion, partage, autonomie individuelle, et égalité.
                       </v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
