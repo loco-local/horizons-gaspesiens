@@ -79,11 +79,9 @@ const Event = {
         const date = new Date(
             event.startDay.replaceAll("-", "/")
         )
-        const startTime = event.startTime.split(":");
-        date.setHours(startTime[0], startTime[1]);
+        Event.setTimeToDate(event.startTime, date)
         const startDate = date.toISOString()
-        const endTime = event.endTime.split(":");
-        date.setHours(endTime[0], endTime[1]);
+        Event.setTimeToDate(event.endTime, date)
         const endDate = date.toISOString();
         event.start = {
             'dateTime': startDate,
@@ -93,6 +91,10 @@ const Event = {
             'dateTime': endDate,
             'timeZone': 'America/Toronto',
         };
+    },
+    setTimeToDate: function(time, date){
+        const timeArray = time.split(":");
+        date.setHours(timeArray[0], timeArray[1]);
     }
 }
 export default Event;

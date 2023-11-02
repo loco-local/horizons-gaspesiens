@@ -36,11 +36,6 @@ export default {
         containerId: "financement",
         lien: "/financement"
     },
-    lemieux: {
-        nom: "Produits nettoyants",
-        containerId: "produits-nettoyant",
-        lien: "/produits-nettoyant"
-    },
     communication: {
         nom: "Communication",
         desactive: true
