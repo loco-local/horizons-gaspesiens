@@ -64,7 +64,8 @@ export default {
     bougerEnsemble: {
         nom: "Bouger Ensemble",
         containerId: "bouger-ensemble",
-        lien: "/bouger-ensemble"
+        lien: "/bouger-ensemble",
+        desactive: true
     },
     biblioOutils: {
         nom: "Bibliothèque d'outils",
