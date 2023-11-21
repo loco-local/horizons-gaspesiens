@@ -5,7 +5,7 @@
       :image="images"
   >
     <div slot="subtitle">
-      Ce que j'achète m'appartient, j'en suis responsable tout au long de sa durée. ce n'est pas un déchet, mais une
+      Ce que j'achète m'appartient, j'en suis responsable tout au long de sa durée. Ce n'est pas un déchet, mais une
       richesse
     </div>
     <div slot="content">

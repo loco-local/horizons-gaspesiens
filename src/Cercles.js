@@ -61,6 +61,11 @@ export default {
         lien: "/imaginez-demain",
         desactive: true
     },
+    rucheArt: {
+        nom: "Ruche d'art",
+        containerId: "ruche-art",
+        lien: "/ruche-art"
+    },
     bougerEnsemble: {
         nom: "Bouger Ensemble",
         containerId: "bouger-ensemble",

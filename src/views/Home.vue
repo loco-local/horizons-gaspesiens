@@ -200,6 +200,8 @@
         <h1 class="display-2 font-weight-thin">Comités actifs</h1>
       </v-flex>
     </v-layout>
+    <RucheArtCercle></RucheArtCercle>
+    <v-divider class="mt-6 mb-12"></v-divider>
     <CollaboriumCercle></CollaboriumCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <GroupeAchatCercle></GroupeAchatCercle>
@@ -457,6 +459,16 @@
 
 <script>
 
+import Cercle from "@/components/Cercle";
+import {GoogleCharts} from "google-charts";
+import Calendrier from "@/components/Calendrier.vue";
+
+import PhoneDialog from "@/components/PhoneDialog";
+import Cercles from "@/Cercles";
+
+import Scroll from "@/Scroll";
+import Shuffle from "@/Shuffle";
+
 const profitRatioOnLemieux = 0.45;
 
 const revenus = [
@@ -521,19 +533,10 @@ const mois = [
   "dec",
 ];
 
-import Cercle from "@/components/Cercle";
-import {GoogleCharts} from "google-charts";
-import Calendrier from "@/components/Calendrier.vue";
-
-import PhoneDialog from "@/components/PhoneDialog";
-import Cercles from "@/Cercles";
-
-import Scroll from "@/Scroll";
-import Shuffle from "@/Shuffle";
-
 export default {
   name: "home",
   components: {
+    RucheArtCercle: () => import("@/components/RucheArtCercle"),
     CafeReparationCercle: () => import("@/components/CafeReparationCercle"),
     GroupeAchatCercle: () => import("@/components/GroupeAchatCercle"),
     CollaboriumCercle: () => import("@/components/CollaboriumCercle"),

@@ -6,8 +6,8 @@
                 'pl-4 mt-5 mb-4': $route.name === 'home' && $vuetify.breakpoint.smAndDown
             }">
         <v-layout :reverse="imageAtRight" row wrap fill-height>
-          <v-flex xs12 md5 class="">
-            <v-carousel v-if="image && isCarousel">
+          <v-flex xs12 md5>
+            <v-carousel v-if="image && isCarousel" width="100%">
               <v-carousel-item
                   v-for="(item,i) in image"
                   :key="i"
