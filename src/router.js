@@ -61,6 +61,11 @@ export default new Router({
             component: () => import("@/views/BougerEnsemblePage")
         },
         {
+            path: '/ruche-art',
+            name: 'ruche-art',
+            component: () => import("@/views/RucheArtPage")
+        },
+        {
             path: '/partage-heure',
             name: 'partage-heure',
             component: () => import("@/views/PartageHeurePage")
