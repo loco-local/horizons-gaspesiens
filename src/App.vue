@@ -136,6 +136,7 @@
           <!--                </v-list-item>-->
           <v-list-item
               href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+              target="_blank"
           >
             <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
             <v-list-item-action>
@@ -279,6 +280,7 @@
                 color="#ff3301"
                 :small="$vuetify.breakpoint.lgAndDown"
                 v-if="$vuetify.breakpoint.lgAndUp"
+                target="_blank"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
             >
               <v-icon left>check</v-icon>

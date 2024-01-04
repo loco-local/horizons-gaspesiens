@@ -1,6 +1,6 @@
 <template>
   <Cercle
-      title="Ruche d'art la Ligne Courbe"
+      title="Ruche d'Art la Ligne Courbe"
       anchor="ruche-art"
       :image="images"
       id="ruche-art"
@@ -9,6 +9,28 @@
       Un atelier d’art communautaire qui accueille gratuitement tout le monde en tant qu’artiste et où diverses formes d’arts peuvent se déployer. Évolutif, le projet est à l’image de sa communauté et promeut l’inclusion, la liberté et le non-jugement.
     </div>
     <div slot="content">
+      <v-list class="">
+        <v-list-item
+            href="mailto:lignecourbe.ruchedart@gmail.com"
+        >
+          <v-list-item-action>
+            <v-icon large>mail</v-icon>
+          </v-list-item-action>
+          <v-list-item-title class="text-smaller-2">
+            lignecourbe.ruchedart@gmail.com
+          </v-list-item-title>
+        </v-list-item>
+        <v-list-item
+            href="tel:581-630-0058"
+        >
+          <v-list-item-action>
+            <v-icon large>phone</v-icon>
+          </v-list-item-action>
+          <v-list-item-title class="text-smaller-2">
+            581-630-0058 #102
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
       <p>
         La particularité de cette Ruche d'Art; Elle offre un calendrier ou la population sera invitée à créer sur place au Loco Local. Mais elle sera également nomade à l'intérieur du territoire de la MRC de Bonaventure.
       </p>

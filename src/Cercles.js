@@ -62,7 +62,7 @@ export default {
         desactive: true
     },
     rucheArt: {
-        nom: "Ruche d'art",
+        nom: "Ruche d'Art",
         containerId: "ruche-art",
         lien: "/ruche-art"
     },
