@@ -33,6 +33,9 @@ const Event = {
         "id": "11"
     }],
     toVuetifyCalendar: function (event) {
+        if (event.start.dateTime === undefined) {
+            return false
+        }
         const start = new Date(event.start.dateTime)
         const end = new Date(event.end.dateTime)
         event.name = event.summary;
@@ -75,7 +78,7 @@ const Event = {
             event.endTime = format(end, "HH:mm");
         }
     },
-    formatEventForGoogleApi: function(event){
+    formatEventForGoogleApi: function (event) {
         const date = new Date(
             event.startDay.replaceAll("-", "/")
         )
@@ -92,7 +95,7 @@ const Event = {
             'timeZone': 'America/Toronto',
         };
     },
-    setTimeToDate: function(time, date){
+    setTimeToDate: function (time, date) {
         const timeArray = time.split(":");
         date.setHours(timeArray[0], timeArray[1]);
     }
