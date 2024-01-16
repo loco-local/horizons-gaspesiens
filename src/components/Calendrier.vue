@@ -462,9 +462,7 @@ export default {
           date.start.date,
           format(endDate, "yyyy-MM-dd")
       )
-      this.events = events.map(Event.toVuetifyCalendar).filter((event) => {
-        return event !== false;
-      })
+      this.events = events.map(Event.toVuetifyCalendar);
       this.isLoading = false;
     },
   }
