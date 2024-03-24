@@ -132,7 +132,7 @@
       </p>
       <p class="body-1 ml-4">
         Toutefois des démarches doivent êtres entreprises par l'organisatrice pour
-        parvenir à donner la contribution minimale lors des prochaines activités.
+        s'approcher de la contribution minimale à la prochaine activité.
       </p>
     </v-col>
     <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
