@@ -33,12 +33,18 @@ const Event = {
         "id": "11"
     }],
     toVuetifyCalendar: function (event) {
-        const start = new Date(event.start.dateTime)
-        const end = new Date(event.end.dateTime)
         event.name = event.summary;
         event.color = Event.getColorFromId(event.colorId).background;
-        event.start = format(start, "yyyy-MM-dd HH:mm");
-        event.end = format(end, "yyyy-MM-dd HH:mm");
+        if (event.start.dateTime === undefined) {
+            let start = new Date(event.start.date)
+            event.start = format(start, "yyyy-MM-dd");
+            event.end = undefined;
+        } else {
+            let start = new Date(event.start.dateTime)
+            let end = new Date(event.end.dateTime)
+            event.start = format(start, "yyyy-MM-dd HH:mm");
+            event.end = format(end, "yyyy-MM-dd HH:mm");
+        }
         return event;
     },
     getColorFromId: function (colorId) {
@@ -75,7 +81,7 @@ const Event = {
             event.endTime = format(end, "HH:mm");
         }
     },
-    formatEventForGoogleApi: function(event){
+    formatEventForGoogleApi: function (event) {
         const date = new Date(
             event.startDay.replaceAll("-", "/")
         )
@@ -92,7 +98,7 @@ const Event = {
             'timeZone': 'America/Toronto',
         };
     },
-    setTimeToDate: function(time, date){
+    setTimeToDate: function (time, date) {
         const timeArray = time.split(":");
         date.setHours(timeArray[0], timeArray[1]);
     }
