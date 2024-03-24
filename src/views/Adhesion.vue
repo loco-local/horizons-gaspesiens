@@ -38,9 +38,6 @@
 </template>
 
 <script>
-import MembershipService from "@/service/MembershipService";
-import {fr} from 'date-fns/locale'
-import {format} from 'date-fns'
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 export default {
     name: "Adhesion",

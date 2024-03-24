@@ -39,7 +39,6 @@
         <v-list-item
             v-for="(cercle, clef) in cercles"
             :key="clef"
-            v-if="!cercle.desactive"
             :to="cercle.lien"
             class="text-left body-2"
         >
@@ -179,7 +178,6 @@
           <v-list-item
               v-for="(cercle, clef) in cercles"
               :key="clef"
-              v-if="!cercle.desactive"
               :to="cercle.lien"
               class="text-left"
           >
@@ -546,7 +544,7 @@ export default {
       drawer: false,
       desktopDrawer: false,
       phoneNumbers: PhoneNumbers.data,
-      cercles: Cercles,
+      cercles: Cercles.actifs,
       documents: [
         {
           lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",

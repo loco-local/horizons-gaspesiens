@@ -1,5 +1,4 @@
 <script>
-import RucheArtCercle from "@/components/RucheArtCercle.vue";
 export default {
   name: "RucheArtPage",
   components: {

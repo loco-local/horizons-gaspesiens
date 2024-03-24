@@ -1,7 +1,8 @@
 /**
  * Copyright Vincent Blouin GNU General Public License v3.0
  */
-export default {
+
+const cercles = {
     ca: {
         nom: "CA",
         desactive: true
@@ -88,3 +89,15 @@ export default {
         lien: "/partage-heure"
     }
 }
+
+const Cercles = {
+    tous: cercles,
+    actifs: Object.keys(cercles).reduce((cercles, key) => {
+        const cercle = cercles[key];
+        if (!cercle.desactive) {
+            cercles[key] = cercle
+        }
+        return cercles;
+    }, {})
+}
+export default Cercles;
