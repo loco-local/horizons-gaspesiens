@@ -283,7 +283,7 @@ export default {
     }
   },
   mounted: function () {
-    this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 700;
+    this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 1000;
     this.$refs.calendar.scrollToTime('08:00');
     if (this.$router.currentRoute.name === 'tarification') {
       this.tarificationDialog = true;
