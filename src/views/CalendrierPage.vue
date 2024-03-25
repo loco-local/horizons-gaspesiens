@@ -9,8 +9,8 @@
 export default {
   name: "CalendrierPage",
   components: {
-    Page: () => import("@/components/Page"),
-    Calendrier: () => import("@/components/Calendrier")
+    Page: () => import("@/components/PageWrap.vue"),
+    Calendrier: () => import("@/components/CalendrierSection.vue")
   },
   mounted: function () {
 

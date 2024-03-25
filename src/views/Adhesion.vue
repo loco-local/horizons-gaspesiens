@@ -40,10 +40,10 @@
 <script>
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 export default {
-    name: "Adhesion",
+    name: "AdhesionSection",
     components: {
         VerificationAdhesion,
-        Page: () => import("@/components/Page")
+        Page: () => import("@/components/PageWrap.vue")
     },
 
     methods: {

@@ -2,7 +2,7 @@
 export default {
   name: "RucheArtPage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     RucheArtCercle: () => import("@/components/RucheArtCercle")
   }
 }

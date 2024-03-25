@@ -49,7 +49,7 @@
 export default {
   name: "ProduitsNettoyantCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   }
 }
 </script>

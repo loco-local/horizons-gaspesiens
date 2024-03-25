@@ -29,7 +29,7 @@
 export default {
   name: "FinancementCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   }
 }
 </script>

@@ -78,9 +78,9 @@
 
 <script>
 export default {
-  name: "Sécession",
+  name: "BibliothequePage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
   }
 }
 </script>

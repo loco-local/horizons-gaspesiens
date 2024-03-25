@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "Comite",
+  name: "CercleWrap",
   props: ['image', 'title', 'anchor', 'imageAtRight'],
   computed: {
     isCarousel: function () {

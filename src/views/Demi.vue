@@ -226,7 +226,7 @@
                         </li>
                         <li><a href="https://www.facebook.com/pages/Livresse/408805112542629?pnref=story"
                                style="border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(36, 140, 200); transition: all 0.2s ease;"
-                               target="_blank">Le bar l’ivresse&nbsp;</a>à Nantes en France​
+                               target="_blank">Le bar l’ivresse&nbsp;</a>à Nantes en France
                         </li>
                       </ul>
                     </li>
@@ -321,9 +321,9 @@
 
 <script>
 export default {
-  name: "Demi",
+  name: "DemiPage",
   components: {
-    Page: () => import("@/components/Page")
+    Page: () => import("@/components/PageWrap.vue")
   }
 }
 </script>

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "Page",
+  name: "PageWrap",
   props: []
 }
 </script>

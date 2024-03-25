@@ -8,7 +8,7 @@
 export default {
   name: "CollaboriumPage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     CollaboriumCercle: () => import("@/components/CollaboriumCercle")
   }
 }

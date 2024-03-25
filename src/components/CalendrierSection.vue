@@ -207,10 +207,10 @@
             :color="selectedEvent.color"
             dark
         >
-          <v-toolbar-title v-html="selectedEvent.summary"></v-toolbar-title>
+          <v-toolbar-title>{{selectedEvent.summary}}</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
-          <span v-html="selectedEvent.description"></span>
+          <span>{{selectedEvent.description}}</span>
         </v-card-text>
         <v-card-actions>
           <v-btn
@@ -248,11 +248,11 @@
 <script>
 import PhoneDialog from '@/components/PhoneDialog'
 import EventService from "@/service/EventService";
-import {addDays, addHours, format, parse} from "date-fns";
+import {addDays, addHours, format} from "date-fns";
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
-import Tarification from "@/components/Tarification.vue";
+import Tarification from "@/components/TarificationSection.vue";
 
 export default {
   components: {

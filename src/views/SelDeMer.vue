@@ -66,7 +66,7 @@
 export default {
   name: "SelDeMer",
   components: {
-    Page: () => import("@/components/Page")
+    Page: () => import("@/components/PageWrap.vue")
   }
 }
 </script>

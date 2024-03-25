@@ -8,7 +8,7 @@
 export default {
   name: "BougerEnsemblePage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle")
   },
   data: function () {

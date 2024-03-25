@@ -241,7 +241,7 @@ import Scroll from "@/Scroll";
 export default {
   name: "BibliothequeOutilsCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   },
   data: function () {
     return {

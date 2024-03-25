@@ -142,7 +142,7 @@
                 class="d-inline pa-0 subtitle-1 bullet-like"
                 small
             >
-              <template slot="item" slot-scope="props" class="">
+              <template slot="item" slot-scope="props">
                 <router-link
                     :to="cercle(props.item).lien"
                     v-if="!cercleEstDesactive(props.item)"
@@ -459,9 +459,8 @@
 
 <script>
 
-import Cercle from "@/components/Cercle";
 import {GoogleCharts} from "google-charts";
-import Calendrier from "@/components/Calendrier.vue";
+import Calendrier from "@/components/CalendrierSection.vue";
 
 import PhoneDialog from "@/components/PhoneDialog";
 import Cercles from "@/Cercles";
@@ -521,20 +520,20 @@ const lemieuxRevenus = [
 //   7555.89,
 // ];
 
-const mois = [
-  "avril",
-  "mai",
-  "juin",
-  "juil",
-  "août",
-  "sept",
-  "oct",
-  "nov",
-  "dec",
-];
+// const mois = [
+//   "avril",
+//   "mai",
+//   "juin",
+//   "juil",
+//   "août",
+//   "sept",
+//   "oct",
+//   "nov",
+//   "dec",
+// ];
 
 export default {
-  name: "home",
+  name: "HomePage",
   components: {
     RucheArtCercle: () => import("@/components/RucheArtCercle"),
     CafeReparationCercle: () => import("@/components/CafeReparationCercle"),
@@ -547,8 +546,7 @@ export default {
     // BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
     PagePourpreCercle: () => import("@/components/PagePourpreCercle"),
     BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
-    Paiement: () => import("@/components/Paiement"),
-    Cercle,
+    Paiement: () => import("@/components/PaiementSection.vue"),
     PhoneDialog,
     Calendrier,
   },
@@ -620,55 +618,36 @@ export default {
       return balance;
     },
     dessinComptable() {
-      return;
-      let monthIndex = -1;
-      let data = new GoogleCharts.api.visualization.arrayToDataTable(
-          [["Mois", "Balance"]].concat(
-              this.balance.map(function (amount) {
-                monthIndex++;
-                return [mois[monthIndex], amount];
-              })
-          )
-      );
-      let options = {
-        chart: {
-          title: "",
-          subtitle: "",
-        },
-        height: 400,
-        legend: {position: "none"},
-      };
-
-      let chart = new GoogleCharts.api.charts.Line(
-          document.getElementById("dessin-comptable")
-      );
-
-      chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
-
-      GoogleCharts.api.visualization.events.addListener(
-          chart,
-          "ready",
-          function () {
-          }.bind(this)
-      );
-    },
-    goToRightSection: async function () {
-      let section = "app";
-      if (this.$route.params.comite) {
-        section = this.$route.params.comite;
-      } else if (this.$route.name !== "home") {
-        section = this.$route.name;
-      }
-      if (["/calendrier", "/reservation"].indexOf(this.$route.path) > -1) {
-        section = "calendrier";
-      }
-      if (this.$route.path === "/benevole") {
-        section = "benevole";
-      }
-      await this.$nextTick();
-      setTimeout(() => {
-        Scroll.allerALaSection(section, undefined, 0);
-      }, 400);
+      // let monthIndex = -1;
+      // let data = new GoogleCharts.api.visualization.arrayToDataTable(
+      //     [["Mois", "Balance"]].concat(
+      //         this.balance.map(function (amount) {
+      //           monthIndex++;
+      //           return [mois[monthIndex], amount];
+      //         })
+      //     )
+      // );
+      // let options = {
+      //   chart: {
+      //     title: "",
+      //     subtitle: "",
+      //   },
+      //   height: 400,
+      //   legend: {position: "none"},
+      // };
+      //
+      // let chart = new GoogleCharts.api.charts.Line(
+      //     document.getElementById("dessin-comptable")
+      // );
+      //
+      // chart.draw(data, GoogleCharts.api.charts.Line.convertOptions(options));
+      //
+      // GoogleCharts.api.visualization.events.addListener(
+      //     chart,
+      //     "ready",
+      //     function () {
+      //     }.bind(this)
+      // );
     },
   },
   data() {

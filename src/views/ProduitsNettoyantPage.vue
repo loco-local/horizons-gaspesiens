@@ -8,7 +8,7 @@
 export default {
   name: "ProduitsNettoyantsPage",
   components:{
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
   }
 }

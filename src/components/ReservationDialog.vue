@@ -476,14 +476,13 @@
 
 <script>
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
-import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 import EventService from "@/service/EventService";
 import Rules from "@/Rules";
-import Tarification from "@/components/Tarification.vue";
+import Tarification from "@/components/TarificationSection.vue";
 
 export default {
   name: "ReservationDialog",
-  components: {Tarification, PaymentMethodsDialog, VerificationAdhesion},
+  components: {Tarification, VerificationAdhesion},
   data: function () {
     return {
       isWeekly: false,

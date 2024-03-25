@@ -22,13 +22,13 @@
 </template>
 
 <script>
-import Cercle from '@/components/Cercle'
+import Cercle from '@/components/CercleWrap.vue'
 
 export default {
   name: "LocoLinux",
   components: {
     Cercle,
-    Page: () => import("@/components/Page")
+    Page: () => import("@/components/PageWrap.vue")
   }
 }
 </script>

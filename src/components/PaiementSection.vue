@@ -368,7 +368,7 @@
 
 <script>
 export default {
-  name: "Paiement",
+  name: "PaiementSection",
 
   data: function () {
     return {

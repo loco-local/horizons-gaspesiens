@@ -8,7 +8,7 @@
 export default {
   name: "GroupeAchatPage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     GroupeAchatCercle: () => import("@/components/GroupeAchatCercle")
   }
 }

@@ -8,7 +8,7 @@
 export default {
   name: "BibliothequeOutilsPage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle")
   },
   data: function () {

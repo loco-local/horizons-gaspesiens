@@ -55,7 +55,7 @@
 export default {
   name: "FabLab",
   components: {
-    Page: () => import("@/components/Page")
+    Page: () => import("@/components/PageWrap.vue")
   }
 }
 </script>

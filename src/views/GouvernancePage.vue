@@ -8,7 +8,7 @@
 export default {
   name: "GouvernancePage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     GouvernanceCercle: () => import("@/components/GouvernanceCercle")
   }
 }

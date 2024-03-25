@@ -548,7 +548,7 @@
 export default {
   name: "BougerEnsembleCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   },
   data: function () {
     return {

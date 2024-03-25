@@ -56,7 +56,7 @@
 export default {
   name: "GroupeAchatCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   },
   data: function () {
     return {

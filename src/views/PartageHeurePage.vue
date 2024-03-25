@@ -8,7 +8,7 @@
 export default {
   name: "PartageHeurePage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     PartageHeureCercle: () => import("@/components/PartageHeureCercle")
   },
   data: function () {

@@ -34,7 +34,7 @@
 export default {
   name: "CollaboriumCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   },
   data: function () {
     return {

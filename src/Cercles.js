@@ -92,12 +92,12 @@ const cercles = {
 
 const Cercles = {
     tous: cercles,
-    actifs: Object.keys(cercles).reduce((cercles, key) => {
+    actifs: Object.keys(cercles).reduce((cerclesActifs, key) => {
         const cercle = cercles[key];
         if (!cercle.desactive) {
-            cercles[key] = cercle
+            cerclesActifs[key] = cercle
         }
-        return cercles;
+        return cerclesActifs;
     }, {})
 }
 export default Cercles;

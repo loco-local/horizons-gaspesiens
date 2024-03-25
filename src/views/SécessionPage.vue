@@ -41,9 +41,9 @@
 
 <script>
 export default {
-  name: "Sécession",
+  name: "SécessionPage",
   components: {
-    Page: () => import("@/components/Page")
+    Page: () => import("@/components/PageWrap.vue")
   }
 }
 </script>

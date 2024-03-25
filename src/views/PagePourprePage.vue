@@ -8,7 +8,7 @@
 export default {
   name: "PagePourprePage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     PagePourpreCercle: () => import("@/components/PagePourpreCercle")
   },
   data: function () {

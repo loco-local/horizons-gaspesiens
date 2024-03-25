@@ -143,7 +143,7 @@
 import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 
 export default {
-  name: "Tarification",
+  name: "TarificationSection",
   components: {PaymentMethodsDialog},
   props: {
     roomPicker: {

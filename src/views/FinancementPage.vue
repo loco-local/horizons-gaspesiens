@@ -8,7 +8,7 @@
 export default {
   name: "FinancementPage",
   components: {
-    Page: () => import("@/components/Page"),
+    Page: () => import("@/components/PageWrap.vue"),
     FinancementCercle: () => import("@/components/FinancementCercle")
   }
 }

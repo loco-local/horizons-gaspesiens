@@ -8,8 +8,8 @@
 export default {
   name: "PaiementPage",
   components: {
-    Page: () => import("@/components/Page"),
-    Paiement: () => import("@/components/Paiement")
+    Page: () => import("@/components/PageWrap.vue"),
+    Paiement: () => import("@/components/PaiementSection.vue")
   }
 }
 </script>

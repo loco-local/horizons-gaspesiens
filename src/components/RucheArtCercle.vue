@@ -49,7 +49,7 @@
 export default {
   name: "RucheArtCercle",
   components: {
-    Cercle: () => import("@/components/Cercle")
+    Cercle: () => import("@/components/CercleWrap.vue")
   },
   data: function () {
     return {
