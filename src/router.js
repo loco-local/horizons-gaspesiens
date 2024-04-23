@@ -189,6 +189,11 @@ export default new Router({
             path: '/adhesion/:email',
             name: 'AdhesionWithEmail',
             component: () => import('@/views/Adhesion.vue')
-        }
+        },
+        {
+            path: '/politique-confidentialite',
+            name: 'PolitiqueConfidentialite',
+            component: () => import('@/views/PolitiqueConfidentialite.vue')
+        },
     ]
 })
