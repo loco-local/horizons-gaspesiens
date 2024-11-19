@@ -195,5 +195,10 @@ export default new Router({
             name: 'PolitiqueConfidentialite',
             component: () => import('@/views/PolitiqueConfidentialite.vue')
         },
+        {
+            path: '/finance',
+            name: 'Finance',
+            component: () => import('@/views/FinancePage.vue')
+        },
     ]
 })
