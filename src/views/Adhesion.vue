@@ -8,27 +8,27 @@
                     <v-card-title class="text-h6 h-center">
                         Liste complète et détaillé des membres
                     </v-card-title>
-                    <v-card-subtitle class="subtitle-1">
+                    <v-card-subtitle class="text-subtitle-1">
                         L'accès à ces données est limité.
                     </v-card-subtitle>
                     <v-list>
                         <v-list-item
                                 href="https://datastudio.google.com/u/1/reporting/95640869-6dcc-46bf-9ee7-634ec8a6e0ba/page/aKkbC"
                                 target="_blank">
-                            <v-list-item-content>
-                                <v-list-item-title class="body-1">
+                            
+                                <v-list-item-title class="text-body-1">
                                     Google Studio associé au Excel
                                 </v-list-item-title>
-                            </v-list-item-content>
+                            
                         </v-list-item>
                         <v-list-item
                                 href="https://docs.google.com/spreadsheets/d/1_KH43HPFDERGgB6wmQEPS-cujtw10YKS4I7X3S6Mwio/edit?resourcekey#gid=1827893226"
                                 target="_blank">
-                            <v-list-item-content>
-                                <v-list-item-title class="body-1">
+                            
+                                <v-list-item-title class="text-body-1">
                                     Excel associé au formulaire
                                 </v-list-item-title>
-                            </v-list-item-content>
+                            
                         </v-list-item>
                     </v-list>
                 </v-card>

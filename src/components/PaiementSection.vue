@@ -1,121 +1,121 @@
 -
 <template>
   <div>
-    <v-layout row wrap class="" id="paiement">
-      <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">Dons et paiements</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap class="font-weight-thin">
-      <v-flex xs12>
+    <v-row class="" id="paiement">
+      <v-col cols="12" class="text-center">
+        <h1 class="text-h3 font-weight-thin">Dons et paiements</h1>
+      </v-col>
+    </v-row>
+    <v-row class="font-weight-thin">
+      <v-col cols="12">
         <v-card
             flat
-            class="body-1"
+            class="text-body-1"
             :class="{
-            'mt-5 mb-12': $vuetify.breakpoint.mdAndUp,
-            'mt-5 mb-4': $vuetify.breakpoint.smAndDown,
+            'mt-5 mb-12': $vuetify.display.mdAndUp,
+            'mt-5 mb-4': $vuetify.display.smAndDown,
           }"
         >
-          <v-layout row wrap fill-height>
-            <v-flex xs12 md6 class="">
+          <v-row fill-height>
+            <v-col cols="12" md="6" class="">
               <div class="text-h5 mb-8">Comment payer</div>
               <v-layout row wrap class="pb-2">
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1">
-                  <v-icon left>email</v-icon>
-                  <span class="font-weight-bold body-1">Par courriel</span>
+                <v-col cols="0" md="2"></v-col>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1">
+                  <v-icon start>email</v-icon>
+                  <span class="font-weight-bold text-body-1">Par courriel</span>
                   à admin@loco-local.net
                   <v-btn
-                      text
+                      variant="text"
                       v-clipboard:copy="'admin@loco-local.net'"
-                      small
+                      size="small"
                   >copier
                   </v-btn
                   >
-                </v-flex>
+                </v-col>
               </v-layout>
-              <v-layout row>
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+              <v-row>
+                <v-row cols="0" md="2"></v-row>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1 ml-8 font-italic">
                   Utilisez
                   <span class="font-weight-bold">bonaventure</span>
                   comme réponse à la question
-                </v-flex>
-              </v-layout>
+                </v-col>
+              </v-row>
               <v-divider class="mt-8 mb-8"></v-divider>
-              <v-layout row wrap class="pb-2">
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1">
-                  <v-icon left>paid</v-icon>
-                  <span class="font-weight-bold body-1">En argent comptant,</span>
+              <v-row class="pb-2">
+                <v-col cols="0" md="2"></v-col>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1">
+                  <v-icon start>paid</v-icon>
+                  <span class="font-weight-bold text-body-1">En argent comptant,</span>
                   à la caisse du Loco Local
-                </v-flex>
-              </v-layout>
-              <v-layout row>
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="0" md="2"></v-col>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1 ml-8 font-italic">
                   Inscrire la transaction
                   <a href="https://caisse.loco-local.net">dans l'application</a>
                   ou bien indiquer le descriptif sur la feuille des transactions.
-                </v-flex>
-              </v-layout>
+                </v-col>
+              </v-row>
               <v-divider class="mt-8 mb-8"></v-divider>
-              <v-layout row wrap class="pb-2">
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1">
-                  <v-icon left>receipt</v-icon>
-                  <span class="font-weight-bold body-1">Par chèque</span>
-                </v-flex>
-              </v-layout>
-              <v-layout row>
-                <v-flex xs0 md2></v-flex>
-                <v-flex xs12 md8 class="text-md-left text-center body-1 ml-8 font-italic">
+              <v-row class="pb-2">
+                <v-col cols="0" md="2"></v-col>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1">
+                  <v-icon start>receipt</v-icon>
+                  <span class="font-weight-bold text-body-1">Par chèque</span>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="0" md="2"></v-col>
+                <v-col cols="12" md="8" class="text-md-left text-center text-body-1 ml-8 font-italic">
                   Au nom de la Coopérative de Solidarité Horizons Gaspésiens.
-                </v-flex>
-              </v-layout>
+                </v-col>
+              </v-row>
               <v-divider class="mt-8 mb-8"></v-divider>
-              <v-layout row wrap>
-                <v-flex xs0 md2 xl2></v-flex>
-                <v-flex
-                    xs12
-                    md4
-                    xl3
+              <v-row>
+                <v-col cols="0" md="2"></v-col>
+                <v-col
+                    cols="12"
+                    md="4"
+                    xl="3"
                     class="text-md-left text-center"
                     :class="{
-                    'pb-2': $vuetify.breakpoint.smAndDown,
+                    'pb-2': $vuetify.display.smAndDown,
                   }"
                 >
-                  <v-icon left>account_balance</v-icon>
-                  <span class="font-weight-bold body-1"
+                  <v-icon start>account_balance</v-icon>
+                  <span class="font-weight-bold text-body-1"
                   >Par transit desjardins</span
                   >
-                </v-flex>
-                <v-flex
-                    xs12
-                    md6
-                    xl7
-                    class="text-md-left text-center pl-6 pb-6 body-1"
+                </v-col>
+                <v-col
+                    cols="12"
+                    md="6"
+                    xl="7"
+                    class="text-md-left text-center pl-6 pb-6 text-body-1"
                     style="margin-top: -7px"
                 >
                   <div>
-                    <span class="font-weight-bold body-1">Transit caisse:</span>
+                    <span class="font-weight-bold text-body-1">Transit caisse:</span>
                     40001
-                    <v-btn text v-clipboard:copy="'40001'" small>copier</v-btn>
+                    <v-btn variant="text" v-clipboard:copy="'40001'" size="small">copier</v-btn>
                   </div>
                   <div>
-                    <span class="font-weight-bold body-1">No Institution:</span>
+                    <span class="font-weight-bold text-body-1">No Institution:</span>
                     815
-                    <v-btn text v-clipboard:copy="'815'" small>copier</v-btn>
+                    <v-btn variant="text" v-clipboard:copy="'815'" size="small">copier</v-btn>
                   </div>
                   <div>
-                    <span class="font-weight-bold body-1">Folio:</span> 0451286
-                    <v-btn text v-clipboard:copy="'0451286'" small
+                    <span class="font-weight-bold text-body-1">Folio:</span> 0451286
+                    <v-btn variant="text" v-clipboard:copy="'0451286'" size="small"
                     >copier
                     </v-btn
                     >
                   </div>
-                </v-flex>
-              </v-layout>
+                </v-col>
+              </v-row>
               <v-card>
                 <v-card-title class="font-weight-bold text-center vh-center">
                   Instructions de paiement détaillées
@@ -129,17 +129,19 @@
                       v-model="paiementTab"
                   >
                     <v-tab
-                        class="body-1"
+                        class="text-body-1"
                     >
                       <v-icon class="mr-6">email</v-icon>
                       Par courriel
                     </v-tab>
                     <v-tab
-                        class="body-1"
+                        class="text-body-1"
                     >
                       Par transit Desjardins
                     </v-tab>
-                    <v-tab-item>
+                  </v-tabs>
+                  <v-window v-model="paiementTab">
+                    <v-window-item>
                       <v-stepper
                           non-linear
                           v-model="paiementCourrielStepper"
@@ -151,7 +153,7 @@
                               :complete="paiementCourrielStepper > 1"
                               step="1"
                               color="black"
-                              class="body-1"
+                              class="text-body-1"
                           >
                             Virement
                           </v-stepper-step>
@@ -163,7 +165,7 @@
                               :complete="paiementCourrielStepper > 2"
                               step="2"
                               color="black"
-                              class="body-1"
+                              class="text-body-1"
                           >
                             Destinataire
                           </v-stepper-step>
@@ -172,14 +174,14 @@
                         <v-stepper-items>
                           <v-stepper-content step="1">
                             <v-card>
-                              <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                              <v-card-text v-if="$vuetify.display.mdAndUp">
                                 <v-img
                                     :src="
                                     require('../assets/virement interact.jpg')
                                   "
                                 ></v-img>
                               </v-card-text>
-                              <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                              <v-card-text v-if="$vuetify.display.smAndDown">
                                 Dans votre AccèsD, choisissez "Virez" puis
                                 "Virements Interact"
                               </v-card-text>
@@ -188,12 +190,12 @@
 
                           <v-stepper-content step="2">
                             <v-card>
-                              <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                              <v-card-text v-if="$vuetify.display.mdAndUp">
                                 <v-img
                                     :src="require('../assets/faire virement.png')"
                                 ></v-img>
                               </v-card-text>
-                              <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                              <v-card-text v-if="$vuetify.display.smAndDown">
                                 Comme question de sécurité, vous pouvez
                                 inscrire: Q:Dans quelle ville est le Loco Local?
                                 R:Bonaventure
@@ -202,8 +204,8 @@
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
-                    </v-tab-item>
-                    <v-tab-item>
+                    </v-window-item>
+                    <v-window-item>
                       <v-stepper
                           non-linear
                           v-model="desjardinsStepper"
@@ -215,7 +217,7 @@
                               :complete="desjardinsStepper > 1"
                               step="1"
                               color="black"
-                              class="body-1"
+                              class="text-body-1"
                           >
                             Virement
                           </v-stepper-step>
@@ -227,7 +229,7 @@
                               :complete="desjardinsStepper > 2"
                               step="2"
                               color="black"
-                              class="body-1"
+                              class="text-body-1"
                           >
                             Folio et Transit
                           </v-stepper-step>
@@ -238,7 +240,7 @@
                               editable
                               step="3"
                               color="black"
-                              class="body-1"
+                              class="text-body-1"
                           >
                             Fréquence
                           </v-stepper-step>
@@ -247,7 +249,7 @@
                         <v-stepper-items>
                           <v-stepper-content step="1">
                             <v-card>
-                              <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                              <v-card-text v-if="$vuetify.display.mdAndUp">
                                 <v-img
                                     :src="
                                     require('../assets/virement entre personnes.jpg')
@@ -255,8 +257,8 @@
                                 ></v-img>
                               </v-card-text>
                               <v-card-text
-                                  v-if="$vuetify.breakpoint.smAndDown"
-                                  class="body-1"
+                                  v-if="$vuetify.display.smAndDown"
+                                  class="text-body-1"
                               >
                                 Dans votre AccèsD, choisissez "Virez" puis
                                 "Virements entre personnes Desjardins"
@@ -266,10 +268,10 @@
 
                           <v-stepper-content step="2">
                             <v-card>
-                              <v-card-text v-if="$vuetify.breakpoint.smAndDown">
+                              <v-card-text v-if="$vuetify.display.smAndDown">
                                 Cliquez sur l'onglet "Ajouter un bénéficiaire"
                               </v-card-text>
-                              <v-card-title class="subtitle-1 pb-0">
+                              <v-card-title class="text-subtitle-1 pb-0">
                                 <span>
                                   <span class="font-weight-bold"
                                   >Transit caisse</span
@@ -297,7 +299,7 @@
                                   0451286
                                 </span>
                               </v-card-title>
-                              <!--<v-card-text v-if="$vuetify.breakpoint.mdAndUp">-->
+                              <!--<v-card-text v-if="$vuetify.display.mdAndUp">-->
                               <!--<v-img :src="require('../assets/ajouter un bénéficiaire.png')"></v-img>-->
                               <!--</v-card-text>-->
                             </v-card>
@@ -309,7 +311,7 @@
                                 Choisisez "Une fois le" pour un transfert
                                 ponctuel ou "Mensuelle" pour un don récurrent
                               </v-card-title>
-                              <v-card-text v-if="$vuetify.breakpoint.mdAndUp">
+                              <v-card-text v-if="$vuetify.display.mdAndUp">
                                 <v-img
                                     :src="
                                     require('../assets/virement mensuel.png')
@@ -320,13 +322,13 @@
                           </v-stepper-content>
                         </v-stepper-items>
                       </v-stepper>
-                    </v-tab-item>
-                  </v-tabs>
+                    </v-window-item>
+                  </v-window>
                 </v-card-text>
               </v-card>
-            </v-flex>
-            <v-flex xs12 md6 left>
-              <v-card-text class="text-left body-1">
+            </v-col>
+            <v-col cols="12" md="6" left>
+              <v-card-text class="text-left text-body-1">
                 <p>
                   Vous voulez soutenir l'établissement durable de ce projet
                   "pour et par" la communauté?
@@ -358,11 +360,11 @@
                   manière la plus simple et efficace pour nous.
                 </p>
               </v-card-text>
-            </v-flex>
-          </v-layout>
+            </v-col>
+          </v-row>
         </v-card>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

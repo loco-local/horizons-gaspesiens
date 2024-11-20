@@ -1,17 +1,14 @@
-import Vue from 'vue'
-import vuetify from '@/plugins/vuetify'
-import App from './App.vue'
+import {createApp} from 'vue'
 import router from './router'
-import VueClipboard from 'vue-clipboard2'
-import 'material-icons/iconfont/filled.css';
-import 'material-icons/iconfont/outlined.css';
+import App from './App.vue'
+import { registerPlugins } from '@/plugins'
 
-Vue.config.productionTip = false;
+import {loadFonts} from './plugins/webfontloader'
 
-Vue.use(VueClipboard);
+loadFonts()
 
-new Vue({
-  router,
-  vuetify,
-  render: h => h(App)
-}).$mount('#app');
+const app = createApp(App)
+registerPlugins(app)
+app.config.globalProperties.$filters = {};
+app.use(router)
+app.mount('#app')

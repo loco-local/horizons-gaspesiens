@@ -1,23 +1,43 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import fr from 'vuetify/lib/locale/fr'
+import 'vuetify/lib/styles/main.sass'
 
-Vue.use(Vuetify)
+// Vuetify
+import {createVuetify} from 'vuetify'
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+import {fr} from 'vuetify/locale'
 
-export default new Vuetify({
+import {aliases, md} from 'vuetify/iconsets/md'
+
+export default createVuetify({
+    components,
+    directives,
     icons: {
-        iconfont: 'md',
+        defaultSet: 'md',
+        aliases,
+        sets: {
+            md,
+        },
     },
-    lang: {
-        locales: {fr},
-        current: 'fr',
+    locale: {
+        locale: 'fr',
+        fallback: 'en',
+        messages: {fr}
     },
     theme: {
-        dark: false,
+        defaultTheme: 'light',
         themes: {
             light: {
-                primary: "#062a8f", // #E53935
-                secondary: "#ff3301",
+                dark: false,
+                variables: {},
+                colors: {
+                    primary: '#062a8f',
+                    secondary: '#ff3301',
+                    accent: '#389a24',
+                    error: '#FF5252',
+                    info: '#2196F3',
+                    success: '#FFFFFF',
+                    warning: '#FFC107'
+                }
             }
         }
     }

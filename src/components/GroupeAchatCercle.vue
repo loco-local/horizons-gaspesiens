@@ -22,7 +22,7 @@
               href="mailto:groupe.achat.hg@gmail.com,she_know@hotmail.com"
           >
             <v-list-item-action>
-              <v-icon large>mail</v-icon>
+              <v-icon size="large">mail</v-icon>
             </v-list-item-action>
             <v-list-item-title class="text-smaller-2">
               Demande d'adhésion à groupe.achat.hg@gmail.com
@@ -30,7 +30,7 @@
           </v-list-item>
           <v-list-item href="https://commande.loco-local.net/loco-local">
             <v-list-item-action>
-              <v-icon large>app_shortcut</v-icon>
+              <v-icon size="large">app_shortcut</v-icon>
             </v-list-item-action>
             <v-list-item-title class="text-smaller-2">
               Logiciel de commande
@@ -40,7 +40,7 @@
               href="http://horizonsgaspesiens.net/sites/default/files/Compte-rendu_2018-01-17_0.pdf"
           >
             <v-list-item-action>
-              <v-icon large>picture_as_pdf</v-icon>
+              <v-icon size="large">picture_as_pdf</v-icon>
             </v-list-item-action>
             <v-list-item-title class="text-smaller-2">
               Compte rendu de réunion

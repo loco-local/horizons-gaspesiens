@@ -1,9 +1,9 @@
 <template>
   <Page>
-    <div slot="content" class="body-1">
+    <div slot="content" class="text-body-1">
       <v-layout row wrap >
         <v-flex xs12 class="text-left pl-6 pt-0 mt-0">
-          <h3 class="title mb-4">
+          <h3 class="text-h6 mb-4">
             Bibliothèque collective
           </h3>
           <p>

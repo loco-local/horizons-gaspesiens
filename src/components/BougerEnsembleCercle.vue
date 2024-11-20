@@ -19,24 +19,24 @@
         <!--          <span v-else> Cardio-Boxe </span>-->
         <!--        </v-tab>-->
         <v-tab
-            class="body-1"
+            class="text-body-1"
             @click="bougerEnsembleImage = 'meditations_marchees.jpg'"
         >
-          <v-icon left> self_improvement</v-icon>
+          <v-icon start> self_improvement</v-icon>
           <span v-if="$vuetify.breakpoint.mdAndUp">
               Méditations marchées
             </span>
           <span v-else> Méditations </span>
         </v-tab>
-        <v-tab class="body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
-          <v-icon left> people</v-icon>
+        <v-tab class="text-body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
+          <v-icon start> people</v-icon>
           <span v-if="$vuetify.breakpoint.mdAndUp">
               Semaine de relâche - activités familiales
             </span>
           <span v-else> Relâche </span>
         </v-tab>
-        <v-tab class="body-1" @click="bougerEnsembleImage = 'bouger-ensemble-marche.jpg'">
-          <v-icon left> nordic_walking</v-icon>
+        <v-tab class="text-body-1" @click="bougerEnsembleImage = 'bouger-ensemble-marche.jpg'">
+          <v-icon start> nordic_walking</v-icon>
           <span v-if="$vuetify.breakpoint.mdAndUp"> Club de marche </span>
           <span v-else> Marche </span>
         </v-tab>
@@ -158,26 +158,26 @@
         <v-tab-item>
           <v-card flat>
             <v-card-title class="text-h6">
-              <v-icon left>self_improvement</v-icon>
+              <v-icon start>self_improvement</v-icon>
               Méditations
             </v-card-title>
             <v-list>
               <v-list-item
                   href="https://forms.gle/W6wU265dhSixR5b68"
                   target="_blank"
-                  class="subtitle-1"
+                  class="text-subtitle-1"
               >
                 <v-list-item-action>
                   <v-icon>assignment</v-icon>
                 </v-list-item-action>
-                <v-list-item-content>
+                
                   <v-list-item-title>
                     Inscription au cours d'essai
                   </v-list-item-title>
-                </v-list-item-content>
+                
               </v-list-item>
             </v-list>
-            <v-card-text class="body-1">
+            <v-card-text class="text-body-1">
               <p>
                 8 Séances de méditations marchées et de mouvement conscient
               </p>
@@ -215,7 +215,7 @@
                 <a href="tel:514-910-8363"> 514-910-8363 </a>
               </p>
             </v-card-text>
-            <v-alert colored-border type="info" elevation="1" class="body-1">
+            <v-alert colored-border type="info" elevation="1" class="text-body-1">
               * Si la session doit être annulée en raison de la COVID, Il sera
               d'abord proposé de reporter la session, sinon vous serez
               remboursé au prorata des cours restants selon votre paiement.
@@ -226,44 +226,44 @@
         <v-tab-item>
           <v-card flat>
             <v-tabs slider-color="#ff3301">
-              <v-tab class="body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
-                <v-icon left>downhill_skiing</v-icon>
+              <v-tab class="text-body-1" @click="bougerEnsembleImage = 'initiation_ski.jpg'">
+                <v-icon start>downhill_skiing</v-icon>
                 <span v-if="$vuetify.breakpoint.mdAndUp"> Initiation au ski de fond </span>
                 <span v-else> Ski de fond </span>
               </v-tab>
-              <v-tab class="body-1" @click="bougerEnsembleImage = 'image_raquettes2.jpg'">
-                <v-icon left>snowshoeing</v-icon>
+              <v-tab class="text-body-1" @click="bougerEnsembleImage = 'image_raquettes2.jpg'">
+                <v-icon start>snowshoeing</v-icon>
                 <span v-if="$vuetify.breakpoint.mdAndUp"> Découverte de sentiers en raquette </span>
                 <span v-else> Raquette </span>
               </v-tab>
-              <v-tab-item class="body-1">
+              <v-tab-item class="text-body-1">
                 <v-card>
                   <v-card-title class="text-h6">
-                    <v-icon left>downhill_skiing</v-icon>
+                    <v-icon start>downhill_skiing</v-icon>
                     Cours d’initiation au ski
                   </v-card-title>
                   <v-card-subtitle class="">
                     Avec l’instructeur Jack Rabbit Christophe Turcotte (Baie-des-Chaleurs
                     active et en santé).
                   </v-card-subtitle>
-                  <v-card-text class="body-1">
+                  <v-card-text class="text-body-1">
                     <p class="font-weight-bold">
                       Inscription obligatoire via nos formulaires en ligne. Dépêchez-vous, les places sont limitées!
                     </p>
                     <v-list>
                       <v-list-item href="https://forms.gle/JGo882zUZNBWibMp6" target="_blank">
-                        <v-list-item-content>
+                        
                           <v-list-item-title>
                             Inscription 5 à 7 ans
                           </v-list-item-title>
-                        </v-list-item-content>
+                        
                       </v-list-item>
                       <v-list-item href="https://forms.gle/Kia5wKcfoqhkpEPS7" target="_blank">
-                        <v-list-item-content>
+                        
                           <v-list-item-title>
                             Inscription 8 à 15 ans
                           </v-list-item-title>
-                        </v-list-item-content>
+                        
                       </v-list-item>
                     </v-list>
                     <p>
@@ -294,13 +294,13 @@
                   </v-card-text>
                 </v-card>
               </v-tab-item>
-              <v-tab-item class="body-1">
+              <v-tab-item class="text-body-1">
                 <v-card>
                   <v-card-title class="text-h6">
-                    <v-icon left>snowshoeing</v-icon>
+                    <v-icon start>snowshoeing</v-icon>
                     Découverte de sentiers en raquette
                   </v-card-title>
-                  <v-card-text class="body-1">
+                  <v-card-text class="text-body-1">
                     <p>
                       Inscrivez-vous à une ou plusieurs sorties
                       <a href="https://forms.gle/NNi6XC2QkJ7Arsbp7" target="_blank">
@@ -411,7 +411,7 @@
               <v-icon class="mr-2">nordic_walking</v-icon>
               Club de marche
             </v-card-title>
-            <v-card-subtitle class="pt-4 subtitle-1">
+            <v-card-subtitle class="pt-4 text-subtitle-1">
               <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScqfFFdkCp0P4d0WpEPzogwVtkCgsluYXTUtmjIJwNN7mc3UA/viewform?fbclid=IwAR3kDF4pCFT8sDJG7w6m0sLVY3ePW5q3ZdFb8vn2V3fzNZc7MnHVY39GdRM"
                   target="_blank"
@@ -420,7 +420,7 @@
                 Formulaire d'inscription à remplir
               </a>
             </v-card-subtitle>
-            <v-card-text class="body-1">
+            <v-card-text class="text-body-1">
               <p>
                 Vous souhaitez vous remettre en mouvement et vous ressentez
                 l'envie et le besoin de partager des moments de groupe ? Venez
@@ -525,14 +525,14 @@
       <v-row>
         <v-col cols="12" class="vh-center">
           <v-card max-width="500" class="align-self-center">
-            <v-card-actions class="body-1">
+            <v-card-actions class="text-body-1">
               <v-spacer></v-spacer>
-              <v-icon class="mr-8" large>6_ft_apart</v-icon>
-              <v-icon class="mr-8" large>sanitizer</v-icon>
-              <v-icon class="mr-8" large>masks</v-icon>
+              <v-icon class="mr-8" size="large">6_ft_apart</v-icon>
+              <v-icon class="mr-8" size="large">sanitizer</v-icon>
+              <v-icon class="mr-8" size="large">masks</v-icon>
               <v-spacer></v-spacer>
             </v-card-actions>
-            <v-card-actions class="body-1">
+            <v-card-actions class="text-body-1">
               Nous respectons les mesures sanitaires.
               <v-spacer></v-spacer>
             </v-card-actions>

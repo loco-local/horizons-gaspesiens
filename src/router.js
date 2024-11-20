@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import * as VueRouter from 'vue-router';
+
 import Home from './views/Home.vue'
 import Demi from './views/Demi.vue'
 import SelDeMer from './views/SelDeMer.vue'
@@ -8,11 +8,8 @@ import Bibliotheque from './views/Bibliotheque.vue'
 import CafePhilo from './views/CafePhilo.vue'
 import FabLab from './views/FabLab.vue'
 import LocoLinux from './views/LocoLinux.vue'
-
-Vue.use(Router)
-
-export default new Router({
-    mode: 'history',
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory(),
     base: process.env.BASE_URL,
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
@@ -202,3 +199,5 @@ export default new Router({
         },
     ]
 })
+
+export default router

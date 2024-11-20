@@ -14,7 +14,7 @@
             href="mailto:lignecourbe.ruchedart@gmail.com"
         >
           <v-list-item-action>
-            <v-icon large>mail</v-icon>
+            <v-icon size="large">mail</v-icon>
           </v-list-item-action>
           <v-list-item-title class="text-smaller-2">
             lignecourbe.ruchedart@gmail.com
@@ -24,7 +24,7 @@
             href="tel:581-630-0058"
         >
           <v-list-item-action>
-            <v-icon large>phone</v-icon>
+            <v-icon size="large">phone</v-icon>
           </v-list-item-action>
           <v-list-item-title class="text-smaller-2">
             581-630-0058 #102

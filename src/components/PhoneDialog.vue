@@ -2,7 +2,7 @@
   <div>
     <v-dialog v-model="phoneModal" v-if="phoneModal" width="600">
       <v-card>
-        <v-card-title class="pb-2 title">
+        <v-card-title class="pb-2 text-h6">
           <!--                    Téléphones de bénévoles-->
           Téléphone
           <v-spacer></v-spacer>
@@ -12,8 +12,8 @@
         <!--                    N'hésitez pas à contacter ces bénévoles pour le code de la porte, une réservation ou tout autre-->
         <!--                    sujet.-->
         <!--                </v-card-subtitle>-->
-        <v-card-text class="pt-0 body-2">
-          <v-list two-line class="text-left">
+        <v-card-text class="pt-0 text-body-2">
+          <v-list lines="two" class="text-left">
             <v-list-item href="tel:581-630-0058">
               <v-list-item-action class="mr-8">
                 <v-icon>phone</v-icon>

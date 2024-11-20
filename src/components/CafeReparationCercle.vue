@@ -10,7 +10,7 @@
     </div>
     <div slot="content">
       <a href="https://www.facebook.com/locolocal1">
-        <v-alert colored-border icon="calendar_month" large elevation="1" class="text-smaller-2" prominent>
+        <v-alert border-color icon="calendar_month" large elevation="1" class="text-smaller-2" prominent>
           Suivez notre page facebook pour connaître la date du prochain café de réparation.
         </v-alert>
       </a>

@@ -1,56 +1,53 @@
 <template>
   <div class="calendar" id="calendrier">
-    <v-layout row wrap>
-      <v-flex xs0 lg3></v-flex>
-      <v-flex xs12 lg6 class="text-center">
-        <h1 class="display-2 font-weight-thin">
+    <v-row>
+      <v-col cols="0" lg="3"></v-col>
+      <v-col cols="12" lg="6" class="text-center">
+        <h1 class="text-h3 font-weight-thin">
           Calendrier et réservation du Loco Local
         </h1>
-        <h4 class="body-1">
+        <h4 class="text-body-1">
           Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon
           autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de
           mobilisation citoyenne
         </h4>
-      </v-flex>
-      <v-flex xs0 lg3></v-flex>
-    </v-layout>
+      </v-col>
+      <v-col cols="0" lg="3"></v-col>
+    </v-row>
     <v-row class=" vh-center">
       <v-col cols="12" lg="8" :class="{
-                'pl-0 pr-0' : $vuetify.breakpoint.smAndDown
+                'pl-0 pr-0' : $vuetify.display.smAndDown
             }">
         <v-card class="mt-12">
           <v-row>
             <v-col cols="12" class="vh-center mt-3">
-              <v-btn @click="tarificationDialog = true;" outlined>
-                <v-icon left>attach_money</v-icon>
+              <v-btn @click="tarificationDialog = true;" variant="outlined">
+                <v-icon start>attach_money</v-icon>
                 Tarification
               </v-btn>
             </v-col>
           </v-row>
           <v-row class="" v-if="!showGoogleCalendar">
-            <v-col cols="12" class="body-1 text-left pb-0 pl-8">
+            <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
               Légende
             </v-col>
             <v-col cols="12" class="text-left">
               <v-chip
-                  class="ma-2 body-1 text-truncate"
+                  class="ma-2 text-body-1 text-truncate"
                   color="#5484ed"
-                  dark
               >
                 La salle peut être partagée si les autres respectent le bon déroulement de
                 l'activité.
               </v-chip>
               <v-chip
-                  class="ma-2 body-1"
+                  class="ma-2 text-body-1"
                   color="#dc2127"
-                  dark
               >
                 Seuls les participants à l'activité peuvent être dans la salle.
               </v-chip>
               <v-chip
-                  class="ma-2 body-1"
+                  class="ma-2 text-body-1"
                   color="#51b749"
-                  dark
               >
                 Pas prioritaire, d'autres peuvent réserver par dessus cet événement.
               </v-chip>
@@ -62,13 +59,13 @@
                 flat
             >
               <v-btn
-                  outlined
+                  variant="outlined"
                   class="mr-4"
-                  color="grey darken-2"
+                  color="grey-darken-2"
                   @click="setToday"
                   v-if="!showGoogleCalendar"
               >
-                            <span v-if="$vuetify.breakpoint.smAndDown">
+                            <span v-if="$vuetify.display.smAndDown">
                                 AJD
                             </span>
                 <span v-else>
@@ -76,27 +73,25 @@
                             </span>
               </v-btn>
               <v-btn
-                  fab
-                  text
-                  small
-                  color="grey darken-2"
+                  variant="text"
+                  size="small"
+                  color="grey-darken-2"
                   @click="prev"
                   v-if="!showGoogleCalendar"
               >
-                <v-icon small>
+                <v-icon size="small">
                   chevron_left
                 </v-icon>
               </v-btn>
               <v-btn
-                  fab
-                  text
-                  small
-                  color="grey darken-2"
+                  variant="text"
+                  size="small"
+                  color="grey-darken-2"
                   @click="next"
-                  left
+                  location="left"
                   v-if="!showGoogleCalendar"
               >
-                <v-icon small>
+                <v-icon size="small">
                   chevron_right
                 </v-icon>
               </v-btn>
@@ -104,10 +99,10 @@
                 {{ $refs.calendar.title }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn @click="addEvent" color="primary" :icon="$vuetify.breakpoint.smAndDown"
-                     :outlined="$vuetify.breakpoint.smAndDown">
+              <v-btn @click="addEvent" color="primary" :icon="$vuetify.display.smAndDown"
+                     :variant="$vuetify.display.smAndDown ? 'outlined' : undefined">
                 <v-icon>add</v-icon>
-                <span v-if="$vuetify.breakpoint.mdAndUp">Ajouter</span>
+                <span v-if="$vuetify.display.mdAndUp">Ajouter</span>
               </v-btn>
             </v-toolbar>
           </v-sheet>
@@ -115,7 +110,7 @@
             <v-card :height="calendarHeight" class="pa-0">
               <v-overlay
                   absolute
-                  :value="isLoading"
+                  :model-value="isLoading"
               >
                 <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
               </v-overlay>
@@ -136,7 +131,7 @@
                   @mouseup:time="endDrag"
                   @mouseleave.native="cancelDrag"
                   :class="{
-                                'dense-hours' : $vuetify.breakpoint.smAndDown
+                                'dense-hours' : $vuetify.display.smAndDown
                             }"
                   v-if="!showGoogleCalendar"
               >
@@ -159,10 +154,10 @@
               ></iframe>
               <v-row class="mt-4">
                 <v-col cols="12" class="text-right">
-                  <v-btn text @click="showGoogleCalendar = true" v-if="!showGoogleCalendar">
+                  <v-btn variant="text" @click="showGoogleCalendar = true" v-if="!showGoogleCalendar">
                     Voir Calendrier Google
                   </v-btn>
-                  <v-btn text @click="showGoogleCalendar = false" v-if="showGoogleCalendar">
+                  <v-btn variant="text" @click="showGoogleCalendar = false" v-if="showGoogleCalendar">
                     Revenir au calendrier par défaut
                   </v-btn>
                 </v-col>
@@ -197,15 +192,13 @@
         v-model="selectedOpen"
         :close-on-content-click="false"
         :activator="selectedElement"
-        offset-x
     >
       <v-card
-          color="grey lighten-4"
+          color="grey-lighten-4"
           flat
       >
         <v-toolbar
             :color="selectedEvent.color"
-            dark
         >
           <v-toolbar-title>{{selectedEvent.summary}}</v-toolbar-title>
         </v-toolbar>
@@ -214,29 +207,29 @@
         </v-card-text>
         <v-card-actions>
           <v-btn
-              text
+              variant="text"
               @click="selectedOpen = false"
           >
             Fermer
           </v-btn>
           <v-spacer></v-spacer>
           <v-btn
-              text
+              variant="text"
               @click="editEvent(selectedEvent)"
           >
-            <v-icon left>edit</v-icon>
+            <v-icon start>edit</v-icon>
             Modifier
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-menu>
-    <v-dialog v-model="tarificationDialog" max-width="900" :fullscreen="$vuetify.breakpoint.smAndDown">
+    <v-dialog v-model="tarificationDialog" max-width="900" :fullscreen="$vuetify.display.smAndDown">
       <v-card>
         <v-card-text class="pt-6 pb-6">
           <Tarification :roomPicker="false" :topCloseButton="true" @close="tarificationDialog=false"></Tarification>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="tarificationDialog = false" text>
+          <v-btn @click="tarificationDialog = false" variant="text">
             Fermer
           </v-btn>
         </v-card-actions>
@@ -253,13 +246,14 @@ import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
 import Tarification from "@/components/TarificationSection.vue";
-
+import { VCalendar } from 'vuetify/labs/VCalendar'
 export default {
   components: {
     Tarification,
     ReservationDialog,
     VerificationAdhesion,
-    PhoneDialog
+    PhoneDialog,
+    VCalendar
   },
   data: function () {
     return {
@@ -271,7 +265,7 @@ export default {
       selectedOpen: false,
       events: [],
       weekdays: [1, 2, 3, 4, 5, 6, 0],
-      calendarFocus: '',
+      calendarFocus: [new Date()],
       dragEvent: null,
       dragStart: null,
       createEvent: null,
@@ -283,8 +277,8 @@ export default {
     }
   },
   mounted: function () {
-    this.calendarHeight = this.$vuetify.breakpoint.mdAndDown ? 350 : 1000;
-    this.$refs.calendar.scrollToTime('08:00');
+    this.calendarHeight = this.$vuetify.display.mdAndDown ? 350 : 1000;
+    // this.$refs.calendar.scrollToTime('08:00');
     if (this.$router.currentRoute.name === 'tarification') {
       this.tarificationDialog = true;
     }
@@ -444,7 +438,7 @@ export default {
       this.enterReservationDialog()
     },
     setToday() {
-      this.calendarFocus = ''
+      this.calendarFocus = [new Date()]
     },
     prev() {
       this.$refs.calendar.prev()

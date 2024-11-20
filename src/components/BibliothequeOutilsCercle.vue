@@ -52,7 +52,7 @@
               <v-tab-item class="">
                 <h3>Pourquoi une bibliothèque d’outils?</h3>
                 <v-list>
-                  <v-subheader class="subtitle-1"> pour</v-subheader>
+                  <v-subheader class="text-subtitle-1"> pour</v-subheader>
                   <v-list-item>
                     <v-list-item-title class="">
                       renforcer les liens sociaux

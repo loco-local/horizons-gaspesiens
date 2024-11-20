@@ -59,7 +59,7 @@
         <h3>
           Type de données que nous collectons
         </h3>
-        <p class="text-left mt-2 text-h6 font-weight-regular">
+        <div class="text-left mt-2 text-h6 font-weight-regular">
           Cela inclut les données suivantes:
           <ul>
             <li>
@@ -75,16 +75,16 @@
               Contenu que l’utilisateur consulte sur nos sites.
             </li>
           </ul>
-        </p>
-        <p class="text-left mt-2 text-h6 font-weight-regular">
+        </div>
+        <div class="text-left mt-2 text-h6 font-weight-regular">
           Vos données personnelles sont collectées via
           <ul>
             <li>
               Formulaire d'adhésion/membership
             </li>
           </ul>
-        </p>
-        <p class="text-left mt-2 text-h6 font-weight-regular">
+        </div>
+        <div class="text-left mt-2 text-h6 font-weight-regular">
           Si applicable
           <ul>
             <li>
@@ -106,14 +106,14 @@
               Informations de paiement
             </li>
           </ul>
-        </p>
+        </div>
         <h3>
           Utilisation des données
         </h3>
         <p class="text-left mt-2 text-h6 font-weight-regular">
           Veuillez noter que nous ne collectons que les données qui nous aident à atteindre l’objectif énoncé dans cette politique de confidentialité. Nous ne recueillerons pas de données supplémentaires sans vous en informer au préalable.
         </p>
-        <p class="text-left mt-2 text-h6 font-weight-regular">
+        <div class="text-left mt-2 text-h6 font-weight-regular">
           Nous utilisons ces données pour:
           <ul>
             <li>
@@ -126,7 +126,7 @@
               Faire un suivi de commande
             </li>
           </ul>
-        </p>
+        </div>
         <h3>
           Droit d’accès
         </h3>
@@ -142,7 +142,7 @@
         <p class="text-left mt-2 text-h6 font-weight-regular">
           Les renseignements personnels que nous collectons sont conservés dans un environnement sécurisé. Les personnes travaillant pour nous sont tenues de respecter la confidentialité de vos informations.
         </p>
-        <p class="text-left mt-2 text-h6 font-weight-regular">
+        <div class="text-left mt-2 text-h6 font-weight-regular">
           Pour assurer la sécurité de vos renseignements personnels, nous avons recours aux mesures suivantes :
           <ul>
             <li>
@@ -167,7 +167,7 @@
               Pare-feu
             </li>
           </ul>
-        </p>
+        </div>
         <p class="text-left mt-2 text-h6 font-weight-regular">
           Nous nous engageons à maintenir un haut degré de confidentialité en intégrant les dernières innovations technologiques permettant d’assurer la confidentialité de vos transactions. Toutefois, comme aucun mécanisme n’offre une sécurité maximale, une part de risque est toujours présente lorsque l’on utilise Internet pour transmettre des renseignements personnels.
         </p>

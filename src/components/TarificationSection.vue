@@ -6,87 +6,87 @@
           <div class="text text-h5">Tarification</div>
         </v-col>
         <v-col cols="2" class="text-right">
-          <v-icon @click="$emit('close')" x-large>close</v-icon>
+          <v-icon @click="$emit('close')" size="x-large">close</v-icon>
         </v-col>
       </v-row>
     </v-col>
     <v-col cols="12" class="text-left pa-0">
-      <p class="body-1 font-weight-bold text-center">
+      <p class="text-body-1 font-weight-bold text-center">
         Contribution minimale (avant taxes) pour la location
         de la salle.
       </p>
       <v-card class="mb-8">
-        <v-simple-table>
+        <v-table>
           <template v-slot:default>
             <thead>
             <tr>
               <th></th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 1h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 2h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 3h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 4h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 5h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 10h
               </th>
-              <th class="body-1 font-weight-bold">
+              <th class="text-body-1 font-weight-bold">
                 Jour + nuit
               </th>
             </tr>
             </thead>
             <tbody>
-            <template slot="item" slot-scope="props">
-              <td class="body-1">
-                {{ props.item.row1 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row2 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row3 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row4 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row5 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row6 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row7 }}
-              </td>
-              <td class="body-1">
-                {{ props.item.row8 }}
-              </td>
-            </template>
+<!--            <template slot="item" slot-scope="props">-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row1 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row2 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row3 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row4 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row5 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row6 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row7 }}-->
+<!--              </td>-->
+<!--              <td class="text-body-1">-->
+<!--                {{ props.item.row8 }}-->
+<!--              </td>-->
+<!--            </template>-->
             <tr
                 v-for="price in priceRows"
                 :key="price.row1"
             >
-              <td class="body-1">{{ price.row1 }}</td>
-              <td class="body-1">{{ price.row2 }}</td>
-              <td class="body-1">{{ price.row3 }}</td>
-              <td class="body-1">{{ price.row4 }}</td>
-              <td class="body-1">{{ price.row5 }}</td>
-              <td class="body-1">{{ price.row6 }}</td>
-              <td class="body-1">{{ price.row7 }}</td>
-              <td class="body-1">{{ price.row8 }}</td>
+              <td class="text-body-1">{{ price.row1 }}</td>
+              <td class="text-body-1">{{ price.row2 }}</td>
+              <td class="text-body-1">{{ price.row3 }}</td>
+              <td class="text-body-1">{{ price.row4 }}</td>
+              <td class="text-body-1">{{ price.row5 }}</td>
+              <td class="text-body-1">{{ price.row6 }}</td>
+              <td class="text-body-1">{{ price.row7 }}</td>
+              <td class="text-body-1">{{ price.row8 }}</td>
             </tr>
             </tbody>
           </template>
-        </v-simple-table>
+        </v-table>
       </v-card>
 <!--      <div class="text-left text text-h6" v-if="roomPicker">-->
 <!--        Option de salle-->
@@ -109,13 +109,13 @@
 <!--        {{ price }}$-->
 <!--      </div>-->
       <v-btn @click="$refs.paymentMethodsDialog.enter()" class="mb-6">
-        <v-icon left class="">monetization_on</v-icon>
+        <v-icon start class="">monetization_on</v-icon>
         Modes de paiements
       </v-btn>
       <div class="mb-2 text-h6">
         Taxes
       </div>
-      <p class="body-1 ml-4">
+      <p class="text-body-1 ml-4">
         Pour les événements financés par contributions volontaires, les taxes
         ne sont pas
         chargées.
@@ -123,14 +123,14 @@
       <div class="mb-2 text-h6">
         Allègement des tarifs
       </div>
-      <p class="body-1 ml-4">
+      <p class="text-body-1 ml-4">
         Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les
         frais de
         location de
         la salle,
         un montant inférieur peut être donné au Loco.
       </p>
-      <p class="body-1 ml-4">
+      <p class="text-body-1 ml-4">
         Toutefois des démarches doivent êtres entreprises par l'organisatrice pour
         s'approcher de la contribution minimale à la prochaine activité.
       </p>

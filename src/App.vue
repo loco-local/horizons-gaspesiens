@@ -2,51 +2,49 @@
   <div
       id="app"
       :class="{
-      'font-size-xl': $vuetify.breakpoint.xl,
-      'font-size-lg-and-down': $vuetify.breakpoint.lgAndDown,
+      'font-size-xl': $vuetify.display.xl,
+      'font-size-lg-and-down': $vuetify.display.lgAndDown,
     }"
   >
     <v-app>
       <v-navigation-drawer
           v-model="desktopDrawer"
-          fixed
-          right
-          app
+          location="right"
           temporary
       >
         <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;"
-                     class="text-left body-2">
-          <v-list-item-content>
-            <v-list-item-title class="text">
-              À propos
-            </v-list-item-title>
-          </v-list-item-content>
+                     class="text-left text-body-2">
+
+          <v-list-item-title class="text">
+            À propos
+          </v-list-item-title>
+
         </v-list-item>
-        <v-list-item to="/adhesion" class="text-left body-2">
-          <v-list-item-content>
-            <v-list-item-title>
-              Vérifiez votre adhésion
-            </v-list-item-title>
-          </v-list-item-content>
+        <v-list-item to="/adhesion" class="text-left text-body-2">
+
+          <v-list-item-title>
+            Vérifiez votre adhésion
+          </v-list-item-title>
+
         </v-list-item>
-        <v-list-item to="/tarification" class="text-left body-2">
-          <v-list-item-content>
-            <v-list-item-title>
-              Tarification de la salle
-            </v-list-item-title>
-          </v-list-item-content>
+        <v-list-item to="/tarification" class="text-left text-body-2">
+
+          <v-list-item-title>
+            Tarification de la salle
+          </v-list-item-title>
+
         </v-list-item>
         <v-list-item
             v-for="(cercle, clef) in cercles"
             :key="clef"
             :to="cercle.lien"
-            class="text-left body-2"
+            class="text-left text-body-2"
         >
-          <v-list-item-content>
-            <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-          </v-list-item-content>
+
+          <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+
         </v-list-item>
-        <v-list-item href="https://www.facebook.com/locolocal1" class="body-1">
+        <v-list-item href="https://www.facebook.com/locolocal1" class="text-body-1">
           <v-list-item-title class="text-left">
             /locolocal1
           </v-list-item-title>
@@ -58,11 +56,8 @@
         </v-list-item>
       </v-navigation-drawer>
       <v-navigation-drawer
-          clipped
           v-model="drawer"
           enable-resize-watcher
-          fixed
-          app
           dense
           id="app-navigation"
       >
@@ -73,17 +68,14 @@
               :href="'tel:' + phone.telephone"
           >
             <v-list-item :href="'tel:' + phone.telephone">
-              <v-list-item-avatar>
-                <img :src="require('./assets/' + phone.avatar)"/>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ phone.nom }}
-                </v-list-item-title>
-                <v-list-item-subtitle>
-                  {{ phone.telephone }}
-                </v-list-item-subtitle>
-              </v-list-item-content>
+              <img :src="require('./assets/' + phone.avatar)"/>
+              <v-list-item-title>
+                {{ phone.nom }}
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                {{ phone.telephone }}
+              </v-list-item-subtitle>
+
               <v-list-item-action>
                 <v-icon>phone</v-icon>
               </v-list-item-action>
@@ -181,30 +173,29 @@
               :to="cercle.lien"
               class="text-left"
           >
-            <v-list-item-content>
-              <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-            </v-list-item-content>
+
+            <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
       <div id="nav" class="pa-0">
         <v-app-bar
             color="white"
-            app
             :class="{
-            'no-padding': $vuetify.breakpoint.smAndDown,
+            'no-padding': $vuetify.display.smAndDown,
           }"
             style="z-index: 4"
         >
           <v-app-bar-nav-icon
               @click="drawer = !drawer"
-              v-if="$vuetify.breakpoint.smAndDown"
+              v-if="$vuetify.display.smAndDown"
           ></v-app-bar-nav-icon>
           <router-link
               to="/"
               class="mt-3"
               :class="{
-              'pl-4': $vuetify.breakpoint.smAndDown,
+              'pl-4': $vuetify.display.smAndDown,
             }"
           >
             <!--<transition name="fade">-->
@@ -226,32 +217,32 @@
                 v-if="false"
             />
           </router-link>
-          <v-spacer v-if="$vuetify.breakpoint.mdAndUp"></v-spacer>
+          <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
           <v-toolbar-items class="hidden-sm-and-down">
             <v-btn
-                :small="$vuetify.breakpoint.lgAndDown"
-                text
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
                 to="/paiement"
             >
               <v-icon
                   :class="{
-                  'mr-3': $vuetify.breakpoint.xlOnly,
-                  'mr-0': $vuetify.breakpoint.mdAndDown,
+                  'mr-3': $vuetify.display.xlOnly,
+                  'mr-0': $vuetify.display.mdAndDown,
                 }"
               >attach_money
               </v-icon>
-              <span v-if="$vuetify.breakpoint.xlOnly" class=""> Don et paiement </span>
-              <span v-if="$vuetify.breakpoint.lgAndDown">Don/paiement</span>
+              <span v-if="$vuetify.display.xlOnly" class=""> Don et paiement </span>
+              <span v-if="$vuetify.display.lgAndDown">Don/paiement</span>
             </v-btn>
             <v-btn
-                :small="$vuetify.breakpoint.lgAndDown"
-                text
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
                 to="/calendrier"
             >
               <v-icon
                   :class="{
-                  'mr-3': $vuetify.breakpoint.xlOnly,
-                  'mr-0': $vuetify.breakpoint.lgAndDown,
+                  'mr-3': $vuetify.display.xlOnly,
+                  'mr-0': $vuetify.display.lgAndDown,
                 }"
               >
                 calendar_month
@@ -259,14 +250,14 @@
               Calendrier
             </v-btn>
             <v-btn
-                :small="$vuetify.breakpoint.lgAndDown"
-                text
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
                 to="/reservation"
             >
               <v-icon
                   :class="{
-                  'mr-3': $vuetify.breakpoint.lgAndUp,
-                  'mr-0': $vuetify.breakpoint.mdAndDown,
+                  'mr-3': $vuetify.display.lgAndUp,
+                  'mr-0': $vuetify.display.mdAndDown,
                 }"
               >
                 event
@@ -274,50 +265,49 @@
               Réservation
             </v-btn>
             <v-btn
-                dark
                 color="#ff3301"
-                :small="$vuetify.breakpoint.lgAndDown"
-                v-if="$vuetify.breakpoint.lgAndUp"
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                v-if="$vuetify.display.lgAndUp"
                 target="_blank"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
             >
-              <v-icon left>check</v-icon>
+              <v-icon start>check</v-icon>
               Devenez membre
             </v-btn>
 
             <v-btn
-                :small="$vuetify.breakpoint.lgAndDown"
-                text
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
                 href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
             >
               <v-icon
                   :class="{
-                  'mr-3': $vuetify.breakpoint.xlOnly,
-                  'mr-0': $vuetify.breakpoint.lgAndDown,
+                  'mr-3': $vuetify.display.xlOnly,
+                  'mr-0': $vuetify.display.lgAndDown,
                 }"
               >location_on
               </v-icon>
               Adresse
             </v-btn>
             <v-btn
-                :small="$vuetify.breakpoint.lgAndDown"
-                text
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
                 @click="$refs.phoneDialog.show()"
             >
               <v-icon
                   :class="{
-                  'mr-3': $vuetify.breakpoint.xlOnly,
-                  'mr-0': $vuetify.breakpoint.lgAndDown,
+                  'mr-3': $vuetify.display.xlOnly,
+                  'mr-0': $vuetify.display.lgAndDown,
                 }"
               >phone
               </v-icon>
-              <span v-if="$vuetify.breakpoint.xlOnly">Téléphone</span>
-              <span v-if="$vuetify.breakpoint.lgAndDown">Tel</span>
+              <span v-if="$vuetify.display.xlOnly">Téléphone</span>
+              <span v-if="$vuetify.display.lgAndDown">Tel</span>
             </v-btn>
-            <!--                <v-btn :small="$vuetify.breakpoint.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
+            <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
             <!--                    <v-icon :class="{-->
-            <!--                        'mr-3' : $vuetify.breakpoint.xlOnly,-->
-            <!--                        'mr-0' : $vuetify.breakpoint.lgAndDown-->
+            <!--                        'mr-3' : $vuetify.display.xlOnly,-->
+            <!--                        'mr-0' : $vuetify.display.lgAndDown-->
             <!--                    }">email-->
             <!--                    </v-icon>-->
             <!--                    Infolettre-->
@@ -329,13 +319,13 @@
           >
           </v-toolbar-title>
           <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
-                              v-if="$vuetify.breakpoint.mdAndUp"></v-app-bar-nav-icon>
+                              v-if="$vuetify.display.mdAndUp"></v-app-bar-nav-icon>
         </v-app-bar>
       </div>
       <router-view/>
       <v-divider class="mt-8 mb-8"></v-divider>
       <p
-          class="special-font headline"
+          class="special-font text-h5"
           style="font-family: 'Pacifico', cursive !important"
       >
         Merci à tous les bénévoles, clients et organismes partenaires
@@ -344,12 +334,12 @@
       <v-row class="pl-4 pr-4">
         <v-col cols="0" lg="2"></v-col>
         <v-col cols="12" md="4" :class="{
-          'vh-center' : $vuetify.breakpoint.smAndDown
+          'vh-center' : $vuetify.display.smAndDown
           }">
           <v-card flat href="https://mrcbonaventure.com/" width="300" :class="{
-            'float-right': $vuetify.breakpoint.mdAndUp
+            'float-right': $vuetify.display.mdAndUp
           }">
-            <v-card style="background-color: #002c51;" class="pa-4" flat outlined>
+            <v-card style="background-color: #002c51;" class="pa-4" flat border>
               <v-img :src="require('@/assets/logo_mrcbona.png')" alt="MRC de Bonaventure"></v-img>
             </v-card>
           </v-card>
@@ -366,19 +356,19 @@
       <v-row class="pl-4 pr-4">
         <v-col cols="0" lg="2"></v-col>
         <v-col cols="12" md="4" :class="{
-          'vh-center' : $vuetify.breakpoint.smAndDown
+          'vh-center' : $vuetify.display.smAndDown
           }">
           <v-card flat href="https://www.urlsgim.com/" width="300" :class="{
-            'float-right': $vuetify.breakpoint.mdAndUp
+            'float-right': $vuetify.display.mdAndUp
           }">
-            <v-card class="pa-4" flat outlined>
+            <v-card class="pa-4" flat border>
               <v-img :src="require('@/assets/logo-loisir-et-sport-gim.png')"
                      alt="Loisir et Sport Gaspésie-Îles-de-la-Madeleine"></v-img>
             </v-card>
           </v-card>
         </v-col>
         <v-col cols="12" md="4" class="align-self-center">
-          <p class="text-left body-1 text-h6 font-weight-regular">
+          <p class="text-left text-body-1 text-h6 font-weight-regular">
             Merci à Loisir et Sport Gaspésie-Îles-de-la-Madeleine pour les dons d'équipements pour bouger au
             Loco Local
             !
@@ -387,31 +377,31 @@
         <v-col cols="0" lg="2"></v-col>
       </v-row>
       <div class="mt-8 mb-8"></div>
-      <v-footer class="pa-4" dark>
+      <v-footer class="pa-4">
         <v-spacer></v-spacer>
         <v-btn
-            text
+            variant="text"
             @click="documentDialog = true"
-            v-if="$vuetify.breakpoint.mdAndUp"
+            v-if="$vuetify.display.mdAndUp"
         >
-          <v-icon left>
+          <v-icon start>
             articles
           </v-icon>
           Documents
         </v-btn>
         <v-btn
-            text
+            variant="text"
             @click="presseDialog = true"
-            v-if="$vuetify.breakpoint.mdAndUp"
+            v-if="$vuetify.display.mdAndUp"
         >
-          <v-icon left>
+          <v-icon start>
             newspaper
           </v-icon>
           Presse
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn
-            text
+            variant="text"
             href="https://www.facebook.com/locolocal1"
             class="mr-2 mb-1"
         >
@@ -431,12 +421,12 @@
       <PhoneDialog ref="phoneDialog"></PhoneDialog>
       <v-dialog v-model="presseDialog" width="900">
         <v-card>
-          <v-card-title class="title">
+          <v-card-title class="text-h6">
             Dossier de presse
             <v-spacer></v-spacer>
             <v-icon @click="presseDialog = false">close</v-icon>
           </v-card-title>
-          <v-card-text class="body-1">
+          <v-card-text class="text-body-1">
             <v-list>
               <v-list-item
                   v-for="presse in dossiersDePresse"
@@ -444,7 +434,7 @@
                   :href="presse.lien"
                   class="text-left"
               >
-                <v-list-item-title class="body-1">
+                <v-list-item-title class="text-body-1">
                   <span class="grey-text">
                     {{ presse.date }}
                   </span>
@@ -457,12 +447,12 @@
       </v-dialog>
       <v-dialog v-model="documentDialog" width="900">
         <v-card>
-          <v-card-title class="title">
+          <v-card-title class="text-h6">
             Documents
             <v-spacer></v-spacer>
             <v-icon @click="documentDialog = false">close</v-icon>
           </v-card-title>
-          <v-card-text class="body-1">
+          <v-card-text class="text-body-1">
             <v-list>
               <v-list-item
                   v-for="document in documents"
@@ -490,7 +480,7 @@
       >
         <v-btn
             class="mt-6"
-            text
+            variant="text"
             color="red"
             @click="isMessagePandemie = !isMessagePandemie"
         >
@@ -519,13 +509,13 @@ export default {
   },
   computed: {
     toolbarLogoHeight: function () {
-      if (this.$vuetify.breakpoint.lgAndDown) {
+      if (this.$vuetify.display.lgAndDown) {
         return 25;
       }
       return 30;
     },
     avatarSize: function () {
-      if (this.$vuetify.breakpoint.mdAndDown) {
+      if (this.$vuetify.display.mdAndDown) {
         return 70;
       }
       return 100;

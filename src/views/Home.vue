@@ -9,10 +9,10 @@
     >
       <v-card color="transparent" flat>
         <v-card-title
-            class="vh-center font-weight-thin mb-4 white--text"
+            class="vh-center font-weight-thin mb-4 text-white"
             :class="{
-            'display-2': $vuetify.breakpoint.lgAndDown,
-            'display-3': $vuetify.breakpoint.xl
+            'display-2': $vuetify.display.lgAndDown,
+            'display-3': $vuetify.display.xl
           }"
         >
           <p>
@@ -22,7 +22,7 @@
           </p>
         </v-card-title>
         <v-card-subtitle
-            class="font-weight-thin white--text"
+            class="font-weight-thin text-white"
             style="font-size: 19px; line-height: 2"
         >
           Pour partager des ressources et des projets afin de s'adresser aux
@@ -31,21 +31,19 @@
       </v-card>
     </v-layout>
     <div id="about" class="mb-12"></div>
-    <v-layout row wrap class="mb-1">
-      <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin text">À propos</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout
-        row
-        wrap
+    <v-row class="mb-1">
+      <v-col cols="12" class="text-center">
+        <h1 class="text-h3 font-weight-thin text">À propos</h1>
+      </v-col>
+    </v-row>
+    <v-row
         class="mt-6 mb-6"
         :class="{
-        'pl-5 pr-2': $vuetify.breakpoint.smAndDown,
+        'pl-5 pr-2': $vuetify.display.smAndDown,
       }"
     >
-      <v-flex xs0 sm2 md3 lg4></v-flex>
-      <v-flex xs12 sm8 md6 lg4 class="text-left text-md-justify body-1">
+      <v-col cols="0" sm="2" md="3" lg="4"></v-col>
+      <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-body-1">
         <p
             class="text"
             style="font-weight: 300;"
@@ -81,17 +79,17 @@
             Bonaventure.
           </a>
         </p>
-      </v-flex>
-      <v-flex xs0 sm2 md3 lg4></v-flex>
-    </v-layout>
+      </v-col>
+      <v-col cols="0" sm="2" md="3" lg="4"></v-col>
+    </v-row>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <v-layout row wrap class="mb-12" id="benevole">
-      <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin text">Membres</h1>
-          <h4 class="text-smaller font-weight-thin">comités actifs</h4>
-      </v-flex>
-    </v-layout>
-    <v-row wrap class="body-2">
+    <v-row class="mb-12" id="benevole">
+      <v-col cols="12" class="text-center">
+        <h1 class="text-h3 font-weight-thin text">Membres</h1>
+        <h4 class="text-smaller font-weight-thin">comités actifs</h4>
+      </v-col>
+    </v-row>
+    <v-row wrap class="text-body-2">
       <!--<v-flex xs0 lg3></v-flex>-->
       <v-col
           cols="12"
@@ -102,17 +100,17 @@
         <v-row
             class="mb-0"
             :class="{
-            'ml-5 pl-12': $vuetify.breakpoint.mdAndUp,
+            'ml-5 pl-12': $vuetify.display.mdAndUp,
           }"
         >
           <v-col
               cols="2"
-              v-if="index % 2 === 0 && $vuetify.breakpoint.mdAndUp"
+              v-if="index % 2 === 0 && $vuetify.display.mdAndUp"
           ></v-col>
           <v-col
               cols="2"
               :class="{
-              'mr-10 ml-4': $vuetify.breakpoint.smAndDown,
+              'mr-10 ml-4': $vuetify.display.smAndDown,
             }"
           >
             <v-avatar :size="avatarSize">
@@ -126,8 +124,8 @@
               cols="8"
               class="text-left"
               :class="{
-              'mt-3': $vuetify.breakpoint.mdAndUp,
-              'mt-0': $vuetify.breakpoint.smAndDown,
+              'mt-3': $vuetify.display.mdAndUp,
+              'mt-0': $vuetify.display.smAndDown,
             }"
           >
             <h3 class="heading font-weight-medium text">
@@ -137,24 +135,24 @@
               {{ membre.cv }}
             </p>
             <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->
-            <v-breadcrumbs
-                :items="membre.cercles"
-                class="d-inline pa-0 subtitle-1 bullet-like"
-                small
-            >
-              <template slot="item" slot-scope="props">
-                <router-link
-                    :to="cercle(props.item).lien"
-                    v-if="!cercleEstDesactive(props.item)"
-                    class="text-smaller"
-                >
-                  {{ nomDeCercle(props.item) }}
-                </router-link>
-                <span v-if="cercleEstDesactive(props.item)" class="pl-1 pr-1 text-smaller">{{
-                    nomDeCercle(props.item)
-                  }}</span>
-              </template>
-            </v-breadcrumbs>
+            <!--            <v-breadcrumbs-->
+            <!--                :items="membre.cercles"-->
+            <!--                class="d-inline pa-0 text-subtitle-1 bullet-like"-->
+            <!--                small-->
+            <!--            >-->
+            <!--              <template v-slot:item="{item}">-->
+            <!--                <router-link-->
+            <!--                    :to="cercle(item).lien"-->
+            <!--                    v-if="!cercleEstDesactive(item)"-->
+            <!--                    class="text-smaller"-->
+            <!--                >-->
+            <!--                  {{ nomDeCercle(item) }}-->
+            <!--                </router-link>-->
+            <!--                <span v-if="cercleEstDesactive(item)" class="pl-1 pr-1 text-smaller">{{-->
+            <!--                    nomDeCercle(item)-->
+            <!--                  }}</span>-->
+            <!--              </template>-->
+            <!--            </v-breadcrumbs>-->
 
             <!--<div class="d-inline" >-->
 
@@ -173,19 +171,19 @@
       </v-col>
       <!--<v-flex xs0 lg2></v-flex>-->
     </v-row>
-    <v-layout row wrap class="mb-12">
-      <v-flex xs12 class="vh-center">
+    <v-row class="mb-12">
+      <v-col cols="12" class="vh-center">
         <v-card max-width="450">
           <v-card-text
-              class="text-center title font-weight-regular black--text"
+              class="text-center text-h6 font-weight-regular text-black"
           >
             Merci aussi à tous nos autres membres. Votre implication est très
             précieuse
             <span style="color: red">❤</span>
           </v-card-text>
         </v-card>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <!--<v-layout row>-->
     <!--<v-flex xs12>-->
     <!--<img :src='require("../assets/2015-06-05 16.20.45.jpg")' width="50%">-->
@@ -195,11 +193,11 @@
         :height="parallaxSize"
         :src="require('../assets/peinture-rogner.jpg')"
     ></v-parallax>
-    <v-layout row wrap class="pb-16 mt-12" id="cercle">
-      <v-flex xs12 class="text-center">
-        <h1 class="display-2 font-weight-thin">Comités actifs</h1>
-      </v-flex>
-    </v-layout>
+    <v-row class="pb-16 mt-12" id="cercle">
+      <v-col xs12 class="text-center">
+        <h1 class="text-h3 font-weight-thin">Comités actifs</h1>
+      </v-col>
+    </v-row>
     <RucheArtCercle></RucheArtCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <CollaboriumCercle></CollaboriumCercle>
@@ -362,8 +360,8 @@
     <Calendrier
         class="mt-16"
         :class="{
-        'mb-12': $vuetify.breakpoint.mdAndUp,
-        'mb-4': $vuetify.breakpoint.smAndDown,
+        'mb-12': $vuetify.display.mdAndUp,
+        'mb-4': $vuetify.display.smAndDown,
       }"
     ></Calendrier>
     <v-divider class="mt-6 mb-12"></v-divider>
@@ -371,13 +369,13 @@
     <PhoneDialog ref="phoneDialog"></PhoneDialog>
     <v-dialog v-model="visionModal" width="300">
       <v-card>
-        <v-card-title class="title">
+        <v-card-title class="text-h6">
           Vision
           <v-spacer></v-spacer>
           <v-icon @click="visionModal = false">close</v-icon>
         </v-card-title>
         <v-card-text
-            class="text-left body-1 black--text"
+            class="text-left text-body-1 text-black"
             style="line-height: 1.5"
         >
           Une communauté autogérée ayant une empreinte écologique et sociale
@@ -389,13 +387,13 @@
     </v-dialog>
     <v-dialog v-model="missionModal" width="300">
       <v-card>
-        <v-card-title class="title">
+        <v-card-title class="text-h6">
           Mission
           <v-spacer></v-spacer>
           <v-icon @click="missionModal = false">close</v-icon>
         </v-card-title>
         <v-card-text
-            class="text-left body-1 black--text"
+            class="text-left text-body-1 text-black"
             style="line-height: 1.5"
         >
           Soutenir le partage de ressources, de lieux et connaissances au service de la solidarité et de la résilience.
@@ -404,30 +402,30 @@
     </v-dialog>
     <v-dialog v-model="valeursModal" width="450">
       <v-card>
-        <v-card-title class="title">
+        <v-card-title class="text-h6">
           Valeurs
           <v-spacer></v-spacer>
           <v-icon @click="valeursModal = false">close</v-icon>
         </v-card-title>
         <v-list class="text-left">
-          <v-list-item v-for="valeur in valeurs" :key="valeur" class="body-1">
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ valeur }}
-              </v-list-item-title>
-            </v-list-item-content>
+          <v-list-item v-for="valeur in valeurs" :key="valeur" class="text-body-1">
+
+            <v-list-item-title>
+              {{ valeur }}
+            </v-list-item-title>
+
           </v-list-item>
         </v-list>
       </v-card>
     </v-dialog>
     <v-dialog v-model="comitesArchives" width="600">
       <v-card>
-        <v-card-title class="title">
+        <v-card-title class="text-h6">
           Comités plus ou moins actifs
           <v-spacer></v-spacer>
           <v-icon @click="comitesArchives = false">close</v-icon>
         </v-card-title>
-        <v-card-text class="body-1">
+        <v-card-text class="text-body-1">
           <v-list>
             <v-list-item to="/le-demi">
               <v-list-item-title> Le demi</v-list-item-title>
@@ -459,7 +457,7 @@
 
 <script>
 
-import {GoogleCharts} from "google-charts";
+// import {GoogleCharts} from "google-charts";
 import Calendrier from "@/components/CalendrierSection.vue";
 
 import PhoneDialog from "@/components/PhoneDialog";
@@ -552,22 +550,22 @@ export default {
   },
   computed: {
     toolbarLogoHeight: function () {
-      if (this.$vuetify.breakpoint.mdAndDown) {
+      if (this.$vuetify.display.mdAndDown) {
         return 25;
       }
       return 30;
     },
     avatarSize: function () {
-      if (this.$vuetify.breakpoint.mdAndDown) {
+      if (this.$vuetify.display.mdAndDown) {
         return 70;
       }
-      if (this.$vuetify.breakpoint.lg) {
+      if (this.$vuetify.display.lg) {
         return 80;
       }
       return 100;
     },
     parallaxSize: function () {
-      if (this.$vuetify.breakpoint.mdAndDown) {
+      if (this.$vuetify.display.mdAndDown) {
         return 200;
       }
       return 350;
@@ -578,23 +576,21 @@ export default {
   },
   methods: {
     trierCercles: function (cercles) {
-      return cercles.sort(
-          function (aClef, bClef) {
-            let aDesactive = this.cercle(aClef).desactive;
-            let bDesactive = this.cercle(bClef).desactive;
-            return aDesactive === bDesactive
-                ? aClef.localeCompare(bClef)
-                : aDesactive
-                    ? 1
-                    : -1;
-          }.bind(this)
-      );
+      return cercles.sort((aClef, bClef) => {
+        let aDesactive = this.cercle(aClef).desactive;
+        let bDesactive = this.cercle(bClef).desactive;
+        return aDesactive === bDesactive
+            ? aClef.localeCompare(bClef)
+            : aDesactive
+                ? 1
+                : -1;
+      })
     },
     nomDeCercle: function (clefDeCercle) {
       return this.cercles[clefDeCercle].nom;
     },
     cercle: function (clefDeCercle) {
-      return this.cercles[clefDeCercle];
+      return this.cercles.tous[clefDeCercle];
     },
     lienDeCercle: function (clefDeCercle) {
       let lien = this.cercles[clefDeCercle].lien;
@@ -784,13 +780,12 @@ export default {
     };
   },
   mounted() {
-    this.membresDeCercles.forEach(
-        function (membre) {
-          membre.cercles = this.trierCercles(membre.cercles);
-        }.bind(this)
-    );
+    this.membresDeCercles = this.membresDeCercles.map((membre) => {
+      membre.cercles = this.trierCercles(membre.cercles);
+      return membre;
+    })
     this.balance = this.balanceCalculate();
-    GoogleCharts.load(this.dessinComptable, {packages: ["line"]});
+    // GoogleCharts.load(this.dessinComptable, {packages: ["line"]});
   },
 };
 </script>

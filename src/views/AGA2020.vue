@@ -2,7 +2,7 @@
   <div class="mt-12 pt-12">
     <v-layout row wrap class="pt-12">
       <v-flex xs12 md12 class="vh-center pt-12">
-        <h1 class="pt-12 pb-12 headline font-weight-bold">AGA 2020</h1>
+        <h1 class="pt-12 pb-12 text-h5 font-weight-bold">AGA 2020</h1>
         <div class="mt-2 pt-2"></div>
 <!--        <v-list>-->
 <!--          <v-list-item-->
@@ -16,7 +16,7 @@
 <!--          </v-list-item>-->
 <!--        </v-list>-->
         <v-card width="600" class="pt-12" flat>
-          <v-card-title class="headline vh-center">
+          <v-card-title class="text-h5 vh-center">
             Vidéo 1 -- Trajectoires
           </v-card-title>
           <v-card-text>
@@ -26,7 +26,7 @@
           </v-card-text>
         </v-card>
         <v-card width="600" flat>
-          <v-card-title class="headline vh-center">
+          <v-card-title class="text-h5 vh-center">
             Vidéo 2 -- Bilan
           </v-card-title>
           <v-card-text>

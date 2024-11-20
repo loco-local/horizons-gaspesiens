@@ -1,6 +1,6 @@
 <template>
   <Page>
-    <div class="body-1" slot="content">
+    <div class="text-body-1" slot="content">
       <v-layout row wrap>
         <v-flex xs12 md3>
           <v-img :src="require('@/assets/demi-copie.jpg')"></v-img>
@@ -73,7 +73,7 @@
           </a>
         </v-flex>
         <v-flex xs12 md7 class="text-left pa-6">
-          <h3 class="headline text-left">
+          <h3 class="text-h5 text-left">
             Quelques info supplémentaires concernant l’aspect légal
           </h3>
           <p class="text-left">
@@ -105,7 +105,7 @@
             Le demi, est-ce criminel ?
           </a>
           </p>
-          <h3 class="headline text-left">
+          <h3 class="text-h5 text-left">
             Informations sur les monnaies complémentaires en général
           </h3>
           <p>
@@ -127,12 +127,12 @@
       <v-layout row wrap class="mt-6">
         <v-flex xs12 class="text-left">
           <v-card>
-            <v-card-title class="title">
+            <v-card-title class="text-h6">
               Liens Externes
             </v-card-title>
-            <v-card-text class="body-1">
+            <v-card-text class="text-body-1">
               <div class="field-items">
-                <div class="field-item even body-1">
+                <div class="field-item even text-body-1">
                   <ul>
                     <li>Liste des commerces utilisant le demi:&nbsp;
                       <ul>
