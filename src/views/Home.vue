@@ -3,16 +3,17 @@
     <v-row align-center column justify-center id="header-banner" class="vh-center text-center">
       <v-col cols="12">
         <v-card color="transparent" flat>
-          <v-card-title class="vh-center text-white mb-4 font-weight-thin text-h4 text-xl-h2">          
-              Géré de façon
-              horizontale
-              <br>
-              par ses membres          
+          <v-card-title class="vh-center text-white mb-4 font-weight-thin text-h4 text-xl-h2">
+            Géré de façon
+            horizontale
+            <br>
+            par ses membres
           </v-card-title>
           <v-card-subtitle class="font-weight-regular text-white text-h6 text-md-h5 text-center" style="line-height: 2">
             Pour partager <br v-if="$vuetify.display.smAndDown"> des ressources et des projets
-            <br>          
-            Comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br v-if="$vuetify.display.smAndDown">et environnementaux
+            <br>
+            Comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br
+              v-if="$vuetify.display.smAndDown">et environnementaux
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -67,9 +68,9 @@
         <h4 class="text-smaller font-weight-thin">comités actifs</h4>
       </v-col>
     </v-row>
-    <v-row wrap class="text-body-2">
+    <v-row class="text-body-2">
       <!--<v-flex xs0 lg3></v-flex>-->
-      <v-col cols="12" class="col-md-6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
+      <v-col cols="12" md="6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
         <v-row class="mb-0" :class="{
           'ml-5 pl-12': $vuetify.display.mdAndUp,
         }">
@@ -318,12 +319,14 @@
     <PhoneDialog ref="phoneDialog"></PhoneDialog>
     <v-dialog v-model="visionModal" width="300">
       <v-card>
-        <v-card-title class="text-h6">
-          Vision
-          <v-spacer></v-spacer>
-          <v-icon @click="visionModal = false">close</v-icon>
+        <v-card-title class="d-flex justify-space-between align-center">
+          <div class="text-h5 text-medium-emphasis ps-2">
+            Vision
+          </div>
+          <v-icon icon="close" @click="visionModal = false" variant="text"></v-icon>
         </v-card-title>
-        <v-card-text class="text-left text-body-1 text-black" style="line-height: 1.5">
+        <v-divider class="mb-4"></v-divider>
+        <v-card-text class="text-left text-h6 font-weight-regular text-black" style="line-height: 1.5">
           Une communauté autogérée ayant une empreinte écologique et sociale
           réduite sur son milieu. L’abondance s’y mesure par la multiplicité et
           la diversité du lien social, par l’épanouissement des individus, ainsi
@@ -333,30 +336,32 @@
     </v-dialog>
     <v-dialog v-model="missionModal" width="300">
       <v-card>
-        <v-card-title class="text-h6">
-          Mission
-          <v-spacer></v-spacer>
-          <v-icon @click="missionModal = false">close</v-icon>
+        <v-card-title class="d-flex justify-space-between align-center">
+          <div class="text-h5 text-medium-emphasis ps-2">
+            Mission
+          </div>
+          <v-icon icon="close" @click="missionModal = false" variant="text"></v-icon>
         </v-card-title>
-        <v-card-text class="text-left text-body-1 text-black" style="line-height: 1.5">
+        <v-divider class="mb-4"></v-divider>
+        <v-card-text class="text-left text-h6 font-weight-regular text-black" style="line-height: 1.5">
           Soutenir le partage de ressources, de lieux et connaissances au service de la solidarité et de la résilience.
         </v-card-text>
       </v-card>
     </v-dialog>
     <v-dialog v-model="valeursModal" width="450">
       <v-card>
-        <v-card-title class="text-h6">
-          Valeurs
-          <v-spacer></v-spacer>
-          <v-icon @click="valeursModal = false">close</v-icon>
+        <v-card-title class="d-flex justify-space-between align-center">
+          <div class="text-h5 text-medium-emphasis ps-2">
+            Valeurs
+          </div>
+          <v-icon icon="close" @click="valeursModal = false" variant="text"></v-icon>
         </v-card-title>
+        <v-divider class="mb-4"></v-divider>
         <v-list class="text-left">
-          <v-list-item v-for="valeur in valeurs" :key="valeur" class="text-body-1">
-
-            <v-list-item-title>
+          <v-list-item v-for="valeur in valeurs" :key="valeur">
+            <v-list-item-title class="text-h6 font-weight-regular">
               {{ valeur }}
             </v-list-item-title>
-
           </v-list-item>
         </v-list>
       </v-card>
