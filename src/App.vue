@@ -1,12 +1,142 @@
 <template>
-  <div
-      id="app"
-      :class="{
+    <v-app :class="{
       'font-size-xl': $vuetify.display.xl,
       'font-size-lg-and-down': $vuetify.display.lgAndDown,
-    }"
-  >
-    <v-app>
+    }">
+      <v-app-bar
+            color="white"
+            :class="{
+            'no-padding': $vuetify.display.smAndDown,
+          }"
+            style="z-index: 4"
+        >
+          <v-app-bar-nav-icon
+              @click="drawer = !drawer"
+              v-if="$vuetify.display.smAndDown"
+          ></v-app-bar-nav-icon>
+          <router-link
+              to="/"
+              class="mt-3"
+              :class="{
+              'pl-4': $vuetify.display.mdAndUp,
+            }"
+          >          
+            <img
+                :src="require('./assets/logo-horizontal.png')"
+                :height="this.toolbarLogoHeight"
+                v-if="true"
+                @click="Scroll.allerALaSection('app')"
+            />
+            <img
+                :src="require('./assets/logo-loco-horizontal.png')"
+                :height="this.toolbarLogoHeight + 20"
+                v-if="false"
+            />
+          </router-link>
+          <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down">
+            <v-btn
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
+                to="/paiement"
+            >
+              <v-icon
+                  :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.mdAndDown,
+                }"
+              >attach_money
+              </v-icon>
+              <span v-if="$vuetify.display.xlAndUp" class=""> Don et paiement </span>
+              <span v-if="$vuetify.display.lgAndDown">Don/paiement</span>
+            </v-btn>
+            <v-btn
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
+                to="/calendrier"
+            >
+              <v-icon
+                  :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.lgAndDown,
+                }"
+              >
+                calendar_month
+              </v-icon>
+              Calendrier
+            </v-btn>
+            <v-btn
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
+                to="/reservation"
+            >
+              <v-icon
+                  :class="{
+                  'mr-3': $vuetify.display.lgAndUp,
+                  'mr-0': $vuetify.display.mdAndDown,
+                }"
+              >
+                event
+              </v-icon>
+              Réservation
+            </v-btn>
+            <v-btn
+                color="#ff3301"
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                v-if="$vuetify.display.lgAndUp"
+                target="_blank"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+            >
+              <v-icon start>check</v-icon>
+              Devenez membre
+            </v-btn>
+
+            <v-btn
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
+                href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+            >
+              <v-icon
+                  :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.lgAndDown,
+                }"
+              >location_on
+              </v-icon>
+              Adresse
+            </v-btn>
+            <v-btn
+                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+                variant="text"
+                @click="$refs.phoneDialog.show()"
+            >
+              <v-icon
+                  :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.lgAndDown,
+                }"
+              >phone
+              </v-icon>
+              <span v-if="$vuetify.display.xlAndUp">Téléphone</span>
+              <span v-if="$vuetify.display.lgAndDown">Tel</span>
+            </v-btn>
+            <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
+            <!--                    <v-icon :class="{-->
+            <!--                        'mr-3' : $vuetify.display.xlAndUp,-->
+            <!--                        'mr-0' : $vuetify.display.lgAndDown-->
+            <!--                    }">email-->
+            <!--                    </v-icon>-->
+            <!--                    Infolettre-->
+            <!--                </v-btn>-->
+          </v-toolbar-items>
+          <v-toolbar-title
+              class="text-h6 text-uppercase special-font"
+              style="font-weight: bold"
+          >
+          </v-toolbar-title>
+          <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
+                              v-if="$vuetify.display.mdAndUp"></v-app-bar-nav-icon>
+        </v-app-bar>
       <v-navigation-drawer
           v-model="desktopDrawer"
           location="right"
@@ -61,14 +191,13 @@
           dense
           id="app-navigation"
       >
-        <v-list avatar>
+        <v-list>
           <div
               v-for="phone in phoneNumbers"
               :key="phone.nom"
               :href="'tel:' + phone.telephone"
           >
-            <v-list-item :href="'tel:' + phone.telephone">
-              <img :src="require('./assets/' + phone.avatar)"/>
+            <v-list-item :href="'tel:' + phone.telephone">            
               <v-list-item-title>
                 {{ phone.nom }}
               </v-list-item-title>
@@ -76,9 +205,9 @@
                 {{ phone.telephone }}
               </v-list-item-subtitle>
 
-              <v-list-item-action>
+              <template v-slot:append>
                 <v-icon>phone</v-icon>
-              </v-list-item-action>
+              </template>
             </v-list-item>
             <v-divider class="mb-2 mt-2"></v-divider>
           </div>
@@ -88,23 +217,23 @@
             <v-list-item-title class="text-left">
               193a Avenue Grand-Pré, Bonaventure, QC
             </v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>location_on</v-icon>
-            </v-list-item-action>
+            </template>          
           </v-list-item>
           <v-list-item to="/paiement">
             <v-list-item-title class="text-left">Don et paiement</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>attach_money</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item
               to="/calendrier"
           >
             <v-list-item-title class="text-left">Calendrier</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>calendar_month</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item
               to="/reservation"
@@ -112,9 +241,9 @@
             <v-list-item-title class="text-left">
               Réservation
             </v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>event</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <!--                <v-list-item-->
           <!--                        href="http://eepurl.com/c7iHkr">-->
@@ -130,25 +259,25 @@
               target="_blank"
           >
             <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>check</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item
               to="/adhesion"
           >
             <v-list-item-title class="text-left">Vérifiez votre adhésion</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>check</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item
               to="/tarification"
           >
             <v-list-item-title class="text-left">Tarification de la salle</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>attach_money</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item @click="Scroll.allerALaSection('about', '/');drawer=false;" class="text-left">
             <v-list-item-title>
@@ -157,15 +286,15 @@
           </v-list-item>
           <v-list-item @click="documentDialog = true">
             <v-list-item-title class="text-left">Documents</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>articles</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item @click="presseDialog = true">
             <v-list-item-title class="text-left">Dossier de presse</v-list-item-title>
-            <v-list-item-action>
+            <template v-slot:append>
               <v-icon>newspaper</v-icon>
-            </v-list-item-action>
+            </template>
           </v-list-item>
           <v-list-item
               v-for="(cercle, clef) in cercles"
@@ -179,149 +308,6 @@
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <div id="nav" class="pa-0">
-        <v-app-bar
-            color="white"
-            :class="{
-            'no-padding': $vuetify.display.smAndDown,
-          }"
-            style="z-index: 4"
-        >
-          <v-app-bar-nav-icon
-              @click="drawer = !drawer"
-              v-if="$vuetify.display.smAndDown"
-          ></v-app-bar-nav-icon>
-          <router-link
-              to="/"
-              class="mt-3"
-              :class="{
-              'pl-4': $vuetify.display.smAndDown,
-            }"
-          >
-            <!--<transition name="fade">-->
-            <!--<img :src='require("./assets/" + currentLogo)'-->
-            <!--:key="currentLogo"-->
-            <!--style="position: absolute;left:10px;top:15px;"-->
-            <!--class="pull-right"-->
-            <!--:height="this.toolbarLogoHeight" @click="Scroll.allerALaSection('app')">-->
-            <!--</transition>-->
-            <img
-                :src="require('./assets/logo-horizontal.png')"
-                :height="this.toolbarLogoHeight"
-                v-if="true"
-                @click="Scroll.allerALaSection('app')"
-            />
-            <img
-                :src="require('./assets/logo-loco-horizontal.png')"
-                :height="this.toolbarLogoHeight + 20"
-                v-if="false"
-            />
-          </router-link>
-          <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
-          <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/paiement"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlOnly,
-                  'mr-0': $vuetify.display.mdAndDown,
-                }"
-              >attach_money
-              </v-icon>
-              <span v-if="$vuetify.display.xlOnly" class=""> Don et paiement </span>
-              <span v-if="$vuetify.display.lgAndDown">Don/paiement</span>
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/calendrier"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlOnly,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-              >
-                calendar_month
-              </v-icon>
-              Calendrier
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/reservation"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.lgAndUp,
-                  'mr-0': $vuetify.display.mdAndDown,
-                }"
-              >
-                event
-              </v-icon>
-              Réservation
-            </v-btn>
-            <v-btn
-                color="#ff3301"
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                v-if="$vuetify.display.lgAndUp"
-                target="_blank"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
-            >
-              <v-icon start>check</v-icon>
-              Devenez membre
-            </v-btn>
-
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlOnly,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-              >location_on
-              </v-icon>
-              Adresse
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                @click="$refs.phoneDialog.show()"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlOnly,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-              >phone
-              </v-icon>
-              <span v-if="$vuetify.display.xlOnly">Téléphone</span>
-              <span v-if="$vuetify.display.lgAndDown">Tel</span>
-            </v-btn>
-            <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
-            <!--                    <v-icon :class="{-->
-            <!--                        'mr-3' : $vuetify.display.xlOnly,-->
-            <!--                        'mr-0' : $vuetify.display.lgAndDown-->
-            <!--                    }">email-->
-            <!--                    </v-icon>-->
-            <!--                    Infolettre-->
-            <!--                </v-btn>-->
-          </v-toolbar-items>
-          <v-toolbar-title
-              class="text-h6 text-uppercase special-font"
-              style="font-weight: bold"
-          >
-          </v-toolbar-title>
-          <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
-                              v-if="$vuetify.display.mdAndUp"></v-app-bar-nav-icon>
-        </v-app-bar>
-      </div>
       <router-view/>
       <v-divider class="mt-8 mb-8"></v-divider>
       <p
@@ -473,27 +459,6 @@
         </v-card>
       </v-dialog>
     </v-app>
-    <v-bottom-sheet v-model="isMessagePandemie">
-      <v-sheet
-          class="text-center"
-          height="200px"
-      >
-        <v-btn
-            class="mt-6"
-            variant="text"
-            color="red"
-            @click="isMessagePandemie = !isMessagePandemie"
-        >
-          Fermer
-        </v-btn>
-        <div class="py-3 text-h6 font-weight-regular">
-          Pour savoir ce qui est possible de faire au Loco Local avec les mesures sanitaires, vous pouvez nous
-          <a @click.prevent="$refs.phoneDialog.show()" class="text-h6 font-weight-regular">contacter par
-            téléphone.</a>
-        </div>
-      </v-sheet>
-    </v-bottom-sheet>
-  </div>
 </template>
 
 <script>
@@ -525,8 +490,7 @@ export default {
     },
   },
   data() {
-    return {
-      isMessagePandemie: false,
+    return {  
       currentLogo: "logo-horizontal.png",
       documentDialog: false,
       presseDialog: false,
@@ -647,9 +611,7 @@ export default {
     };
   },
   mounted: function () {
-    // setInterval(function() {
-    //     this.currentLogo = this.currentLogo === 'logo-horizontal.png' ? "logo-loco-horizontal.png" : 'logo-horizontal.png';
-    // }.bind(this), 10000);
+    console.log(this.$vuetify.display)    
   },
 };
 </script>
@@ -728,19 +690,6 @@ button {
   font-size: 12px !important;
 }
 
-#header-banner {
-  /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
-  /*background-image: linear-gradient(120deg, #667eea 0%, #764ba2 100%);*/
-  width: 100 wh;
-  height: auto;
-  padding-top: 15%;
-  padding-bottom: 15%;
-  background: linear-gradient(-45deg, #007dc8, #ff1a1a, #007dc8);
-  background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
-}
 
 @-webkit-keyframes Gradient {
   0% {

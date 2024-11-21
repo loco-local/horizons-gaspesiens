@@ -1,53 +1,34 @@
 <template>
-  <div class="home">
-    <v-layout
-        align-center
-        column
-        justify-center
-        id="header-banner"
-        class="vh-center text-center"
-    >
-      <v-card color="transparent" flat>
-        <v-card-title
-            class="vh-center font-weight-thin mb-4 text-white"
-            :class="{
-            'display-2': $vuetify.display.lgAndDown,
-            'display-3': $vuetify.display.xl
-          }"
-        >
-          <p>
-            Géré de façon
-            horizontale
-            par ses membres
-          </p>
-        </v-card-title>
-        <v-card-subtitle
-            class="font-weight-thin text-white"
-            style="font-size: 19px; line-height: 2"
-        >
-          Pour partager des ressources et des projets afin de s'adresser aux
-          inégalités sociales et environnementales
-        </v-card-subtitle>
-      </v-card>
-    </v-layout>
+  <div class="home mt-16">
+    <v-row align-center column justify-center id="header-banner" class="vh-center text-center">
+      <v-col cols="12">
+        <v-card color="transparent" flat>
+          <v-card-title class="vh-center text-white mb-4 font-weight-thin text-h4 text-xl-h2">          
+              Géré de façon
+              horizontale
+              <br>
+              par ses membres          
+          </v-card-title>
+          <v-card-subtitle class="font-weight-regular text-white text-h6 text-md-h5 text-center" style="line-height: 2">
+            Pour partager <br v-if="$vuetify.display.smAndDown"> des ressources et des projets
+            <br>          
+            Comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br v-if="$vuetify.display.smAndDown">et environnementaux
+          </v-card-subtitle>
+        </v-card>
+      </v-col>
+    </v-row>
     <div id="about" class="mb-12"></div>
     <v-row class="mb-1">
       <v-col cols="12" class="text-center">
         <h1 class="text-h3 font-weight-thin text">À propos</h1>
       </v-col>
     </v-row>
-    <v-row
-        class="mt-6 mb-6"
-        :class="{
-        'pl-5 pr-2': $vuetify.display.smAndDown,
-      }"
-    >
+    <v-row class="mt-6 mb-6" :class="{
+      'pl-5 pr-2': $vuetify.display.smAndDown,
+    }">
       <v-col cols="0" sm="2" md="3" lg="4"></v-col>
       <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-body-1">
-        <p
-            class="text"
-            style="font-weight: 300;"
-        >
+        <p class="text" style="font-weight: 300;">
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
           chapeaute différentes initiatives
           <a href="#" @click.prevent="Scroll.allerALaSection('cercle')">
@@ -70,11 +51,8 @@
           </router-link>
           L'initiative principale est le Loco Local, un espace communautaire
           autogéré à
-          <a
-              href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-              target="_blank"
-              style="white-space: nowrap"
-          >
+          <a href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+            target="_blank" style="white-space: nowrap">
             <v-icon class="">location_on</v-icon>
             Bonaventure.
           </a>
@@ -91,43 +69,22 @@
     </v-row>
     <v-row wrap class="text-body-2">
       <!--<v-flex xs0 lg3></v-flex>-->
-      <v-col
-          cols="12"
-          class="col-md-6"
-          v-for="(membre, index) in membresDeCerclesTries"
-          :key="membre.nom"
-      >
-        <v-row
-            class="mb-0"
-            :class="{
-            'ml-5 pl-12': $vuetify.display.mdAndUp,
-          }"
-        >
-          <v-col
-              cols="2"
-              v-if="index % 2 === 0 && $vuetify.display.mdAndUp"
-          ></v-col>
-          <v-col
-              cols="2"
-              :class="{
-              'mr-10 ml-4': $vuetify.display.smAndDown,
-            }"
-          >
+      <v-col cols="12" class="col-md-6" v-for="(membre, index) in membresDeCerclesTries" :key="membre.nom">
+        <v-row class="mb-0" :class="{
+          'ml-5 pl-12': $vuetify.display.mdAndUp,
+        }">
+          <v-col cols="2" v-if="index % 2 === 0 && $vuetify.display.mdAndUp"></v-col>
+          <v-col cols="2" :class="{
+            'mr-10 ml-4': $vuetify.display.smAndDown,
+          }">
             <v-avatar :size="avatarSize">
-              <img
-                  :src="require('../assets/' + membre.avatar)"
-                  :alt="membre.nom"
-              />
+              <img :src="require('../assets/' + membre.avatar)" :alt="membre.nom" />
             </v-avatar>
           </v-col>
-          <v-col
-              cols="8"
-              class="text-left"
-              :class="{
-              'mt-3': $vuetify.display.mdAndUp,
-              'mt-0': $vuetify.display.smAndDown,
-            }"
-          >
+          <v-col cols="8" class="text-left" :class="{
+            'mt-3': $vuetify.display.mdAndUp,
+            'mt-0': $vuetify.display.smAndDown,
+          }">
             <h3 class="heading font-weight-medium text">
               {{ membre.nom }}
             </h3>
@@ -174,9 +131,7 @@
     <v-row class="mb-12">
       <v-col cols="12" class="vh-center">
         <v-card max-width="450">
-          <v-card-text
-              class="text-center text-h6 font-weight-regular text-black"
-          >
+          <v-card-text class="text-center text-h6 font-weight-regular text-black">
             Merci aussi à tous nos autres membres. Votre implication est très
             précieuse
             <span style="color: red">❤</span>
@@ -189,10 +144,7 @@
     <!--<img :src='require("../assets/2015-06-05 16.20.45.jpg")' width="50%">-->
     <!--</v-flex>-->
     <!--</v-layout>-->
-    <v-parallax
-        :height="parallaxSize"
-        :src="require('../assets/peinture-rogner.jpg')"
-    ></v-parallax>
+    <v-parallax :height="parallaxSize" :src="require('../assets/peinture-rogner.jpg')"></v-parallax>
     <v-row class="pb-16 mt-12" id="cercle">
       <v-col xs12 class="text-center">
         <h1 class="text-h3 font-weight-thin">Comités actifs</h1>
@@ -357,13 +309,10 @@
       </v-list>
     </div>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Calendrier
-        class="mt-16"
-        :class="{
-        'mb-12': $vuetify.display.mdAndUp,
-        'mb-4': $vuetify.display.smAndDown,
-      }"
-    ></Calendrier>
+    <Calendrier class="mt-16" :class="{
+      'mb-12': $vuetify.display.mdAndUp,
+      'mb-4': $vuetify.display.smAndDown,
+    }"></Calendrier>
     <v-divider class="mt-6 mb-12"></v-divider>
     <Paiement class="mb-1 mt-12"></Paiement>
     <PhoneDialog ref="phoneDialog"></PhoneDialog>
@@ -374,10 +323,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="visionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text
-            class="text-left text-body-1 text-black"
-            style="line-height: 1.5"
-        >
+        <v-card-text class="text-left text-body-1 text-black" style="line-height: 1.5">
           Une communauté autogérée ayant une empreinte écologique et sociale
           réduite sur son milieu. L’abondance s’y mesure par la multiplicité et
           la diversité du lien social, par l’épanouissement des individus, ainsi
@@ -392,10 +338,7 @@
           <v-spacer></v-spacer>
           <v-icon @click="missionModal = false">close</v-icon>
         </v-card-title>
-        <v-card-text
-            class="text-left text-body-1 text-black"
-            style="line-height: 1.5"
-        >
+        <v-card-text class="text-left text-body-1 text-black" style="line-height: 1.5">
           Soutenir le partage de ressources, de lieux et connaissances au service de la solidarité et de la résilience.
         </v-card-text>
       </v-card>
@@ -580,10 +523,10 @@ export default {
         let aDesactive = this.cercle(aClef).desactive;
         let bDesactive = this.cercle(bClef).desactive;
         return aDesactive === bDesactive
-            ? aClef.localeCompare(bClef)
-            : aDesactive
-                ? 1
-                : -1;
+          ? aClef.localeCompare(bClef)
+          : aDesactive
+            ? 1
+            : -1;
       })
     },
     nomDeCercle: function (clefDeCercle) {
@@ -604,9 +547,9 @@ export default {
       for (let i = 0; i < revenus.length; i++) {
         let balanceAbsolue = revenus[i] - depenses[i];
         let balanceSansLemieux =
-            balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
+          balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
         let balanceAvecProfitsLemieux =
-            balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux;
+          balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux;
         this.balanceTotale += balanceAvecProfitsLemieux;
         balance[i] = Math.floor(balanceAvecProfitsLemieux);
       }
@@ -694,14 +637,14 @@ export default {
       {
         nom: "Lancelot Tremblay",
         cv:
-            "Capitaine passionné du St-Laurent, Violoniste et donneur de seconde vie",
+          "Capitaine passionné du St-Laurent, Violoniste et donneur de seconde vie",
         avatar: "lancelot-petit-carré.jpg",
         cercles: ["reparation"],
       },
       {
         nom: "Francine Larocque",
         cv:
-            "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
+          "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
         avatar: "francine-petit-carre.png",
         cercles: ["groupe"],
       },
@@ -732,7 +675,7 @@ export default {
       {
         nom: "Ann Guilbault",
         cv:
-            "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
+          "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
         cercles: ["ca", "adhesion", "groupe"],
       },
@@ -790,4 +733,17 @@ export default {
 };
 </script>
 <style>
+#header-banner {
+  /*background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);*/
+  /*background-image: linear-gradient(120deg, #667eea 0%, #764ba2 100%);*/
+  width: 100 wh;
+  height: auto;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  background: linear-gradient(-45deg, #007dc8, #ff1a1a, #007dc8);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
 </style>
