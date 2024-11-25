@@ -450,7 +450,7 @@ export default {
       return event.color
     },
     getEvents: async function (date) {
-      this.isLoading = true;
+      this.isLoading = true;    
       const endDate = addDays(new Date(date.end.date), 2)
       const events = await EventService.list(
           date.start.date,

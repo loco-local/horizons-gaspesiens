@@ -1,7 +1,7 @@
 <template>
-    <Page>
-      <Calendrier slot="content"></Calendrier>
-    </Page>
+  <PageWrap>      
+      <CalendrierSection></CalendrierSection>  
+  </PageWrap>
 </template>
 
 <script>
@@ -9,15 +9,12 @@
 export default {
   name: "CalendrierPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    Calendrier: () => import("@/components/CalendrierSection.vue")
+    PageWrap: () => import("@/components/PageWrap.vue"),
+    CalendrierSection: () => import("@/components/CalendrierSection.vue")
   },
   mounted: function () {
-
   }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
