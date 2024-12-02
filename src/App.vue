@@ -20,7 +20,7 @@
               :class="{
               'pl-4': $vuetify.display.mdAndUp,
             }"
-          >          
+          >
             <img
                 :src="require('./assets/logo-horizontal.png')"
                 :height="this.toolbarLogoHeight"
@@ -82,6 +82,8 @@
             </v-btn>
             <v-btn
                 color="#ff3301"
+                variant="flat"
+                background-color="#ff3301"
                 :size="$vuetify.display.lgAndDown ? 'small' : undefined"
                 v-if="$vuetify.display.lgAndUp"
                 target="_blank"
@@ -197,7 +199,7 @@
               :key="phone.nom"
               :href="'tel:' + phone.telephone"
           >
-            <v-list-item :href="'tel:' + phone.telephone">            
+            <v-list-item :href="'tel:' + phone.telephone">
               <v-list-item-title>
                 {{ phone.nom }}
               </v-list-item-title>
@@ -219,7 +221,7 @@
             </v-list-item-title>
             <template v-slot:append>
               <v-icon>location_on</v-icon>
-            </template>          
+            </template>
           </v-list-item>
           <v-list-item to="/paiement">
             <v-list-item-title class="text-left">Don et paiement</v-list-item-title>
@@ -490,7 +492,7 @@ export default {
     },
   },
   data() {
-    return {  
+    return {
       currentLogo: "logo-horizontal.png",
       documentDialog: false,
       presseDialog: false,
@@ -611,7 +613,6 @@ export default {
     };
   },
   mounted: function () {
-    console.log(this.$vuetify.display)    
   },
 };
 </script>

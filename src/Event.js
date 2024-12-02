@@ -32,18 +32,30 @@ const Event = {
         "foreground": "#1d1d1d",
         "id": "11"
     }],
-    toVuetifyCalendar: function (event) {
-        event.name = event.summary;
-        event.color = Event.getColorFromId(event.colorId).background;
+    formatEventToScheduleX: function (event) {
         if (event.start.dateTime === undefined) {
             let start = new Date(event.start.date)
-            event.start = format(start, "yyyy-MM-dd");
+            event.start = start;
             event.end = undefined;
         } else {
             let start = new Date(event.start.dateTime)
             let end = new Date(event.end.dateTime)
-            event.start = format(start, "yyyy-MM-dd HH:mm");
-            event.end = format(end, "yyyy-MM-dd HH:mm");
+            event.start = start;
+            event.end = end;
+        }
+        // const startHour = format(event.start, "HH:mm")
+        // const endHour = format(event.end, "HH:mm")
+        // event.title = `${event.summary}  ${startHour} à ${endHour}`
+        event.title = event.summary;
+        event.color = Event.getColorFromId(event.colorId).background;
+        event.start = format(event.start, 'yyyy-MM-dd HH:mm')
+        event.end = format(event.end, 'yyyy-MM-dd HH:mm')
+        if (event.colorId === "9") {
+            event.calendarId = "shared"
+        } else if (event.colorId === "10") {
+            event.calendarId = "nonPriority"
+        } else {
+            event.calendarId = "exclusive"
         }
         return event;
     },

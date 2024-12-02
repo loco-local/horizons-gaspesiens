@@ -106,46 +106,43 @@
               </v-btn>
             </v-toolbar>
           </v-sheet>
-          <v-sheet :height="calendarHeight">
-            <v-card :height="calendarHeight" class="pa-0">
+          <v-sheet>
+            <v-card class="pa-0">
               <v-overlay
                   absolute
                   :model-value="isLoading"
               >
                 <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
               </v-overlay>
-              <v-calendar
-                  ref="calendar"
-                  v-model="calendarFocus"
-                  :weekdays="weekdays"
-                  type="week"
-                  :events="events"
-                  event-overlap-mode="column"
-                  :event-overlap-threshold="30"
-                  :event-color="getEventColor"
-                  @change="getEvents"
-                  @click:event="showEvent"
-                  @mousedown:event="startDrag"
-                  @mousedown:time="startTime"
-                  @mousemove:time="mouseMove"
-                  @mouseup:time="endDrag"
-                  @mouseleave.native="cancelDrag"
-                  :class="{
-                                'dense-hours' : $vuetify.display.smAndDown
-                            }"
-                  v-if="!showGoogleCalendar"
-              >
-                <template v-slot:event="{ event, timed, eventSummary }">
-                  <div class="v-event-draggable">
-                    <component :is="{ render: eventSummary }"></component>
-                  </div>
-                  <div
-                      v-if="timed"
-                      class="v-event-drag-bottom"
-                      @mousedown.stop="extendBottom(event)"
-                  ></div>
-                </template>
-              </v-calendar>
+              <ScheduleXCalendar :calendar-app="calendarApp"/>
+              <!--              <v-calendar-->
+              <!--                  ref="calendar"-->
+              <!--                  v-model="calendarFocus"-->
+              <!--                  :weekdays="weekdays"-->
+              <!--                  :interval-start="6"-->
+              <!--                  view-mode="month"-->
+              <!--                  :events="events"-->
+              <!--                  event-overlap-mode="column"-->
+              <!--                  :event-overlap-threshold="30"-->
+              <!--                  :event-color="getEventColor"-->
+              <!--                  @click:event="showEvent"-->
+              <!--                  @update:modelValue="alert('yo')"-->
+              <!--                  :class="{-->
+              <!--                                'dense-hours' : $vuetify.display.smAndDown-->
+              <!--                            }"-->
+              <!--                  v-if="!showGoogleCalendar"-->
+              <!--              >-->
+              <!--                <template v-slot:event="{ event, timed, eventSummary }">-->
+              <!--                  <div class="v-event-draggable">-->
+              <!--                    <component :is="{ render: eventSummary }"></component>-->
+              <!--                  </div>-->
+              <!--                  <div-->
+              <!--                      v-if="timed"-->
+              <!--                      class="v-event-drag-bottom"-->
+              <!--                      @mousedown.stop="extendBottom(event)"-->
+              <!--                  ></div>-->
+              <!--                </template>-->
+              <!--              </v-calendar>-->
               <iframe frameborder="0" :height="calendarHeight" scrolling="no"
                       src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
                       style=" border-width:0 " width="100%"
@@ -200,10 +197,10 @@
         <v-toolbar
             :color="selectedEvent.color"
         >
-          <v-toolbar-title>{{selectedEvent.summary}}</v-toolbar-title>
+          <v-toolbar-title>{{ selectedEvent.summary }}</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
-          <span>{{selectedEvent.description}}</span>
+          <span>{{ selectedEvent.description }}</span>
         </v-card-text>
         <v-card-actions>
           <v-btn
@@ -238,229 +235,339 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import PhoneDialog from '@/components/PhoneDialog'
 import EventService from "@/service/EventService";
-import {addDays, addHours, format} from "date-fns";
-import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
+import {addDays, format,} from "date-fns";
+// import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
 import Tarification from "@/components/TarificationSection.vue";
-import { VCalendar } from 'vuetify/labs/VCalendar'
-export default {
-  components: {
-    Tarification,
-    ReservationDialog,
-    VerificationAdhesion,
-    PhoneDialog,
-    VCalendar
+import {ref, onMounted} from 'vue';
+
+import {ScheduleXCalendar} from '@schedule-x/vue'
+import {
+  createCalendar,
+  createViewMonthAgenda,
+  createViewMonthGrid,
+  createViewWeek,
+} from '@schedule-x/calendar'
+import {createEventsServicePlugin} from '@schedule-x/events-service'
+import '@schedule-x/theme-default/dist/index.css'
+import {useDisplay} from "vuetify";
+import {useRouter} from "vue-router";
+
+const calendarHeight = ref(0)
+const tarificationDialog = ref(false)
+const router = useRouter();
+const display = useDisplay();
+const eventsServicePlugin = createEventsServicePlugin();
+const calendarApp = createCalendar({
+  locale: 'fr-FR',
+  selectedDate: format(new Date(), 'yyyy-MM-dd HH:mm'),
+  views: [
+    createViewWeek(),
+    createViewMonthGrid(),
+    createViewMonthAgenda(),
+  ],
+  dayBoundaries: {
+    start: '06:00',
+    end: '23:59',
   },
-  data: function () {
-    return {
-      showGoogleCalendar: false,
-      isLoading: false,
-      calendarHeight: 0,
-      selectedEvent: {},
-      selectedElement: null,
-      selectedOpen: false,
-      events: [],
-      weekdays: [1, 2, 3, 4, 5, 6, 0],
-      calendarFocus: [new Date()],
-      dragEvent: null,
-      dragStart: null,
-      createEvent: null,
-      editedEvent: null,
-      createStart: null,
-      extendOriginal: null,
-      googleCalendarUiKey: Math.random(),
-      tarificationDialog: false
+  weekOptions: {
+    gridHeight: display.mdAndDown.value ? 350 : 750
+  },
+  callbacks: {
+    async onRangeUpdate(range) {
+      const events = await getEvents(range.start, range.end)
+      eventsServicePlugin.set(events)
+    },
+    async beforeRender($app) {
+      const range = $app.calendarState.range.value
+      const events = await getEvents(range.start, range.end)
+      eventsServicePlugin.set(events)
+    },
+  },
+  calendars: {
+    exclusive: {
+      colorName: 'exclusive',
+      lightColors: {
+        main: '#e32323',
+        container: '#e32323',
+        onContainer: '#ffffff',
+      }
+    },
+    shared: {
+      colorName: 'shared',
+      lightColors: {
+        main: '#2349e3',
+        container: '#2349e3',
+        onContainer: '#ffffff',
+      }
+    },
+    nonPriority: {
+      colorName: 'nonPriority',
+      lightColors: {
+        main: '#23e343',
+        container: '#d2e7ff',
+        onContainer: '#ffffff',
+      }
     }
-  },
-  mounted: function () {
-    this.calendarHeight = this.$vuetify.display.mdAndDown ? 350 : 1000;
-    // this.$refs.calendar.scrollToTime('08:00');
-    if (this.$router.currentRoute.name === 'tarification') {
-      this.tarificationDialog = true;
-    }
-  },
-  methods: {
-    removeEvent: function (removedEvent) {
-      this.events = this.events.filter((event) => {
-        return event.id !== removedEvent.id;
-      });
-    },
-    updateEvent: function (modifiedEvent) {
-      this.events = this.events.map((event) => {
-        if (event.id === modifiedEvent.id) {
-          return Event.toVuetifyCalendar(modifiedEvent)
-        }
-        return event;
-      })
-      this.googleCalendarUiKey = Math.random();
-    },
-    addNewEvent: function (newEvent) {
-      this.events.push(
-          Event.toVuetifyCalendar(newEvent)
-      )
-      this.googleCalendarUiKey = Math.random();
-    },
-    enterReservationDialog: function () {
-      this.$refs.reservationDialog.enter(this.editedEvent)
-      this.googleCalendarUiKey = Math.random();
-    },
-    editEvent: function (event) {
-      this.selectedOpen = false;
-      this.editedEvent = event;
-      this.editedEvent.accepteConditions = true;
-      Event.defineDatesFromVuetifyEvent(
-          this.editedEvent,
-          new Date(event.start),
-          new Date(event.end)
-      );
-      this.enterReservationDialog();
-      this.googleCalendarUiKey = Math.random();
-    },
-    showEvent({nativeEvent, event}) {
-      const open = () => {
-        this.selectedEvent = event
-        this.selectedElement = nativeEvent.target
-        requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
-      }
-
-      if (this.selectedOpen) {
-        this.selectedOpen = false
-        requestAnimationFrame(() => requestAnimationFrame(() => open()))
-      } else {
-        open()
-      }
-
-      nativeEvent.stopPropagation()
-    },
-    startDrag({event, timed}) {
-      if (event && timed) {
-        this.dragEvent = event
-        this.dragTime = null
-        this.extendOriginal = null
-      }
-      console.log("startDrag")
-    },
-    startTime(tms) {
-      const mouse = this.toTime(tms)
-
-      if (this.dragEvent && this.dragTime === null) {
-        const start = this.dragEvent.start
-
-        this.dragTime = mouse - start
-      } else {
-        this.createStart = this.roundTime(mouse)
-        const createDate = new Date(this.createStart);
-        const end = addHours(createDate, 2);
-
-        this.editedEvent = this.createEvent = Event.initNewEvent(
-            createDate, end
-        )
-      }
-    },
-    extendBottom(event) {
-      this.createEvent = event
-      this.createStart = event.start
-      this.extendOriginal = event.end
-      console.log("extendBottom")
-    },
-    mouseMove(tms) {
-      const mouse = this.toTime(tms)
-
-      if (this.dragEvent && this.dragTime !== null) {
-        const start = this.dragEvent.start
-        const end = this.dragEvent.end
-        const duration = end - start
-        const newStartTime = mouse - this.dragTime
-        const newStart = this.roundTime(newStartTime)
-        const newEnd = newStart + duration
-
-        this.dragEvent.start = newStart
-        this.dragEvent.end = newEnd
-      } else if (this.createEvent && this.createStart !== null) {
-        const mouseRounded = this.roundTime(mouse, false)
-        const min = Math.min(mouseRounded, this.createStart)
-        const max = Math.max(mouseRounded, this.createStart)
-
-        this.createEvent.start = min
-        this.createEvent.end = max
-      }
-      // console.log("mousemove")
-    },
-    async endDrag() {
-      const showDialog = this.createEvent !== null;
-      this.dragTime = null
-      this.dragEvent = null
-      this.createEvent = null
-      this.createStart = null
-      this.extendOriginal = null
-      if (showDialog) {
-        setTimeout(() => {
-          this.enterReservationDialog()
-        }, 100)
-      }
-      console.log("endDrag")
-    },
-    cancelDrag() {
-      if (this.createEvent) {
-        if (this.extendOriginal) {
-          this.createEvent.end = this.extendOriginal
-        } else {
-          const i = this.events.indexOf(this.createEvent)
-          if (i !== -1) {
-            this.events.splice(i, 1)
-          }
-        }
-      }
-
-      this.createEvent = null
-      this.createStart = null
-      this.dragTime = null
-      this.dragEvent = null
-      console.log("cancelDrag")
-    },
-    roundTime(time, down = true) {
-      const roundTo = 15 // minutes
-      const roundDownTime = roundTo * 60 * 1000
-
-      return down
-          ? time - time % roundDownTime
-          : time + (roundDownTime - (time % roundDownTime))
-    },
-    toTime(tms) {
-      return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
-    },
-    addEvent: function () {
-      this.editedEvent = Event.initNewEvent()
-      this.enterReservationDialog()
-    },
-    setToday() {
-      this.calendarFocus = [new Date()]
-    },
-    prev() {
-      this.$refs.calendar.prev()
-    },
-    next() {
-      this.$refs.calendar.next()
-    },
-    getEventColor: function (event) {
-      return event.color
-    },
-    getEvents: async function (date) {
-      this.isLoading = true;    
-      const endDate = addDays(new Date(date.end.date), 2)
-      const events = await EventService.list(
-          date.start.date,
-          format(endDate, "yyyy-MM-dd")
-      )
-      this.events = events.map(Event.toVuetifyCalendar);
-      this.isLoading = false;
-    },
   }
+}, [eventsServicePlugin])
+
+async function getEvents(start, end) {
+  console.log(start)
+  console.log(end)
+  // this.isLoading = true;
+  // this.lowerDate = format(startOfMonth(month), "yyyy-MM-dd");
+  // this.higherDate = format(endOfMonth(month), "yyyy-MM-dd");
+  const date = {
+    start: {
+      date: format(start, "yyyy-MM-dd")
+    },
+    end: {
+      date: format(end, "yyyy-MM-dd")
+    }
+  };
+  const endDate = addDays(new Date(date.end.date), 2)
+  let events = await EventService.list(
+      date.start.date,
+      format(endDate, "yyyy-MM-dd")
+  )
+  events = events.map(Event.formatEventToScheduleX)
+  return events;
+  // this.isLoading = false;
 }
+
+onMounted(() => {
+  calendarHeight.value = display.mdAndDown.value ? 350 : 1150;
+  // this.$refs.calendar.scrollToTime('08:00');
+  if (router.currentRoute.name === 'tarification') {
+    tarificationDialog.value = true;
+  }
+})
+
+// export default {
+//   components: {
+//     Tarification,
+//     ReservationDialog,
+//     // VerificationAdhesion,
+//     PhoneDialog,
+//     // VCalendar,
+//     ScheduleXCalendar
+//   },
+//   data: function () {
+//     return {
+//       showGoogleCalendar: false,
+//       isLoading: false,
+//       calendarHeight: 0,
+//       selectedEvent: {},
+//       selectedElement: null,
+//       selectedOpen: false,
+//       events: [],
+//       weekdays: [1, 2, 3, 4, 5, 6, 0],
+//       calendarFocus: [new Date()],
+//       dragEvent: null,
+//       dragStart: null,
+//       createEvent: null,
+//       editedEvent: null,
+//       createStart: null,
+//       extendOriginal: null,
+//       googleCalendarUiKey: Math.random(),
+//       tarificationDialog: false
+//     }
+//   },
+//   methods: {
+//     removeEvent: function (removedEvent) {
+//       this.events = this.events.filter((event) => {
+//         return event.id !== removedEvent.id;
+//       });
+//     },
+//     updateEvent: function (modifiedEvent) {
+//       this.events = this.events.map((event) => {
+//         if (event.id === modifiedEvent.id) {
+//           return Event.toVuetifyCalendar(modifiedEvent)
+//         }
+//         return event;
+//       })
+//       this.googleCalendarUiKey = Math.random();
+//     },
+//     addNewEvent: function (newEvent) {
+//       this.events.push(
+//           Event.toVuetifyCalendar(newEvent)
+//       )
+//       this.googleCalendarUiKey = Math.random();
+//     },
+//     enterReservationDialog: function () {
+//       this.$refs.reservationDialog.enter(this.editedEvent)
+//       this.googleCalendarUiKey = Math.random();
+//     },
+//     editEvent: function (event) {
+//       this.selectedOpen = false;
+//       this.editedEvent = event;
+//       this.editedEvent.accepteConditions = true;
+//       Event.defineDatesFromVuetifyEvent(
+//           this.editedEvent,
+//           new Date(event.start),
+//           new Date(event.end)
+//       );
+//       this.enterReservationDialog();
+//       this.googleCalendarUiKey = Math.random();
+//     },
+//     showEvent({nativeEvent, event}) {
+//       const open = () => {
+//         this.selectedEvent = event
+//         this.selectedElement = nativeEvent.target
+//         requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
+//       }
+//
+//       if (this.selectedOpen) {
+//         this.selectedOpen = false
+//         requestAnimationFrame(() => requestAnimationFrame(() => open()))
+//       } else {
+//         open()
+//       }
+//
+//       nativeEvent.stopPropagation()
+//     },
+//     startDrag({event, timed}) {
+//       if (event && timed) {
+//         this.dragEvent = event
+//         this.dragTime = null
+//         this.extendOriginal = null
+//       }
+//       console.log("startDrag")
+//     },
+//     startTime(tms) {
+//       const mouse = this.toTime(tms)
+//
+//       if (this.dragEvent && this.dragTime === null) {
+//         const start = this.dragEvent.start
+//
+//         this.dragTime = mouse - start
+//       } else {
+//         this.createStart = this.roundTime(mouse)
+//         const createDate = new Date(this.createStart);
+//         const end = addHours(createDate, 2);
+//
+//         this.editedEvent = this.createEvent = Event.initNewEvent(
+//             createDate, end
+//         )
+//       }
+//     },
+//     extendBottom(event) {
+//       this.createEvent = event
+//       this.createStart = event.start
+//       this.extendOriginal = event.end
+//       console.log("extendBottom")
+//     },
+//     mouseMove(tms) {
+//       const mouse = this.toTime(tms)
+//
+//       if (this.dragEvent && this.dragTime !== null) {
+//         const start = this.dragEvent.start
+//         const end = this.dragEvent.end
+//         const duration = end - start
+//         const newStartTime = mouse - this.dragTime
+//         const newStart = this.roundTime(newStartTime)
+//         const newEnd = newStart + duration
+//
+//         this.dragEvent.start = newStart
+//         this.dragEvent.end = newEnd
+//       } else if (this.createEvent && this.createStart !== null) {
+//         const mouseRounded = this.roundTime(mouse, false)
+//         const min = Math.min(mouseRounded, this.createStart)
+//         const max = Math.max(mouseRounded, this.createStart)
+//
+//         this.createEvent.start = min
+//         this.createEvent.end = max
+//       }
+//       // console.log("mousemove")
+//     },
+//     async endDrag() {
+//       const showDialog = this.createEvent !== null;
+//       this.dragTime = null
+//       this.dragEvent = null
+//       this.createEvent = null
+//       this.createStart = null
+//       this.extendOriginal = null
+//       if (showDialog) {
+//         setTimeout(() => {
+//           this.enterReservationDialog()
+//         }, 100)
+//       }
+//       console.log("endDrag")
+//     },
+//     cancelDrag() {
+//       if (this.createEvent) {
+//         if (this.extendOriginal) {
+//           this.createEvent.end = this.extendOriginal
+//         } else {
+//           const i = this.events.indexOf(this.createEvent)
+//           if (i !== -1) {
+//             this.events.splice(i, 1)
+//           }
+//         }
+//       }
+//
+//       this.createEvent = null
+//       this.createStart = null
+//       this.dragTime = null
+//       this.dragEvent = null
+//       console.log("cancelDrag")
+//     },
+//     roundTime(time, down = true) {
+//       const roundTo = 15 // minutes
+//       const roundDownTime = roundTo * 60 * 1000
+//
+//       return down
+//           ? time - time % roundDownTime
+//           : time + (roundDownTime - (time % roundDownTime))
+//     },
+//     toTime(tms) {
+//       return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
+//     },
+//     addEvent: function () {
+//       this.editedEvent = Event.initNewEvent()
+//       this.enterReservationDialog()
+//     },
+//     setToday() {
+//       this.calendarFocus = [new Date()]
+//     },
+//     prev() {
+//       this.$refs.calendar.prev()
+//     },
+//     next() {
+//       this.$refs.calendar.next()
+//     },
+//     getEventColor: function (event) {
+//       return event.color
+//     },
+//     getEvents: async function () {
+//       this.isLoading = true;
+//       const dateFocused = new Date(this.calendarFocus)
+//       // this.lowerDate = format(startOfMonth(month), "yyyy-MM-dd");
+//       // this.higherDate = format(endOfMonth(month), "yyyy-MM-dd");
+//       const date = {
+//         start : {
+//           date: format(startOfMonth(dateFocused), "yyyy-MM-dd")
+//         },
+//         end:{
+//           date : format(endOfMonth(dateFocused), "yyyy-MM-dd")
+//         }
+//       };
+//       const endDate = addDays(new Date(date.end.date), 2)
+//       console.log(date)
+//       const events = await EventService.list(
+//           date.start.date,
+//           format(endDate, "yyyy-MM-dd")
+//       )
+//       this.events = events.map(Event.toVuetifyCalendar)
+//       this.isLoading = false;
+//     },
+//   }
+// }
 </script>
 <style>
 #hide-calendar-title {
