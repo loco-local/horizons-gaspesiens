@@ -6,11 +6,11 @@
         <h1 class="text-h3 font-weight-thin">
           Calendrier et réservation du Loco Local
         </h1>
-<!--        <h4 class="text-body-1">-->
-<!--          Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon-->
-<!--          autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de-->
-<!--          mobilisation citoyenne-->
-<!--        </h4>-->
+        <!--        <h4 class="text-body-1">-->
+        <!--          Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon-->
+        <!--          autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de-->
+        <!--          mobilisation citoyenne-->
+        <!--        </h4>-->
       </v-col>
       <v-col cols="0" lg="3"></v-col>
     </v-row>
@@ -27,16 +27,26 @@
             >
               <v-spacer></v-spacer>
               <v-btn @click="tarificationDialog = true;" variant="outlined" size="large">
-                <v-icon start>attach_money</v-icon>
+                <v-icon start v-if="$vuetify.display.mdAndUp">attach_money</v-icon>
                 Tarification
               </v-btn>
-              <v-btn @click="addEvent" color="primary" :icon="$vuetify.display.smAndDown"
-                     variant="outlined"  size="large" class="ml-4">
-                <!--                <v-icon>add</v-icon>-->
-                <span v-if="$vuetify.display.mdAndUp">Réservez</span>
+              <v-btn @click="addEvent" color="primary"
+                     variant="outlined" size="large" class="ml-4">
+                Réserver
               </v-btn>
               <v-spacer></v-spacer>
             </v-toolbar>
+            <!--            <v-toolbar-->
+            <!--                flat-->
+            <!--                color="transparent"-->
+            <!--                variant="outlined"-->
+            <!--                v-if="$vuetify.display.mdAndDown"-->
+            <!--            >-->
+            <!--              <v-btn @click="addEvent" color="primary"-->
+            <!--                     variant="outlined" size="large" class="ml-4">-->
+            <!--                Réserver-->
+            <!--              </v-btn>-->
+            <!--            </v-toolbar>-->
           </v-sheet>
           <v-row class="" v-if="!showGoogleCalendar">
             <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
@@ -67,8 +77,8 @@
           <v-sheet>
             <v-card class="pa-0">
               <v-overlay
-                  absolute
                   :model-value="isLoading"
+                  class="align-center justify-center"
               >
                 <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
               </v-overlay>
@@ -136,6 +146,7 @@
           <v-btn
               variant="text"
               @click="selectedOpen = false"
+              size="large"
           >
             Fermer
           </v-btn>
@@ -156,7 +167,7 @@
           <Tarification :roomPicker="false" :topCloseButton="true" @close="tarificationDialog=false"></Tarification>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="tarificationDialog = false" variant="text">
+          <v-btn @click="tarificationDialog = false" variant="text" size="large">
             Fermer
           </v-btn>
         </v-card-actions>
@@ -169,7 +180,6 @@
 import PhoneDialog from '@/components/PhoneDialog'
 import EventService from "@/service/EventService";
 import {addDays, format,} from "date-fns";
-// import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
 import Tarification from "@/components/TarificationSection.vue";
@@ -244,7 +254,7 @@ const calendarApp = createCalendar({
       colorName: 'nonPriority',
       lightColors: {
         main: '#23e343',
-        container: '#d2e7ff',
+        container: '#23e343',
         onContainer: '#ffffff',
       }
     }
@@ -273,17 +283,35 @@ async function getEvents(start, end) {
 
 onMounted(() => {
   calendarHeight.value = display.mdAndDown.value ? 350 : 1150;
-  // this.$refs.calendar.scrollToTime('08:00');
   if (router.currentRoute.name === 'tarification') {
     tarificationDialog.value = true;
   }
 })
 
+const editedEvent = ref(null)
+const reservationDialog = ref(null)
+
+function addEvent() {
+  editedEvent.value = Event.initNewEvent()
+  enterReservationDialog()
+}
+
+function enterReservationDialog() {
+  reservationDialog.value.enter(editedEvent.value)
+  googleCalendarUiKey.value = Math.random();
+}
+
+function addNewEvent(newEvent) {
+  eventsServicePlugin.add(
+      Event.formatEventToScheduleX(newEvent)
+  )
+  googleCalendarUiKey.value = Math.random();
+}
+
 // export default {
 //   components: {
 //     Tarification,
 //     ReservationDialog,
-//     // VerificationAdhesion,
 //     PhoneDialog,
 //     // VCalendar,
 //     ScheduleXCalendar
@@ -321,16 +349,6 @@ onMounted(() => {
 //         }
 //         return event;
 //       })
-//       this.googleCalendarUiKey = Math.random();
-//     },
-//     addNewEvent: function (newEvent) {
-//       this.events.push(
-//           Event.toVuetifyCalendar(newEvent)
-//       )
-//       this.googleCalendarUiKey = Math.random();
-//     },
-//     enterReservationDialog: function () {
-//       this.$refs.reservationDialog.enter(this.editedEvent)
 //       this.googleCalendarUiKey = Math.random();
 //     },
 //     editEvent: function (event) {
@@ -465,38 +483,9 @@ onMounted(() => {
 //     setToday() {
 //       this.calendarFocus = [new Date()]
 //     },
-//     prev() {
-//       this.$refs.calendar.prev()
-//     },
-//     next() {
-//       this.$refs.calendar.next()
-//     },
 //     getEventColor: function (event) {
 //       return event.color
 //     },
-//     getEvents: async function () {
-//       this.isLoading = true;
-//       const dateFocused = new Date(this.calendarFocus)
-//       // this.lowerDate = format(startOfMonth(month), "yyyy-MM-dd");
-//       // this.higherDate = format(endOfMonth(month), "yyyy-MM-dd");
-//       const date = {
-//         start : {
-//           date: format(startOfMonth(dateFocused), "yyyy-MM-dd")
-//         },
-//         end:{
-//           date : format(endOfMonth(dateFocused), "yyyy-MM-dd")
-//         }
-//       };
-//       const endDate = addDays(new Date(date.end.date), 2)
-//       console.log(date)
-//       const events = await EventService.list(
-//           date.start.date,
-//           format(endDate, "yyyy-MM-dd")
-//       )
-//       this.events = events.map(Event.toVuetifyCalendar)
-//       this.isLoading = false;
-//     },
-//   }
 // }
 </script>
 <style>

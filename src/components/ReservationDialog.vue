@@ -34,6 +34,8 @@
               elevation="2"
               border-color
               icon="schedule"
+              variant="outlined"
+              class="mb-8"
 
           >
             <p class="text-body-1">
@@ -51,101 +53,40 @@
             <v-row class="text-left">
               <v-col cols="12">
                 <div class="text text-h5">Jour et Heure</div>
+                <div class="text-body-1">
+                  Pensez à ajouter du temps avant et après pour préparer et ranger la salle.
+                </div>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col cols="12" lg="4">
-                <v-menu
-                    ref="orderOpenDateMenu"
-                    v-model="eventStartDateMenu"
-                    :close-on-content-click="false"
-                    transition="scale-transition"
-                    min-width="auto"
-                >
-                  <template v-slot:activator="{props}">
-                    <v-text-field
-                        v-model="editedEvent.startDay"
-                        label="Jour"
-                        prepend-icon="calendar"
-                        readonly
-                        v-bind="props"
-                        :rules="[rules.required]"
-                    ></v-text-field>
-                  </template>
-                  <v-date-picker
-                      v-model="editedEvent.startDay"
-                      no-title
-                      scrollable
-                      @input="eventStartDateMenu = false"
-                  ></v-date-picker>
-                </v-menu>
+            <v-row
+                align="center"
+                justify="space-around"
+            >
+              <v-col style="width: 350px; flex: 0 1 auto;">
+                <v-date-picker
+                    v-model="editedEvent.startDay"
+                    no-title
+                    scrollable
+                    :rules="[rules.required]"
+                ></v-date-picker>
               </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" lg="4">
-                <v-menu
-                    ref="startTimeMenu"
-                    v-model="startTimeMenu"
-                    :close-on-content-click="false"
-                    :offset="40"
-                    transition="scale-transition"
-                    max-width="290px"
-                    min-width="290px"
-                >
-                  <template v-slot:activator="{props}">
-                    <v-text-field
-                        v-model="editedEvent.startTime"
-                        label="Début"
-                        prepend-icon="mdi-clock-time-four-outline"
-                        readonly
-                        v-bind="props"
-                        :rules="[rules.required]"
-                    ></v-text-field>
-                  </template>
-                  <v-time-picker
-                      format="24hr"
-                      v-model="editedEvent.startTime"
-                      label="heure"
-                      :allowed-minutes="allowedMinutes"
-                      v-if="startTimeMenu"
-                      full-width
-                      @click:minute="$refs.startTimeMenu.save(editedEvent.startTime)"
-                  ></v-time-picker>
-                </v-menu>
+              <v-col style="width: 350px; flex: 0 1 auto;">
+                <v-time-picker
+                    v-model="editedEvent.startTime"
+                    format="24hr"
+                    :allowed-minutes="allowedMinutes"
+                    :rules="[rules.required]"
+                    title="Heure de début"
+                ></v-time-picker>
               </v-col>
-              <v-col cols="12" lg="4">
-                <v-menu
-                    ref="endTimeMenu"
-                    v-model="endTimeMenu"
-                    :close-on-content-click="false"
-                    :offset="40"
-                    transition="scale-transition"
-                    max-width="290px"
-                    min-width="290px"
-                >
-                  <template v-slot:activator="{props}">
-                    <v-text-field
-                        v-model="editedEvent.endTime"
-                        label="Fin"
-                        prepend-icon="mdi-clock-time-four-outline"
-                        readonly
-                        v-bind="props"
-                        :rules="[
-                            rules.required,
-                            rules.afterTime(editedEvent.endTime, editedEvent.startTime),
-                            ]"
-                    ></v-text-field>
-                  </template>
-                  <v-time-picker
-                      format="24hr"
-                      v-model="editedEvent.endTime"
-                      :allowed-minutes="allowedMinutes"
-                      label="heure"
-                      v-if="endTimeMenu"
-                      full-width
-                      @click:minute="$refs.endTimeMenu.save(editedEvent.endTime)"
-                  ></v-time-picker>
-                </v-menu>
+              <v-col style="width: 350px; flex: 0 1 auto;">
+                <v-time-picker
+                    v-model="editedEvent.endTime"
+                    format="24hr"
+                    :allowed-minutes="allowedMinutes"
+                    :rules="[rules.required]"
+                    title="Heure de fin"
+                ></v-time-picker>
               </v-col>
             </v-row>
             <v-card :flat="!isWeekly" class="pl-8 mb-6">
@@ -186,14 +127,6 @@
                 </v-col>
               </v-row>
             </v-card>
-            <v-row>
-              <v-col cols="12">
-                <p class="text-body-1 text-left">
-                  <v-icon start>more_time</v-icon>
-                  Pensez à ajouter du temps avant et après pour préparer et ranger la salle.
-                </p>
-              </v-col>
-            </v-row>
             <v-row v-if="!isModifyEventFlow">
               <v-col cols="12">
                 <v-divider></v-divider>
@@ -484,9 +417,6 @@ export default {
       editedEvent: null,
       rules: Rules,
       isSaveEventLoading: false,
-      eventStartDateMenu: false,
-      startTimeMenu: false,
-      endTimeMenu: false,
       logoHeight: 20
     }
   },
@@ -514,7 +444,8 @@ export default {
       this.$emit('eventRemoved', this.editedEvent)
     },
     save: async function () {
-      if (!this.$refs.eventForm.validate()) {
+      const formValidation = await this.$refs.eventForm.validate();
+      if (!formValidation.valid) {
         this.$refs.eventForm.$el.scrollIntoView({behavior: 'smooth'})
         return
       }

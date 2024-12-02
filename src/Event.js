@@ -93,10 +93,8 @@ const Event = {
             event.endTime = format(end, "HH:mm");
         }
     },
-    formatEventForGoogleApi: function (event) {
-        const date = new Date(
-            event.startDay.replaceAll("-", "/")
-        )
+     formatEventForGoogleApi: function (event) {
+        const date = event.startDay
         Event.setTimeToDate(event.startTime, date)
         const startDate = date.toISOString()
         Event.setTimeToDate(event.endTime, date)
