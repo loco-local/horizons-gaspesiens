@@ -679,14 +679,6 @@ export default {
   font-size: 16px;
 }
 
-.v-input {
-  font-size: 18px;
-}
-
-button {
-  font-size: 18px !important;
-}
-
 .v-date-picker-table .v-btn {
   font-size: 12px !important;
 }

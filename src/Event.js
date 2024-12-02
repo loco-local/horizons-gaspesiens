@@ -1,4 +1,4 @@
-import {format} from "date-fns";
+import {format, endOfDay} from "date-fns";
 
 // this.googleColors = await EventService.listColors();
 // this.googleColors = Object.keys(this.googleColors.event).map((colorId) => {
@@ -36,7 +36,7 @@ const Event = {
         if (event.start.dateTime === undefined) {
             let start = new Date(event.start.date)
             event.start = start;
-            event.end = undefined;
+            event.end = endOfDay(start);
         } else {
             let start = new Date(event.start.dateTime)
             let end = new Date(event.end.dateTime)

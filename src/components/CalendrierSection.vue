@@ -6,11 +6,11 @@
         <h1 class="text-h3 font-weight-thin">
           Calendrier et réservation du Loco Local
         </h1>
-        <h4 class="text-body-1">
-          Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon
-          autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de
-          mobilisation citoyenne
-        </h4>
+<!--        <h4 class="text-body-1">-->
+<!--          Lieu collectif, ouvert et versatile où citoyen.ne.s et organisations locales organisent, de façon-->
+<!--          autonome, des activités sociales, culturelles, politiques, d'éducation populaire et/ou de-->
+<!--          mobilisation citoyenne-->
+<!--        </h4>-->
       </v-col>
       <v-col cols="0" lg="3"></v-col>
     </v-row>
@@ -18,15 +18,26 @@
       <v-col cols="12" lg="8" :class="{
                 'pl-0 pr-0' : $vuetify.display.smAndDown
             }">
-        <v-card class="mt-12">
-          <v-row>
-            <v-col cols="12" class="vh-center mt-3">
-              <v-btn @click="tarificationDialog = true;" variant="outlined">
+        <v-card class="mt-2" flat>
+          <v-sheet height="64">
+            <v-toolbar
+                flat
+                color="transparent"
+                variant="outlined"
+            >
+              <v-spacer></v-spacer>
+              <v-btn @click="tarificationDialog = true;" variant="outlined" size="large">
                 <v-icon start>attach_money</v-icon>
                 Tarification
               </v-btn>
-            </v-col>
-          </v-row>
+              <v-btn @click="addEvent" color="primary" :icon="$vuetify.display.smAndDown"
+                     variant="outlined"  size="large" class="ml-4">
+                <!--                <v-icon>add</v-icon>-->
+                <span v-if="$vuetify.display.mdAndUp">Réservez</span>
+              </v-btn>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+          </v-sheet>
           <v-row class="" v-if="!showGoogleCalendar">
             <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
               Légende
@@ -53,59 +64,6 @@
               </v-chip>
             </v-col>
           </v-row>
-          <v-divider class="mt-6 mb-6"></v-divider>
-          <v-sheet height="64">
-            <v-toolbar
-                flat
-            >
-              <v-btn
-                  variant="outlined"
-                  class="mr-4"
-                  color="grey-darken-2"
-                  @click="setToday"
-                  v-if="!showGoogleCalendar"
-              >
-                            <span v-if="$vuetify.display.smAndDown">
-                                AJD
-                            </span>
-                <span v-else>
-                                Aujourd'hui
-                            </span>
-              </v-btn>
-              <v-btn
-                  variant="text"
-                  size="small"
-                  color="grey-darken-2"
-                  @click="prev"
-                  v-if="!showGoogleCalendar"
-              >
-                <v-icon size="small">
-                  chevron_left
-                </v-icon>
-              </v-btn>
-              <v-btn
-                  variant="text"
-                  size="small"
-                  color="grey-darken-2"
-                  @click="next"
-                  location="left"
-                  v-if="!showGoogleCalendar"
-              >
-                <v-icon size="small">
-                  chevron_right
-                </v-icon>
-              </v-btn>
-              <v-toolbar-title v-if="$refs.calendar && !showGoogleCalendar">
-                {{ $refs.calendar.title }}
-              </v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn @click="addEvent" color="primary" :icon="$vuetify.display.smAndDown"
-                     :variant="$vuetify.display.smAndDown ? 'outlined' : undefined">
-                <v-icon>add</v-icon>
-                <span v-if="$vuetify.display.mdAndUp">Ajouter</span>
-              </v-btn>
-            </v-toolbar>
-          </v-sheet>
           <v-sheet>
             <v-card class="pa-0">
               <v-overlay
@@ -114,35 +72,7 @@
               >
                 <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
               </v-overlay>
-              <ScheduleXCalendar :calendar-app="calendarApp"/>
-              <!--              <v-calendar-->
-              <!--                  ref="calendar"-->
-              <!--                  v-model="calendarFocus"-->
-              <!--                  :weekdays="weekdays"-->
-              <!--                  :interval-start="6"-->
-              <!--                  view-mode="month"-->
-              <!--                  :events="events"-->
-              <!--                  event-overlap-mode="column"-->
-              <!--                  :event-overlap-threshold="30"-->
-              <!--                  :event-color="getEventColor"-->
-              <!--                  @click:event="showEvent"-->
-              <!--                  @update:modelValue="alert('yo')"-->
-              <!--                  :class="{-->
-              <!--                                'dense-hours' : $vuetify.display.smAndDown-->
-              <!--                            }"-->
-              <!--                  v-if="!showGoogleCalendar"-->
-              <!--              >-->
-              <!--                <template v-slot:event="{ event, timed, eventSummary }">-->
-              <!--                  <div class="v-event-draggable">-->
-              <!--                    <component :is="{ render: eventSummary }"></component>-->
-              <!--                  </div>-->
-              <!--                  <div-->
-              <!--                      v-if="timed"-->
-              <!--                      class="v-event-drag-bottom"-->
-              <!--                      @mousedown.stop="extendBottom(event)"-->
-              <!--                  ></div>-->
-              <!--                </template>-->
-              <!--              </v-calendar>-->
+              <ScheduleXCalendar :calendar-app="calendarApp" v-if="!showGoogleCalendar"/>
               <iframe frameborder="0" :height="calendarHeight" scrolling="no"
                       src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
                       style=" border-width:0 " width="100%"
@@ -257,10 +187,15 @@ import '@schedule-x/theme-default/dist/index.css'
 import {useDisplay} from "vuetify";
 import {useRouter} from "vue-router";
 
-const calendarHeight = ref(0)
-const tarificationDialog = ref(false)
 const router = useRouter();
 const display = useDisplay();
+
+const calendarHeight = ref(0)
+const tarificationDialog = ref(false)
+const isLoading = ref(false)
+const showGoogleCalendar = ref(false)
+const googleCalendarUiKey = ref(Math.random())
+
 const eventsServicePlugin = createEventsServicePlugin();
 const calendarApp = createCalendar({
   locale: 'fr-FR',
@@ -317,11 +252,7 @@ const calendarApp = createCalendar({
 }, [eventsServicePlugin])
 
 async function getEvents(start, end) {
-  console.log(start)
-  console.log(end)
-  // this.isLoading = true;
-  // this.lowerDate = format(startOfMonth(month), "yyyy-MM-dd");
-  // this.higherDate = format(endOfMonth(month), "yyyy-MM-dd");
+  isLoading.value = true;
   const date = {
     start: {
       date: format(start, "yyyy-MM-dd")
@@ -336,8 +267,8 @@ async function getEvents(start, end) {
       format(endDate, "yyyy-MM-dd")
   )
   events = events.map(Event.formatEventToScheduleX)
+  isLoading.value = false;
   return events;
-  // this.isLoading = false;
 }
 
 onMounted(() => {
@@ -374,7 +305,6 @@ onMounted(() => {
 //       editedEvent: null,
 //       createStart: null,
 //       extendOriginal: null,
-//       googleCalendarUiKey: Math.random(),
 //       tarificationDialog: false
 //     }
 //   },
