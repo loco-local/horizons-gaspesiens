@@ -127,7 +127,7 @@
     ></ReservationDialog>
     <v-dialog
         v-model="eventInfoDialog"
-        :fullscreen="display.smAndDown"
+        :fullscreen="$vuetify.display.smAndDown"
         width="600"
     >
       <v-card
@@ -382,7 +382,7 @@ async function getEvents(start, end) {
 
 onMounted(() => {
   calendarHeight.value = display.mdAndDown.value ? 350 : 1150;
-  if (router.currentRoute.name === 'tarification') {
+  if (router.currentRoute.value.name === 'tarification') {
     tarificationDialog.value = true;
   }
 })
@@ -432,188 +432,6 @@ function removeEvent(removedEvent) {
   )
   googleCalendarUiKey.value = Math.random();
 }
-
-// export default {
-//   components: {
-//     Tarification,
-//     ReservationDialog,
-//     PhoneDialog,
-//     // VCalendar,
-//     ScheduleXCalendar
-//   },
-//   data: function () {
-//     return {
-//       selectedEvent: {},
-//       selectedElement: null,
-//       selectedOpen: false,
-//       events: [],
-//       weekdays: [1, 2, 3, 4, 5, 6, 0],
-//       calendarFocus: [new Date()],
-//       dragEvent: null,
-//       dragStart: null,
-//       createEvent: null,
-//       editedEvent: null,
-//       createStart: null,
-//       extendOriginal: null,
-//       tarificationDialog: false
-//     }
-//   },
-//   methods: {
-//     showEvent({nativeEvent, event}) {
-//       const open = () => {
-//         this.selectedEvent = event
-//         this.selectedElement = nativeEvent.target
-//         requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
-//       }
-//
-//       if (this.selectedOpen) {
-//         this.selectedOpen = false
-//         requestAnimationFrame(() => requestAnimationFrame(() => open()))
-//       } else {
-//         open()
-//       }
-//
-//       nativeEvent.stopPropagation()
-//     },
-//     startDrag({event, timed}) {
-//       if (event && timed) {
-//         this.dragEvent = event
-//         this.dragTime = null
-//         this.extendOriginal = null
-//       }
-//       console.log("startDrag")
-//     },
-//     startTime(tms) {
-//       const mouse = this.toTime(tms)
-//
-//       if (this.dragEvent && this.dragTime === null) {
-//         const start = this.dragEvent.start
-//
-//         this.dragTime = mouse - start
-//       } else {
-//         this.createStart = this.roundTime(mouse)
-//         const createDate = new Date(this.createStart);
-//         const end = addHours(createDate, 2);
-//
-//         this.editedEvent = this.createEvent = Event.initNewEvent(
-//             createDate, end
-//         )
-//       }
-//     },
-//     extendBottom(event) {
-//       this.createEvent = event
-//       this.createStart = event.start
-//       this.extendOriginal = event.end
-//       console.log("extendBottom")
-//     },
-//     mouseMove(tms) {
-//       const mouse = this.toTime(tms)
-//
-//       if (this.dragEvent && this.dragTime !== null) {
-//         const start = this.dragEvent.start
-//         const end = this.dragEvent.end
-//         const duration = end - start
-//         const newStartTime = mouse - this.dragTime
-//         const newStart = this.roundTime(newStartTime)
-//         const newEnd = newStart + duration
-//
-//         this.dragEvent.start = newStart
-//         this.dragEvent.end = newEnd
-//       } else if (this.createEvent && this.createStart !== null) {
-//         const mouseRounded = this.roundTime(mouse, false)
-//         const min = Math.min(mouseRounded, this.createStart)
-//         const max = Math.max(mouseRounded, this.createStart)
-//
-//         this.createEvent.start = min
-//         this.createEvent.end = max
-//       }
-//       // console.log("mousemove")
-//     },
-//     async endDrag() {
-//       const showDialog = this.createEvent !== null;
-//       this.dragTime = null
-//       this.dragEvent = null
-//       this.createEvent = null
-//       this.createStart = null
-//       this.extendOriginal = null
-//       if (showDialog) {
-//         setTimeout(() => {
-//           this.enterReservationDialog()
-//         }, 100)
-//       }
-//       console.log("endDrag")
-//     },
-//     cancelDrag() {
-//       if (this.createEvent) {
-//         if (this.extendOriginal) {
-//           this.createEvent.end = this.extendOriginal
-//         } else {
-//           const i = this.events.indexOf(this.createEvent)
-//           if (i !== -1) {
-//             this.events.splice(i, 1)
-//           }
-//         }
-//       }
-//
-//       this.createEvent = null
-//       this.createStart = null
-//       this.dragTime = null
-//       this.dragEvent = null
-//       console.log("cancelDrag")
-//     },
-//     roundTime(time, down = true) {
-//       const roundTo = 15 // minutes
-//       const roundDownTime = roundTo * 60 * 1000
-//
-//       return down
-//           ? time - time % roundDownTime
-//           : time + (roundDownTime - (time % roundDownTime))
-//     },
-//     toTime(tms) {
-//       return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
-//     },
-//     addEvent: function () {
-//       this.editedEvent = Event.initNewEvent()
-//       this.enterReservationDialog()
-//     },
-//     setToday() {
-//       this.calendarFocus = [new Date()]
-//     },
-//     getEventColor: function (event) {
-//       return event.color
-//     },
-// }
 </script>
 <style>
-#hide-calendar-title {
-  position: relative;
-  height: 20px;
-  top: 20px;
-  background-color: white;
-}
-
-.v-calendar .v-event-timed-container {
-  margin-right: 0px;
-}
-
-.v-calendar .v-event-summary {
-  white-space: normal
-}
-
-.dense-hours {
-  .v-calendar-daily__intervals-body, .v-calendar-daily__intervals-head {
-    width: 29px !important;
-  }
-}
-
-.v-chip {
-  height: auto !important;
-}
-
-.v-chip .v-chip__content {
-  max-width: 100%;
-  height: auto;
-  min-height: 32px;
-  white-space: pre-wrap;
-}
 </style>
