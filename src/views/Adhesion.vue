@@ -15,20 +15,20 @@
                         <v-list-item
                                 href="https://datastudio.google.com/u/1/reporting/95640869-6dcc-46bf-9ee7-634ec8a6e0ba/page/aKkbC"
                                 target="_blank">
-                            
+
                                 <v-list-item-title class="text-body-1">
                                     Google Studio associé au Excel
                                 </v-list-item-title>
-                            
+
                         </v-list-item>
                         <v-list-item
                                 href="https://docs.google.com/spreadsheets/d/1_KH43HPFDERGgB6wmQEPS-cujtw10YKS4I7X3S6Mwio/edit?resourcekey#gid=1827893226"
                                 target="_blank">
-                            
+
                                 <v-list-item-title class="text-body-1">
                                     Excel associé au formulaire
                                 </v-list-item-title>
-                            
+
                         </v-list-item>
                     </v-list>
                 </v-card>
@@ -39,11 +39,12 @@
 
 <script>
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
+import PageWrap from "@/components/PageWrap.vue";
 export default {
     name: "AdhesionSection",
     components: {
         VerificationAdhesion,
-        Page: () => import("@/components/PageWrap.vue")
+        Page: PageWrap
     },
 
     methods: {

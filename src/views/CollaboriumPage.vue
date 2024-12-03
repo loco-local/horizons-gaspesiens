@@ -1,15 +1,18 @@
 <template>
-  <Page>
+  <PageWrap>
     <CollaboriumCercle slot="content"></CollaboriumCercle>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import CollaboriumCercle from "@/components/CollaboriumCercle.vue";
+
 export default {
   name: "CollaboriumPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    CollaboriumCercle: () => import("@/components/CollaboriumCercle")
+    PageWrap,
+    CollaboriumCercle
   }
 }
 </script>

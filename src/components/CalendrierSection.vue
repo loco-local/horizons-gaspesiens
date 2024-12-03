@@ -80,7 +80,7 @@
                   :model-value="isLoading"
                   class="align-center justify-center"
               >
-                <v-progress-circular indeterminate :size="80" :width="2"></v-progress-circular>
+                <v-progress-circular indeterminate :size="80" :width="2" color="primary"></v-progress-circular>
               </v-overlay>
               <ScheduleXCalendar :calendar-app="calendarApp" v-if="!showGoogleCalendar"/>
               <iframe frameborder="0" :height="calendarHeight" scrolling="no"
@@ -127,6 +127,7 @@
     ></ReservationDialog>
     <v-dialog
         v-model="eventInfoDialog"
+        :fullscreen="display.smAndDown"
         width="600"
     >
       <v-card
@@ -141,12 +142,16 @@
           <v-spacer></v-spacer>
           <v-icon @click="eventInfoDialog=false" color="white">close</v-icon>
         </v-toolbar>
-        <v-alert icon="schedule">
+        <v-alert icon="schedule"
+                 prominent
+        >
+          <strong>
           {{ $filters.dayDate(selectedEvent.start) }}
           de
           {{ $filters.time(selectedEvent.start) }}
           à
           {{ $filters.time(selectedEvent.end) }}.
+          </strong>
           <div class="mt-3">
             L'heure d'accueil et de départ des participants à un événement,
             n'est pas toujours l'heure que l'organisation a réservé sur le calendrier du Loco Local pour préparer et
@@ -258,6 +263,9 @@ const calendarApp = createCalendar({
       eventInfoDialog.value = true;
     },
     onClickDate(date) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           date
       )
@@ -267,6 +275,9 @@ const calendarApp = createCalendar({
      * Is called when clicking somewhere in the time grid of a week or day view
      * */
     onClickDateTime(dateTime) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           roundToNearestHours(dateTime)
       )
@@ -276,12 +287,18 @@ const calendarApp = createCalendar({
      * Is called when selecting a day in the month agenda
      * */
     onClickAgendaDate(date) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           date
       )
       enterReservationDialog()
     },
     onDoubleClickAgendaDate(date) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           date
       );
@@ -292,6 +309,9 @@ const calendarApp = createCalendar({
      * Is called when double clicking a date in the month grid
      * */
     onDoubleClickDate(date) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           date
       );
@@ -302,6 +322,9 @@ const calendarApp = createCalendar({
      * Is called when double clicking somewhere in the time grid of a week or day view
      * */
     onDoubleClickDateTime(dateTime) {
+      if(display.smAndDown){
+        return;
+      }
       editedEvent.value = Event.initNewEvent(
           roundToNearestHours(dateTime)
       )
@@ -313,24 +336,24 @@ const calendarApp = createCalendar({
     exclusive: {
       colorName: 'exclusive',
       lightColors: {
-        main: '#FF8A80',
-        container: '#e32323',
-        onContainer: '#ffffff',
+        main: '#e32323',
+        container: '#FFEBEE',
+        onContainer: '#000000',
       }
     },
     shared: {
       colorName: 'shared',
       lightColors: {
-        main: '#82B1FF',
-        container: '#2349e3',
-        onContainer: '#ffffff',
+        main: '#2349e3',
+        container: '#E3F2FD',
+        onContainer: '#000000',
       }
     },
     nonPriority: {
       colorName: 'nonPriority',
       lightColors: {
-        main: '#B9F6CA',
-        container: '#23e343',
+        main: '#23e343',
+        container: '#E8F5E9',
         onContainer: '#ffffff',
       }
     }

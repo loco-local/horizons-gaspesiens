@@ -31,10 +31,12 @@
 </template>
 
 <script>
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "CollaboriumCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    Cercle: CercleWrap
   },
   data: function () {
     return {
