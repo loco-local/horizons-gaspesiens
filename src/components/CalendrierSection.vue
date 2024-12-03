@@ -125,27 +125,44 @@
                        @eventAdded="addNewEvent"
                        @eventRemoved="removeEvent"
     ></ReservationDialog>
-    <v-menu
-        v-model="selectedOpen"
-        :close-on-content-click="false"
-        :activator="selectedElement"
+    <v-dialog
+        v-model="eventInfoDialog"
+        width="600"
     >
       <v-card
           color="grey-lighten-4"
           flat
       >
-        <v-toolbar
-            :color="selectedEvent.color"
-        >
-          <v-toolbar-title>{{ selectedEvent.summary }}</v-toolbar-title>
+        <v-toolbar color="blue"
+                   density="compact"
+                   class="d-flex justify-space-between align`-center text-h5 text-medium-emphasis ps-2 text-white pb-0">
+          <div class="text-white">
+            {{ selectedEvent.summary }}
+          </div>
+          <v-spacer></v-spacer>
+          <v-icon @click="eventInfoDialog=false" color="white">close</v-icon>
         </v-toolbar>
+        <v-alert icon="schedule">
+          {{$filters.dayDate(selectedEvent.start)}}
+          de
+          {{$filters.time(selectedEvent.start)}}
+          à
+          {{$filters.time(selectedEvent.end)}}.
+          <div class="mt-3">
+            L'heure d'accueil et de départ des participants à un événement,
+            n'est pas toujours l'heure que l'organisation a réservé sur le calendrier du Loco Local pour préparer et fermer la salle.
+          </div>
+        </v-alert>
         <v-card-text>
-          <span>{{ selectedEvent.description }}</span>
+          {{ selectedEvent.description }}
         </v-card-text>
+<!--        <v-card-text class="mt-4 text-body-1">-->
+<!--          Les heures de réservation de la salle ne correspondent pas nécessairement avec les heures où l'événement commence.s-->
+<!--        </v-card-text>-->
         <v-card-actions>
           <v-btn
               variant="text"
-              @click="selectedOpen = false"
+              @click="eventInfoDialog = false"
               size="large"
           >
             Fermer
@@ -160,7 +177,7 @@
           </v-btn>
         </v-card-actions>
       </v-card>
-    </v-menu>
+    </v-dialog>
     <v-dialog v-model="tarificationDialog" max-width="900" :fullscreen="$vuetify.display.smAndDown">
       <v-card>
         <v-card-text class="pt-6 pb-6">
@@ -173,6 +190,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
   </div>
 </template>
 
@@ -206,6 +224,9 @@ const isLoading = ref(false)
 const showGoogleCalendar = ref(false)
 const googleCalendarUiKey = ref(Math.random())
 
+const eventInfoDialog = ref(false)
+const selectedEvent = ref(null)
+
 const eventsServicePlugin = createEventsServicePlugin();
 const calendarApp = createCalendar({
   locale: 'fr-FR',
@@ -232,6 +253,11 @@ const calendarApp = createCalendar({
       const events = await getEvents(range.start, range.end)
       eventsServicePlugin.set(events)
     },
+    onEventClick(calendarEvent) {
+      selectedEvent.value = calendarEvent
+      eventInfoDialog.value = true;
+      console.log('onEventClick', calendarEvent)
+    }
   },
   calendars: {
     exclusive: {
@@ -308,6 +334,18 @@ function addNewEvent(newEvent) {
   googleCalendarUiKey.value = Math.random();
 }
 
+function editEvent(event) {
+  eventInfoDialog.value = false;
+  editedEvent.value = event;
+  editedEvent.value.accepteConditions = true;
+  Event.defineDatesFromVuetifyEvent(
+      this.editedEvent,
+      new Date(event.start),
+      new Date(event.end)
+  );
+  enterReservationDialog();
+}
+
 // export default {
 //   components: {
 //     Tarification,
@@ -318,9 +356,6 @@ function addNewEvent(newEvent) {
 //   },
 //   data: function () {
 //     return {
-//       showGoogleCalendar: false,
-//       isLoading: false,
-//       calendarHeight: 0,
 //       selectedEvent: {},
 //       selectedElement: null,
 //       selectedOpen: false,
@@ -349,18 +384,6 @@ function addNewEvent(newEvent) {
 //         }
 //         return event;
 //       })
-//       this.googleCalendarUiKey = Math.random();
-//     },
-//     editEvent: function (event) {
-//       this.selectedOpen = false;
-//       this.editedEvent = event;
-//       this.editedEvent.accepteConditions = true;
-//       Event.defineDatesFromVuetifyEvent(
-//           this.editedEvent,
-//           new Date(event.start),
-//           new Date(event.end)
-//       );
-//       this.enterReservationDialog();
 //       this.googleCalendarUiKey = Math.random();
 //     },
 //     showEvent({nativeEvent, event}) {
