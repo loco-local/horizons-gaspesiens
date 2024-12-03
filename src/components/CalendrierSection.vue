@@ -143,22 +143,23 @@
           <v-icon @click="eventInfoDialog=false" color="white">close</v-icon>
         </v-toolbar>
         <v-alert icon="schedule">
-          {{$filters.dayDate(selectedEvent.start)}}
+          {{ $filters.dayDate(selectedEvent.start) }}
           de
-          {{$filters.time(selectedEvent.start)}}
+          {{ $filters.time(selectedEvent.start) }}
           à
-          {{$filters.time(selectedEvent.end)}}.
+          {{ $filters.time(selectedEvent.end) }}.
           <div class="mt-3">
             L'heure d'accueil et de départ des participants à un événement,
-            n'est pas toujours l'heure que l'organisation a réservé sur le calendrier du Loco Local pour préparer et fermer la salle.
+            n'est pas toujours l'heure que l'organisation a réservé sur le calendrier du Loco Local pour préparer et
+            fermer la salle.
           </div>
         </v-alert>
         <v-card-text>
           {{ selectedEvent.description }}
         </v-card-text>
-<!--        <v-card-text class="mt-4 text-body-1">-->
-<!--          Les heures de réservation de la salle ne correspondent pas nécessairement avec les heures où l'événement commence.s-->
-<!--        </v-card-text>-->
+        <!--        <v-card-text class="mt-4 text-body-1">-->
+        <!--          Les heures de réservation de la salle ne correspondent pas nécessairement avec les heures où l'événement commence.s-->
+        <!--        </v-card-text>-->
         <v-card-actions>
           <v-btn
               variant="text"
@@ -338,12 +339,20 @@ function editEvent(event) {
   eventInfoDialog.value = false;
   editedEvent.value = event;
   editedEvent.value.accepteConditions = true;
-  Event.defineDatesFromVuetifyEvent(
+  console.log(event)
+  Event.defineDatesFromScheduleXEvent(
       this.editedEvent,
       new Date(event.start),
       new Date(event.end)
   );
   enterReservationDialog();
+}
+
+function updateEvent(modifiedEvent) {
+  eventsServicePlugin.update(
+      Event.formatEventToScheduleX(modifiedEvent)
+  )
+  googleCalendarUiKey.value = Math.random();
 }
 
 // export default {
@@ -376,15 +385,6 @@ function editEvent(event) {
 //       this.events = this.events.filter((event) => {
 //         return event.id !== removedEvent.id;
 //       });
-//     },
-//     updateEvent: function (modifiedEvent) {
-//       this.events = this.events.map((event) => {
-//         if (event.id === modifiedEvent.id) {
-//           return Event.toVuetifyCalendar(modifiedEvent)
-//         }
-//         return event;
-//       })
-//       this.googleCalendarUiKey = Math.random();
 //     },
 //     showEvent({nativeEvent, event}) {
 //       const open = () => {

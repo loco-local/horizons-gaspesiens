@@ -1,4 +1,4 @@
-import {format, endOfDay} from "date-fns";
+import {endOfDay, format} from "date-fns";
 
 // this.googleColors = await EventService.listColors();
 // this.googleColors = Object.keys(this.googleColors.event).map((colorId) => {
@@ -43,9 +43,6 @@ const Event = {
             event.start = start;
             event.end = end;
         }
-        // const startHour = format(event.start, "HH:mm")
-        // const endHour = format(event.end, "HH:mm")
-        // event.title = `${event.summary}  ${startHour} à ${endHour}`
         event.title = event.summary;
         event.color = Event.getColorFromId(event.colorId).background;
         event.start = format(event.start, 'yyyy-MM-dd HH:mm')
@@ -75,25 +72,21 @@ const Event = {
             },
             accepteConditions: false
         }
-        Event.defineDatesFromVuetifyEvent(
+        Event.defineDatesFromScheduleXEvent(
             newEvent, createDate, end
         )
         return newEvent;
     },
-    defineDatesFromVuetifyEvent: function (event, createDate, end) {
-        // console.log("a")
+    defineDatesFromScheduleXEvent: function (event, createDate, end) {
         if (createDate) {
-            // console.log(createDate)
-            event.startDay = format(createDate, "yyyy-MM-dd");
+            event.startDay = createDate;
             event.startTime = format(createDate, "HH:mm");
         }
         if (end) {
-            // console.log("b")
-            // console.log(end)
             event.endTime = format(end, "HH:mm");
         }
     },
-     formatEventForGoogleApi: function (event) {
+    formatEventForGoogleApi: function (event) {
         const date = event.startDay
         Event.setTimeToDate(event.startTime, date)
         const startDate = date.toISOString()
