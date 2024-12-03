@@ -627,63 +627,6 @@ export default {
   line-height: 1.6;
 }
 
-.font-size-xl {
-  .text {
-    font-size: 1.4em;
-  }
-
-  .text-smaller {
-    font-size: 1.3em;
-  }
-
-  .text-smaller-2 {
-    font-size: 1em;
-  }
-}
-
-.font-size-lg-and-down {
-  .text {
-    font-size: 1em;
-  }
-
-  .text-smaller {
-    font-size: 0.9em;
-  }
-
-  .text-smaller-2 {
-    font-size: 0.8em;
-  }
-}
-
-.v-tab {
-  font-size: 1em;
-}
-
-.v-tab * {
-  font-size: 1em;
-}
-
-.v-tabs__slider {
-  height: 3px;
-}
-
-.v-calendar-daily__interval-text {
-  font-size: 14px !important
-}
-
-.v-calendar-daily_head-weekday {
-  font-size: 14px !important
-}
-
-.v-time-picker-clock__item {
-  font-size: 16px;
-}
-
-.v-date-picker-table .v-btn {
-  font-size: 12px !important;
-}
-
-
 @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;
@@ -757,26 +700,6 @@ a {
   text-decoration: none;
 }
 
-.list-inline {
-  padding-left: 0;
-  margin-left: -5px;
-  list-style: none;
-}
-
-.list-inline > li {
-  display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-.bullet-like .v-breadcrumbs__divider {
-  padding: 0 !important;
-}
-
-#app-navigation .v-btn--active::before {
-  background-color: transparent !important;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -785,10 +708,6 @@ a {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
 {
   opacity: 0;
-}
-
-.v-card__title {
-  word-break: inherit !important;
 }
 
 .material-symbols-outlined {

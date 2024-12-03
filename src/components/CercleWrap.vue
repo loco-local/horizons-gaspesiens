@@ -36,7 +36,7 @@
             <div class="text-smaller font-weight-bold text-left mt-1 ml-4 text-grey-darken-2">
               <slot name="subtitle"></slot>
             </div>
-            <v-card-text class="text-justify text pr-8">
+            <v-card-text class="text-justify text pr-8 text-h6 font-weight-regular">
               <slot name="content"></slot>
             </v-card-text>
           </v-col>

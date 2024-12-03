@@ -9,7 +9,7 @@
         collaboration, terme francisé pour "Coworking space".
     </template>
     <template v-slot:content>
-        <p class="">
+        <p>
           Accès à un espace de travail avec internet
           <v-icon>wifi</v-icon>
           , machine à café

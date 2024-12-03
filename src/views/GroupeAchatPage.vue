@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <GroupeAchatCercle slot="content"></GroupeAchatCercle>
-  </Page>
+  <PageWrap>
+    <GroupeAchatCercle></GroupeAchatCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import GroupeAchatCercle from "@/components/GroupeAchatCercle.vue";
+
 export default {
   name: "GroupeAchatPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    GroupeAchatCercle: () => import("@/components/GroupeAchatCercle")
+    PageWrap,
+    GroupeAchatCercle
   }
 }
 </script>
