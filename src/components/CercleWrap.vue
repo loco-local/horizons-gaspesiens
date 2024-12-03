@@ -1,17 +1,18 @@
 <template>
-  <v-row class="vh-center font-weight-thin pr-6" :id="anchor" style="white-space: nowrap">
+  <v-row class="vh-center font-weight-thin pr-6" :id="anchor">
     <v-col cols="12">
       <v-card flat :class="{
                 'mt-5 mb-12': $vuetify.display.mdAndUp,
                 'pl-4 mt-5 mb-4': $route.name === 'home' && $vuetify.display.smAndDown
             }">
-        <v-layout :reverse="imageAtRight" row wrap fill-height>
+        <v-row :reverse="imageAtRight" fill-height>
           <v-col cols="12" md="5">
             <v-carousel v-if="image && isCarousel" width="100%">
               <v-carousel-item
                   v-for="(item,i) in image"
                   :key="i"
                   :src="require('../assets/' + item)"
+                  cover
               ></v-carousel-item>
             </v-carousel>
             <v-img
@@ -32,14 +33,14 @@
               {{ title }}
               <slot name="title"></slot>
             </v-card-title>
-            <v-card-subtitle class="text-smaller font-weight-bold text-left mt-1 ml-4">
+            <div class="text-smaller font-weight-bold text-left mt-1 ml-4 text-grey-darken-2">
               <slot name="subtitle"></slot>
-            </v-card-subtitle>
-            <v-card-text class="text-left text">
+            </div>
+            <v-card-text class="text-justify text pr-8">
               <slot name="content"></slot>
             </v-card-text>
           </v-col>
-        </v-layout>
+        </v-row>
       </v-card>
     </v-col>
   </v-row>

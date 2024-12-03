@@ -21,7 +21,7 @@ const router = VueRouter.createRouter({
                 }, 1000);
             });
         } else {
-            return {x: 0, y: 0}
+            return {top:0}
         }
     },
     routes: [
