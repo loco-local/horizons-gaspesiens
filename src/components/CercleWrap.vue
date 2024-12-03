@@ -36,7 +36,8 @@
             <div class="text-smaller font-weight-bold text-left mt-1 ml-4 text-grey-darken-2">
               <slot name="subtitle"></slot>
             </div>
-            <v-card-text class="text-justify text pr-8 text-h6 font-weight-regular">
+            <v-card-text class="text-justify text pr-8 text-h6 font-weight-regular cercle-content"
+                         style="line-height:1.8">
               <slot name="content"></slot>
             </v-card-text>
           </v-col>
@@ -58,6 +59,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+.cercle-content {
+  line-height: 1.8;
 
+  p {
+    margin-bottom: 10px !important
+  }
+}
 </style>

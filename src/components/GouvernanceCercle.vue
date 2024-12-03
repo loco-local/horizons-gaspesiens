@@ -1,19 +1,15 @@
 <template>
-    <Cercle
+    <CercleWrap
             title="Gouvernance"
             anchor="gouvernance"
             class="pa-0"
             :image="gouvernanceImages"
     >
         <!--https://pixabay.com/fr/le-crowdfunding-financement-id%C3%A9es-3576868/-->
-        <div slot="subtitle">
+        <template v-slot:subtitle>
             Les membres peuvent prendre part aux décisions de la coopérative.
-        </div>
-        <div>
-            <!--      Pour apporter des changements au Loco Local ou pour la Coopérative Horizons Gaspésiens en général,-->
-            <!--      les membres on-->
-        </div>
-        <div slot="content">
+        </template>
+        <template v-slot:content>
             <p>
                 Horizons Gaspésiens est une coopérative de solidarité composée de 100 à 200 membres et un conseil
                 d'administration élu en assemblée générale annuelle.
@@ -44,15 +40,17 @@
                 collective.
                 Cette autonomie contribue aussi au sentiment d'appartenance et augmente l'implication.
             </p>
-        </div>
-    </Cercle>
+        </template>
+    </CercleWrap>
 </template>
 
 <script>
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
     name: "GouvernanceCercle",
     components: {
-        Cercle: () => import("@/components/CercleWrap.vue")
+        CercleWrap
     },
     data: function () {
         return {

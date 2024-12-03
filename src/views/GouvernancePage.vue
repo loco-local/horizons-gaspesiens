@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <GouvernanceCercle slot="content"></GouvernanceCercle>
-  </Page>
+  <PageWrap>
+    <GouvernanceCercle></GouvernanceCercle>
+  </PageWrap>
 </template>
 
 <script>
+import GouvernanceCercle from "@/components/GouvernanceCercle.vue";
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "GouvernancePage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    GouvernanceCercle: () => import("@/components/GouvernanceCercle")
+    PageWrap,
+    GouvernanceCercle
   }
 }
 </script>
