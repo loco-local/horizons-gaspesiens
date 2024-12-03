@@ -376,9 +376,10 @@
     </v-dialog>
     <v-dialog width="600" v-model="confirmRemoveDialog" v-if="confirmRemoveDialog">
       <v-card>
-        <v-card-title>
-          {{ editedEvent.summary }}
-          <v-spacer></v-spacer>
+        <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
+          <div>
+            {{ editedEvent.summary }}
+          </div>
           <v-icon @click="confirmRemoveDialog=false">close</v-icon>
         </v-card-title>
         <v-card-actions>
@@ -401,7 +402,8 @@ import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
 import EventService from "@/service/EventService";
 import Rules from "@/Rules";
 import Tarification from "@/components/TarificationSection.vue";
-import { VTimePicker } from 'vuetify/labs/VTimePicker'
+import {VTimePicker} from 'vuetify/labs/VTimePicker'
+
 export default {
   name: "ReservationDialog",
   components: {Tarification, VerificationAdhesion, VTimePicker},

@@ -134,9 +134,8 @@
           flat
       >
         <v-toolbar color="blue"
-                   density="compact"
                    class="d-flex justify-space-between align`-center text-h5 text-medium-emphasis ps-2 text-white pb-0">
-          <div class="text-white">
+          <div class="text-white ml-2">
             {{ selectedEvent.summary }}
           </div>
           <v-spacer></v-spacer>
@@ -257,7 +256,6 @@ const calendarApp = createCalendar({
     onEventClick(calendarEvent) {
       selectedEvent.value = calendarEvent
       eventInfoDialog.value = true;
-      console.log('onEventClick', calendarEvent)
     }
   },
   calendars: {
@@ -355,6 +353,13 @@ function updateEvent(modifiedEvent) {
   googleCalendarUiKey.value = Math.random();
 }
 
+function removeEvent(removedEvent) {
+  eventsServicePlugin.remove(
+      removedEvent.id
+  )
+  googleCalendarUiKey.value = Math.random();
+}
+
 // export default {
 //   components: {
 //     Tarification,
@@ -381,11 +386,6 @@ function updateEvent(modifiedEvent) {
 //     }
 //   },
 //   methods: {
-//     removeEvent: function (removedEvent) {
-//       this.events = this.events.filter((event) => {
-//         return event.id !== removedEvent.id;
-//       });
-//     },
 //     showEvent({nativeEvent, event}) {
 //       const open = () => {
 //         this.selectedEvent = event
