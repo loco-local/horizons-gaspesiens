@@ -79,7 +79,7 @@ const Event = {
     },
     defineDatesFromScheduleXEvent: function (event, createDate, end) {
         if (createDate) {
-            event.startDay = createDate;
+            event.startDay = new Date(createDate)
             event.startTime = format(createDate, "HH:mm");
         }
         if (end) {

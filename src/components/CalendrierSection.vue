@@ -197,7 +197,7 @@
 <script setup>
 import PhoneDialog from '@/components/PhoneDialog'
 import EventService from "@/service/EventService";
-import {addDays, format,} from "date-fns";
+import {addDays, format, roundToNearestHours,} from "date-fns";
 import Event from "@/Event"
 import ReservationDialog from "@/components/ReservationDialog.vue";
 import Tarification from "@/components/TarificationSection.vue";
@@ -256,13 +256,64 @@ const calendarApp = createCalendar({
     onEventClick(calendarEvent) {
       selectedEvent.value = calendarEvent
       eventInfoDialog.value = true;
-    }
+    },
+    onClickDate(date) {
+      editedEvent.value = Event.initNewEvent(
+          date
+      )
+      enterReservationDialog()
+    },
+    /**
+     * Is called when clicking somewhere in the time grid of a week or day view
+     * */
+    onClickDateTime(dateTime) {
+      editedEvent.value = Event.initNewEvent(
+          roundToNearestHours(dateTime)
+      )
+      enterReservationDialog()
+    },
+    /**
+     * Is called when selecting a day in the month agenda
+     * */
+    onClickAgendaDate(date) {
+      editedEvent.value = Event.initNewEvent(
+          date
+      )
+      enterReservationDialog()
+    },
+    onDoubleClickAgendaDate(date) {
+      editedEvent.value = Event.initNewEvent(
+          date
+      );
+      enterReservationDialog();
+    },
+
+    /**
+     * Is called when double clicking a date in the month grid
+     * */
+    onDoubleClickDate(date) {
+      editedEvent.value = Event.initNewEvent(
+          date
+      );
+      enterReservationDialog();
+    },
+
+    /**
+     * Is called when double clicking somewhere in the time grid of a week or day view
+     * */
+    onDoubleClickDateTime(dateTime) {
+      editedEvent.value = Event.initNewEvent(
+          roundToNearestHours(dateTime)
+      )
+      enterReservationDialog()
+    },
+
   },
   calendars: {
     exclusive: {
       colorName: 'exclusive',
       lightColors: {
-        main: '#e32323',
+        main: '#FF8A80',
         container: '#e32323',
         onContainer: '#ffffff',
       }
@@ -270,7 +321,7 @@ const calendarApp = createCalendar({
     shared: {
       colorName: 'shared',
       lightColors: {
-        main: '#2349e3',
+        main: '#82B1FF',
         container: '#2349e3',
         onContainer: '#ffffff',
       }
@@ -278,7 +329,7 @@ const calendarApp = createCalendar({
     nonPriority: {
       colorName: 'nonPriority',
       lightColors: {
-        main: '#23e343',
+        main: '#B9F6CA',
         container: '#23e343',
         onContainer: '#ffffff',
       }
@@ -337,7 +388,6 @@ function editEvent(event) {
   eventInfoDialog.value = false;
   editedEvent.value = event;
   editedEvent.value.accepteConditions = true;
-  console.log(event)
   Event.defineDatesFromScheduleXEvent(
       this.editedEvent,
       new Date(event.start),
