@@ -76,7 +76,8 @@ const cercles = {
     biblioOutils: {
         nom: "Bibliothèque d'outils",
         containerId: "biblio-outils",
-        lien: "/biblio-outils"
+        lien: "/biblio-outils",
+        desactive: true
     },
     reparation: {
         nom: "Café réparation",

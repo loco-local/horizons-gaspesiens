@@ -1,6 +1,6 @@
 <template>
   <PageWrap>
-    <v-row slot="content">
+    <v-row>
       <v-col cols="12">
         {{ accounts }}
       </v-col>

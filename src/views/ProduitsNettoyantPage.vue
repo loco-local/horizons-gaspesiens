@@ -1,15 +1,17 @@
 <template>
-  <Page>
-    <ProduitsNettoyantCercle slot="content"></ProduitsNettoyantCercle>
-  </Page>
+  <PageWrap>
+    <ProduitsNettoyantCercle></ProduitsNettoyantCercle>
+  </PageWrap>
 </template>
 
 <script>
+import ProduitsNettoyantCercle from "@/components/ProduitsNettoyantCercle.vue";
+
 export default {
   name: "ProduitsNettoyantsPage",
   components:{
-    Page: () => import("@/components/PageWrap.vue"),
-    ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
+    PageWrap,
+    ProduitsNettoyantCercle,
   }
 }
 </script>

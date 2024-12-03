@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <PageWrap>
     <v-layout row wrap slot="content" class="text-body-1">
       <v-flex xs12 class="text-left pl-6 pt-0 mt-0">
         <h3 class="text-h6 mb-4">
@@ -25,14 +25,16 @@
         </p>
       </v-flex>
     </v-layout>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "CafePhilo",
   components: {
-    Page: () => import("@/components/PageWrap.vue")
+    PageWrap
   }
 }
 </script>

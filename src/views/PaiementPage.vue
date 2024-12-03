@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <Paiement slot="content"></Paiement>
-  </Page>
+  <PageWrap>
+    <PaiementSection></PaiementSection>
+  </PageWrap>
 </template>
 
 <script>
+import PaiementSection from "@/components/PaiementSection.vue";
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "PaiementPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    Paiement: () => import("@/components/PaiementSection.vue")
+    PageWrap,
+    PaiementSection
   }
 }
 </script>

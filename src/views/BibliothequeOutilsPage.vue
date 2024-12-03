@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <BibliothequeOutilsCercle slot="content"></BibliothequeOutilsCercle>
-  </Page>
+  <PageWrap>
+    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import BibliothequeOutilsCercle from "@/components/BibliothequeOutilsCercle.vue";
+
 export default {
   name: "BibliothequeOutilsPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle")
+    PageWrap,
+    BibliothequeOutilsCercle
   },
   data: function () {
     return {};

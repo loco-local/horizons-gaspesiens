@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <PageWrap>
     <v-layout row wrap slot="content" class="text-body-1">
       <v-flex xs12 md3>
         <v-img :src="require('@/assets/sécession (1).jpg')"></v-img>
@@ -36,14 +36,16 @@
         </p>
       </v-flex>
     </v-layout>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "SécessionPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue")
+    PageWrap
   }
 }
 </script>

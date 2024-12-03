@@ -1,13 +1,13 @@
 <template>
-  <Cercle
+  <CercleWrap
       title="Page Pourpre"
       anchor="page-pourpre"
       :image="images"
   >
-    <div slot="subtitle">
+    <template v-slot:subtitle>
       Bibliothèque féministe, trans, queer et inclusive
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       <p class="">
         La bibliothèque la Page Pourpre, c'est un espace de rencontre et un
         centre de référence permettant d'emprunter gratuitement des livres sur
@@ -19,15 +19,17 @@
         non-binaire, mais également des ressources sur l'éducation et la
         parentalité à l'extérieur de la binarité des genres.
       </p>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "PagePourpreCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   },
   data: function () {
     return {

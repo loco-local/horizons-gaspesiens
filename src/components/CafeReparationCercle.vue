@@ -1,14 +1,14 @@
 <template>
-  <Cercle
+  <CercleWrap
       title="Café réparation"
       anchor="cafe-reparation"
       :image="images"
   >
-    <div slot="subtitle">
+    <template v-slot:subtitle>
       Ce que j'achète m'appartient, j'en suis responsable tout au long de sa durée. Ce n'est pas un déchet, mais une
       richesse
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       <a href="https://www.facebook.com/locolocal1">
         <v-alert border-color icon="calendar_month" large elevation="1" class="text-smaller-2" prominent>
           Suivez notre page facebook pour connaître la date du prochain café de réparation.
@@ -43,15 +43,17 @@
           </v-list-item-title>
         </v-list-item>
       </v-list>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "CafeReparationCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   },
   data: function(){
     return {

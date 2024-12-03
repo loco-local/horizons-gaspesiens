@@ -160,12 +160,12 @@
     <PagePourpreCercle></PagePourpreCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <CafeReparationCercle></CafeReparationCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <PartageHeureCercle></PartageHeureCercle>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+<!--    <PartageHeureCercle></PartageHeureCercle>-->
     <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
     <!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>
+<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+<!--    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>-->
     <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
     <!--    <Cercle-->
     <!--        title="Imaginez demain"-->
@@ -315,7 +315,7 @@
       'mb-4': $vuetify.display.smAndDown,
     }"></Calendrier>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <Paiement class="mb-1 mt-12"></Paiement>
+    <PaiementSection class="mb-1 mt-12"></PaiementSection>
     <PhoneDialog ref="phoneDialog"></PhoneDialog>
     <v-dialog v-model="visionModal" width="300">
       <v-card>
@@ -413,6 +413,14 @@ import Cercles from "@/Cercles";
 
 import Scroll from "@/Scroll";
 import Shuffle from "@/Shuffle";
+import RucheArtCercle from "@/components/RucheArtCercle.vue";
+import CafeReparationCercle from "@/components/CafeReparationCercle.vue";
+import GroupeAchatCercle from "@/components/GroupeAchatCercle.vue";
+import CollaboriumCercle from "@/components/CollaboriumCercle.vue";
+import GouvernanceCercle from "@/components/GouvernanceCercle.vue";
+import FinancementCercle from "@/components/FinancementCercle.vue";
+import PagePourpreCercle from "@/components/PagePourpreCercle.vue";
+import PaiementSection from "@/components/PaiementSection.vue";
 
 const profitRatioOnLemieux = 0.45;
 
@@ -481,18 +489,18 @@ const lemieuxRevenus = [
 export default {
   name: "HomePage",
   components: {
-    RucheArtCercle: () => import("@/components/RucheArtCercle"),
-    CafeReparationCercle: () => import("@/components/CafeReparationCercle"),
-    GroupeAchatCercle: () => import("@/components/GroupeAchatCercle"),
-    CollaboriumCercle: () => import("@/components/CollaboriumCercle"),
-    PartageHeureCercle: () => import("@/components/PartageHeureCercle"),
-    GouvernanceCercle: () => import("@/components/GouvernanceCercle"),
-    FinancementCercle: () => import("@/components/FinancementCercle"),
+    RucheArtCercle,
+    CafeReparationCercle,
+    GroupeAchatCercle,
+    CollaboriumCercle,
+    // PartageHeureCercle,
+    GouvernanceCercle,
+    FinancementCercle,
     // ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
     // BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
-    PagePourpreCercle: () => import("@/components/PagePourpreCercle"),
-    BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
-    Paiement: () => import("@/components/PaiementSection.vue"),
+    PagePourpreCercle,
+    // BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
+    PaiementSection,
     PhoneDialog,
     Calendrier,
   },

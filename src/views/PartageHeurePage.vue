@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <PartageHeureCercle slot="content"></PartageHeureCercle>
-  </Page>
+  <PageWrap>
+    <PartageHeureCercle></PartageHeureCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PartageHeureCercle from "@/components/PartageHeureCercle.vue";
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "PartageHeurePage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    PartageHeureCercle: () => import("@/components/PartageHeureCercle")
+    PageWrap,
+    PartageHeureCercle
   },
   data: function () {
     return {};

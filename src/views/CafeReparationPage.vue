@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <CafeReparationCercle slot="content"></CafeReparationCercle>
-  </Page>
+  <PageWrap>
+    <CafeReparationCercle></CafeReparationCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import CafeReparationCercle from "@/components/CafeReparationCercle.vue";
+
 export default {
   name: "CafeReparationPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    CafeReparationCercle: () => import("@/components/CafeReparationCercle")
+    PageWrap,
+    CafeReparationCercle
   }
 }
 </script>

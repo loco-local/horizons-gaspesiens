@@ -1,21 +1,23 @@
 <template>
-  <Cercle
+  <CercleWrap
       title="Ruche d'Art la Ligne Courbe"
       anchor="ruche-art"
       :image="images"
       id="ruche-art"
   >
-    <div slot="subtitle">
-      Un atelier d’art communautaire qui accueille gratuitement tout le monde en tant qu’artiste et où diverses formes d’arts peuvent se déployer. Évolutif, le projet est à l’image de sa communauté et promeut l’inclusion, la liberté et le non-jugement.
-    </div>
-    <div slot="content">
+    <template v-slot:subtitle>
+      Un atelier d’art communautaire qui accueille gratuitement tout le monde en tant qu’artiste et où diverses formes
+      d’arts peuvent se déployer. Évolutif, le projet est à l’image de sa communauté et promeut l’inclusion, la liberté
+      et le non-jugement.
+    </template>
+    <template v-slot:content>
       <v-list class="">
         <v-list-item
             href="mailto:lignecourbe.ruchedart@gmail.com"
         >
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon size="large">mail</v-icon>
-          </v-list-item-action>
+          </template>
           <v-list-item-title class="text-smaller-2">
             lignecourbe.ruchedart@gmail.com
           </v-list-item-title>
@@ -23,33 +25,43 @@
         <v-list-item
             href="tel:581-630-0058"
         >
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon size="large">phone</v-icon>
-          </v-list-item-action>
+          </template>
           <v-list-item-title class="text-smaller-2">
             581-630-0058 #102
           </v-list-item-title>
         </v-list-item>
       </v-list>
       <p>
-        La particularité de cette Ruche d'Art; Elle offre un calendrier ou la population sera invitée à créer sur place au Loco Local. Mais elle sera également nomade à l'intérieur du territoire de la MRC de Bonaventure.
+        La particularité de cette Ruche d'Art; Elle offre un calendrier ou la population sera invitée à créer sur place
+        au Loco Local. Mais elle sera également nomade à l'intérieur du territoire de la MRC de Bonaventure.
       </p>
       <p>
-        Une ressource dédiée est responsable de sa mise en œuvre; elle développe le concept, les outils et les partenariats, puis coordonne et facilite les ateliers. La création et l'implication d'un réseau de bénévoles est également envisagé.
+        Une ressource dédiée est responsable de sa mise en œuvre; elle développe le concept, les outils et les
+        partenariats, puis coordonne et facilite les ateliers. La création et l'implication d'un réseau de bénévoles est
+        également envisagé.
       </p>
       <p>
-        Cette offre d'une série structurée d'ateliers souhaite ainsi répondre aux besoins de la communauté, particulièrement observés en cette ère post-Covid, soit: tisser des liens, se réunir, développer sa créativité et adopter de saines habitudes de vie en santé mentale. La Ruche d'Art procure à l'organisme un outil éprouvé mais adaptable, qui répond de façon créative et sensible aux besoins de la communauté. Le projet lui permet de mieux s'adresser aux inégalités sociales par une offre gratuite et d'augmenter les opportunités de partager des ressources et des lieux.
+        Cette offre d'une série structurée d'ateliers souhaite ainsi répondre aux besoins de la communauté,
+        particulièrement observés en cette ère post-Covid, soit: tisser des liens, se réunir, développer sa créativité
+        et adopter de saines habitudes de vie en santé mentale. La Ruche d'Art procure à l'organisme un outil éprouvé
+        mais adaptable, qui répond de façon créative et sensible aux besoins de la communauté. Le projet lui permet de
+        mieux s'adresser aux inégalités sociales par une offre gratuite et d'augmenter les opportunités de partager des
+        ressources et des lieux.
       </p>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
 
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "RucheArtCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   },
   data: function () {
     return {

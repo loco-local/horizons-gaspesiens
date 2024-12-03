@@ -1,16 +1,16 @@
 <template>
-  <Cercle
+  <CercleWrap
       title="Bibliothèque d'outils"
       anchor="biblio-outils"
       image="gardening-tools-1478547_1280.jpg"
       id="biblio-outils"
   >
-    <div slot="subtitle">
+    <template v-slot:subtitle>
       Marteaux, pinceaux, truelles, échelles, perceuses, ponceuses: plutôt que
       d'acheter un outil dont vous ne vous servirez qu'une fois dans votre
       vie, empruntez-le!
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       <v-tabs grow class="" slider-color="#ff3301">
         <v-tab class=""> C'est quoi</v-tab>
         <v-tab class=""> Participer</v-tab>
@@ -231,8 +231,8 @@
           </a>
         </v-card-text>
       </v-card>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>

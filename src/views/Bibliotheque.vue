@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <PageWrap>
     <div slot="content" class="text-body-1">
       <v-layout row wrap >
         <v-flex xs12 class="text-left pl-6 pt-0 mt-0">
@@ -73,14 +73,16 @@
         </v-flex>
       </v-layout>
     </div>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "BibliothequePage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
+    PageWrap
   }
 }
 </script>

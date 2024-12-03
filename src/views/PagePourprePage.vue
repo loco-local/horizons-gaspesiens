@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <PagePourpreCercle slot="content"></PagePourpreCercle>
-  </Page>
+  <PageWrap>
+    <PagePourpreCercle></PagePourpreCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import PagePourpreCercle from "@/components/PagePourpreCercle.vue";
+
 export default {
   name: "PagePourprePage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    PagePourpreCercle: () => import("@/components/PagePourpreCercle")
+    PageWrap,
+    PagePourpreCercle
   },
   data: function () {
     return {};

@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <PageWrap>
     <div class="text-body-1" slot="content">
       <v-layout row wrap>
         <v-flex xs12 md3>
@@ -316,14 +316,16 @@
         </v-flex>
       </v-layout>
     </div>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "DemiPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue")
+    PageWrap
   }
 }
 </script>

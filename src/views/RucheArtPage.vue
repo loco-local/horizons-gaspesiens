@@ -1,18 +1,21 @@
+<template>
+  <PageWrap>
+    <RucheArtCercle></RucheArtCercle>
+  </PageWrap>
+</template>
+
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import RucheArtCercle from "@/components/RucheArtCercle.vue";
+
 export default {
   name: "RucheArtPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    RucheArtCercle: () => import("@/components/RucheArtCercle")
+    PageWrap,
+    RucheArtCercle
   }
 }
 </script>
-
-<template>
-  <Page>
-    <RucheArtCercle slot="content"></RucheArtCercle>
-  </Page>
-</template>
 
 <style scoped>
 

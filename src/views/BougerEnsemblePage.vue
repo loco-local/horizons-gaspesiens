@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <BougerEnsembleCercle slot="content"></BougerEnsembleCercle>
-  </Page>
+  <PageWrap>
+    <BougerEnsembleCercle></BougerEnsembleCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import BougerEnsembleCercle from "@/components/BougerEnsembleCercle.vue";
+
 export default {
   name: "BougerEnsemblePage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle")
+    PageWrap,
+    BougerEnsembleCercle
   },
   data: function () {
     return {};

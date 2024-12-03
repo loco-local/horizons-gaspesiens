@@ -1,15 +1,18 @@
 <template>
-  <Page>
-    <FinancementCercle slot="content"></FinancementCercle>
-  </Page>
+  <PageWrap>
+    <FinancementCercle></FinancementCercle>
+  </PageWrap>
 </template>
 
 <script>
+import PageWrap from "@/components/PageWrap.vue";
+import FinancementCercle from "@/components/FinancementCercle.vue";
+
 export default {
   name: "FinancementPage",
   components: {
-    Page: () => import("@/components/PageWrap.vue"),
-    FinancementCercle: () => import("@/components/FinancementCercle")
+    PageWrap,
+    FinancementCercle
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <PageWrap>
     <v-layout row wrap slot="content" class="text-body-1">
       <v-flex xs12 class="text-left">
         <h3 class="text-h6 mb-4">
@@ -58,15 +58,17 @@
         </ul>
       </v-flex>
     </v-layout>
-  </Page>
+  </PageWrap>
 </template>
 
 <script>
 
+import PageWrap from "@/components/PageWrap.vue";
+
 export default {
   name: "SelDeMer",
   components: {
-    Page: () => import("@/components/PageWrap.vue")
+    PageWrap
   }
 }
 </script>
