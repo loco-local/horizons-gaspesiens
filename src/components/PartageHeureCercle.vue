@@ -1,16 +1,16 @@
 <template>
-  <Cercle
+  <CercleWrap
       anchor="partage-heure"
       image="partage-heure/partageheure-banner.png"
   >
-    <div slot="title" style="display: flex; align-items:center;">
+    <template v-slot:title style="display: flex; align-items:center;">
       Partage Heure
       <img :src="require('../assets/partage-heure/logo-partageheure-fit-petit.png')" class="ml-3" width="40">
-    </div>
-    <div slot="subtitle">
+    </template>
+    <template v-slot:subtitle>
       S'entraider avec une liste d'offres et de demandes de services
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       Visitez la section "Devenez membre" du site <a href="https://partageheure.com">partageheure.com</a>
 <!--      <v-list three-line :class="{-->
 <!--            'pl-0 pr-0': $vuetify.breakpoint.smAndDown-->
@@ -75,15 +75,17 @@
 <!--          </v-list-item-content>-->
 <!--        </v-list-item>-->
 <!--      </v-list>-->
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
-  name: "CafeReparationCercle",
+  name: "PartageHeureCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   },
   data: function(){
     return {

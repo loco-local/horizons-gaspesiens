@@ -4,6 +4,7 @@ import App from './App.vue'
 import { registerPlugins } from '@/plugins'
 import DateUtil from './DateUtil'
 import {loadFonts} from './plugins/webfontloader'
+import Clipboard from 'v-clipboard'
 
 loadFonts()
 
@@ -12,4 +13,5 @@ registerPlugins(app)
 app.config.globalProperties.$filters = {};
 DateUtil.setup(app);
 app.use(router)
+app.use(Clipboard)
 app.mount('#app')

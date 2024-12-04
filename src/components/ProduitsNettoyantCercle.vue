@@ -1,6 +1,6 @@
 <template>
-  <Cercle title="Produits Nettoyants" anchor="produits-nettoyant">
-    <div slot="image">
+  <CercleWrap title="Produits Nettoyants" anchor="produits-nettoyant">
+    <template v-slot:image>
       <div id="fb-root"></div>
       <div
           class="fb-video"
@@ -23,14 +23,14 @@
           </blockquote>
         </div>
       </div>
-    </div>
-    <div slot="subtitle">
+    </template>
+    <template v-slot:subtitle>
       En plus de sentir bon, d'utiliser des produits nettoyants qui ne sont
       pas nocifs pour votre santé et celle de vos enfants, de protéger
       l'environnement en utilisant des produits biodégradables, choisissez le
       vrac pour favoriser la réutilisation des contenants!
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       <p class="">
         Achetez vos produits nettoyants au Loco Local. Si vous avez des
         questions, écrivez-nous à
@@ -40,16 +40,18 @@
         ou
         <v-btn @click="$refs.phoneDialog.show()">téléphonez nous</v-btn>
       </p>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
 
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "ProduitsNettoyantCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   }
 }
 </script>

@@ -1,466 +1,475 @@
 <template>
-    <v-app :class="{
+  <v-app :class="{
       'font-size-xl': $vuetify.display.xl,
       'font-size-lg-and-down': $vuetify.display.lgAndDown,
     }">
-      <v-app-bar
-            color="white"
-            :class="{
+    <v-app-bar
+        color="white"
+        :class="{
             'no-padding': $vuetify.display.smAndDown,
           }"
-            style="z-index: 4"
-        >
-          <v-app-bar-nav-icon
-              @click="drawer = !drawer"
-              v-if="$vuetify.display.smAndDown"
-          ></v-app-bar-nav-icon>
-          <router-link
-              to="/"
-              class="mt-3"
-              :class="{
+        style="z-index: 4"
+    >
+      <v-app-bar-nav-icon
+          @click="drawer = !drawer"
+          v-if="$vuetify.display.smAndDown"
+      ></v-app-bar-nav-icon>
+      <router-link
+          to="/"
+          class="mt-3"
+          :class="{
               'pl-4': $vuetify.display.mdAndUp,
             }"
-          >
-            <img
-                :src="require('./assets/logo-horizontal.png')"
-                :height="this.toolbarLogoHeight"
-                v-if="true"
-                @click="Scroll.allerALaSection('app')"
-            />
-            <img
-                :src="require('./assets/logo-loco-horizontal.png')"
-                :height="this.toolbarLogoHeight + 20"
-                v-if="false"
-            />
-          </router-link>
-          <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
-          <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/paiement"
-            >
-              <v-icon
-                  :class="{
+      >
+        <img
+            :src="require('./assets/logo-horizontal.png')"
+            :height="this.toolbarLogoHeight"
+            v-if="true"
+            @click="Scroll.allerALaSection('app')"
+        />
+        <img
+            :src="require('./assets/logo-loco-horizontal.png')"
+            :height="this.toolbarLogoHeight + 20"
+            v-if="false"
+        />
+      </router-link>
+      <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            variant="text"
+            to="/paiement"
+        >
+          <v-icon
+              :class="{
                   'mr-3': $vuetify.display.xlAndUp,
                   'mr-0': $vuetify.display.mdAndDown,
                 }"
-              >attach_money
-              </v-icon>
-              <span v-if="$vuetify.display.xlAndUp" class=""> Don et paiement </span>
-              <span v-if="$vuetify.display.lgAndDown">Don/paiement</span>
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/calendrier"
-            >
-              <v-icon
-                  :class="{
+          >attach_money
+          </v-icon>
+          <span v-if="$vuetify.display.xlAndUp" class=""> Don et paiement </span>
+          <span v-if="$vuetify.display.lgAndDown">Don/paiement</span>
+        </v-btn>
+        <v-btn
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            variant="text"
+            to="/calendrier"
+        >
+          <v-icon
+              :class="{
                   'mr-3': $vuetify.display.xlAndUp,
                   'mr-0': $vuetify.display.lgAndDown,
                 }"
-              >
-                calendar_month
-              </v-icon>
-              Calendrier
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                to="/reservation"
-            >
-              <v-icon
-                  :class="{
+          >
+            calendar_month
+          </v-icon>
+          Calendrier
+        </v-btn>
+        <v-btn
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            variant="text"
+            to="/reservation"
+        >
+          <v-icon
+              :class="{
                   'mr-3': $vuetify.display.lgAndUp,
                   'mr-0': $vuetify.display.mdAndDown,
                 }"
-              >
-                event
-              </v-icon>
-              Réservation
-            </v-btn>
-            <v-btn
-                color="#ff3301"
-                variant="flat"
-                background-color="#ff3301"
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                v-if="$vuetify.display.lgAndUp"
-                target="_blank"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
-            >
-              <v-icon start>check</v-icon>
-              Devenez membre
-            </v-btn>
-
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlAndUp,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-              >location_on
-              </v-icon>
-              Adresse
-            </v-btn>
-            <v-btn
-                :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-                variant="text"
-                @click="$refs.phoneDialog.show()"
-            >
-              <v-icon
-                  :class="{
-                  'mr-3': $vuetify.display.xlAndUp,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-              >phone
-              </v-icon>
-              <span v-if="$vuetify.display.xlAndUp">Téléphone</span>
-              <span v-if="$vuetify.display.lgAndDown">Tel</span>
-            </v-btn>
-            <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
-            <!--                    <v-icon :class="{-->
-            <!--                        'mr-3' : $vuetify.display.xlAndUp,-->
-            <!--                        'mr-0' : $vuetify.display.lgAndDown-->
-            <!--                    }">email-->
-            <!--                    </v-icon>-->
-            <!--                    Infolettre-->
-            <!--                </v-btn>-->
-          </v-toolbar-items>
-          <v-toolbar-title
-              class="text-h6 text-uppercase special-font"
-              style="font-weight: bold"
           >
-          </v-toolbar-title>
-          <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
-                              v-if="$vuetify.display.mdAndUp"></v-app-bar-nav-icon>
-        </v-app-bar>
-      <v-navigation-drawer
-          v-model="desktopDrawer"
-          location="right"
-          temporary
-      >
-        <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;"
-                     class="text-left text-body-2">
+            event
+          </v-icon>
+          Réservation
+        </v-btn>
+        <v-btn
+            color="#ff3301"
+            variant="flat"
+            background-color="#ff3301"
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            v-if="$vuetify.display.lgAndUp"
+            target="_blank"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+        >
+          <v-icon start>check</v-icon>
+          Devenez membre
+        </v-btn>
 
-          <v-list-item-title class="text">
+        <v-btn
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            variant="text"
+            href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+        >
+          <v-icon
+              :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.lgAndDown,
+                }"
+          >location_on
+          </v-icon>
+          Adresse
+        </v-btn>
+        <v-btn
+            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
+            variant="text"
+            @click="$refs.phoneDialog.show()"
+        >
+          <v-icon
+              :class="{
+                  'mr-3': $vuetify.display.xlAndUp,
+                  'mr-0': $vuetify.display.lgAndDown,
+                }"
+          >phone
+          </v-icon>
+          <span v-if="$vuetify.display.xlAndUp">Téléphone</span>
+          <span v-if="$vuetify.display.lgAndDown">Tel</span>
+        </v-btn>
+        <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
+        <!--                    <v-icon :class="{-->
+        <!--                        'mr-3' : $vuetify.display.xlAndUp,-->
+        <!--                        'mr-0' : $vuetify.display.lgAndDown-->
+        <!--                    }">email-->
+        <!--                    </v-icon>-->
+        <!--                    Infolettre-->
+        <!--                </v-btn>-->
+      </v-toolbar-items>
+      <v-toolbar-title
+          class="text-h6 text-uppercase special-font"
+          style="font-weight: bold"
+      >
+      </v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="desktopDrawer = !desktopDrawer"
+                          v-if="$vuetify.display.mdAndUp"></v-app-bar-nav-icon>
+    </v-app-bar>
+    <v-navigation-drawer
+        v-model="desktopDrawer"
+        location="right"
+        temporary
+    >
+      <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;"
+                   class="text-left text-body-2">
+
+        <v-list-item-title class="text">
+          À propos
+        </v-list-item-title>
+
+      </v-list-item>
+      <v-list-item to="/adhesion" class="text-left text-body-2">
+
+        <v-list-item-title>
+          Vérifiez votre adhésion
+        </v-list-item-title>
+
+      </v-list-item>
+      <v-list-item to="/tarification" class="text-left text-body-2">
+
+        <v-list-item-title>
+          Tarification de la salle
+        </v-list-item-title>
+
+      </v-list-item>
+      <v-list-item
+          v-for="(cercle, clef) in cercles"
+          :key="clef"
+          :to="cercle.lien"
+          class="text-left text-body-2"
+      >
+
+        <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+
+      </v-list-item>
+      <v-list-item href="https://www.facebook.com/locolocal1" class="text-body-1">
+        <v-list-item-title class="text-left">
+          /locolocal1
+        </v-list-item-title>
+        <template v-slot:append>
+          <v-img
+              :src="require('@/assets/f_logo_RGB-Blue_58.png')"
+              min-height="32"
+              min-width="32"
+          ></v-img>
+        </template>
+      </v-list-item>
+    </v-navigation-drawer>
+    <v-navigation-drawer
+        v-model="drawer"
+        enable-resize-watcher
+        dense
+        id="app-navigation"
+    >
+      <v-list>
+        <div
+            v-for="phone in phoneNumbers"
+            :key="phone.nom"
+            :href="'tel:' + phone.telephone"
+        >
+          <v-list-item :href="'tel:' + phone.telephone">
+            <v-list-item-title>
+              {{ phone.nom }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ phone.telephone }}
+            </v-list-item-subtitle>
+
+            <template v-slot:append>
+              <v-icon>phone</v-icon>
+            </template>
+          </v-list-item>
+          <v-divider class="mb-2 mt-2"></v-divider>
+        </div>
+        <v-list-item
+            href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
+        >
+          <v-list-item-title class="text-left">
+            193a Avenue Grand-Pré, Bonaventure, QC
+          </v-list-item-title>
+          <template v-slot:append>
+            <v-icon>location_on</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item to="/paiement">
+          <v-list-item-title class="text-left">Don et paiement</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>attach_money</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item
+            to="/calendrier"
+        >
+          <v-list-item-title class="text-left">Calendrier</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>calendar_month</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item
+            to="/reservation"
+        >
+          <v-list-item-title class="text-left">
+            Réservation
+          </v-list-item-title>
+          <template v-slot:append>
+            <v-icon>event</v-icon>
+          </template>
+        </v-list-item>
+        <!--                <v-list-item-->
+        <!--                        href="http://eepurl.com/c7iHkr">-->
+        <!--                    <v-list-item-action>-->
+        <!--                        <v-icon>email</v-icon>-->
+        <!--                    </v-list-item-action>-->
+        <!--                    <v-list-item-title>-->
+        <!--                        Infolettre-->
+        <!--                    </v-list-item-title>-->
+        <!--                </v-list-item>-->
+        <v-list-item
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+            target="_blank"
+        >
+          <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>check</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item
+            to="/adhesion"
+        >
+          <v-list-item-title class="text-left">Vérifiez votre adhésion</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>check</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item
+            to="/tarification"
+        >
+          <v-list-item-title class="text-left">Tarification de la salle</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>attach_money</v-icon>
+          </template>
+        </v-list-item>
+        <v-list-item @click="Scroll.allerALaSection('about', '/');drawer=false;" class="text-left">
+          <v-list-item-title>
             À propos
           </v-list-item-title>
-
         </v-list-item>
-        <v-list-item to="/adhesion" class="text-left text-body-2">
-
-          <v-list-item-title>
-            Vérifiez votre adhésion
-          </v-list-item-title>
-
+        <v-list-item @click="documentDialog = true">
+          <v-list-item-title class="text-left">Documents</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>articles</v-icon>
+          </template>
         </v-list-item>
-        <v-list-item to="/tarification" class="text-left text-body-2">
-
-          <v-list-item-title>
-            Tarification de la salle
-          </v-list-item-title>
-
+        <v-list-item @click="presseDialog = true">
+          <v-list-item-title class="text-left">Dossier de presse</v-list-item-title>
+          <template v-slot:append>
+            <v-icon>newspaper</v-icon>
+          </template>
         </v-list-item>
         <v-list-item
             v-for="(cercle, clef) in cercles"
             :key="clef"
             :to="cercle.lien"
-            class="text-left text-body-2"
+            class="text-left"
         >
 
           <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
 
         </v-list-item>
-        <v-list-item href="https://www.facebook.com/locolocal1" class="text-body-1">
-          <v-list-item-title class="text-left">
-            /locolocal1
-          </v-list-item-title>
-          <v-list-item-action>
-            <img
-                src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
-            />
-          </v-list-item-action>
-        </v-list-item>
-      </v-navigation-drawer>
-      <v-navigation-drawer
-          v-model="drawer"
-          enable-resize-watcher
-          dense
-          id="app-navigation"
-      >
-        <v-list>
-          <div
-              v-for="phone in phoneNumbers"
-              :key="phone.nom"
-              :href="'tel:' + phone.telephone"
-          >
-            <v-list-item :href="'tel:' + phone.telephone">
-              <v-list-item-title>
-                {{ phone.nom }}
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ phone.telephone }}
-              </v-list-item-subtitle>
-
-              <template v-slot:append>
-                <v-icon>phone</v-icon>
-              </template>
-            </v-list-item>
-            <v-divider class="mb-2 mt-2"></v-divider>
-          </div>
-          <v-list-item
-              href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-          >
-            <v-list-item-title class="text-left">
-              193a Avenue Grand-Pré, Bonaventure, QC
-            </v-list-item-title>
-            <template v-slot:append>
-              <v-icon>location_on</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item to="/paiement">
-            <v-list-item-title class="text-left">Don et paiement</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>attach_money</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item
-              to="/calendrier"
-          >
-            <v-list-item-title class="text-left">Calendrier</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>calendar_month</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item
-              to="/reservation"
-          >
-            <v-list-item-title class="text-left">
-              Réservation
-            </v-list-item-title>
-            <template v-slot:append>
-              <v-icon>event</v-icon>
-            </template>
-          </v-list-item>
-          <!--                <v-list-item-->
-          <!--                        href="http://eepurl.com/c7iHkr">-->
-          <!--                    <v-list-item-action>-->
-          <!--                        <v-icon>email</v-icon>-->
-          <!--                    </v-list-item-action>-->
-          <!--                    <v-list-item-title>-->
-          <!--                        Infolettre-->
-          <!--                    </v-list-item-title>-->
-          <!--                </v-list-item>-->
-          <v-list-item
-              href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
-              target="_blank"
-          >
-            <v-list-item-title class="text-left">Devenez membre</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>check</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item
-              to="/adhesion"
-          >
-            <v-list-item-title class="text-left">Vérifiez votre adhésion</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>check</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item
-              to="/tarification"
-          >
-            <v-list-item-title class="text-left">Tarification de la salle</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>attach_money</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item @click="Scroll.allerALaSection('about', '/');drawer=false;" class="text-left">
-            <v-list-item-title>
-              À propos
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="documentDialog = true">
-            <v-list-item-title class="text-left">Documents</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>articles</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item @click="presseDialog = true">
-            <v-list-item-title class="text-left">Dossier de presse</v-list-item-title>
-            <template v-slot:append>
-              <v-icon>newspaper</v-icon>
-            </template>
-          </v-list-item>
-          <v-list-item
-              v-for="(cercle, clef) in cercles"
-              :key="clef"
-              :to="cercle.lien"
-              class="text-left"
-          >
-
-            <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <router-view/>
-      <v-divider class="mt-8 mb-8"></v-divider>
-      <p
-          class="special-font text-h5"
-          style="font-family: 'Pacifico', cursive !important"
-      >
-        Merci à tous les bénévoles, clients et organismes partenaires
-      </p>
-      <v-divider class="mt-8 mb-8"></v-divider>
-      <v-row class="pl-4 pr-4">
-        <v-col cols="0" lg="2"></v-col>
-        <v-col cols="12" md="4" :class="{
+      </v-list>
+    </v-navigation-drawer>
+    <router-view/>
+    <v-divider class="mt-8 mb-8"></v-divider>
+    <p
+        class="special-font text-h5"
+        style="font-family: 'Pacifico', cursive !important"
+    >
+      Merci à tous les bénévoles, clients et organismes partenaires
+    </p>
+    <v-divider class="mt-8 mb-8"></v-divider>
+    <v-row class="pl-4 pr-4">
+      <v-col cols="0" lg="2"></v-col>
+      <v-col cols="12" md="4" :class="{
           'vh-center' : $vuetify.display.smAndDown
           }">
-          <v-card flat href="https://mrcbonaventure.com/" width="300" :class="{
+        <v-card flat href="https://mrcbonaventure.com/" width="300" :class="{
             'float-right': $vuetify.display.mdAndUp
           }">
-            <v-card style="background-color: #002c51;" class="pa-4" flat border>
-              <v-img :src="require('@/assets/logo_mrcbona.png')" alt="MRC de Bonaventure"></v-img>
-            </v-card>
+          <v-card style="background-color: #002c51;" class="pa-4" flat border>
+            <v-img :src="require('@/assets/logo_mrcbona.png')" alt="MRC de Bonaventure"></v-img>
           </v-card>
-        </v-col>
-        <v-col cols="12" md="4" class="align-self-center">
-          <p class="text-left text-h6 font-weight-regular">
-            Merci à la MRC de Bonaventure pour la subvention dans le cadre du plan de communauté en
-            développement
-            social.
-          </p>
-        </v-col>
-        <v-col cols="0" lg="2"></v-col>
-      </v-row>
-      <v-row class="pl-4 pr-4">
-        <v-col cols="0" lg="2"></v-col>
-        <v-col cols="12" md="4" :class="{
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="4" class="align-self-center">
+        <p class="text-left text-h6 font-weight-regular">
+          Merci à la MRC de Bonaventure pour la subvention dans le cadre du plan de communauté en
+          développement
+          social.
+        </p>
+      </v-col>
+      <v-col cols="0" lg="2"></v-col>
+    </v-row>
+    <v-row class="pl-4 pr-4">
+      <v-col cols="0" lg="2"></v-col>
+      <v-col cols="12" md="4" :class="{
           'vh-center' : $vuetify.display.smAndDown
           }">
-          <v-card flat href="https://www.urlsgim.com/" width="300" :class="{
+        <v-card flat href="https://www.urlsgim.com/" width="300" :class="{
             'float-right': $vuetify.display.mdAndUp
           }">
-            <v-card class="pa-4" flat border>
-              <v-img :src="require('@/assets/logo-loisir-et-sport-gim.png')"
-                     alt="Loisir et Sport Gaspésie-Îles-de-la-Madeleine"></v-img>
-            </v-card>
+          <v-card class="pa-4" flat border>
+            <v-img :src="require('@/assets/logo-loisir-et-sport-gim.png')"
+                   alt="Loisir et Sport Gaspésie-Îles-de-la-Madeleine"></v-img>
           </v-card>
-        </v-col>
-        <v-col cols="12" md="4" class="align-self-center">
-          <p class="text-left text-body-1 text-h6 font-weight-regular">
-            Merci à Loisir et Sport Gaspésie-Îles-de-la-Madeleine pour les dons d'équipements pour bouger au
-            Loco Local
-            !
-          </p>
-        </v-col>
-        <v-col cols="0" lg="2"></v-col>
-      </v-row>
-      <div class="mt-8 mb-8"></div>
-      <v-footer class="pa-4">
-        <v-spacer></v-spacer>
-        <v-btn
-            variant="text"
-            @click="documentDialog = true"
-            v-if="$vuetify.display.mdAndUp"
-        >
-          <v-icon start>
-            articles
-          </v-icon>
-          Documents
-        </v-btn>
-        <v-btn
-            variant="text"
-            @click="presseDialog = true"
-            v-if="$vuetify.display.mdAndUp"
-        >
-          <v-icon start>
-            newspaper
-          </v-icon>
-          Presse
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-btn
-            variant="text"
-            href="https://www.facebook.com/locolocal1"
-            class="mr-2 mb-1"
-        >
-          <img
-              src="https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png?w=30&h=30"
-          />
-        </v-btn>
-        <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
-          <img
-              height="32"
-              width="32"
-              :src="require('@/assets/GitHub-Mark-Light-32px.png')"
-              class="mt-1"
-          />
-        </a>
-      </v-footer>
-      <PhoneDialog ref="phoneDialog"></PhoneDialog>
-      <v-dialog v-model="presseDialog" width="900">
-        <v-card>
-          <v-card-title class="text-h6">
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="4" class="align-self-center">
+        <p class="text-left text-body-1 text-h6 font-weight-regular">
+          Merci à Loisir et Sport Gaspésie-Îles-de-la-Madeleine pour les dons d'équipements pour bouger au
+          Loco Local
+          !
+        </p>
+      </v-col>
+      <v-col cols="0" lg="2"></v-col>
+    </v-row>
+    <div class="mt-8 mb-8"></div>
+    <v-footer class="pa-4">
+      <v-spacer></v-spacer>
+      <v-btn
+          variant="text"
+          @click="documentDialog = true"
+          v-if="$vuetify.display.mdAndUp"
+      >
+        <v-icon start>
+          articles
+        </v-icon>
+        Documents
+      </v-btn>
+      <v-btn
+          variant="text"
+          @click="presseDialog = true"
+          v-if="$vuetify.display.mdAndUp"
+      >
+        <v-icon start>
+          newspaper
+        </v-icon>
+        Presse
+      </v-btn>
+      <v-spacer></v-spacer>
+      <a
+          href="https://www.facebook.com/locolocal1"
+          class="mr-4"
+      >
+        <v-img :src="require('@/assets/f_logo_RGB-Blue_58.png')"
+               min-height="45"
+               min-width="45"
+        ></v-img>
+      </a>
+      <a href="https://github.com/VincentBlouin/horizons-gaspesiens">
+        <v-img
+            :src="require('@/assets/GitHub-Mark-32px.png')"
+            min-height="45"
+            min-width="45"
+        ></v-img>
+      </a>
+    </v-footer>
+    <PhoneDialog ref="phoneDialog"></PhoneDialog>
+    <v-dialog v-model="presseDialog" width="900">
+      <v-card>
+        <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
+          <div>
             Dossier de presse
-            <v-spacer></v-spacer>
+          </div>
+          <div>
             <v-icon @click="presseDialog = false">close</v-icon>
-          </v-card-title>
-          <v-card-text class="text-body-1">
-            <v-list>
-              <v-list-item
-                  v-for="presse in dossiersDePresse"
-                  :key="presse.lien"
-                  :href="presse.lien"
-                  class="text-left"
-              >
-                <v-list-item-title class="text-body-1">
+          </div>
+        </v-card-title>
+        <v-divider></v-divider>
+        <v-card-text class="text-body-1">
+          <v-list>
+            <v-list-item
+                v-for="presse in dossiersDePresse"
+                :key="presse.lien"
+                :href="presse.lien"
+                class="text-left"
+            >
+              <v-list-item-title class="text-body-1">
                   <span class="grey-text">
                     {{ presse.date }}
                   </span>
-                  {{ presse.text }}
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="documentDialog" width="900">
-        <v-card>
-          <v-card-title class="text-h6">
+                {{ presse.text }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+    <v-dialog v-model="documentDialog" width="900">
+      <v-card>
+        <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
+          <div>
             Documents
-            <v-spacer></v-spacer>
+          </div>
+          <div>
             <v-icon @click="documentDialog = false">close</v-icon>
-          </v-card-title>
-          <v-card-text class="text-body-1">
-            <v-list>
-              <v-list-item
-                  v-for="document in documents"
-                  :key="document.nom"
-                  :href="document.lien"
-                  target="_blank"
-                  class="text-left"
-              >
-                <v-list-item-action>
-                  <v-icon>articles</v-icon>
-                </v-list-item-action>
-                <v-list-item-title>
-                  {{ document.nom }}
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-    </v-app>
+          </div>
+        </v-card-title>
+        <v-divider></v-divider>
+        <v-card-text class="text-body-1">
+          <v-list>
+            <v-list-item
+                v-for="document in documents"
+                :key="document.nom"
+                :href="document.lien"
+                target="_blank"
+                class="text-left"
+            >
+              <template v-slot:prepend>
+                <v-icon>articles</v-icon>
+              </template>
+              <v-list-item-title>
+                {{ document.nom }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-app>
 </template>
 
 <script>

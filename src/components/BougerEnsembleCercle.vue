@@ -1,14 +1,14 @@
 <template>
-  <Cercle
+  <CercleWrap
       title="Bouger Ensemble !"
       anchor="bouger-ensemble"
       :image="bougerEnsembleImage"
       id="bouger-ensemble"
   >
-    <div slot="subtitle">
+    <template v-slot:subtitle>
       Pour bouger et socialiser de façon agréable et sécuritaire
-    </div>
-    <div slot="content">
+    </template>
+    <template v-slot:content>
       <v-tabs slider-color="#ff3301">
         <!--        <v-tab-->
         <!--            class="body-1"-->
@@ -170,11 +170,11 @@
                 <v-list-item-action>
                   <v-icon>assignment</v-icon>
                 </v-list-item-action>
-                
+
                   <v-list-item-title>
                     Inscription au cours d'essai
                   </v-list-item-title>
-                
+
               </v-list-item>
             </v-list>
             <v-card-text class="text-body-1">
@@ -252,18 +252,18 @@
                     </p>
                     <v-list>
                       <v-list-item href="https://forms.gle/JGo882zUZNBWibMp6" target="_blank">
-                        
+
                           <v-list-item-title>
                             Inscription 5 à 7 ans
                           </v-list-item-title>
-                        
+
                       </v-list-item>
                       <v-list-item href="https://forms.gle/Kia5wKcfoqhkpEPS7" target="_blank">
-                        
+
                           <v-list-item-title>
                             Inscription 8 à 15 ans
                           </v-list-item-title>
-                        
+
                       </v-list-item>
                     </v-list>
                     <p>
@@ -539,16 +539,18 @@
           </v-card>
         </v-col>
       </v-row>
-    </div>
-  </Cercle>
+    </template>
+  </CercleWrap>
 </template>
 
 <script>
 
+import CercleWrap from "@/components/CercleWrap.vue";
+
 export default {
   name: "BougerEnsembleCercle",
   components: {
-    Cercle: () => import("@/components/CercleWrap.vue")
+    CercleWrap
   },
   data: function () {
     return {

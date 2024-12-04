@@ -16,7 +16,7 @@
     "date-fns": "^4.1.0",
     "material-icons": "^1.13.12",
     "vue": "^3.5.13",
-    "vue-clipboard2": "^0.3.3",
+    "v-clipboard": "^3.0.0-next.1",
     "vue-router": "^4.4.5",
     "vue-scrollto": "^2.20.0",
     "vuetify": "^3.7.4",

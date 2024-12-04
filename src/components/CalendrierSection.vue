@@ -79,6 +79,7 @@
               <v-overlay
                   :model-value="isLoading"
                   class="align-center justify-center"
+                  contained
               >
                 <v-progress-circular indeterminate :size="80" :width="2" color="primary"></v-progress-circular>
               </v-overlay>

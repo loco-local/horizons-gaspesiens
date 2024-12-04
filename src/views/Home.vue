@@ -28,7 +28,7 @@
       'pl-5 pr-2': $vuetify.display.smAndDown,
     }">
       <v-col cols="0" sm="2" md="3" lg="4"></v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-body-1">
+      <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-h6 font-weight-regular">
         <p class="text" style="font-weight: 300;">
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
           chapeaute différentes initiatives
@@ -53,7 +53,7 @@
           L'initiative principale est le Loco Local, un espace communautaire
           autogéré à
           <a href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
-            target="_blank" style="white-space: nowrap">
+             target="_blank" style="white-space: nowrap">
             <v-icon class="">location_on</v-icon>
             Bonaventure.
           </a>
@@ -65,7 +65,7 @@
     <v-row class="mb-12" id="benevole">
       <v-col cols="12" class="text-center">
         <h1 class="text-h3 font-weight-thin text">Membres</h1>
-        <h4 class="text-smaller font-weight-thin">comités actifs</h4>
+        <h4 class="text-h5 font-weight-thin">En vedette</h4>
       </v-col>
     </v-row>
     <v-row class="text-body-2">
@@ -79,7 +79,7 @@
             'mr-10 ml-4': $vuetify.display.smAndDown,
           }">
             <v-avatar :size="avatarSize">
-              <img :src="require('../assets/' + membre.avatar)" :alt="membre.nom" />
+              <img :src="require('../assets/' + membre.avatar)" :alt="membre.nom"/>
             </v-avatar>
           </v-col>
           <v-col cols="8" class="text-left" :class="{
@@ -160,12 +160,12 @@
     <PagePourpreCercle></PagePourpreCercle>
     <v-divider class="mt-6 mb-12"></v-divider>
     <CafeReparationCercle></CafeReparationCercle>
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <PartageHeureCercle></PartageHeureCercle>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <PartageHeureCercle></PartageHeureCercle>-->
     <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
     <!--    <BougerEnsembleCercle></BougerEnsembleCercle>-->
-<!--    <v-divider class="mt-6 mb-12"></v-divider>-->
-<!--    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>-->
+    <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
+    <!--    <BibliothequeOutilsCercle></BibliothequeOutilsCercle>-->
     <!--    <v-divider class="mt-6 mb-12"></v-divider>-->
     <!--    <Cercle-->
     <!--        title="Imaginez demain"-->
@@ -300,9 +300,9 @@
     <div style="width: 100%" class="vh-center">
       <v-list>
         <v-list-item @click="comitesArchives = true">
-          <v-list-item-action>
+          <template v-slot:prepend>
             <v-icon>list</v-icon>
-          </v-list-item-action>
+          </template>
           <v-list-item-title class="text-h6">
             Comités archivés
           </v-list-item-title>
@@ -354,7 +354,9 @@
           <div class="text-h5 text-medium-emphasis ps-2">
             Valeurs
           </div>
-          <v-icon icon="close" @click="valeursModal = false" variant="text"></v-icon>
+          <div>
+            <v-icon icon="close" @click="valeursModal = false" variant="text"></v-icon>
+          </div>
         </v-card-title>
         <v-divider class="mb-4"></v-divider>
         <v-list class="text-left">
@@ -368,10 +370,13 @@
     </v-dialog>
     <v-dialog v-model="comitesArchives" width="600">
       <v-card>
-        <v-card-title class="text-h6">
-          Comités plus ou moins actifs
-          <v-spacer></v-spacer>
-          <v-icon @click="comitesArchives = false">close</v-icon>
+        <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
+          <div>
+            Comités plus ou moins actifs
+          </div>
+          <div>
+            <v-icon @click="comitesArchives = false">close</v-icon>
+          </div>
         </v-card-title>
         <v-card-text class="text-body-1">
           <v-list>
@@ -536,10 +541,10 @@ export default {
         let aDesactive = this.cercle(aClef).desactive;
         let bDesactive = this.cercle(bClef).desactive;
         return aDesactive === bDesactive
-          ? aClef.localeCompare(bClef)
-          : aDesactive
-            ? 1
-            : -1;
+            ? aClef.localeCompare(bClef)
+            : aDesactive
+                ? 1
+                : -1;
       })
     },
     nomDeCercle: function (clefDeCercle) {
@@ -560,9 +565,9 @@ export default {
       for (let i = 0; i < revenus.length; i++) {
         let balanceAbsolue = revenus[i] - depenses[i];
         let balanceSansLemieux =
-          balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
+            balanceAbsolue - lemieuxRevenus[i] + lemieuxDepenses[i];
         let balanceAvecProfitsLemieux =
-          balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux;
+            balanceSansLemieux + lemieuxRevenus[i] * profitRatioOnLemieux;
         this.balanceTotale += balanceAvecProfitsLemieux;
         balance[i] = Math.floor(balanceAvecProfitsLemieux);
       }
@@ -650,14 +655,14 @@ export default {
       {
         nom: "Lancelot Tremblay",
         cv:
-          "Capitaine passionné du St-Laurent, Violoniste et donneur de seconde vie",
+            "Capitaine passionné du St-Laurent, Violoniste et donneur de seconde vie",
         avatar: "lancelot-petit-carré.jpg",
         cercles: ["reparation"],
       },
       {
         nom: "Francine Larocque",
         cv:
-          "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
+            "Enseignante alternative retraitée, jardinière, démocratie participative, chant",
         avatar: "francine-petit-carre.png",
         cercles: ["groupe"],
       },
@@ -688,7 +693,7 @@ export default {
       {
         nom: "Ann Guilbault",
         cv:
-          "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
+            "Citoyenne terrestre naturalisée, Va-nu-pieds estivale, Descendante de la rivière",
         avatar: "AnnGuilbault-petit-carre.jpg",
         cercles: ["ca", "adhesion", "groupe"],
       },
