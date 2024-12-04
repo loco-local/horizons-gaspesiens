@@ -13,8 +13,8 @@
           </v-card-title>
           <v-card-subtitle class="font-weight-regular text-white text-h6 text-md-h5 text-center" style="line-height: 2">
             Pour partager <br v-if="$vuetify.display.smAndDown"> des ressources et des projets
-            <br v-if="$vuetify.display.smAndDown">
-            qui enrichissent le lien social <br>et environnemental.
+            <br>
+            qui enrichissent le lien social <br v-if="$vuetify.display.smAndDown">et environnemental.
 <!--            comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br-->
 <!--              v-if="$vuetify.display.smAndDown">et environnementaux.-->
           </v-card-subtitle>
@@ -31,7 +31,7 @@
       'pl-5 pr-2': $vuetify.display.smAndDown,
     }">
       <v-col cols="0" sm="2" md="3" lg="4"></v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-h6 font-weight-regular">
+      <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-h6 text-lg-h5 font-weight-regular">
         <p class="text" style="font-weight: 300;">
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
           chapeaute différentes initiatives
@@ -89,10 +89,10 @@
             'mt-3': $vuetify.display.mdAndUp,
             'mt-0': $vuetify.display.smAndDown,
           }">
-            <h3 class="heading font-weight-medium text">
+            <h3 class="text-h6 font-weight-medium text">
               {{ membre.nom }}
             </h3>
-            <p class="grey-text mb-0 text">
+            <p class="grey-text mb-0 text-h6 font-weight-regular">
               {{ membre.cv }}
             </p>
             <!--<v-icon small color="black">panorama_fish_eye</v-icon>-->

@@ -87,7 +87,7 @@
             :size="$vuetify.display.lgAndDown ? 'small' : undefined"
             v-if="$vuetify.display.lgAndUp"
             target="_blank"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0"
+            href="https://horizonsgaspesiens.net/devenez-membre"
         >
           <v-icon start>check</v-icon>
           Devenez membre
