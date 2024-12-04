@@ -3,17 +3,20 @@
     <v-row align-center column justify-center id="header-banner" class="vh-center text-center">
       <v-col cols="12">
         <v-card color="transparent" flat>
-          <v-card-title class="vh-center text-white mb-4 font-weight-thin text-h4 text-xl-h2">
+          <v-card-title class="vh-center text-white mb-4 text-h4 text-xl-h2 font-weight-thin"
+          >
             Géré de façon
+            <br v-if="$vuetify.display.smAndDown">
             horizontale
             <br>
             par ses membres
           </v-card-title>
           <v-card-subtitle class="font-weight-regular text-white text-h6 text-md-h5 text-center" style="line-height: 2">
             Pour partager <br v-if="$vuetify.display.smAndDown"> des ressources et des projets
-            <br>
-            Comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br
-              v-if="$vuetify.display.smAndDown">et environnementaux
+            <br v-if="$vuetify.display.smAndDown">
+            qui enrichissent le lien social <br>et environnemental.
+<!--            comme solutions <br v-if="$vuetify.display.smAndDown"> aux défis sociaux <br-->
+<!--              v-if="$vuetify.display.smAndDown">et environnementaux.-->
           </v-card-subtitle>
         </v-card>
       </v-col>
