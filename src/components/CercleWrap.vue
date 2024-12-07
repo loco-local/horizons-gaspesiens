@@ -21,12 +21,9 @@
             </v-carousel>
             <v-img
                 :src="require('../assets/' + image)"
-                :class="{
-                                    'ml-5': $vuetify.display.mdAndUp
-                                }"
                 v-if="image && !isCarousel"
-                cover
-                top
+                :aspect-ratio="1"
+                position="top"
             ></v-img>
             <slot name="image"></slot>
           </v-col>
