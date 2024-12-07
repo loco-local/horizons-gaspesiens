@@ -12,8 +12,8 @@
       <v-divider class="mt-6 mb-6"></v-divider>
       <v-col cols="12" class="h-center">
         <v-card flat>
-          <v-card-title class="text-h6 h-center">
-            Liste complète et détaillé des membres
+          <v-card-title class="text-body-1 text-md-h6 h-center font-weight-bold">
+            Liste complète <br v-if="$vuetify.display.smAndDown"> et détaillé des membres
           </v-card-title>
           <v-card-subtitle class="text-subtitle-1">
             L'accès à ces données est limité.
@@ -35,7 +35,6 @@
               <v-list-item-title class="text-body-1">
                 Excel associé au formulaire
               </v-list-item-title>
-
             </v-list-item>
           </v-list>
         </v-card>
