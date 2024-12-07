@@ -104,7 +104,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <PhoneDialog ref="phoneDialog"></PhoneDialog>
+    <ContactDialog ref="contactDialog"></ContactDialog>
     <ReservationDialog ref="reservationDialog"
                        @eventUpdated="updateEvent"
                        @eventAdded="addNewEvent"
@@ -185,7 +185,7 @@
 </template>
 
 <script setup>
-import PhoneDialog from '@/components/PhoneDialog'
+import ContactDialog from '@/components/ContactDialog'
 import EventService from "@/service/EventService";
 import {addDays, format, roundToNearestHours,} from "date-fns";
 import Event from "@/Event"

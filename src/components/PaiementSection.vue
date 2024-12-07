@@ -69,7 +69,7 @@
               </v-row>
               <v-row>
                 <v-col cols="0" md="2" class="pa-0"></v-col>
-                <v-col cols="12" md="8" class="text-md-left text-center text-body-1 font-italic">
+                <v-col cols="12" md="8" class="text-left text-body-1 font-italic">
                   Au nom de la Coopérative de Solidarité Horizons Gaspésiens.
                 </v-col>
               </v-row>
@@ -347,7 +347,7 @@
                     Ouvrez un compte prépayé pour savons, chocolat et autres
                   </li>
                 </ul>
-                <v-card class="mt-4" width="500" elevation="6">
+                <v-card class="mt-4" max-width="500" elevation="6">
                   <v-card-text class="text-h6 font-weight-regular">
                     <v-icon color="primary" start>favorite</v-icon>
                     Un grand merci à toutes celles et ceux qui ont donné en

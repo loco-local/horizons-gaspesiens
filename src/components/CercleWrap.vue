@@ -4,7 +4,7 @@
             'pr-6': $vuetify.display.mdAndUp
          }"
   >
-    <v-col cols="12">
+    <v-col cols="12" class="pa-0">
       <v-card flat :class="{
                 'mt-5 mb-12': $vuetify.display.mdAndUp,
                 'pl-4 mt-5 mb-4': $route.name === 'home' && $vuetify.display.smAndDown

@@ -63,22 +63,7 @@
           >
             calendar_month
           </v-icon>
-          Calendrier
-        </v-btn>
-        <v-btn
-            :size="$vuetify.display.lgAndDown ? 'small' : undefined"
-            variant="text"
-            to="/reservation"
-        >
-          <v-icon
-              :class="{
-                  'mr-3': $vuetify.display.lgAndUp,
-                  'mr-0': $vuetify.display.mdAndDown,
-                }"
-          >
-            event
-          </v-icon>
-          Réservation
+          Calendrier / Réservation
         </v-btn>
         <v-btn
             color="#ff3301"
@@ -110,17 +95,16 @@
         <v-btn
             :size="$vuetify.display.lgAndDown ? 'small' : undefined"
             variant="text"
-            @click="$refs.phoneDialog.show()"
+            @click="$refs.contactDialog.show()"
         >
-          <v-icon
-              :class="{
-                  'mr-3': $vuetify.display.xlAndUp,
-                  'mr-0': $vuetify.display.lgAndDown,
-                }"
-          >phone
+          <v-icon start>
+            phone
           </v-icon>
-          <span v-if="$vuetify.display.xlAndUp">Téléphone</span>
-          <span v-if="$vuetify.display.lgAndDown">Tel</span>
+          Contact
+          <v-icon
+              end
+          >mail
+          </v-icon>
         </v-btn>
         <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
         <!--                    <v-icon :class="{-->
@@ -203,14 +187,21 @@
         >
           <v-list-item :href="'tel:' + phone.telephone">
             <v-list-item-title>
-              {{ phone.nom }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
               {{ phone.telephone }}
-            </v-list-item-subtitle>
-
+            </v-list-item-title>
             <template v-slot:append>
               <v-icon>phone</v-icon>
+            </template>
+          </v-list-item>
+          <v-divider class="mb-2 mt-2"></v-divider>
+        </div>
+        <div>
+          <v-list-item href="mailto:admin@loco-local.net">
+            <v-list-item-title>
+              admin@loco-local.net
+            </v-list-item-title>
+            <template v-slot:append>
+              <v-icon>mail</v-icon>
             </template>
           </v-list-item>
           <v-divider class="mb-2 mt-2"></v-divider>
@@ -219,7 +210,7 @@
             href="https://www.google.com/maps/place/193a+Avenue+Grand-Pr%C3%A9,+Bonaventure,+QC+G0C+1E0/@48.0504148,-65.4841869,17z/data=!3m1!4b1!4m5!3m4!1s0x4c9903b413501697:0x54f0eb5dfa1d4425!8m2!3d48.0504112!4d-65.4819983"
         >
           <v-list-item-title class="text-left">
-            193a Avenue Grand-Pré, Bonaventure, QC
+            Adresse
           </v-list-item-title>
           <template v-slot:append>
             <v-icon>location_on</v-icon>
@@ -288,6 +279,16 @@
             À propos
           </v-list-item-title>
         </v-list-item>
+        <v-list-item
+            v-for="(cercle, clef) in cercles"
+            :key="clef"
+            :to="cercle.lien"
+            class="text-left"
+        >
+
+          <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
+
+        </v-list-item>
         <v-list-item @click="documentDialog = true">
           <v-list-item-title class="text-left">Documents</v-list-item-title>
           <template v-slot:append>
@@ -299,16 +300,6 @@
           <template v-slot:append>
             <v-icon>newspaper</v-icon>
           </template>
-        </v-list-item>
-        <v-list-item
-            v-for="(cercle, clef) in cercles"
-            :key="clef"
-            :to="cercle.lien"
-            class="text-left"
-        >
-
-          <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -407,7 +398,7 @@
         ></v-img>
       </a>
     </v-footer>
-    <PhoneDialog ref="phoneDialog"></PhoneDialog>
+    <ContactDialog ref="contactDialog"></ContactDialog>
     <v-dialog v-model="presseDialog" width="900">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
@@ -473,7 +464,7 @@
 </template>
 
 <script>
-import PhoneDialog from "@/components/PhoneDialog";
+import ContactDialog from "@/components/ContactDialog";
 import PhoneNumbers from "@/PhoneNumbers";
 import Scroll from "@/Scroll";
 import Cercles from "@/Cercles";
@@ -481,7 +472,7 @@ import Cercles from "@/Cercles";
 export default {
   name: "App",
   components: {
-    PhoneDialog,
+    ContactDialog,
   },
   computed: {
     toolbarLogoHeight: function () {

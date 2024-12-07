@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-dialog v-model="phoneModal" v-if="phoneModal" width="600">
+    <v-dialog v-model="contactModal" v-if="contactModal" width="600">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
           <div>
-            Téléphone
+            Contact
           </div>
           <div>
-            <v-icon @click="phoneModal = false">close</v-icon>
+            <v-icon @click="contactModal = false">close</v-icon>
           </div>
         </v-card-title>
         <!--                <v-card-subtitle class="grey-text subtitle-1 grey-text pt-0 mt-0 text-left">-->
@@ -24,6 +24,14 @@
                 581-630-0058
               </v-list-item-title>
             </v-list-item>
+            <v-list-item href="mailto:admin@loco-local.net">
+              <template v-slot:prepend>
+                <v-icon>mail</v-icon>
+              </template>
+              <v-list-item-title>
+                admin@loco-local.net
+              </v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-card-text>
       </v-card>
@@ -33,15 +41,15 @@
 
 <script>
 export default {
-  name: "PhoneDialog",
+  name: "ContactDialog",
   data() {
     return {
-      phoneModal: false
+      contactModal: false
     }
   },
   methods: {
     show() {
-      this.phoneModal = true;
+      this.contactModal = true;
     }
   }
 }

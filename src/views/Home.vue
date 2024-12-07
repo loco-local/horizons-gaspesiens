@@ -319,7 +319,7 @@
     }"></Calendrier>
     <v-divider class="mt-6 mb-12"></v-divider>
     <PaiementSection class="mb-1 mt-12"></PaiementSection>
-    <PhoneDialog ref="phoneDialog"></PhoneDialog>
+    <ContactDialog ref="contactDialog"></ContactDialog>
     <v-dialog v-model="visionModal" width="300">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center">
@@ -416,7 +416,7 @@
 // import {GoogleCharts} from "google-charts";
 import Calendrier from "@/components/CalendrierSection.vue";
 
-import PhoneDialog from "@/components/PhoneDialog";
+import ContactDialog from "@/components/ContactDialog";
 import Cercles from "@/Cercles";
 
 import Scroll from "@/Scroll";
@@ -509,7 +509,7 @@ export default {
     PagePourpreCercle,
     // BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
     PaiementSection,
-    PhoneDialog,
+    ContactDialog,
     Calendrier,
   },
   computed: {
