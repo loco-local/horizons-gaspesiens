@@ -12,7 +12,7 @@
           ></v-progress-circular>
           <div v-else>
             <v-card-text>
-              <div v-if="status.status === 'active'" class="text-body-1 text-h6 font-weight-regular">
+              <div v-if="status.status === 'active'" class="text-h6 font-weight-regular">
                 <v-icon color="success" size="x-large" start>done</v-icon>
                 Actif
               </div>
