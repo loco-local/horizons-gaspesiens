@@ -7,7 +7,7 @@
         </h1>
       </v-col>
       <v-col cols="12" class="h-center">
-        <VerificationAdhesion @emailChanged="changeRouteForEmail"></VerificationAdhesion>
+        <VerificationAdhesion @emailChanged="changeRouteForEmail" :isCenter="true"></VerificationAdhesion>
       </v-col>
       <v-divider class="mt-6 mb-6"></v-divider>
       <v-col cols="12" class="h-center">

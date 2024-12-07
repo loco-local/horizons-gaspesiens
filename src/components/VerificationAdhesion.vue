@@ -1,7 +1,9 @@
 <template>
   <v-row>
-    <v-col cols="12" class="h-center">
-      <v-card :width="width"  flat>
+    <v-col cols="12" :class="{
+      'h-center' : isCenter
+    }">
+      <v-card :width="width" flat>
         <v-card-text class="text-body-1 text-center h-center" v-if="status !== null">
           <v-card class="text-center" max-width="400">
             <v-progress-circular
@@ -145,7 +147,7 @@ import {fr} from "date-fns/locale";
 const ENTER_KEY_CODE = 13;
 export default {
   name: "VerificationAdhesion",
-  props: ['emailInput'],
+  props: ['emailInput', 'isCenter'],
   data: function () {
     return {
       email: null,
