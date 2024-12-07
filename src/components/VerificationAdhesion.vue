@@ -13,7 +13,7 @@
           <div v-else>
             <v-card-text>
               <div v-if="status.status === 'active'" class="text-h6 font-weight-regular">
-                <v-icon color="success" size="x-large" start>done</v-icon>
+                <v-icon color="success" size="x-large" start>check</v-icon>
                 Actif
               </div>
               <div v-if="status.status === 'inactive'" class="text-h6 font-weight-regular">
