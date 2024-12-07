@@ -99,31 +99,11 @@
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="12" v-if="isWeekly" class="pt-0">
-                  <v-menu
-                      ref="weeklyUntilMenu"
-                      v-model="weeklyUntilMenu"
-                      :close-on-content-click="false"
-                      transition="scale-transition"
-                      min-width="auto"
-                  >
-                    <template v-slot:activator="{props}">
-                      <v-text-field
-                          v-model="weeklyUntilDate"
-                          label="Jusqu'au"
-                          prepend-icon="calendar"
-                          readonly
-                          v-bind="props"
-                          class="pt-0"
-                          :rules="[rules.required]"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                        v-model="weeklyUntilDate"
-                        no-title
-                        scrollable
-                        @input="weeklyUntilMenu = false"
-                    ></v-date-picker>
-                  </v-menu>
+                  <v-date-picker
+                      v-model="weeklyUntilDate"
+                      title="Jusqu'au"
+                      scrollable
+                  ></v-date-picker>
                 </v-col>
               </v-row>
             </v-card>
@@ -178,7 +158,8 @@
                   </v-col>
                   <v-col cols="12" class="pa-0">
                     <VerificationAdhesion
-                        :email-input="editedEvent.organizer.email"></VerificationAdhesion>
+                        :email-input="editedEvent.organizer.email"
+                    ></VerificationAdhesion>
                   </v-col>
                 </v-row>
               </v-col>
@@ -403,6 +384,7 @@ import EventService from "@/service/EventService";
 import Rules from "@/Rules";
 import Tarification from "@/components/TarificationSection.vue";
 import {VTimePicker} from 'vuetify/labs/VTimePicker'
+import {format} from "date-fns";
 
 export default {
   name: "ReservationDialog",
@@ -464,7 +446,7 @@ export default {
         this.$emit('eventUpdated', modifiedEvent)
       } else {
         if (this.isWeekly) {
-          const untilDateFormatted = this.weeklyUntilDate.replaceAll("-", "");
+          const untilDateFormatted = format(this.weeklyUntilDate, "yyyyMMdd")
           this.editedEvent.recurrence = [
             "RRULE:FREQ=WEEKLY;UNTIL=" + untilDateFormatted
           ];

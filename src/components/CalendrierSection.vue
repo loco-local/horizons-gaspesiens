@@ -337,7 +337,7 @@ const calendarApp = createCalendar({
       lightColors: {
         main: '#23e343',
         container: '#E8F5E9',
-        onContainer: '#ffffff',
+        onContainer: '#000000',
       }
     }
   }
