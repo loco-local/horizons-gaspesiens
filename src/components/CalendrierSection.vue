@@ -48,7 +48,7 @@
             <!--              </v-btn>-->
             <!--            </v-toolbar>-->
           </v-sheet>
-          <v-row class="" v-if="!showGoogleCalendar">
+          <v-row class="">
             <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
               Légende
             </v-col>
@@ -83,23 +83,7 @@
               >
                 <v-progress-circular indeterminate :size="80" :width="2" color="primary"></v-progress-circular>
               </v-overlay>
-              <ScheduleXCalendar :calendar-app="calendarApp" v-if="!showGoogleCalendar"/>
-              <iframe frameborder="0" :height="calendarHeight" scrolling="no"
-                      src="https://www.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=kg43q7s4qltiom7s1gntdhts3k%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FMontreal"
-                      style=" border-width:0 " width="100%"
-                      v-if="showGoogleCalendar"
-                      :key="googleCalendarUiKey"
-              ></iframe>
-              <v-row class="mt-4">
-                <v-col cols="12" class="text-right">
-                  <v-btn variant="text" @click="showGoogleCalendar = true" v-if="!showGoogleCalendar">
-                    Voir Calendrier Google
-                  </v-btn>
-                  <v-btn variant="text" @click="showGoogleCalendar = false" v-if="showGoogleCalendar">
-                    Revenir au calendrier par défaut
-                  </v-btn>
-                </v-col>
-              </v-row>
+              <ScheduleXCalendar :calendar-app="calendarApp"/>
             </v-card>
           </v-sheet>
         </v-card>
@@ -107,7 +91,7 @@
           <v-card-title class="text-h6 text">
             Utiliser la salle sans réserver.
           </v-card-title>
-          <v-card-text class="text-left text">
+          <v-card-text class="text-left text-h6 font-weight-regular">
             Lorsque vous êtes membre,
             <router-link to="/adhesion">vérifiez votre adhésion</router-link>
             , vous pouvez utiliser la salle, quand elle n'est pas réservée,
@@ -227,8 +211,6 @@ const display = useDisplay();
 const calendarHeight = ref(0)
 const tarificationDialog = ref(false)
 const isLoading = ref(false)
-const showGoogleCalendar = ref(false)
-const googleCalendarUiKey = ref(Math.random())
 
 const eventInfoDialog = ref(false)
 const selectedEvent = ref(null)
@@ -398,14 +380,12 @@ function addEvent() {
 
 function enterReservationDialog() {
   reservationDialog.value.enter(editedEvent.value)
-  googleCalendarUiKey.value = Math.random();
 }
 
 function addNewEvent(newEvent) {
   eventsServicePlugin.add(
       Event.formatEventToScheduleX(newEvent)
   )
-  googleCalendarUiKey.value = Math.random();
 }
 
 function editEvent(event) {
@@ -424,14 +404,12 @@ function updateEvent(modifiedEvent) {
   eventsServicePlugin.update(
       Event.formatEventToScheduleX(modifiedEvent)
   )
-  googleCalendarUiKey.value = Math.random();
 }
 
 function removeEvent(removedEvent) {
   eventsServicePlugin.remove(
       removedEvent.id
   )
-  googleCalendarUiKey.value = Math.random();
 }
 </script>
 <style>
