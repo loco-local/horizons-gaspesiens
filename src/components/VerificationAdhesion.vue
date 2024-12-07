@@ -12,11 +12,11 @@
           ></v-progress-circular>
           <div v-else>
             <v-card-text>
-              <div v-if="status.status === 'active'" class="text">
+              <div v-if="status.status === 'active'" class="text-body-1 text-h6 font-weight-regular">
                 <v-icon color="success" size="x-large" start>done</v-icon>
                 Actif
               </div>
-              <div v-if="status.status === 'inactive'" class="text">
+              <div v-if="status.status === 'inactive'" class="text-h6 font-weight-regular">
                 <v-icon color="error" size="x-large" start>highlight_off</v-icon>
                 Inactif
               </div>
@@ -56,7 +56,7 @@
               </p>
               <p class="text-body-1">
                 Pour être membre vous devez remplir et suivre les instructions du
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">formulaire
+                <a href="https://horizonsgaspesiens.net/devenez-membre">formulaire
                   d'adhésion</a>
                 de Horizons Gaspésiens
               </p>
@@ -82,7 +82,7 @@
               <p>
                 Pour renouveler votre adhésion,
                 remplissez le
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">
+                <a href="https://horizonsgaspesiens.net/devenez-membre">
                   formulaire d'adhésion.
                 </a>
               </p>
@@ -102,7 +102,7 @@
               <p class="text-body-1">
                 Pour ce faire,
                 remplissez le
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0Z1IH1lYZ8sL-4umROhOXSJ83NIAzIbIAWAlMvGaE7mM7eg/viewform?vc=0&c=0&w=1&flr=0">
+                <a href="https://horizonsgaspesiens.net/devenez-membre">
                   formulaire d'adhésion.
                 </a>
               </p>
@@ -195,5 +195,8 @@ export default {
 </script>
 
 <style scoped>
-
+p{
+  margin-bottom:12px;
+  line-height: 1.5;
+}
 </style>
