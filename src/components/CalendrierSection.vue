@@ -131,11 +131,11 @@
                  prominent
         >
           <strong>
-          {{ $filters.dayDate(selectedEvent.start) }}
-          de
-          {{ $filters.time(selectedEvent.start) }}
-          à
-          {{ $filters.time(selectedEvent.end) }}.
+            {{ $filters.dayDate(selectedEvent.start) }}
+            de
+            {{ $filters.time(selectedEvent.start) }}
+            à
+            {{ $filters.time(selectedEvent.end) }}.
           </strong>
           <div class="mt-3">
             L'heure d'accueil et de départ des participants à un événement,
@@ -246,7 +246,7 @@ const calendarApp = createCalendar({
       eventInfoDialog.value = true;
     },
     onClickDate(date) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
@@ -258,7 +258,7 @@ const calendarApp = createCalendar({
      * Is called when clicking somewhere in the time grid of a week or day view
      * */
     onClickDateTime(dateTime) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
@@ -270,7 +270,7 @@ const calendarApp = createCalendar({
      * Is called when selecting a day in the month agenda
      * */
     onClickAgendaDate(date) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
@@ -279,7 +279,7 @@ const calendarApp = createCalendar({
       enterReservationDialog()
     },
     onDoubleClickAgendaDate(date) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
@@ -292,7 +292,7 @@ const calendarApp = createCalendar({
      * Is called when double clicking a date in the month grid
      * */
     onDoubleClickDate(date) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
@@ -305,7 +305,7 @@ const calendarApp = createCalendar({
      * Is called when double clicking somewhere in the time grid of a week or day view
      * */
     onDoubleClickDateTime(dateTime) {
-      if(display.smAndDown){
+      if (display.smAndDown.value) {
         return;
       }
       editedEvent.value = Event.initNewEvent(
