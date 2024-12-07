@@ -35,7 +35,7 @@ export default createVuetify({
                     accent: '#389a24',
                     error: '#FF5252',
                     info: '#2196F3',
-                    success: '#FFFFFF',
+                    success: '#43A047',
                     warning: '#FFC107'
                 }
             }
