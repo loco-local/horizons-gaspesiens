@@ -11,17 +11,17 @@
             }">
         <v-row :reverse="imageAtRight" fill-height>
           <v-col cols="12" md="5" class="pa-0">
-            <v-carousel v-if="image && isCarousel" width="100%">
+            <v-carousel v-if="imageFormatted !== null && hasManyImages" width="100%">
               <v-carousel-item
-                  v-for="(item,i) in image"
+                  v-for="(item,i) in imageFormatted"
                   :key="i"
-                  :src="require('../assets/' + item)"
+                  :src="item.startsWith('http') ? item: require('../assets/' + item)"
                   cover
               ></v-carousel-item>
             </v-carousel>
             <v-img
-                :src="require('../assets/' + image)"
-                v-if="image && !isCarousel"
+                :src="imageFormatted.startsWith('http') ? imageFormatted: require('../assets/' + imageFormatted)"
+                v-if="imageFormatted !== null && !hasManyImages"
                 :aspect-ratio="1"
                 position="top"
             ></v-img>
@@ -63,9 +63,19 @@
 export default {
   name: "CercleWrap",
   props: ['image', 'title', 'anchor', 'imageAtRight'],
-  computed: {
-    isCarousel: function () {
-      return this.image.constructor === Array;
+  data: function () {
+    return {
+      hasManyImages: false,
+      imageFormatted: null
+    }
+  },
+  mounted: function () {
+    const isImageAnArray = this.image.constructor === Array;
+    this.hasManyImages = isImageAnArray && this.image.length > 1
+    if (isImageAnArray && !this.hasManyImages) {
+      this.imageFormatted = this.image[0]
+    } else {
+      this.imageFormatted = this.image;
     }
   }
 }

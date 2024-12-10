@@ -37,13 +37,13 @@
         <p class="text" style="font-weight: 300;">
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
           chapeaute différentes initiatives
-          <a href="#" @click.prevent="Scroll.allerALaSection('cercle')">
+          <a href="#" @click.prevent="$router.push('/comites')">
             présentes
           </a>
           et
           <a href="#" @click.prevent="comitesArchives = true">passées</a>
           portées par
-          <a href="#" @click.prevent="Scroll.allerALaSection('benevole')">
+          <a href="#" @click.prevent="$router.push('/membres-en-vedette')">
             ses membres.
           </a>
           Les initiatives doivent être alignées avec
@@ -67,7 +67,7 @@
       <v-col cols="0" sm="2" md="3" lg="4"></v-col>
     </v-row>
     <v-divider class="mt-6 mb-12"></v-divider>
-    <v-row class="mb-12" id="benevole">
+    <v-row class="mb-12" id="membres">
       <v-col cols="12" class="text-center">
         <h1 class="text-h3 font-weight-thin text">Membres</h1>
         <h4 class="text-h5 font-weight-thin">En vedette</h4>
@@ -100,7 +100,8 @@
             <h3 class="text-h6 font-weight-medium text-center text-md-left">
               {{ member.title.rendered }}
             </h3>
-            <p class="text-body-1 text-md-h6 font-weight-regular text-center text-md-left " style="white-space: pre-line;"
+            <p class="text-body-1 text-md-h6 font-weight-regular text-center text-md-left "
+               style="white-space: pre-line;"
                :class="{
                   'ml-2 mr-2': $vuetify.display.smAndDown
                }"
@@ -124,7 +125,7 @@
       </v-col>
     </v-row>
     <v-parallax :height="parallaxSize" :src="require('../assets/peinture-rogner.jpg')"></v-parallax>
-    <v-row class="mt-12" id="cercle"
+    <v-row class="mt-12" id="comites"
            :class="{
               'pb-16' : $vuetify.display.mdAndUp,
               'pb-4' : $vuetify.display.smAndDown
@@ -134,20 +135,10 @@
         <h1 class="text-h3 font-weight-thin">Comités</h1>
       </v-col>
     </v-row>
-    <RucheArtCercle></RucheArtCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <CollaboriumCercle></CollaboriumCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <GroupeAchatCercle></GroupeAchatCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <PagePourpreCercle></PagePourpreCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <CafeReparationCercle></CafeReparationCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <FinancementCercle></FinancementCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
-    <GouvernanceCercle></GouvernanceCercle>
-    <v-divider class="mt-6 mb-12"></v-divider>
+    <div v-for="comite in comites" :key="comite.id">
+      <ComiteFromWordpress :comite="comite"></ComiteFromWordpress>
+      <v-divider class="mt-6 mb-12"></v-divider>
+    </div>
     <div style="width: 100%" class="vh-center">
       <v-list>
         <v-list-item @click="comitesArchives = true">
@@ -264,34 +255,17 @@
 import Calendrier from "@/components/CalendrierSection.vue";
 
 import ContactDialog from "@/components/ContactDialog";
-import Cercles from "@/Cercles";
 
 import Scroll from "@/Scroll";
 import Shuffle from "@/Shuffle";
-import RucheArtCercle from "@/components/RucheArtCercle.vue";
-import CafeReparationCercle from "@/components/CafeReparationCercle.vue";
-import GroupeAchatCercle from "@/components/GroupeAchatCercle.vue";
-import CollaboriumCercle from "@/components/CollaboriumCercle.vue";
-import GouvernanceCercle from "@/components/GouvernanceCercle.vue";
-import FinancementCercle from "@/components/FinancementCercle.vue";
-import PagePourpreCercle from "@/components/PagePourpreCercle.vue";
 import PaiementSection from "@/components/PaiementSection.vue";
 import WordpressService from "@/service/WordpressService";
+import ComiteFromWordpress from "@/components/ComiteFromWordpress.vue";
 
 export default {
   name: "HomePage",
   components: {
-    RucheArtCercle,
-    CafeReparationCercle,
-    GroupeAchatCercle,
-    CollaboriumCercle,
-    // PartageHeureCercle,
-    GouvernanceCercle,
-    FinancementCercle,
-    // ProduitsNettoyantCercle: () => import("@/components/ProduitsNettoyantCercle"),
-    // BougerEnsembleCercle: () => import("@/components/BougerEnsembleCercle"),
-    PagePourpreCercle,
-    // BibliothequeOutilsCercle: () => import("@/components/BibliothequeOutilsCercle"),
+    ComiteFromWordpress,
     PaiementSection,
     ContactDialog,
     Calendrier,
@@ -316,30 +290,12 @@ export default {
       return window.location.hostname;
     },
   },
-  methods: {
-    trierCercles: function (cercles) {
-      return cercles.sort((aClef, bClef) => {
-        let aDesactive = this.cercle(aClef).desactive;
-        let bDesactive = this.cercle(bClef).desactive;
-        return aDesactive === bDesactive
-            ? aClef.localeCompare(bClef)
-            : aDesactive
-                ? 1
-                : -1;
-      })
-    },
-    cercle: function (clefDeCercle) {
-      return this.cercles.tous[clefDeCercle];
-    },
-  },
   data() {
     return {
-      balanceTotale: 0,
       comitesArchives: false,
       Scroll: Scroll,
       dataLoaded: false,
-      balance: 0,
-      cercles: Cercles,
+      comites: [],
       visionModal: false,
       missionModal: false,
       valeursModal: false,
@@ -357,11 +313,44 @@ export default {
     };
   },
   async mounted() {
-    const response = await WordpressService.api().get(
+    let response = await WordpressService.api().get(
         'membre_en_vedette'
     )
     this.membersFeatured = Shuffle.array(response.data);
+    response = await WordpressService.api().get(
+        'comite_page'
+    )
+    this.comites = await response.data.map((comite) => {
+      comite.imagesFormatted = comite.images.map((image) => {
+        return image.guid
+      })
+      return comite;
+    })
+    this.scrollToRightSection();
   },
+  watch: {
+    '$route.name'() {
+      this.scrollToRightSection()
+    }
+  },
+  methods: {
+    scrollToRightSection: function () {
+      const sectionName = this.getSectionNameFromCurrentRoute();
+      if (sectionName === null) {
+        return;
+      }
+      return Scroll.allerALaSection(sectionName)
+    },
+    getSectionNameFromCurrentRoute: function () {
+      switch (this.$route.name) {
+        case "Comites":
+          return "comites";
+        case "MembresEnVedette" :
+          return "membres"
+      }
+      return null;
+    }
+  }
 };
 </script>
 <style>

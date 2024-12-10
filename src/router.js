@@ -32,8 +32,13 @@ const router = VueRouter.createRouter({
             component: Home
         },
         {
-            path: '/cercle/:comite',
-            name: 'comite',
+            path: '/membres-en-vedette',
+            name: 'MembresEnVedette',
+            component: Home
+        },
+        {
+            path: '/comites',
+            name: 'Comites',
             component: Home
         },
         {
