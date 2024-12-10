@@ -28,9 +28,11 @@
       </v-col>
     </v-row>
     <v-row class="mt-6 mb-6" :class="{
-      'pl-5 pr-2': $vuetify.display.smAndDown,
+      'pl-5 pr-2 pb-0 pt-0': $vuetify.display.smAndDown,
     }">
-      <v-col cols="0" sm="2" md="3" lg="4"></v-col>
+      <v-col cols="0" sm="2" md="3" lg="4"
+             class="hidden-sm-and-down"
+      ></v-col>
       <v-col cols="12" sm="8" md="6" lg="4" class="text-left text-md-justify text-h6 text-lg-h5 font-weight-regular">
         <p class="text" style="font-weight: 300;">
           Horizons Gaspésiens est une coopérative de solidarité. L'organisme
@@ -77,30 +79,36 @@
              :key="member.id"
       >
         <v-row class="mb-0" :class="{
-          'ml-5 pl-12': $vuetify.display.mdAndUp,
+          'align-content-center h-center': $vuetify.display.smAndDown
         }">
-          <v-col cols="2" v-if="index % 2 === 0 && $vuetify.display.mdAndUp"></v-col>
-          <v-col cols="2" :class="{
-            'mr-10 ml-4': $vuetify.display.smAndDown,
+          <v-col cols="2" class="hidden-sm-and-down" v-if="index % 2 ===0"></v-col>
+          <v-col cols="3" :class="{
+              'mr-10 ml-4': $vuetify.display.smAndDown,
+              'text-right': $vuetify.display.mdAndUp
           }">
-            <v-avatar :size="avatarSize">
+            <v-avatar size="100">
               <v-img
                   :src="member.image.rendered"
                   :alt="member.title.rendered"
               ></v-img>
             </v-avatar>
           </v-col>
-          <v-col cols="12" md="6" class="text-left" :class="{
+          <v-col cols="12" md="7" class="" :class="{
             'mt-3': $vuetify.display.mdAndUp,
             'mt-0': $vuetify.display.smAndDown,
           }">
-            <h3 class="text-h6 font-weight-medium text">
+            <h3 class="text-h6 font-weight-medium text-center text-md-left">
               {{ member.title.rendered }}
             </h3>
-            <p class="text-h6 font-weight-regular grey-text" style="white-space: pre-line;">
+            <p class="text-body-1 text-md-h6 font-weight-regular text-center text-md-left " style="white-space: pre-line;"
+               :class="{
+                  'ml-2 mr-2': $vuetify.display.smAndDown
+               }"
+            >
               {{ member.raison.value }}
             </p>
           </v-col>
+          <v-col cols="2" class="hidden-sm-and-down" v-if="index % 2 !== 0"></v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -116,7 +124,12 @@
       </v-col>
     </v-row>
     <v-parallax :height="parallaxSize" :src="require('../assets/peinture-rogner.jpg')"></v-parallax>
-    <v-row class="pb-16 mt-12" id="cercle">
+    <v-row class="mt-12" id="cercle"
+           :class="{
+              'pb-16' : $vuetify.display.mdAndUp,
+              'pb-4' : $vuetify.display.smAndDown
+           }"
+    >
       <v-col xs12 class="text-center">
         <h1 class="text-h3 font-weight-thin">Comités</h1>
       </v-col>
