@@ -320,12 +320,7 @@ export default {
     response = await WordpressService.api().get(
         'comite_page'
     )
-    this.comites = await response.data.map((comite) => {
-      comite.imagesFormatted = comite.images.map((image) => {
-        return image.guid
-      })
-      return comite;
-    })
+    this.comites = await response.data;
     this.scrollToRightSection();
   },
   watch: {

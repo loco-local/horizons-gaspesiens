@@ -8,6 +8,7 @@ import Bibliotheque from './views/Bibliotheque.vue'
 import CafePhilo from './views/CafePhilo.vue'
 import FabLab from './views/FabLab.vue'
 import LocoLinux from './views/LocoLinux.vue'
+
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     base: process.env.BASE_URL,
@@ -21,7 +22,7 @@ const router = VueRouter.createRouter({
                 }, 1000);
             });
         } else {
-            return {top:0}
+            return {top: 0}
         }
     },
     routes: [
@@ -63,11 +64,6 @@ const router = VueRouter.createRouter({
             component: () => import("@/views/BougerEnsemblePage")
         },
         {
-            path: '/ruche-art',
-            name: 'ruche-art',
-            component: () => import("@/views/RucheArtPage")
-        },
-        {
             path: '/partage-heure',
             name: 'partage-heure',
             component: () => import("@/views/PartageHeurePage")
@@ -86,11 +82,6 @@ const router = VueRouter.createRouter({
             path: '/groupe-achat',
             name: 'groupe-achat',
             component: () => import("@/views/GroupeAchatPage")
-        },
-        {
-            path: '/collaborium',
-            name: 'collaborium',
-            component: () => import("@/views/CollaboriumPage")
         },
         {
             path: '/financement',
@@ -201,6 +192,11 @@ const router = VueRouter.createRouter({
             path: '/finance',
             name: 'Finance',
             component: () => import('@/views/FinancePage.vue')
+        },
+        {
+            path: '/:slug/',
+            name: 'ComitePage',
+            component: () => import('@/views/ComitePage')
         },
     ]
 })

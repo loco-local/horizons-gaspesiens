@@ -23,13 +23,13 @@
       >
         <img
             :src="require('./assets/logo-horizontal.png')"
-            :height="this.toolbarLogoHeight"
+            :height="toolbarLogoHeight"
             v-if="true"
             @click="Scroll.allerALaSection('app')"
         />
         <img
             :src="require('./assets/logo-loco-horizontal.png')"
-            :height="this.toolbarLogoHeight + 20"
+            :height="toolbarLogoHeight + 20"
             v-if="false"
         />
       </router-link>
@@ -106,14 +106,6 @@
           >mail
           </v-icon>
         </v-btn>
-        <!--                <v-btn :small="$vuetify.display.mdAndDown" text href="http://eepurl.com/c7iHkr">-->
-        <!--                    <v-icon :class="{-->
-        <!--                        'mr-3' : $vuetify.display.xlAndUp,-->
-        <!--                        'mr-0' : $vuetify.display.lgAndDown-->
-        <!--                    }">email-->
-        <!--                    </v-icon>-->
-        <!--                    Infolettre-->
-        <!--                </v-btn>-->
       </v-toolbar-items>
       <v-toolbar-title
           class="text-h6 text-uppercase special-font"
@@ -240,15 +232,6 @@
             <v-icon>event</v-icon>
           </template>
         </v-list-item>
-        <!--                <v-list-item-->
-        <!--                        href="http://eepurl.com/c7iHkr">-->
-        <!--                    <v-list-item-action>-->
-        <!--                        <v-icon>email</v-icon>-->
-        <!--                    </v-list-item-action>-->
-        <!--                    <v-list-item-title>-->
-        <!--                        Infolettre-->
-        <!--                    </v-list-item-title>-->
-        <!--                </v-list-item>-->
         <v-list-item
             href="https://horizonsgaspesiens.net/devenez-membre"
             target="_blank"
@@ -463,158 +446,121 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
 import ContactDialog from "@/components/ContactDialog";
 import PhoneNumbers from "@/PhoneNumbers";
-import Scroll from "@/Scroll";
+import ScrollHelper from "@/Scroll";
 import Cercles from "@/Cercles";
+import {useComiteStore} from '@/stores/ComiteStore'
+import {useDisplay} from "vuetify";
+import {computed, ref} from "vue";
 
-export default {
-  name: "App",
-  components: {
-    ContactDialog,
+const display = useDisplay();
+
+const comitesStore = useComiteStore()
+console.log(comitesStore)
+
+const toolbarLogoHeight = computed(() => {
+  if (display.lgAndDown) {
+    return 25;
+  }
+  return 30;
+})
+
+const documentDialog = ref(false)
+const presseDialog = ref(false)
+const Scroll = ref(ScrollHelper)
+const drawer = ref(false)
+const desktopDrawer = ref(false)
+const phoneNumbers = ref(PhoneNumbers.data)
+const cercles = ref(Cercles.actifs)
+const documents = ref([
+  {
+    lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",
+    nom: "Un p'tit tour du Loco, document d'intégration en cours de rédaction"
   },
-  computed: {
-    toolbarLogoHeight: function () {
-      if (this.$vuetify.display.lgAndDown) {
-        return 25;
-      }
-      return 30;
-    },
-    avatarSize: function () {
-      if (this.$vuetify.display.mdAndDown) {
-        return 70;
-      }
-      return 100;
-    },
-    host: function () {
-      return window.location.hostname;
-    },
+  {
+    lien: "https://docs.google.com/document/d/1GbJSM-szWptTxLtF--VWmFrnX9f9S61l8KqXDed50gk",
+    nom: "Orientations 2021-2022"
   },
-  data() {
-    return {
-      currentLogo: "logo-horizontal.png",
-      documentDialog: false,
-      presseDialog: false,
-      Scroll: Scroll,
-      drawer: false,
-      desktopDrawer: false,
-      phoneNumbers: PhoneNumbers.data,
-      cercles: Cercles.actifs,
-      documents: [
-        {
-          lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",
-          nom: "Un p'tit tour du Loco, document d'intégration en cours de rédaction"
-        },
-        {
-          lien: "https://docs.google.com/document/d/1GbJSM-szWptTxLtF--VWmFrnX9f9S61l8KqXDed50gk",
-          nom: "Orientations 2021-2022"
-        },
-        {
-          lien: "https://drive.google.com/file/d/1NbibEbKB8MCw7XI-bsxJuBnRX0vDUFIv/view",
-          nom: "Rapport annuel 2020-21"
-        },
-        // {
-        //   lien:
-        //       "https://drive.google.com/file/d/0B1PuZPF8fTD_NWdPT09MYll3amVSTTFtbVFtSFZMWl96YlE4/view?usp=sharing",
-        //   nom:
-        //       "La petite histoire financière du Loco Local en date du 31 janvier 2016",
-        // },
-        {
-          lien:
-              "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
-          nom: "Plan d'action pour la pérennisation du Loco Local",
-        },
-        {
-          lien:
-              "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
-          nom: "Règlements généraux de la coopérative",
-        }
-        // {
-        //   lien:
-        //       "https://drive.google.com/file/d/0B1PuZPF8fTD_Z09MQ1VaTzVIdHM/view?usp=sharing",
-        //   nom:
-        //       "Rencontre, 29 juin 2016, de réflexion, et d'information des intervenantEs communautaires afin d'aider Horizons à se positionner positivement régionalement.",
-        // },
-        // {
-        //   lien:
-        //       "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
-        //   nom:
-        //       "Procès verbal de la dernières assemblée populaire et extraordinaire de la coopérative du 4 décembre 2017.",
-        // },
-        // {
-        //   lien:
-        //       "https://drive.google.com/drive/u/1/folders/1dvZaOz1Ib_vxg6IV-R7XBlQHqDnMZI4z",
-        //   nom: "Bilan final du projet Béati 2017-2018",
-        // },
-      ],
-      dossiersDePresse: [
-        {
-          date: "Août 2015",
-          text: "Mouton Noir",
-          lien: "http://www.moutonnoir.com/2015/08/loco-local",
-        },
-        {
-          date: "Mai 2015",
-          text: "Revue Kaléidoscope",
-          lien:
-              "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/",
-        },
-        {
-          date: "5 juin 2015",
-          text: "Sécession à Radio Gaspésie",
-          lien: "http://radiogaspesie.ca/la-gaspesie-libre/",
-        },
-        {
-          date: "4 novembre 2015",
-          text:
-              "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
-          lien:
-              "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/",
-        },
-        {
-          date: "9 avril 2016",
-          text:
-              "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
-          lien: "http://www.economiesdecommunaute.org/programme/",
-        },
-        {
-          date: "9 avril 2016",
-          text:
-              " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
-          lien:
-              "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map",
-        },
-        {
-          date: "14 juin 2016",
-          text:
-              "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
-          lien:
-              "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/",
-        },
-        {
-          date: "27 juillet 2016",
-          text: "Ricochet Les utopistes en action",
-          lien: "https://ricochet.media/fr/1294/les-utopistes-en-action",
-        },
-        {
-          date: "27 juillet 2016",
-          text:
-              "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
-          lien: "https://www.ababord.org/-No-65-ete-2016-",
-        },
-        {
-          date: "22 août 2016",
-          text: "Un living lab en Gaspésie ?",
-          lien:
-              "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
-        }
-      ],
-    };
+  {
+    lien: "https://drive.google.com/file/d/1NbibEbKB8MCw7XI-bsxJuBnRX0vDUFIv/view",
+    nom: "Rapport annuel 2020-21"
   },
-  mounted: function () {
+  {
+    lien:
+        "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
+    nom: "Plan d'action pour la pérennisation du Loco Local",
   },
-};
+  {
+    lien:
+        "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
+    nom: "Règlements généraux de la coopérative",
+  }
+
+])
+const dossiersDePresse = ref([
+  {
+    date: "Août 2015",
+    text: "Mouton Noir",
+    lien: "http://www.moutonnoir.com/2015/08/loco-local",
+  },
+  {
+    date: "Mai 2015",
+    text: "Revue Kaléidoscope",
+    lien:
+        "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/",
+  },
+  {
+    date: "5 juin 2015",
+    text: "Sécession à Radio Gaspésie",
+    lien: "http://radiogaspesie.ca/la-gaspesie-libre/",
+  },
+  {
+    date: "4 novembre 2015",
+    text:
+        "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
+    lien:
+        "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/",
+  },
+  {
+    date: "9 avril 2016",
+    text:
+        "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
+    lien: "http://www.economiesdecommunaute.org/programme/",
+  },
+  {
+    date: "9 avril 2016",
+    text:
+        " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
+    lien:
+        "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map",
+  },
+  {
+    date: "14 juin 2016",
+    text:
+        "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
+    lien:
+        "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/",
+  },
+  {
+    date: "27 juillet 2016",
+    text: "Ricochet Les utopistes en action",
+    lien: "https://ricochet.media/fr/1294/les-utopistes-en-action",
+  },
+  {
+    date: "27 juillet 2016",
+    text:
+        "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
+    lien: "https://www.ababord.org/-No-65-ete-2016-",
+  },
+  {
+    date: "22 août 2016",
+    text: "Un living lab en Gaspésie ?",
+    lien:
+        "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
+  }
+])
 </script>
 
 
