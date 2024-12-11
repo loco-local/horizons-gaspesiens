@@ -41,7 +41,7 @@
             présentes
           </a>
           et
-          <a href="#" @click.prevent="comitesArchives = true">passées</a>
+          <a href="#" @click.prevent="$router.push('/comites-archives')">passées</a>
           portées par
           <a href="#" @click.prevent="$router.push('/membres-en-vedette')">
             ses membres.
@@ -159,7 +159,7 @@
     </div>
     <div style="width: 100%" class="vh-center">
       <v-list>
-        <v-list-item @click="comitesArchives = true">
+        <v-list-item @click="$router.push('/comites-archives')">
           <template v-slot:prepend>
             <v-icon>list</v-icon>
           </template>
@@ -228,14 +228,14 @@
         </v-list>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="comitesArchives" width="600">
+    <v-dialog v-model="comitesArchives" width="600" @afterLeave="$router.push('/')">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
           <div>
             Comités plus ou moins actifs
           </div>
           <div>
-            <v-icon @click="comitesArchives = false">close</v-icon>
+            <v-icon @click="$router.push('/')">close</v-icon>
           </div>
         </v-card-title>
         <v-card-text class="text-body-1">
@@ -314,14 +314,18 @@ onMounted(async () => {
       'membre_en_vedette'
   )
   membersFeatured.value = Shuffle.array(response.data);
-  scrollToRightSection();
+  goToRightSection();
 })
 
 
 const route = useRoute();
-watch(route, () => scrollToRightSection());
+watch(route, () => goToRightSection());
 
-async function scrollToRightSection() {
+async function goToRightSection() {
+  if (route.name === "ComitesArchives") {
+    return comitesArchives.value = true;
+  }
+  comitesArchives.value = false;
   const sectionName = getSectionNameFromCurrentRoute();
   if (sectionName === null) {
     return;

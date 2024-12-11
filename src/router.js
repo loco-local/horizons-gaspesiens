@@ -43,6 +43,11 @@ const router = VueRouter.createRouter({
             component: HomePage
         },
         {
+            path: '/comites-archives',
+            name: 'ComitesArchives',
+            component: HomePage
+        },
+        {
             path: '/gouvernance',
             name: 'gouvernance',
             component: () => import("@/views/GouvernancePage")
