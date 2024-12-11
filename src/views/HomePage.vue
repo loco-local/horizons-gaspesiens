@@ -145,8 +145,14 @@
         ></v-progress-circular>
       </v-col>
     </v-row>
-    <div v-if="comitesStore.$state.list !== null">
-      <div v-for="comite in comitesStore.$state.list" :key="comite.id">
+    <div v-if="comitesStore.$state.list !== null" :class="{
+      'mt-7': $vuetify.display.smAndDown
+    }">
+      <div v-for="comite in comitesStore.$state.list" :key="comite.id"
+           :class="{
+            'pl-4 pr-4' : $vuetify.display.smAndDown
+           }"
+      >
         <ComiteFromWordpress :comite="comite"></ComiteFromWordpress>
         <v-divider class="mt-6 mb-12"></v-divider>
       </div>

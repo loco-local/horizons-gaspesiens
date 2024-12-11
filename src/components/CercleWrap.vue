@@ -6,8 +6,7 @@
   >
     <v-col cols="12" class="pa-0">
       <v-card flat :class="{
-                'mt-5 mb-12': $vuetify.display.mdAndUp,
-                'pl-4 mt-5 mb-4': $route.name === 'home' && $vuetify.display.smAndDown
+                'mt-5 mb-12': $vuetify.display.mdAndUp
             }">
         <v-row :reverse="imageAtRight" fill-height>
           <v-col cols="12" md="5" class="pa-0">
