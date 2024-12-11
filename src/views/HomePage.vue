@@ -228,7 +228,7 @@
         </v-list>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="comitesArchives" width="600" @afterLeave="$router.push('/')">
+    <v-dialog v-model="comitesArchivesDialog" width="600" @afterLeave="$router.push('/')">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
           <div>
@@ -238,28 +238,18 @@
             <v-icon @click="$router.push('/')">close</v-icon>
           </div>
         </v-card-title>
+        <v-divider></v-divider>
         <v-card-text class="text-body-1">
-          <v-list>
-            <v-list-item to="/le-demi">
-              <v-list-item-title> Le demi</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/loco-linux">
-              <v-list-item-title> Loco Linux</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/sel-de-mer">
-              <v-list-item-title> Sel De Mer</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/secession">
-              <v-list-item-title> Sécession</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/bibliotheque">
-              <v-list-item-title> Bibliothèque collective</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/cafe-philo">
-              <v-list-item-title> Cafés philo</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/fablab">
-              <v-list-item-title> Fablab</v-list-item-title>
+          <v-skeleton-loader v-if="comitesArchives === null"
+                             type="list-item, list-item, list-item, list-item, list-item, list-item"></v-skeleton-loader>
+          <v-list v-if="comitesArchives !== null">
+            <v-list-item v-for="comiteArchive in comitesArchives"
+                         :key="comiteArchive.id"
+                         :to="`/${comiteArchive.slug}`"
+            >
+              <v-list-item-title>
+                <span v-html="comiteArchive.title.rendered"></span>
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card-text>
@@ -291,7 +281,6 @@ const parallaxSize = computed(() => {
   }
   return 350;
 })
-const comitesArchives = ref(false);
 const visionModal = ref(false);
 const missionModal = ref(false)
 const valeursModal = ref(false);
@@ -307,25 +296,39 @@ const valeurs = ref([
       "Égalité / Considération",
     ]
 );
+setupMembersFeatured()
 
-const comitesStore = useComiteStore();
-onMounted(async () => {
+async function setupMembersFeatured() {
   let response = await WordpressService.api().get(
       'membre_en_vedette'
   )
   membersFeatured.value = Shuffle.array(response.data);
+}
+
+const comitesStore = useComiteStore();
+onMounted(() => {
   goToRightSection();
 })
-
 
 const route = useRoute();
 watch(route, () => goToRightSection());
 
+const comitesArchivesDialog = ref(false);
+const comitesArchives = ref(null);
+
+async function setupComitesArchives() {
+  comitesArchivesDialog.value = true;
+  const response = await WordpressService.api().get(
+      'comite_page_archive?_embed'
+  )
+  comitesArchives.value = response.data;
+}
+
 async function goToRightSection() {
   if (route.name === "ComitesArchives") {
-    return comitesArchives.value = true;
+    return setupComitesArchives()
   }
-  comitesArchives.value = false;
+  comitesArchivesDialog.value = false;
   const sectionName = getSectionNameFromCurrentRoute();
   if (sectionName === null) {
     return;
