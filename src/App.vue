@@ -403,15 +403,16 @@
           <v-list>
             <v-list-item
                 v-for="presse in dossiersDePresse"
-                :key="presse.lien"
+                :key="presse.id"
                 :href="presse.lien"
+                target="_blank"
                 class="text-left"
             >
               <v-list-item-title class="text-body-1">
-                  <span class="grey-text">
-                    {{ presse.date }}
-                  </span>
-                {{ presse.text }}
+                <span class="grey-text mr-4 text-capitalize">
+                  {{ $filters.monthYear(presse.date_environ) }}
+                </span>
+                {{ presse.title.rendered }}
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -433,16 +434,16 @@
           <v-list>
             <v-list-item
                 v-for="document in documents"
-                :key="document.nom"
-                :href="document.lien"
+                :key="document.id"
                 target="_blank"
+                :href="document.isFile ? document.fichier.rendered : document.lien.rendered"
                 class="text-left"
             >
               <template v-slot:prepend>
                 <v-icon>articles</v-icon>
               </template>
               <v-list-item-title>
-                {{ document.nom }}
+                <span v-html="document.title.rendered"></span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -458,7 +459,7 @@ import PhoneNumbers from "@/PhoneNumbers";
 import ScrollHelper from "@/Scroll";
 import {useComiteStore} from '@/stores/ComiteStore'
 import {useDisplay} from "vuetify";
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import WordpressService from "@/service/WordpressService";
 
 const display = useDisplay();
@@ -476,96 +477,15 @@ const Scroll = ref(ScrollHelper)
 const drawer = ref(false)
 const desktopDrawer = ref(false)
 const phoneNumbers = ref(PhoneNumbers.data)
-const documents = ref([
-  {
-    lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",
-    nom: "Un p'tit tour du Loco, document d'intégration en cours de rédaction"
-  },
-  {
-    lien: "https://docs.google.com/document/d/1GbJSM-szWptTxLtF--VWmFrnX9f9S61l8KqXDed50gk",
-    nom: "Orientations 2021-2022"
-  },
-  {
-    lien: "https://drive.google.com/file/d/1NbibEbKB8MCw7XI-bsxJuBnRX0vDUFIv/view",
-    nom: "Rapport annuel 2020-21"
-  },
-  {
-    lien:
-        "https://drive.google.com/file/d/0B1PuZPF8fTD_c29XdlV2a3lpY0dNU2JtT0hwR0laR09aZ1Jv/view?usp=sharing",
-    nom: "Plan d'action pour la pérennisation du Loco Local",
-  },
-  {
-    lien:
-        "https://drive.google.com/file/d/0B1PuZPF8fTD_aVNySGViM3RjLVdqdUxVSExiRG9LNnNDSnRF/view?usp=sharing",
-    nom: "Règlements généraux de la coopérative",
-  }
 
-])
-const dossiersDePresse = ref([
-  {
-    date: "Août 2015",
-    text: "Mouton Noir",
-    lien: "http://www.moutonnoir.com/2015/08/loco-local",
-  },
-  {
-    date: "Mai 2015",
-    text: "Revue Kaléidoscope",
-    lien:
-        "http://mediakaleidoscope.org/sur-le-terrain-limpact-de-lausterite/",
-  },
-  {
-    date: "5 juin 2015",
-    text: "Sécession à Radio Gaspésie",
-    lien: "http://radiogaspesie.ca/la-gaspesie-libre/",
-  },
-  {
-    date: "4 novembre 2015",
-    text:
-        "Terra Terre - solutions écologiques pour un développement durable dans l'Islet - petite note sur l'existence d'HG",
-    lien:
-        "http://www.terra-terre.ca/public/actualit%C3%A9-terra-terre/page/3/",
-  },
-  {
-    date: "9 avril 2016",
-    text:
-        "Participation au panel de Sortir du capitalisme à l'université Concordia à Montréal",
-    lien: "http://www.economiesdecommunaute.org/programme/",
-  },
-  {
-    date: "9 avril 2016",
-    text:
-        " Une carte des économies de communauté a été construite pour l'occasion regroupant les groupes ayant participé à la réflexion",
-    lien:
-        "https://economiesdecommunaute.carto.com/viz/c6bdbc26-e74c-11e5-8d8a-0e5db1731f59/public_map",
-  },
-  {
-    date: "14 juin 2016",
-    text:
-        "Atypic au Rendez-vous de l'innovation sociale - conférencier coup de coeur",
-    lien:
-        "http://www.atypic.ca/fr/nouvelles/atypic-au-rendez-vous-de-linnovation-sociale-2016/",
-  },
-  {
-    date: "27 juillet 2016",
-    text: "Ricochet Les utopistes en action",
-    lien: "https://ricochet.media/fr/1294/les-utopistes-en-action",
-  },
-  {
-    date: "27 juillet 2016",
-    text:
-        "Gaspésie: Forces vives, de la revue À Bâbord! et repris par Ricochet",
-    lien: "https://www.ababord.org/-No-65-ete-2016-",
-  },
-  {
-    date: "22 août 2016",
-    text: "Un living lab en Gaspésie ?",
-    lien:
-        "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
-  }
-])
+setupComites();
+setupDossiersDePresse();
+setupDocuments();
+
 const comitesStore = useComiteStore()
 const comites = ref(null);
-onMounted(async () => {
+
+async function setupComites() {
   let response = await WordpressService.api().get(
       'comite_page?_embed'
   )
@@ -573,7 +493,28 @@ onMounted(async () => {
     list: response.data
   })
   comites.value = comitesStore.$state.list
-})
+}
+
+const documents = ref(null)
+
+async function setupDocuments() {
+  const response = await WordpressService.api().get(
+      'document?_embed'
+  )
+  documents.value = response.data.map((document) => {
+    document.isFile = document.fichier.rendered !== false
+    return document;
+  })
+}
+
+const dossiersDePresse = ref(null)
+
+async function setupDossiersDePresse() {
+  const response = await WordpressService.api().get(
+      'presse?_embed'
+  )
+  dossiersDePresse.value = response.data
+}
 </script>
 
 

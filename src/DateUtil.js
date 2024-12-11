@@ -4,6 +4,7 @@ import {fr} from 'date-fns/locale'
 const DateUtil = {
     setup: function (app) {
         app.config.globalProperties.$filters.dayDate = DateUtil.getDayDate
+        app.config.globalProperties.$filters.monthYear = DateUtil.getMonthYear
         app.config.globalProperties.$filters.time = DateUtil.getTime
     },
     getDayDate: function (value) {
@@ -11,6 +12,17 @@ const DateUtil = {
             return format(
                 new Date(String(value)),
                 'd MMMM yyyy',
+                {
+                    locale: fr
+                }
+            )
+        }
+    },
+    getMonthYear: function(value){
+        if (value) {
+            return format(
+                new Date(String(value)),
+                'MMMM yyyy',
                 {
                     locale: fr
                 }
