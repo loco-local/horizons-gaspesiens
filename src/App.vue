@@ -121,37 +121,40 @@
         temporary
     >
       <v-list-item @click="Scroll.allerALaSection('about', '/');desktopDrawer=false;"
-                   class="text-left text-body-2">
+                   class="text-left">
 
         <v-list-item-title class="text">
           À propos
         </v-list-item-title>
 
       </v-list-item>
-      <v-list-item to="/adhesion" class="text-left text-body-2">
+      <v-list-item to="/adhesion" class="text-left">
 
         <v-list-item-title>
           Vérifiez votre adhésion
         </v-list-item-title>
 
       </v-list-item>
-      <v-list-item to="/tarification" class="text-left text-body-2">
+      <v-list-item to="/tarification" class="text-left">
 
         <v-list-item-title>
           Tarification de la salle
         </v-list-item-title>
 
       </v-list-item>
-      <v-list-item
-          v-for="(cercle, clef) in cercles"
-          :key="clef"
-          :to="cercle.lien"
-          class="text-left text-body-2"
-      >
-
-        <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-
-      </v-list-item>
+      <v-skeleton-loader type="list-item" v-if="comites === null"></v-skeleton-loader>
+      <div v-if="comites !== null">
+        <v-list-item
+            v-for="(comite) in comites"
+            :key="comite.id"
+            :to="comite.slug"
+            class="text-left"
+        >
+          <v-list-item-title class="font-weight-regular">
+            <span v-html="comite.title.rendered"></span>
+          </v-list-item-title>
+        </v-list-item>
+      </div>
       <v-list-item href="https://www.facebook.com/locolocal1" class="text-body-1">
         <v-list-item-title class="text-left">
           /locolocal1
@@ -262,16 +265,19 @@
             À propos
           </v-list-item-title>
         </v-list-item>
-        <v-list-item
-            v-for="(cercle, clef) in cercles"
-            :key="clef"
-            :to="cercle.lien"
-            class="text-left"
-        >
-
-          <v-list-item-title>{{ cercle.nom }}</v-list-item-title>
-
-        </v-list-item>
+        <v-skeleton-loader type="list-item" v-if="comites === null"></v-skeleton-loader>
+        <div v-if="comites !== null">
+          <v-list-item
+              v-for="(comite) in comites"
+              :key="comite.id"
+              :to="comite.slug"
+              class="text-left"
+          >
+            <v-list-item-title class="font-weight-regular">
+              <span v-html="comite.title.rendered"></span>
+            </v-list-item-title>
+          </v-list-item>
+        </div>
         <v-list-item @click="documentDialog = true">
           <v-list-item-title class="text-left">Documents</v-list-item-title>
           <template v-slot:append>
@@ -450,15 +456,12 @@
 import ContactDialog from "@/components/ContactDialog";
 import PhoneNumbers from "@/PhoneNumbers";
 import ScrollHelper from "@/Scroll";
-import Cercles from "@/Cercles";
 import {useComiteStore} from '@/stores/ComiteStore'
 import {useDisplay} from "vuetify";
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
+import WordpressService from "@/service/WordpressService";
 
 const display = useDisplay();
-
-const comitesStore = useComiteStore()
-console.log(comitesStore)
 
 const toolbarLogoHeight = computed(() => {
   if (display.lgAndDown) {
@@ -473,7 +476,6 @@ const Scroll = ref(ScrollHelper)
 const drawer = ref(false)
 const desktopDrawer = ref(false)
 const phoneNumbers = ref(PhoneNumbers.data)
-const cercles = ref(Cercles.actifs)
 const documents = ref([
   {
     lien: "https://docs.google.com/document/d/1gyu009DBOyYRGeO5n9melzBl26IO04v9KzOVYIeR9lI",
@@ -561,6 +563,17 @@ const dossiersDePresse = ref([
         "http://ici.radio-canada.ca/regions/est-quebec/2016/08/22/009-gaspesie-living-lab-bsl-llio-riviere-du-loup-tourisme.shtml",
   }
 ])
+const comitesStore = useComiteStore()
+const comites = ref(null);
+onMounted(async () => {
+  let response = await WordpressService.api().get(
+      'comite_page'
+  )
+  comitesStore.$patch({
+    list: response.data
+  })
+  comites.value = comitesStore.$state.list
+})
 </script>
 
 

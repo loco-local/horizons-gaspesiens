@@ -1,6 +1,5 @@
 import * as VueRouter from 'vue-router';
 
-import Home from './views/Home.vue'
 import Demi from './views/Demi.vue'
 import SelDeMer from './views/SelDeMer.vue'
 import Sécession from './views/SécessionPage.vue'
@@ -8,6 +7,7 @@ import Bibliotheque from './views/Bibliotheque.vue'
 import CafePhilo from './views/CafePhilo.vue'
 import FabLab from './views/FabLab.vue'
 import LocoLinux from './views/LocoLinux.vue'
+import HomePage from "@/views/HomePage.vue";
 
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
@@ -28,19 +28,19 @@ const router = VueRouter.createRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
+            name: 'HomePage',
             alias: '/loco-local',
-            component: Home
+            component: HomePage
         },
         {
             path: '/membres-en-vedette',
             name: 'MembresEnVedette',
-            component: Home
+            component: HomePage
         },
         {
             path: '/comites',
             name: 'Comites',
-            component: Home
+            component: HomePage
         },
         {
             path: '/gouvernance',
@@ -91,7 +91,7 @@ const router = VueRouter.createRouter({
         {
             path: '/cercle',
             name: 'cercle',
-            component: Home
+            component: HomePage
         },
         {
             path: '/paiement',
@@ -112,11 +112,6 @@ const router = VueRouter.createRouter({
             path: '/tarification',
             name: 'tarification',
             component: () => import("@/views/CalendrierPage")
-        },
-        {
-            path: '/benevole',
-            name: 'benevole',
-            component: Home
         },
         {
             path: '/page-pourpre',

@@ -135,9 +135,11 @@
         <h1 class="text-h3 font-weight-thin">Comités</h1>
       </v-col>
     </v-row>
-    <div v-for="comite in comites" :key="comite.id">
-      <ComiteFromWordpress :comite="comite"></ComiteFromWordpress>
-      <v-divider class="mt-6 mb-12"></v-divider>
+    <div v-if="comitesStore.$state.list !== null">
+      <div v-for="comite in comitesStore.$state.list" :key="comite.id">
+        <ComiteFromWordpress :comite="comite"></ComiteFromWordpress>
+        <v-divider class="mt-6 mb-12"></v-divider>
+      </div>
     </div>
     <div style="width: 100%" class="vh-center">
       <v-list>
@@ -250,103 +252,83 @@
   </div>
 </template>
 
-<script>
+<script setup>
 
 import Calendrier from "@/components/CalendrierSection.vue";
 
 import ContactDialog from "@/components/ContactDialog";
 
-import Scroll from "@/Scroll";
 import Shuffle from "@/Shuffle";
 import PaiementSection from "@/components/PaiementSection.vue";
 import WordpressService from "@/service/WordpressService";
 import ComiteFromWordpress from "@/components/ComiteFromWordpress.vue";
+import {computed, onMounted, ref, watch} from "vue";
+import {useDisplay} from "vuetify";
+import {useRoute} from "vue-router";
+import Scroll from "@/Scroll";
+import {useComiteStore} from "@/stores/ComiteStore";
 
-export default {
-  name: "HomePage",
-  components: {
-    ComiteFromWordpress,
-    PaiementSection,
-    ContactDialog,
-    Calendrier,
-  },
-  computed: {
-    avatarSize: function () {
-      if (this.$vuetify.display.mdAndDown) {
-        return 70;
-      }
-      if (this.$vuetify.display.lg) {
-        return 80;
-      }
-      return 100;
-    },
-    parallaxSize: function () {
-      if (this.$vuetify.display.mdAndDown) {
-        return 200;
-      }
-      return 350;
-    },
-    host: function () {
-      return window.location.hostname;
-    },
-  },
-  data() {
-    return {
-      comitesArchives: false,
-      Scroll: Scroll,
-      dataLoaded: false,
-      comites: [],
-      visionModal: false,
-      missionModal: false,
-      valeursModal: false,
-      membersFeatured: [],
-      valeurs: [
-        "Respect",
-        "Bienveillance",
-        "Ouverture",
-        "Solidarité",
-        "Inclusion / Non-discrimination / Féminisme",
-        "Partage",
-        "Autonomie individuelle",
-        "Égalité / Considération",
-      ]
-    };
-  },
-  async mounted() {
-    let response = await WordpressService.api().get(
-        'membre_en_vedette'
-    )
-    this.membersFeatured = Shuffle.array(response.data);
-    response = await WordpressService.api().get(
-        'comite_page'
-    )
-    this.comites = await response.data;
-    this.scrollToRightSection();
-  },
-  watch: {
-    '$route.name'() {
-      this.scrollToRightSection()
-    }
-  },
-  methods: {
-    scrollToRightSection: function () {
-      const sectionName = this.getSectionNameFromCurrentRoute();
-      if (sectionName === null) {
-        return;
-      }
-      return Scroll.allerALaSection(sectionName)
-    },
-    getSectionNameFromCurrentRoute: function () {
-      switch (this.$route.name) {
-        case "Comites":
-          return "comites";
-        case "MembresEnVedette" :
-          return "membres"
-      }
-      return null;
-    }
+const display = useDisplay();
+const parallaxSize = computed(() => {
+  if (display.mdAndDown) {
+    return 200;
   }
-};
+  return 350;
+})
+const comitesArchives = ref(false);
+const visionModal = ref(false);
+const missionModal = ref(false)
+const valeursModal = ref(false);
+const membersFeatured = ref([]);
+const valeurs = ref([
+      "Respect",
+      "Bienveillance",
+      "Ouverture",
+      "Solidarité",
+      "Inclusion / Non-discrimination / Féminisme",
+      "Partage",
+      "Autonomie individuelle",
+      "Égalité / Considération",
+    ]
+);
+
+const comitesStore = useComiteStore();
+onMounted(async () => {
+  let response = await WordpressService.api().get(
+      'membre_en_vedette'
+  )
+  membersFeatured.value = Shuffle.array(response.data);
+  scrollToRightSection();
+})
+
+
+const route = useRoute();
+watch(route, () => scrollToRightSection());
+
+async function scrollToRightSection() {
+  const sectionName = getSectionNameFromCurrentRoute();
+  if (sectionName === null) {
+    return;
+  }
+  if (sectionName === "comites" && comitesStore.$state.list === null) {
+    comitesStore.$subscribe(() => {
+      return Scroll.allerALaSection(sectionName)
+    }, {flush: 'sync'})
+  } else {
+    return Scroll.allerALaSection(sectionName)
+  }
+}
+
+function getSectionNameFromCurrentRoute() {
+  switch (route.name) {
+    case "Comites":
+      return "comites";
+    case "MembresEnVedette" :
+      return "membres"
+  }
+  return null;
+}
+
 </script>
 <style>
 #header-banner {

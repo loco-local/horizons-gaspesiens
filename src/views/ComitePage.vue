@@ -1,17 +1,18 @@
 <template>
-  <div>
+  <PageWrap>
     <ComiteFromWordpress :comite="comite" v-if="comite !== null"></ComiteFromWordpress>
-  </div>
+  </PageWrap>
 </template>
 
 <script>
 import {defineComponent} from 'vue'
 import ComiteFromWordpress from "@/components/ComiteFromWordpress.vue";
 import WordpressService from "@/service/WordpressService";
+import PageWrap from "@/components/PageWrap.vue";
 
 export default defineComponent({
   name: "ComitePage",
-  components: {ComiteFromWordpress},
+  components: {PageWrap, ComiteFromWordpress},
   data: function () {
     return {
       comite: null

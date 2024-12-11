@@ -1,8 +1,10 @@
 import VueScrollTo from 'vue-scrollto'
 import router from '@/router'
+import {nextTick} from "vue";
 
 export default {
     allerALaSection: async function (elementId, route, offset) {
+        await nextTick();
         if (offset === undefined) {
             offset = -60;
         }
