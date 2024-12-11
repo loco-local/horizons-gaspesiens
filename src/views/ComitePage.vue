@@ -1,30 +1,45 @@
 <template>
   <PageWrap>
-    <ComiteFromWordpress :comite="comite" v-if="comite !== null"></ComiteFromWordpress>
+    <v-overlay
+        v-if="comite === null"
+        :model-value="true"
+        class="align-center justify-center"
+        absolute
+    >
+      <v-progress-circular indeterminate size="100" width="2" color="primary"></v-progress-circular>
+    </v-overlay>
+    <ComiteFromWordpress :comite="comite" v-if="comite !== null" :key="comite.id"></ComiteFromWordpress>
   </PageWrap>
 </template>
 
-<script>
-import {defineComponent} from 'vue'
+<script setup>
 import ComiteFromWordpress from "@/components/ComiteFromWordpress.vue";
-import WordpressService from "@/service/WordpressService";
 import PageWrap from "@/components/PageWrap.vue";
+import {useComiteStore} from "@/stores/ComiteStore";
+import {ref, watch} from "vue";
+import {useRoute} from "vue-router";
 
-export default defineComponent({
-  name: "ComitePage",
-  components: {PageWrap, ComiteFromWordpress},
-  data: function () {
-    return {
-      comite: null
-    }
-  },
-  mounted: async function () {
-    const response = await WordpressService.api().get(
-        "comite_page?_embed&slug=" + this.$route.params.slug
-    );
-    this.comite = response.data[0]
+const comitesStore = useComiteStore()
+const route = useRoute();
+const comite = ref(null)
+
+mathComiteWithSlug();
+
+comitesStore.$subscribe(() => {
+  mathComiteWithSlug();
+}, {flush: 'sync'})
+
+watch(route, mathComiteWithSlug);
+
+function mathComiteWithSlug() {
+  if (comitesStore.$state.list === null) {
+    return;
   }
-})
+  const comitesHavingSlug = comitesStore.list.filter((comite) => {
+    return comite.slug === route.params.slug
+  })
+  comite.value = comitesHavingSlug[0]
+}
 </script>
 
 <style scoped>

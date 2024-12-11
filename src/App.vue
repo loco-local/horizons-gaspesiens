@@ -567,7 +567,7 @@ const comitesStore = useComiteStore()
 const comites = ref(null);
 onMounted(async () => {
   let response = await WordpressService.api().get(
-      'comite_page'
+      'comite_page?_embed'
   )
   comitesStore.$patch({
     list: response.data

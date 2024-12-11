@@ -135,6 +135,16 @@
         <h1 class="text-h3 font-weight-thin">Comités</h1>
       </v-col>
     </v-row>
+    <v-row v-if="comitesStore.$state.list === null">
+      <v-col cols="12" class="vh-center">
+        <v-progress-circular
+            :size="100"
+            color="primary"
+            indeterminate
+            class="mt-6 mb-6"
+        ></v-progress-circular>
+      </v-col>
+    </v-row>
     <div v-if="comitesStore.$state.list !== null">
       <div v-for="comite in comitesStore.$state.list" :key="comite.id">
         <ComiteFromWordpress :comite="comite"></ComiteFromWordpress>
@@ -310,13 +320,7 @@ async function scrollToRightSection() {
   if (sectionName === null) {
     return;
   }
-  if (sectionName === "comites" && comitesStore.$state.list === null) {
-    comitesStore.$subscribe(() => {
-      return Scroll.allerALaSection(sectionName)
-    }, {flush: 'sync'})
-  } else {
-    return Scroll.allerALaSection(sectionName)
-  }
+  return Scroll.allerALaSection(sectionName)
 }
 
 function getSectionNameFromCurrentRoute() {

@@ -14,27 +14,18 @@
   </CercleWrap>
 </template>
 
-<script>
-import {defineComponent} from 'vue'
+<script setup>
 import CercleWrap from "@/components/CercleWrap.vue";
+import {computed} from "vue";
 
-export default defineComponent({
-  name: "ComiteFromWordpress",
-  props: ['comite'],
-  components: {
-    CercleWrap
-  },
-  data: function () {
-    return {
-      imagesFormatted: null
-    }
-  },
-  mounted: function () {
-    this.imagesFormatted = this.comite.images.map((image) => {
-      return image.guid
-    })
-  }
+const props = defineProps(['comite'])
+
+const imagesFormatted = computed(() => {
+  return props.comite.images.map((image) => {
+    return image.guid
+  })
 })
+
 </script>
 
 <style scoped>
