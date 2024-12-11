@@ -9,8 +9,8 @@
                 'mt-5 mb-12': $vuetify.display.mdAndUp
             }">
         <v-row :reverse="imageAtRight" fill-height>
-          <v-col cols="12" md="5" class="pa-0">
-            <v-carousel v-if="imageFormatted !== null && hasManyImages" width="100%">
+          <v-col cols="12" md="5" class="pa-0" v-if="imageFormatted !== null">
+            <v-carousel v-if="hasManyImages" width="100%">
               <v-carousel-item
                   v-for="(item,i) in imageFormatted"
                   :key="i"
@@ -26,7 +26,7 @@
             ></v-img>
             <slot name="image"></slot>
           </v-col>
-          <v-col cols="12" md="7" left>
+          <v-col cols="12" :md="imageFormatted === null ? 12 : 7" left>
             <v-card-title primary-title class="mt-0 pt-0 text-h5 text-left font-weight-bold"
                           :class="{
                             'mt-4 pa-0' : $vuetify.display.smAndDown
@@ -69,12 +69,20 @@ export default {
     }
   },
   mounted: function () {
-    const isImageAnArray = this.image.constructor === Array;
-    this.hasManyImages = isImageAnArray && this.image.length > 1
-    if (isImageAnArray && !this.hasManyImages) {
-      this.imageFormatted = this.image[0]
-    } else {
-      this.imageFormatted = this.image;
+    this.setupImages();
+  },
+  methods: {
+    setupImages: function () {
+      if (this.image === null) {
+        return;
+      }
+      const isImageAnArray = this.image.constructor === Array;
+      this.hasManyImages = isImageAnArray && this.image.length > 1
+      if (isImageAnArray && !this.hasManyImages) {
+        this.imageFormatted = this.image[0]
+      } else {
+        this.imageFormatted = this.image;
+      }
     }
   }
 }
