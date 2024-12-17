@@ -226,7 +226,7 @@ const calendarApp = createCalendar({
   ],
   dayBoundaries: {
     start: '06:00',
-    end: '23:59',
+    end: '06:00',
   },
   weekOptions: {
     gridHeight: display.mdAndDown.value ? 350 : 750
