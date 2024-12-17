@@ -33,6 +33,18 @@ const comitesStore = useComiteStore()
 const route = useRoute();
 const comite = ref(null)
 
+const page = ref(null);
+
+async function buildPage() {
+  const response = await WordpressService.api().get(
+      "pages?_embed&slug=" + route.params.slug
+  );
+  if (!response.data.length) {
+    return false;
+  }
+  page.value = response.data;
+  return true;
+}
 mathComiteWithSlug();
 
 comitesStore.$subscribe(() => {
@@ -42,6 +54,8 @@ comitesStore.$subscribe(() => {
 watch(route, mathComiteWithSlug);
 
 async function mathComiteWithSlug() {
+  comite.value = null;
+  page.value = null;
   if (comitesStore.$state.list === null) {
     return;
   }
@@ -68,18 +82,6 @@ async function buildComite() {
   return false;
 }
 
-const page = ref(null);
-
-async function buildPage() {
-  const response = await WordpressService.api().get(
-      "pages?_embed&slug=" + route.params.slug
-  );
-  if (!response.data.length) {
-    return false;
-  }
-  page.value = response.data;
-  return true;
-}
 </script>
 
 <style scoped>
