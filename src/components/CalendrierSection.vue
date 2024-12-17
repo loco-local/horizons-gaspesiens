@@ -50,27 +50,26 @@
           </v-sheet>
           <v-row class="">
             <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
-              Légende
+              Légende du partage de la salle.
             </v-col>
             <v-col cols="12" class="text-left">
-              <v-chip
-                  class="ma-2 text-body-1 text-truncate"
-                  color="#5484ed"
-              >
-                La salle peut être partagée si les autres respectent le bon déroulement de
-                l'activité.
-              </v-chip>
               <v-chip
                   class="ma-2 text-body-1"
                   color="#dc2127"
               >
-                Seuls les participants à l'activité peuvent être dans la salle.
+                Exclusif aux participants.
+              </v-chip>
+              <v-chip
+                  class="ma-2 text-body-1 text-truncate"
+                  color="#5484ed"
+              >
+                Ouvert à de nons participants discrets.
               </v-chip>
               <v-chip
                   class="ma-2 text-body-1"
                   color="#51b749"
               >
-                Pas prioritaire, d'autres peuvent réserver par dessus cet événement.
+                Non prioritaire. Réservez par dessus.
               </v-chip>
             </v-col>
           </v-row>
