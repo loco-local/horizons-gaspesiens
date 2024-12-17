@@ -89,11 +89,6 @@ const router = VueRouter.createRouter({
             name: 'AdhesionWithEmail',
             component: () => import('@/views/Adhesion.vue')
         },
-        {
-            path: '/politique-confidentialite',
-            name: 'PolitiqueConfidentialite',
-            component: () => import('@/views/PolitiqueConfidentialite.vue')
-        },
         // {
         //     path: '/finance',
         //     name: 'Finance',
@@ -101,8 +96,8 @@ const router = VueRouter.createRouter({
         // },
         {
             path: '/:slug/',
-            name: 'ComitePage',
-            component: () => import('@/views/ComitePage')
+            name: 'ComiteOrPage',
+            component: () => import('@/views/ComiteOrPage')
         },
     ]
 })
