@@ -50,7 +50,7 @@
           </v-sheet>
           <v-row class="">
             <v-col cols="12" class="text-body-1 text-left pb-0 pl-8">
-              Légende du partage de la salle.
+              Légende du partage de la salle:
             </v-col>
             <v-col cols="12" class="text-left">
               <v-chip
@@ -136,6 +136,9 @@
             à
             {{ $filters.time(selectedEvent.end) }}.
           </strong>
+          <div class="text-grey">
+            Créé le {{ $filters.dayDateWithTime(selectedEvent.createdAt)}}
+          </div>
           <div class="mt-3">
             L'heure d'accueil et de départ des participants à un événement,
             n'est pas toujours l'heure que l'organisation a réservé sur le calendrier du Loco Local pour préparer et

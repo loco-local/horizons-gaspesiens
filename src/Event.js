@@ -54,6 +54,7 @@ const Event = {
         } else {
             event.calendarId = "exclusive"
         }
+        event.createdAt = event.created;
         return event;
     },
     getColorFromId: function (colorId) {
