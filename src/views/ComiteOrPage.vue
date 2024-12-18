@@ -8,6 +8,21 @@
     >
       <v-progress-circular indeterminate size="100" width="2" color="primary"></v-progress-circular>
     </v-overlay>
+    <v-row v-if="comite !== null && comite.type === 'comite_page_archive'" class="vh-center">
+      <v-col cols="12" md="6">
+        <v-alert
+            type="warning"
+            class="text-black"
+        >
+          <template v-slot:title>
+            Ce comité est archivé.
+          </template>
+          <div class="text-black text-left">
+             Les informations dans cette page ne sont probablement plus valables.
+          </div>
+        </v-alert>
+      </v-col>
+    </v-row>
     <ComiteFromWordpress :comite="comite" v-if="comite !== null" :key="comite.id"></ComiteFromWordpress>
     <v-row v-if="page !== null">
       <v-col cols="0" md="1" lg="2">
@@ -45,6 +60,7 @@ async function buildPage() {
   page.value = response.data;
   return true;
 }
+
 mathComiteWithSlug();
 
 comitesStore.$subscribe(() => {
