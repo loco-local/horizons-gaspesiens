@@ -24,14 +24,7 @@ export default {
             return response.data;
         }
         return Object.keys(response.data.reminders).reduce((reminders, key) => {
-            let value = response.data.reminders[key];
-            value = value.replace(/\b\d+\b/g, (match) => {
-                const timestamp = parseInt(match, 10);
-                if (!isNaN(timestamp)) {
-                    return DateUtil.getDayDate(new Date(timestamp));
-                }
-                return match;
-            });
+            const value = response.data.reminders[key];
             reminders.push({
                 key: key,
                 value: value
@@ -39,6 +32,10 @@ export default {
             return reminders;
         }, []).sort((a, b) => {
             return b.value - a.value
-        });
+        }).map((reminder) => {    
+            const timestamp = parseInt(reminder.value, 10);
+            reminder.value = DateUtil.getDayDate(new Date(timestamp));
+            return reminder;
+        })
     }
 }
