@@ -27,6 +27,7 @@ export default {
                 key,
                 ...response.data.reminders[key]
             })
+            return reminders;
         }, [])
     }
 }
