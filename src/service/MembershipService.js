@@ -1,4 +1,5 @@
 import Service from '@/service/Service'
+import DateUtil from '../DateUtil';
 
 export default {
     get: function (email) {
@@ -23,11 +24,21 @@ export default {
             return response.data;
         }
         return Object.keys(response.data.reminders).reduce((reminders, key) => {
+            let value = response.data.reminders[key];
+            value = value.replace(/\b\d+\b/g, (match) => {
+                const timestamp = parseInt(match, 10);
+                if (!isNaN(timestamp)) {
+                    return DateUtil.getDayDate(new Date(timestamp));
+                }
+                return match;
+            });
             reminders.push({
-                key,
-                ...response.data.reminders[key]
+                key: key,
+                value: value
             })
             return reminders;
-        }, [])
+        }, []).sort((a, b) => {
+            return b.value - a.value
+        });
     }
 }
