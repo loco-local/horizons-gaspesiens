@@ -89,6 +89,11 @@ const router = VueRouter.createRouter({
             name: 'AdhesionWithEmail',
             component: () => import('@/views/Adhesion.vue')
         },
+        {
+            path: '/adhesion/rappels',
+            name: 'MembershipReminders',
+            component: () => import('@/views/MembershipReminders.vue')
+        },
         // {
         //     path: '/finance',
         //     name: 'Finance',

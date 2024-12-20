@@ -14,6 +14,15 @@ const Service = {
             baseURL: Service.baseUrl(),
             responseType: 'json'
         });
+        axiosInstance.interceptors.response.use(function (response) {
+            return response;
+        }, function (error) {
+            if (401 === error.response.status) {
+                return error.response;
+            } else {
+                return Promise.reject(error);
+            }
+        });
         return axiosInstance;
     }
 };
