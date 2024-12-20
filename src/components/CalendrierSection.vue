@@ -395,7 +395,7 @@ function editEvent(event) {
   editedEvent.value = event;
   editedEvent.value.accepteConditions = true;
   Event.defineDatesFromScheduleXEvent(
-      this.editedEvent,
+      editedEvent.value,
       new Date(event.start),
       new Date(event.end)
   );
