@@ -77,6 +77,7 @@
                     :allowed-minutes="allowedMinutes"
                     :rules="[rules.required]"
                     title="Heure de début"
+                    @update:hour="startTimeHourUpdate"
                 ></v-time-picker>
               </v-col>
               <v-col style="width: 350px; flex: 0 1 auto;">
@@ -86,6 +87,7 @@
                     :allowed-minutes="allowedMinutes"
                     :rules="[rules.required]"
                     title="Heure de fin"
+                    @update:hour="endTimeHourUpdate"
                 ></v-time-picker>
               </v-col>
             </v-row>
@@ -385,6 +387,7 @@ import Rules from "@/Rules";
 import Tarification from "@/components/TarificationSection.vue";
 import {VTimePicker} from 'vuetify/labs/VTimePicker'
 import {format} from "date-fns";
+import Event from '@/Event'
 
 export default {
   name: "ReservationDialog",
@@ -459,6 +462,24 @@ export default {
       this.isSaveEventLoading = false;
       this.dialog = false;
     },
+    startTimeHourUpdate: function (hour) {
+      if(this.editedEvent.startTime === undefined){
+        return;
+      }
+      this.editedEvent.startTime = Event.updateTimeHour(
+          this.editedEvent.startTime,
+          hour
+      );
+    },
+    endTimeHourUpdate: function (hour) {
+      if(this.editedEvent.endTime === undefined){
+        return;
+      }
+      this.editedEvent.endTime = Event.updateTimeHour(
+          this.editedEvent.endTime,
+          hour
+      );
+    }
   },
   computed: {
     isModifyEventFlow: function () {

@@ -1,4 +1,4 @@
-import {endOfDay, format} from "date-fns";
+import {endOfDay, format, parse, setHours} from "date-fns";
 
 // this.googleColors = await EventService.listColors();
 // this.googleColors = Object.keys(this.googleColors.event).map((colorId) => {
@@ -105,6 +105,11 @@ const Event = {
     setTimeToDate: function (time, date) {
         const timeArray = time.split(":");
         date.setHours(timeArray[0], timeArray[1]);
+    },
+    updateTimeHour: function (timeString, newHour) {
+        const time = parse(timeString, 'HH:mm', new Date());
+        const updatedTime = setHours(time, newHour);
+        return format(updatedTime, 'HH:mm');
     }
 }
 export default Event;
