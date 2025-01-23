@@ -40,6 +40,11 @@ const router = VueRouter.createRouter({
             component: HomePage
         },
         {
+            path: '/contact',
+            name: 'Contact',
+            component: HomePage
+        },
+        {
             path: '/bouger-ensemble',
             name: 'bouger-ensemble',
             component: () => import("@/views/BougerEnsemblePage")

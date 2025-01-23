@@ -324,7 +324,13 @@ async function setupComitesArchives() {
   comitesArchives.value = response.data;
 }
 
+const contactDialog = ref(null);
+
 async function goToRightSection() {
+  if (route.name === "Contact") {
+    contactDialog.value.show();
+    return;
+  }
   if (route.name === "ComitesArchives") {
     return setupComitesArchives()
   }
