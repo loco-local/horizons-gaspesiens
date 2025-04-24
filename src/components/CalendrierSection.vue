@@ -220,7 +220,7 @@ const selectedEvent = ref(null)
 const eventsServicePlugin = createEventsServicePlugin();
 const calendarApp = createCalendar({
   locale: 'fr-FR',
-  selectedDate: format(new Date(), 'yyyy-MM-dd HH:mm'),
+  selectedDate: format(new Date(), 'yyyy-MM-dd'),
   views: [
     createViewWeek(),
     createViewMonthGrid(),
