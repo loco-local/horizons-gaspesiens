@@ -119,21 +119,7 @@
         Pour les événements financés par contributions volontaires, les taxes
         ne sont pas
         chargées.
-      </p>
-      <div class="mb-2 text-h6">
-        Allègement des tarifs
-      </div>
-      <p class="text-body-1 ml-4">
-        Lorsque que le nombre de participants n'a pas été suffisant pour couvrir les
-        frais de
-        location de
-        la salle,
-        un montant inférieur peut être donné au Loco.
-      </p>
-      <p class="text-body-1 ml-4">
-        Toutefois des démarches doivent êtres entreprises par l'organisatrice pour
-        s'approcher de la contribution minimale à la prochaine activité.
-      </p>
+      </p>      
     </v-col>
     <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
   </v-row>
