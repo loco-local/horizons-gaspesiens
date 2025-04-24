@@ -123,8 +123,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-    </v-row>
-    <v-parallax :height="parallaxSize" :src="require('../assets/peinture-rogner.jpg')"></v-parallax>
+    </v-row>    
     <v-row class="mt-12" id="comites"
            :class="{
               'pb-16' : $vuetify.display.mdAndUp,
@@ -268,19 +267,11 @@ import Shuffle from "@/Shuffle";
 import PaiementSection from "@/components/PaiementSection.vue";
 import WordpressService from "@/service/WordpressService";
 import ComiteFromWordpress from "@/components/ComiteFromWordpress.vue";
-import {computed, onMounted, ref, watch} from "vue";
-import {useDisplay} from "vuetify";
+import {onMounted, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import Scroll from "@/Scroll";
 import {useComiteStore} from "@/stores/ComiteStore";
 
-const display = useDisplay();
-const parallaxSize = computed(() => {
-  if (display.mdAndDown) {
-    return 200;
-  }
-  return 350;
-})
 const visionModal = ref(false);
 const missionModal = ref(false)
 const valeursModal = ref(false);
