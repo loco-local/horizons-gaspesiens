@@ -1,6 +1,6 @@
 import Event from '@/Event'
 export default {
-    required: function (value) {
+    required: function (value) {        
         return !!value || "Champ requis"
     },
     email: function (value) {

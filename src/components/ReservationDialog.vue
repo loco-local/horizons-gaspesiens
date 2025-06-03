@@ -431,8 +431,8 @@ export default {
       this.$emit('eventRemoved', this.editedEvent)
     },
     save: async function () {
-      const formValidation = await this.$refs.eventForm.validate();
-      if (!formValidation.valid) {
+      const formValidation = await this.$refs.eventForm.validate();      
+      if (!formValidation.valid || this.editedEvent.endTime === undefined || this.editedEvent.endTime === undefined) {
         this.$refs.eventForm.$el.scrollIntoView({behavior: 'smooth'})
         return
       }
