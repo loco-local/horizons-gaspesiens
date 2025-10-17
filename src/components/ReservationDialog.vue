@@ -2,42 +2,24 @@
   <div>
     <v-dialog :fullscreen="true" v-model="dialog" v-if="dialog">
       <v-card>
-        <v-toolbar
-            color="white"
-        >
-          <v-btn
-              icon
-              @click="cancelSave"
-          >
+        <v-toolbar color="white">
+          <v-btn icon @click="cancelSave">
             <v-icon>close</v-icon>
           </v-btn>
-          <img
-              :src="require('@/assets/logo-loco-horizontal.png')"
-              :height="logoHeight"
-              class="mr-4"
-
-          />
+          <img :src="require('@/assets/logo-loco-horizontal.png')" :height="logoHeight" class="mr-4" />
           <v-toolbar-title class="text" v-if="$vuetify.display.mdAndUp">
             <v-icon start>event</v-icon>
             Réservation
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn @click="confirmRemoveDialog=true" variant="text" color="red" v-if="isModifyEventFlow">
+          <v-btn @click="confirmRemoveDialog = true" variant="text" color="red" v-if="isModifyEventFlow">
             <v-icon start class="material-icons-outlined">delete</v-icon>
             Supprimer
           </v-btn>
         </v-toolbar>
         <v-container class="mt-8 pb-16">
-          <v-alert
-              color="primary"
-              border="start"
-              elevation="2"
-              border-color
-              icon="schedule"
-              variant="outlined"
-              class="mb-8"
-
-          >
+          <v-alert color="primary" border="start" elevation="2" border-color icon="schedule" variant="outlined"
+            class="mb-8">
             <p class="text-body-1">
               La règle de « la première arrivée, première servie » est de mise.
             </p>
@@ -58,54 +40,28 @@
                 </div>
               </v-col>
             </v-row>
-            <v-row
-                align="center"
-                justify="space-around"
-            >
+            <v-row align="center" justify="space-around">
               <v-col style="width: 350px; flex: 0 1 auto;">
-                <v-date-picker
-                    v-model="editedEvent.startDay"
-                    no-title
-                    scrollable
-                    :rules="[rules.required]"
-                ></v-date-picker>
+                <v-date-picker v-model="editedEvent.startDay" no-title scrollable
+                  :rules="[rules.required]"></v-date-picker>
               </v-col>
               <v-col style="width: 350px; flex: 0 1 auto;">
-                <v-time-picker
-                    v-model="editedEvent.startTime"
-                    format="24hr"
-                    :allowed-minutes="allowedMinutes"
-                    :rules="[rules.required]"
-                    title="Heure de début"
-                    @update:hour="startTimeHourUpdate"
-                ></v-time-picker>
+                <v-time-picker v-model="editedEvent.startTime" format="24hr" :allowed-minutes="allowedMinutes"
+                  :rules="[rules.required]" title="Heure de début" @update:hour="startTimeHourUpdate"></v-time-picker>
               </v-col>
               <v-col style="width: 350px; flex: 0 1 auto;">
-                <v-time-picker
-                    v-model="editedEvent.endTime"
-                    format="24hr"
-                    :allowed-minutes="allowedMinutes"
-                    :rules="[rules.required]"
-                    title="Heure de fin"
-                    @update:hour="endTimeHourUpdate"
-                ></v-time-picker>
+                <v-time-picker v-model="editedEvent.endTime" format="24hr" :allowed-minutes="allowedMinutes"
+                  :rules="[rules.required]" title="Heure de fin" @update:hour="endTimeHourUpdate"></v-time-picker>
               </v-col>
             </v-row>
             <v-card :flat="!isWeekly" class="pl-8 mb-6">
               <v-row>
                 <v-col cols="12">
-                  <v-checkbox
-                      v-if="!isModifyEventFlow"
-                      v-model="isWeekly"
-                      label="Est un événement qui se répète à chaque semaine"
-                  ></v-checkbox>
+                  <v-checkbox v-if="!isModifyEventFlow" v-model="isWeekly"
+                    label="Est un événement qui se répète à chaque semaine"></v-checkbox>
                 </v-col>
                 <v-col cols="12" v-if="isWeekly" class="pt-0">
-                  <v-date-picker
-                      v-model="weeklyUntilDate"
-                      title="Jusqu'au"
-                      scrollable
-                  ></v-date-picker>
+                  <v-date-picker v-model="weeklyUntilDate" title="Jusqu'au" scrollable></v-date-picker>
                 </v-col>
               </v-row>
             </v-card>
@@ -124,29 +80,18 @@
                   <v-col cols="12">
                     <v-row>
                       <v-col cols="12" lg="4">
-                        <v-text-field
-                            label="Votre nom"
-                            v-model="editedEvent.organizer.fullname"
-                            :rules="[rules.required]"
-                        ></v-text-field>
+                        <v-text-field label="Votre nom" v-model="editedEvent.organizer.fullname"
+                          :rules="[rules.required]"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row>
                       <v-col cols="12" lg="4">
-                        <v-text-field
-                            label="Votre courriel"
-                            v-model="editedEvent.organizer.email"
-                            prepend-icon="email"
-                            :rules="[rules.required]"
-                        ></v-text-field>
+                        <v-text-field label="Votre courriel" v-model="editedEvent.organizer.email" prepend-icon="email"
+                          :rules="[rules.required]"></v-text-field>
                       </v-col>
                       <v-col cols="12" lg="4">
-                        <v-text-field
-                            label="Votre téléphone"
-                            v-model="editedEvent.organizer.phone"
-                            prepend-icon="phone"
-                            :rules="[rules.required]"
-                        ></v-text-field>
+                        <v-text-field label="Votre téléphone" v-model="editedEvent.organizer.phone" prepend-icon="phone"
+                          :rules="[rules.required]"></v-text-field>
                       </v-col>
                     </v-row>
                   </v-col>
@@ -159,9 +104,7 @@
                     </div>
                   </v-col>
                   <v-col cols="12" class="pa-0">
-                    <VerificationAdhesion
-                        :email-input="editedEvent.organizer.email"
-                    ></VerificationAdhesion>
+                    <VerificationAdhesion :email-input="editedEvent.organizer.email"></VerificationAdhesion>
                   </v-col>
                 </v-row>
               </v-col>
@@ -176,20 +119,14 @@
                 <div class="text text-h5">Événement</div>
               </v-col>
               <v-col cols="12" lg="6" xl="4">
-                <v-text-field
-                    v-model="editedEvent.summary"
-                    label="Nom de l'événement"
-                    prepend-icon="event"
-                    :rules="[rules.required]">
+                <v-text-field v-model="editedEvent.summary" label="Nom de l'événement" prepend-icon="event"
+                  :rules="[rules.required]">
                 </v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" lg="6" xl="4">
-                <v-textarea
-                    v-model="editedEvent.description"
-                    label="Informations additionnelles"
-                >
+                <v-textarea v-model="editedEvent.description" label="Informations additionnelles">
                 </v-textarea>
               </v-col>
             </v-row>
@@ -201,30 +138,41 @@
             <v-row>
               <v-col cols="12">
                 <div class="text-left text text-h5">Partage de la salle</div>
-                <v-radio-group
-                    v-model="editedEvent.colorId"
-                    :rules="[rules.required]"
-                >
-                  <v-radio
-                      label="Seuls les participants à l'activité peuvent être dans la salle"
-                      color="#dc2127"
-                      value="11"
-                  ></v-radio>
-                  <v-radio
-                      label="La salle peut être partagée si les autres respectent le bon déroulement de notre activité."
-                      color="#5484ed"
-                      value="9"
-                  ></v-radio>
-                  <v-radio
-                      label="Pas prioritaire, d'autres peuvent réserver par dessus cet événement"
-                      color="#51b749"
-                      value="10"
-                  ></v-radio>
+                <v-radio-group v-model="editedEvent.colorId" :rules="[rules.required]">
+                  <v-radio label="16$ de l'heure : d'autres personnes discrètes peuvent partager la salle."
+                    color="#5484ed" value="9"></v-radio>
+                  <v-radio label="20$ de l'heure : seuls les participants à l'activité peuvent être dans la salle."
+                    color="#e32323" value="11"></v-radio>
                 </v-radio-group>
               </v-col>
             </v-row>
             <v-divider class="mt-6 mb-6"></v-divider>
-            <Tarification></Tarification>
+            <v-row>
+              <v-cols cols="12" class="">
+                <div class="text-left text text-h5">Frais de location</div>
+                <div class="text-grey-darken-2 text-body-1">
+                  Complétez votre réservation avant de payer.
+                </div>
+                <v-card variant="flat">
+                  <v-card-title>
+                    <div>
+                      {{ cost }}$ <small>taxes incluses</small>
+                    </div>
+                    <div class="text-grey-darken-2 text-body-1">
+                      {{ nbHours }} heure<span v-if="nbHours > 1">s</span> de réservation * {{ costPerHour }}$/heure =
+                      {{ cost }}$
+                    </div>
+                  </v-card-title>
+                </v-card>
+              </v-cols>
+              <v-col cols="12" class="mt-4">
+                <v-btn @click="$refs.paymentMethodsDialog.enter()" class="" variant="outlined">
+                  <v-icon start class="">monetization_on</v-icon>
+                  Modes de paiements
+                </v-btn>
+              </v-col>
+              <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
+            </v-row>
             <v-divider class="mt-6 mb-6"></v-divider>
             <v-row>
               <v-col cols="12" class="text-left">
@@ -330,14 +278,10 @@
                       Respect des valeurs : respect, bienveillance, ouverture, solidarité, inclusion, partage,
                       autonomie individuelle, et égalité.
                     </v-list-item-title>
-
                   </v-list-item>
                 </v-list>
-                <v-checkbox
-                    v-model="editedEvent.accepteConditions"
-                    label="Je m'engage à respecter ces conditions."
-                    :rules="[rules.required]"
-                ></v-checkbox>
+                <v-checkbox v-model="editedEvent.accepteConditions" label="Je m'engage à respecter ces conditions."
+                  :rules="[rules.required]"></v-checkbox>
               </v-col>
             </v-row>
             <v-row>
@@ -345,11 +289,11 @@
                 <v-btn color="primary" @click="save" size="large" :loading="isSaveEventLoading">
                   <v-icon start v-if="!isModifyEventFlow">add</v-icon>
                   <span v-if="isModifyEventFlow">
-                                        Modifier l'événement
-                                    </span>
+                    Modifier l'événement
+                  </span>
                   <span v-else>
-                                        Ajouter l'événement
-                                    </span>
+                    Ajouter l'événement
+                  </span>
                 </v-btn>
               </v-col>
             </v-row>
@@ -363,7 +307,7 @@
           <div>
             {{ editedEvent.summary }}
           </div>
-          <v-icon @click="confirmRemoveDialog=false">close</v-icon>
+          <v-icon @click="confirmRemoveDialog = false">close</v-icon>
         </v-card-title>
         <v-card-actions>
           <v-btn color="red" variant="text" @click="remove" :loading="isRemoveEventLoading">
@@ -371,7 +315,7 @@
             Supprimer
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="confirmRemoveDialog=false">
+          <v-btn @click="confirmRemoveDialog = false">
             Annuler
           </v-btn>
         </v-card-actions>
@@ -382,16 +326,16 @@
 
 <script>
 import VerificationAdhesion from "@/components/VerificationAdhesion.vue";
+import PaymentMethodsDialog from "@/components/PaymentMethodsDialog"
 import EventService from "@/service/EventService";
 import Rules from "@/Rules";
-import Tarification from "@/components/TarificationSection.vue";
-import {VTimePicker} from 'vuetify/labs/VTimePicker'
-import {format} from "date-fns";
+import { VTimePicker } from 'vuetify/labs/VTimePicker'
+import { format, differenceInMinutes } from "date-fns";
 import Event from '@/Event'
 
 export default {
   name: "ReservationDialog",
-  components: {Tarification, VerificationAdhesion, VTimePicker},
+  components: { VerificationAdhesion, VTimePicker, PaymentMethodsDialog },
   data: function () {
     return {
       isWeekly: false,
@@ -423,7 +367,7 @@ export default {
     remove: async function () {
       this.isRemoveEventLoading = true;
       await EventService.delete(
-          this.editedEvent.id
+        this.editedEvent.id
       )
       this.isRemoveEventLoading = false;
       this.confirmRemoveDialog = false;
@@ -431,20 +375,20 @@ export default {
       this.$emit('eventRemoved', this.editedEvent)
     },
     save: async function () {
-      const formValidation = await this.$refs.eventForm.validate();      
+      const formValidation = await this.$refs.eventForm.validate();
       if (!formValidation.valid || this.editedEvent.endTime === undefined || this.editedEvent.endTime === undefined) {
-        this.$refs.eventForm.$el.scrollIntoView({behavior: 'smooth'})
+        this.$refs.eventForm.$el.scrollIntoView({ behavior: 'smooth' })
         return
       }
       this.isSaveEventLoading = true;
       if (!this.isModifyEventFlow) {
         this.editedEvent.description = "Contactez " + this.editedEvent.organizer.fullname + " " +
-            this.editedEvent.organizer.email + " " + this.editedEvent.organizer.phone +
-            ". " + (this.editedEvent.description || "");
+          this.editedEvent.organizer.email + " " + this.editedEvent.organizer.phone +
+          ". " + (this.editedEvent.description || "");
       }
       if (this.isModifyEventFlow) {
         const modifiedEvent = await EventService.update(
-            this.editedEvent
+          this.editedEvent
         );
         this.$emit('eventUpdated', modifiedEvent)
       } else {
@@ -455,7 +399,7 @@ export default {
           ];
         }
         const newEvent = await EventService.add(
-            this.editedEvent
+          this.editedEvent
         )
         this.$emit('eventAdded', newEvent)
       }
@@ -463,32 +407,59 @@ export default {
       this.dialog = false;
     },
     startTimeHourUpdate: function (hour) {
-      if(this.editedEvent.startTime === undefined){
+      if (this.editedEvent.startTime === undefined) {
         return;
       }
       this.editedEvent.startTime = Event.updateTimeHour(
-          this.editedEvent.startTime,
-          hour
+        this.editedEvent.startTime,
+        hour
       );
     },
     endTimeHourUpdate: function (hour) {
-      if(this.editedEvent.endTime === undefined){
+      if (this.editedEvent.endTime === undefined) {
         return;
       }
       this.editedEvent.endTime = Event.updateTimeHour(
-          this.editedEvent.endTime,
-          hour
+        this.editedEvent.endTime,
+        hour
       );
-    }
+    },
   },
   computed: {
     isModifyEventFlow: function () {
       return this.editedEvent.id !== undefined
+    },
+    nbHours: function () {
+      if (this.editedEvent.startTime === undefined || this.editedEvent.endTime === undefined) {
+        return 0;
+      }
+      const today = new Date();
+      Event.setTimeToDate(this.editedEvent.startTime, today)
+      const todayLater = new Date();
+      Event.setTimeToDate(this.editedEvent.endTime, todayLater)
+      const nbMinutes = differenceInMinutes(
+        todayLater,
+        today
+      )
+      if (nbMinutes < 0) {
+        return 0;
+      }
+      const nbHours = nbMinutes / 60;
+      return nbHours
+    },
+    costPerHour: function () {
+      const colorId = this.editedEvent.colorId
+      if (colorId === null || colorId === undefined) {
+        return 20;
+      }
+      const isEventShared = colorId === "9";
+      return isEventShared ? 16 : 20;
+    },
+    cost: function () {
+      return this.nbHours * this.costPerHour
     }
   }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

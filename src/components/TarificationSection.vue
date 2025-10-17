@@ -4,122 +4,38 @@
       <v-row>
         <v-col cols="10">
           <div class="text text-h5">Tarification</div>
+          <div class="text-grey-darken-2 text-body-1">Taxes incluses</div>
         </v-col>
-        <v-col cols="2" class="text-right">
+        <v-col cols="2" class="text-right" v-if="topCloseButton">
           <v-icon @click="$emit('close')" size="x-large">close</v-icon>
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" class="text-left pa-0">
-      <p class="text-body-1 font-weight-bold text-center">
-        Contribution minimale (avant taxes) pour la location
-        de la salle.
-      </p>
-      <v-card class="mb-8">
-        <v-table>
-          <template v-slot:default>
-            <thead>
-            <tr>
-              <th></th>
-              <th class="text-body-1 font-weight-bold">
-                1h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                2h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                3h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                4h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                5h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                10h
-              </th>
-              <th class="text-body-1 font-weight-bold">
-                Jour + nuit
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-<!--            <template slot="item" slot-scope="props">-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row1 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row2 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row3 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row4 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row5 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row6 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row7 }}-->
-<!--              </td>-->
-<!--              <td class="text-body-1">-->
-<!--                {{ props.item.row8 }}-->
-<!--              </td>-->
-<!--            </template>-->
-            <tr
-                v-for="price in priceRows"
-                :key="price.row1"
-            >
-              <td class="text-body-1">{{ price.row1 }}</td>
-              <td class="text-body-1">{{ price.row2 }}</td>
-              <td class="text-body-1">{{ price.row3 }}</td>
-              <td class="text-body-1">{{ price.row4 }}</td>
-              <td class="text-body-1">{{ price.row5 }}</td>
-              <td class="text-body-1">{{ price.row6 }}</td>
-              <td class="text-body-1">{{ price.row7 }}</td>
-              <td class="text-body-1">{{ price.row8 }}</td>
-            </tr>
-            </tbody>
-          </template>
-        </v-table>
+    <v-col cols="12" class="vh-center">
+      <v-card width="300" color="#2349e3">
+        <v-card-title>
+          16$ de l'heure
+        </v-card-title>
+        <v-card-text class="text-body-1">
+          Pour une location où il est toléré que d'autres personnes discrètes partagent le local.
+        </v-card-text>
       </v-card>
-<!--      <div class="text-left text text-h6" v-if="roomPicker">-->
-<!--        Option de salle-->
-<!--      </div>-->
-<!--      <v-radio-group v-model="roomPiece" row @change="updatePrice" v-if="roomPicker">-->
-<!--        <v-radio-->
-<!--            label="Grande salle"-->
-<!--            value="Grande salle"-->
-<!--        ></v-radio>-->
-<!--        <v-radio-->
-<!--            label="Cuisine"-->
-<!--            value="Cuisine"-->
-<!--        ></v-radio>-->
-<!--        <v-radio-->
-<!--            label="Petite salle de réunion"-->
-<!--            value="Petite salle de réunion"-->
-<!--        ></v-radio>-->
-<!--      </v-radio-group>-->
-<!--      <div v-if="roomPicker" class="text-h5">-->
-<!--        {{ price }}$-->
-<!--      </div>-->
-      <v-btn @click="$refs.paymentMethodsDialog.enter()" class="mb-6">
+    </v-col>
+    <v-col cols="12" class="vh-center">
+      <v-card width="300" color="#e32323">
+        <v-card-title>
+          20$ de l'heure
+        </v-card-title>
+        <v-card-text class="text-body-1">
+          Pour une location de salle exclusive aux participants.
+        </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col cols="12" class="vh-center mt-4">
+      <v-btn @click="$refs.paymentMethodsDialog.enter()" class="" variant="outlined">
         <v-icon start class="">monetization_on</v-icon>
         Modes de paiements
       </v-btn>
-      <div class="mb-2 text-h6">
-        Taxes
-      </div>
-      <p class="text-body-1 ml-4">
-        Pour les événements financés par contributions volontaires, les taxes
-        ne sont pas
-        chargées.
-      </p>      
     </v-col>
     <PaymentMethodsDialog ref="paymentMethodsDialog"></PaymentMethodsDialog>
   </v-row>
@@ -130,12 +46,8 @@ import PaymentMethodsDialog from "@/components/PaymentMethodsDialog.vue";
 
 export default {
   name: "TarificationSection",
-  components: {PaymentMethodsDialog},
-  props: {
-    roomPicker: {
-      type: Boolean,
-      default: true
-    },
+  components: { PaymentMethodsDialog },
+  props: {    
     topCloseButton: {
       type: Boolean,
       default: false
@@ -197,6 +109,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

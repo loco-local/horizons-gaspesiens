@@ -170,10 +170,10 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="tarificationDialog" max-width="900" :fullscreen="$vuetify.display.smAndDown">
+    <v-dialog v-model="tarificationDialog" max-width="600" :fullscreen="$vuetify.display.smAndDown">
       <v-card>
         <v-card-text class="pt-6 pb-6">
-          <Tarification :roomPicker="false" :topCloseButton="true" @close="tarificationDialog=false"></Tarification>
+          <Tarification :topCloseButton="true" @close="tarificationDialog=false"></Tarification>
         </v-card-text>
         <v-card-actions>
           <v-btn @click="tarificationDialog = false" variant="text" size="large">
