@@ -73,7 +73,7 @@
                 <v-row class="text-left">
                   <v-col cols="12">
                     <div class="text text-h5">Organisatrice</div>
-                    <div class="text-body-1">
+                    <div class="text-grey-darken-2 text-body-1">
                       Ces informations sont publiées dans la description de l'événement
                     </div>
                   </v-col>
@@ -101,6 +101,9 @@
                   <v-col cols="12" class="">
                     <div class="text text-h5">
                       L'organisatrice doit être membre de la coopérative
+                    </div>
+                    <div class="text-grey-darken-2 text-body-1">
+                      Vous pouvez complétez votre réservation même si votre statut n'est pas à jour.
                     </div>
                   </v-col>
                   <v-col cols="12" class="pa-0">
@@ -301,6 +304,24 @@
         </v-container>
       </v-card>
     </v-dialog>
+    <v-dialog width="600" v-model="fixErrorsDialog">
+      <v-card>
+        <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
+          <div class="text-red-lighten-1">
+            L'événement ne peut être
+            <span v-if="isModifyEventFlow">modifier</span><span v-else>ajouter</span>
+          </div>
+          <v-icon @click="fixErrorsDialog = false">close</v-icon>
+        </v-card-title>
+        <v-card-text>
+          Corrigez les erreurs dans le formulaire et appuyez de nouveau sur le bouton.
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="fixErrorsDialog = false">FERMER</v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-dialog width="600" v-model="confirmRemoveDialog" v-if="confirmRemoveDialog">
       <v-card>
         <v-card-title class="d-flex justify-space-between align-center text-h5 text-medium-emphasis ps-2">
@@ -348,7 +369,8 @@ export default {
       editedEvent: null,
       rules: Rules,
       isSaveEventLoading: false,
-      logoHeight: 20
+      logoHeight: 20,
+      fixErrorsDialog: false
     }
   },
   mounted: function () {
@@ -377,7 +399,7 @@ export default {
     save: async function () {
       const formValidation = await this.$refs.eventForm.validate();
       if (!formValidation.valid || this.editedEvent.endTime === undefined || this.editedEvent.endTime === undefined) {
-        this.$refs.eventForm.$el.scrollIntoView({ behavior: 'smooth' })
+        this.fixErrorsDialog = true;
         return
       }
       this.isSaveEventLoading = true;
