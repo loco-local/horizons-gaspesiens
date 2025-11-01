@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Service = {
     baseUrl: function () {
-        const apiPort = process.env.VUE_APP_API_PORT || '443';
+        const apiPort = process.env.NODE_ENV === 'development' ? '4105' : '443';
         return location.protocol + '//' + location.hostname + ':' + apiPort + '/api';
     },
     api: function () {
