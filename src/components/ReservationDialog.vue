@@ -268,7 +268,19 @@
                     <v-list-item-title class="text-body-1 text-wrap">
                       Supprimer son événement lorsqu'il est annulé.
                     </v-list-item-title>
-
+                  </v-list-item>
+                  <v-list-item>
+                    <v-list-item-action>
+                      <v-icon>
+                        local_parking
+                      </v-icon>
+                    </v-list-item-action>
+                    <v-list-item-title class="text-body-1 text-wrap">
+                      Assurez vous que les participants ne se stationnent pas dans le stationnement du bâtiment de l'autre côté de la rue.
+                    </v-list-item-title>
+                    <v-list-item-subtitle class="text-body-1 text-wrap">
+                      Merci de nous aider à garder de bonnes relations avec nos voisins.
+                    </v-list-item-subtitle>
                   </v-list-item>
                   <v-list-item>
                     <v-list-item-action>
